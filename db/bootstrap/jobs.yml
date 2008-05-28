@@ -1,0 +1,310 @@
+jobs_001: 
+  updated_at: 2008-04-29 06:24:02
+  title: Server Developer (aka Ruby on Rails Rockstar)
+  gig: "0"
+  id: "1"
+  description: "Viximo is building a rich creative community and a massively scalable service to deliver content over the web that helps creators, developers, and site owners monetize social interactions. We're the product of a cool co-working space in Cambridge, so if you've ever considered starting your own company or are excited about the opportunity to make a big impact on something in its earliest stages, this is the place for you.  We are venture funded and our environment is fast-paced, team oriented, and highly interactive. So if you're a Ruby star (or willing to become one) and that sounds like a fit for you, then give us a shout.\r\n                \r\n\
+    Responsibilities:\r\n                \r\n\
+    * You will be working daily in Ruby on Rails with some occasional Javascript and SQL.\r\n\
+    * Design and implement extremely high-volume, fault-tolerant, scalable server systems.\r\n                \r\n\
+    Requirements:\r\n                \r\n\
+    * BS or MS in Computer Science or equivalent.\r\n\
+    * Extensive experience developing scalable solutions with Ruby, Python, or PHP.\r\n\
+    * Knowledge of relational databases and SQL.\r\n\
+    * Knowledge developing and debugging on Unix/Linux systems.\r\n                \r\n\
+    This is a full-time position, on-site at our offices in Cambridge, MA.\r\n                \r\n\
+    And since we get a lot of resumes, help us get to know you a little better by answering the following questions in your contact:\r\n                \r\n\
+    1. If we gave you control of the office sound system, what would you play?\r\n\
+    2. What one product or gadget can you not live without?\r\n\
+    3. What is your favorite social network and why?\r\n\
+    4. What blogs do you read on a regular basis?\r\n\
+    5. What is one unique bit of trivia about you that we might find interesting?\r\n\
+    \r\n\
+    send resume to: jobs+brug@viximo.com\r\n                \r\n\
+    No recruiters or offshore teams please, we've already got our hands full thanks. "
+  organization: Viximo
+  created_at: 2008-04-28 19:41:28
+  email: jobs+brug@viximo.com
+  location: Cambridge, MA
+jobs_002: 
+  updated_at: 2008-04-28 20:17:59
+  title: Web Services Developer
+  gig: "0"
+  id: "2"
+  description: |-
+    [Apply here](http://www.mathworks.com/company/jobs/opportunities/Job-6257-Web-Services-Developer-Product-to-Web-Integration.html)
+    
+    Job Summary
+    -----------
+    
+    Web Services Application Developer to design, develop and deliver web services that integrate with our existing desktop applications. Candidate will provide demonstrable expertise of web services; including testability, performance, deploy-ability and availability aspects. You will work with a cross-functional team focused on product-based web services.
+    
+    Responsibilities
+    ----------------
+    
+    * Design, develop, debug, document and test Web Services.
+    * Define and develop integration points between external web services and internal systems.
+    * Create design specifications and test case documents. Participate in design discussions and code reviews.
+    * Provide project leads with proper time estimates for assigned tasks and periodic status regarding development progress.
+    * Work with Product Development, Quality Engineering, Usability, Documentation, and other related teams to refine product requirement specifications, functional specifications.
+    * Provide documentation as required.
+    * Participate in defining the product integration strategy.
+    
+    Qualifications
+    --------------
+    
+    * BS degree in computer science or software engineering.
+    * Seven (7+) years of commercial software engineering experience and practical knowledge of Object-Oriented analysis and design, design patterns, rapid development, and software engineering principles.
+    * Five (5) years of commercial software engineering experience using Java technologies, including 3+ years with Web Services.
+    * Experience with one or more of the following: ESBs, WS-I, WS-Security, WS-BPEL, ESBs.
+    * Proficiency in XML (including XML Schema, XSL, XPath, XQuery), SQL and database concepts.
+    * Strong programming and debugging skills with strong understanding of project cycles, software development environments, and source control techniques.
+    * Ability to take ownership of extensive development tasks.
+    * Ability to work on a team with many constituents.
+    * Demonstrated ability to translate business requirements into technical designs.
+  organization: MathWorks
+  created_at: 2008-04-28 20:17:59
+  email: ""
+  location: Natick, MA
+jobs_003: 
+  updated_at: 2008-04-28 20:20:59
+  title: Web Application Developer
+  gig: "0"
+  id: "3"
+  description: |-
+    [Apply here](http://www.mathworks.com/company/jobs/opportunities/Job-6259-Web-Application-Developer.html)
+    
+    Job Summary
+    -----------
+                    
+    Come help make our MATLAB Community a better place with your Web 2.0 development expertise. As a Business Applications Developer for our MATLAB Community, you will be responsible for the analysis, design and development of a variety of socially oriented applications. You must have a solid experience building web applications and know how to tune them for performance and availability.
+                    
+    Responsibilities
+    ----------------
+                    
+    You will be responsible for the technical implementation of our community applications on MathWorks.com. Responsibilities also include assisting business areas in defining their needs and effectively translating business and technical requirements into functional specifications and application designs. This includes collaborating with usability and designers to develop workflows and page designs.
+                    
+    We are looking for developers with a strong commitment to quality and reliability as well as an enthusiasm for developing social web applications. 
+                    
+    Qualifications
+    --------------
+                    
+    * 8+ years development experience
+    * BS in Computer Science or equivalent
+    * Experience designing  & developing MVC web applications in either Struts/Java or Ruby on Rails
+    * Solid database experience including SQL Server, mySQL and database modeling concepts
+    * Web 2.0 experience including the use of XML, RSS, AJAX , REST, SOAP
+    * Must have proven experience developing and deploying high quality code
+    * Experience with developing community applications a plus
+    * Experience with Web Logic or Apache a plus
+  organization: MathWorks
+  created_at: 2008-04-28 20:19:52
+  email: ""
+  location: Natick, MA
+jobs_004: 
+  updated_at: 2008-04-28 20:29:39
+  title: Rails programmer
+  gig: "0"
+  id: "4"
+  description: |-
+    Briefly, [MakeMeSustainable](http://makemesustainable.com) is a small, angel funded, environmental start up. We have developed a Beta website designed to connect people's desire to help the environment with their ability to do so through simple, tangible solutions. 
+                    
+    We aren't necessarily looking for a single programmer,
+    it could be a group of people of varying experience.
+    
+    * Desire to work initially on an incentive based (equity share and
+    partnership in the company, with minimal cash compensation but strong
+    potential upside) contract until the time of venture funding. At that
+    time developer would be invited to act as a central architect and
+    engineer of the MMS system.
+    * Opportunity to step in early with a start up in a rapidly expanding
+    industry and work towards CTO position
+    * Help MMS build an internal team over the next 6-12 months coinciding
+    with venture funding or revenue growth, either as head developer or
+    continued part-time engineer per your preference
+  organization: MakeMeSustainable
+  created_at: 2008-04-28 20:29:08
+  email: ""
+  location: Cambridge, MA
+jobs_005: 
+  updated_at: 2008-04-28 20:38:40
+  title: Senior Web Developer
+  gig: "0"
+  id: "5"
+  description: |-
+    Are you a Web Developer with experience working on Consumer Websites?
+    Do you like the idea of working for a company that isn't a non-profit,
+    but works to help others?  Are you dedicated to working with the most
+    cutting-edge technology?  If so, now is the time to learn more about
+    [OneCause](http://onecause.com)!
+    
+    OneCause, is a loyalty marketing company for community-minded
+    merchants and services providers. We offer a nontraditional
+    fundraising platform for schools and nonprofit organizations, while
+    simultaneously providing community-minded merchants and service
+    providers a cause-based loyalty marketing program.
+    
+    Our parent company, Rakuten, headquartered in Tokyo, is one of the
+    world's largest and most comprehensive Internet service companies,
+    providing leading services in e-commerce, portal & media, travel,
+    financial services, and professional sports.  Internationally, Rakuten
+    has 3,000 employees in 7 countries and yields over a billion dollars
+    in annual revenue.  Rakuten has one of the most recognized Internet
+    brands in Japan and owns Japan's newest professional baseball's
+    franchise, the Rakuten Eagles.
+    
+    Web Developer
+    -------------
+    
+    Under the direction of our Director of Technology, our new Developer
+    will be responsible for both new/migratory application system design
+    and development in Ruby on Rails, PHP, Java Servlets, JSP, and Java
+    backend applications.
+    
+    CauseLoyalty works with state of the art technology including a
+    web-based client login interface, transaction processing systems,
+    invoicing and payment systems, a corporate web site, ad serving and
+    tracking, mass e-mail systems, as well as several backend and other
+    OLTP systems. MySQL and Oracle are the current RDBMS used for these
+    systems.
+    
+    Required Skills and Experience:
+    -------------------------------
+    
+    * Bachelor's degree in Computer Science or related field.
+    * Experience with MySQL or Oracle, or other compatible SQL and PL/SQL.
+    * Solid experience designing and programming a Ruby on Rails or Java
+    web-based system either in an educational/research or business
+    environment.
+    * Experience or familiarity with Unix/Linux, Web Services, XML/XSL,
+    SOAP, AJAX, Ruby on Rails, PHP, J2EE, EJB, Struts, JavaScript, HTML,
+    CSS.
+    * Strong verbal & written communication skills.  "Team Player"
+    mentaility is a must.
+    * Excellent problem-solving skills.
+    * Ability to work in a fast-paced deadline-driven environment.
+    * A Fascination with technology and a drive to succeed.
+    * Experience with, and interest in; social networking, social
+    shopping, e-commerce, affiliate marketing, ad networks and/or consumer
+    websites.
+    * Aptitude for standard project lifecycle practices including source
+    code versioning control and maintenance.
+    * Experience with open source projects.
+    * Leadership qualities and project management skills (successful
+    candidates may be tasked with leading projects.)
+  organization: OneCause
+  created_at: 2008-04-28 20:38:40
+  email: seanhussey@gmail.com
+  location: Prudential Building, Boston, MA
+jobs_006: 
+  updated_at: 2008-04-28 21:54:52
+  title: Merb Developer
+  gig: "0"
+  id: "6"
+  description: "URL: http://www.traineo.com\r\n\
+    \r\n\
+    traineo is seeking an experienced Web Developer to join our small, dynamic, and growing team.\r\n\
+    \r\n\
+    The Web Developer will help build exciting new features using the latest web technologies. The ideal candidate combines strong Ruby (Rails/Merb) programming skills; experience building complex web applications using HTML, AJAX, JavaScript, and CSS.\r\n\
+    \r\n\
+    In your role you will be responsible for multiple components of the software development lifecycle (testing, design, coding, implementation and maintenance). The ideal candidate will also play an active role in marketing and business initiatives outside their area of expertise.\r\n\
+    \r\n\
+    Requirements:\r\n\
+    * Expertise in Ruby (Rails/Merb), Unix, XHTML, CSS, Javascript, AJAX.\r\n\
+    * 3+ years experience developing complex web applications.\r\n\
+    * Proven ability to work well in a team environment.\r\n\
+    * A passion for creating excellent user interfaces.\r\n\
+    * Portfolio of web-applications using latest web technologies.\r\n\
+    \r\n\
+    Preferable Additional Skills:\r\n\
+    * Expertise with Flash and PhotoShop.\r\n\
+    * B.S. Computer Science or related field.\r\n\
+    \r\n\
+    To apply\r\n\
+    Send a resume to hr@traineo.com "
+  organization: traineo
+  created_at: 2008-04-28 21:54:52
+  email: hr@traineo.com
+  location: Cambridge
+jobs_007: 
+  updated_at: 2008-04-29 07:17:17
+  title: Rentometer System Architect
+  gig: "0"
+  id: "7"
+  description: |
+    <a href="http://rentometer.com/">Rentometer.com</a> is looking for an experienced software architect/developer interested in joining a small, very experienced development team working on interesting scalable architecture and data warehousing challenges. Ruby on Rails experience is necessary, but more important is experience designing, specing, and developing systems.
+    
+    Our team is distributed and located in the Boston and Providence areas. Work from home with the occasional group meeting in Providence.
+    
+    Interested? Contact us at jobs [at] rentometer.com.
+    
+
+  organization: Investment Instruments Corporation
+  created_at: 2008-04-29 07:15:10
+  email: jobs@rentometer.com
+  location: Boston/Providence
+jobs_008: 
+  updated_at: 2008-04-29 08:11:58
+  title: Experienced Ruby on Rails Developers Wanted
+  gig: "0"
+  id: "8"
+  description: "We are looking for someone with expert knowledge of Ruby on Rails to join our team of Ruby on Rails developers full-time in either our Boston, MA or New York City office. The ideal individual will have been using Ruby on Rails extensively (probably since before 1.0), have an excellent knowledge of Javascript, HTML, and CSS, and experience in TDD.\r\n\
+    \r\n\
+    The competitive salary will depend on experience, and includes full medical benefits.\r\n\
+    \r\n\
+    This is a great opportunity to work exclusively with Ruby and Rails at one of the leading Ruby on Rails development shops, and work with a group of excellent and experienced Rails developers.\r\n\
+    \r\n\
+    Our team works in a relaxed and educational environment. We use the latest web development technologies, frameworks and techniques, and embrace both agile development methodologies and a \xE2\x80\x9Cgetting real\xE2\x80\x9D project philosophy. We limit our work weeks to 40 hours, stock the fridge with free drinks, and provide lunch on Fridays. We are always seeking like minded people to join our team.\r\n\
+    \r\n\
+    In your communication, describe why you want to work for us, what your past experience is, what your salary requirements are, who your work references are, a link to a portfolio, a bunch of sites you like, a list of hobbies, or anything else you think represents who you are or who you want to be.\r\n"
+  organization: thoughtbot, inc.
+  created_at: 2008-04-29 08:11:58
+  email: resumes@thoughtbot.com
+  location: Boston, MA
+jobs_009: 
+  updated_at: 2008-04-29 16:18:59
+  title: Ruby on Rails Intern (Summer Position)
+  gig: 
+  id: "9"
+  description: |
+    Developing and testing new and existing application functionality.
+    
+    Looking for a sophomore/junior for June through August.
+    
+    Several of us commute from the Cambridge/Somerville area if transportation is a concern.
+    
+
+  organization: Prospect Markets
+  created_at: 2008-04-29 16:18:59
+  email: and@prospectmarkets.com
+  location: Natick, MA
+jobs_010: 
+  updated_at: 2008-05-08 11:06:19
+  title: Systems Engineer
+  gig: "0"
+  id: "10"
+  description: |-
+    At least 3 years experience writing large scale production applications for system administration and/or Cisco network groups.
+    Experience with OpenSource SNMP based monitoring programs (e.g. Nagios / OpenNMS) in production environments
+    Work with other departments on architectural issues regarding requirements and turning that into business solutions.
+    Expert competency with Red Hat Linux required with at least 3 years working in a production environment, including Bash (or related UNIX shell) scripting.
+    Expert ability to install, configure, upgrade, modify, and maintain various Open Source technologies
+    Ruby, Python, java or similar programming language
+    Experience architecting, defining, writing, testing, and implementing applications into production environments.
+    Assist in system administrator tasks from time to time as need requires.
+    Database administration knowledge desired
+    Excellent communication, organization, and time management skills
+    Ability to multi-task in a dynamic fast paced environment, with minimal supervision
+    
+    Requirements:
+    
+    Education, Certification, Training and/or Minimum Qualifications: 
+    
+    BS in Computer Science or equivalent experience in related technical field
+    Team player attitude and strong interpersonal skills. 
+    Carry a beeper to provide 24x7 coverage approximately 1 week per month
+    Must be able to work independently and be a self-starter.
+  organization: "FAST, A Microsoft\xC2\xAE Subsidiary"
+  created_at: 2008-05-08 11:05:29
+  email: Nelly.Geifman@fastsearch.com
+  location: Needham, MA

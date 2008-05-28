@@ -1,0 +1,84 @@
+videos_002: 
+  updated_at: 2008-04-27 23:42:53
+  title: Hackety Hack &#187; Brian DeLacey &#187; Eric Mill &#187; May 2007
+  url: http://video.google.com/videoplay?docid=-6471035934444708692
+  id: "3"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=-6471035934444708692&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-04-27 23:32:13
+videos_003: 
+  updated_at: 2008-04-27 23:42:28
+  title: jQuery &#187; John Resig &#187; July 2007
+  url: http://video.google.com/videoplay?docid=9098790160532178144
+  id: "4"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=9098790160532178144&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-04-27 23:35:52
+videos_004: 
+  updated_at: 2008-04-27 23:41:57
+  title: hpricot &#187; Brian DeLacey &#187; March 2007
+  url: http://video.google.com/videoplay?docid=8992299117893652604
+  id: "5"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=8992299117893652604&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-04-27 23:37:48
+videos_005: 
+  updated_at: 2008-04-27 23:41:43
+  title: Per-Object Behavior &#187; David Black &#187; June 2007
+  url: http://video.google.com/videoplay?docid=1804558171226068832
+  id: "6"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=1804558171226068832&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-04-27 23:41:43
+videos_006: 
+  updated_at: 2008-04-27 23:44:46
+  title: "ActiveResource \xC2\xBB Eric Mill \xC2\xBB April 2007"
+  url: http://video.google.com/videoplay?docid=1403607000328237319
+  id: "7"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=1403607000328237319&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-04-27 23:44:31
+videos_007: 
+  updated_at: 2008-05-20 11:34:20
+  title: Rails + Slingshot, October 2007
+  url: http://video.google.com/videoplay?docid=4852356898047938386&hl=en
+  id: "8"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=4852356898047938386&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-05-20 11:34:20
+videos_008: 
+  updated_at: 2008-05-20 11:35:13
+  title: Second Rotation from October 2007
+  url: http://video.google.com/videoplay?docid=505690483009778518&hl=en
+  id: "9"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=505690483009778518&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-05-20 11:35:13
+videos_009: 
+  updated_at: 2008-05-20 11:35:52
+  title: Shoulda from November 2007
+  url: http://video.google.com/videoplay?docid=5458385624664148373&hl=en
+  id: "10"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=5458385624664148373&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-05-20 11:35:52
+videos_010: 
+  updated_at: 2008-05-20 11:36:30
+  title: Geezeo and Amazon Web Services from November 2007
+  url: http://video.google.com/videoplay?docid=-5765568737780197824&hl=en
+  id: "11"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=-5765568737780197824&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-05-20 11:36:30
+videos_011: 
+  updated_at: 2008-05-20 11:38:08
+  title: Open-Source Projects from December 2007
+  url: http://video.google.com/videoplay?docid=-7868523418359750235&hl=en
+  id: "12"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=-7868523418359750235&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-05-20 11:38:08
+videos_012: 
+  updated_at: 2008-05-20 11:38:35
+  title: Demystifying REST from December 2007
+  url: http://video.google.com/videoplay?docid=-7525660063235847448&hl=en
+  id: "13"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=-7525660063235847448&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-05-20 11:38:35
+videos_001: 
+  updated_at: 2008-04-27 23:42:11
+  title: Rails Scalability &#187; Jeremy Durham &#187; March 2007
+  url: http://video.google.com/videoplay?docid=-3964296373638807434
+  id: "1"
+  embed: <embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" src="http://video.google.com/googleplayer.swf?docid=-3964296373638807434&hl=en" type="application/x-shockwave-flash"&gt; </embed>
+  created_at: 2008-04-27 23:30:09

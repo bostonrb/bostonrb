@@ -1,0 +1,96 @@
+events_001: 
+  updated_at: 2008-04-28 18:29:24
+  date: 2008-04-28 00:00:00
+  lng: 
+  id: "91133883"
+  description: The Ezra event tonight has been cancelled.
+  lat: 
+  event_type: Meeting
+  location: 
+  created_at: 2008-04-16 13:30:20
+events_002: 
+  updated_at: 2008-04-29 19:09:53
+  date: 2008-04-15 00:00:00
+  lng: 
+  id: "420662881"
+  description: |-
+    Worked on creating the app for this site, [bostonrb.org](http://bostonrb.org).
+    
+    Used the [Haml bundle for Textmate](http://bjhess.com/bjhessblog/2007/05/31/installing-haml-bundle-for-textmate/)
+  lat: 
+  event_type: Hackfest
+  location: 
+  created_at: 2008-04-16 13:30:20
+events_003: 
+  updated_at: 2008-04-21 22:50:57
+  date: 2008-04-15 00:00:00
+  lng: 
+  id: "530957960"
+  description: Example of a kata.
+  lat: 
+  event_type: Kata
+  location: 
+  created_at: 2008-04-16 13:30:20
+events_004: 
+  updated_at: 2008-04-28 13:34:58
+  date: 2008-04-29 00:00:00
+  lng: 
+  id: "530957961"
+  description: |-
+    Polishing recommendable into a usable gem and experimenting with using github as a gem server.
+    
+    RSVP via [upcoming](http://upcoming.yahoo.com/event/519014/)
+  lat: 
+  event_type: Hackfest
+  location: 
+  created_at: 2008-04-27 19:20:35
+events_005: 
+  updated_at: 2008-05-06 11:50:36
+  date: 2008-05-06 19:00:00
+  lng: "-71.0616"
+  id: "530957962"
+  description: Either recommendable gem or extending Rails fixtures to be more factory-like.
+  lat: "42.3562"
+  event_type: Hackfest
+  location: 41 Winter Street, Boston, MA, 02018
+  created_at: 2008-04-29 21:41:27
+events_006: 
+  updated_at: 2008-05-01 13:47:50
+  date: 2008-05-13 00:00:00
+  lng: "-71.079"
+  id: "530957963"
+  description: |-
+    This month's meeting will be at __[Sermo](http://www.sermo.com/)__, 215 First St, Cambridge, MA on Tuesday, May 13th from 7 to 9pm. _You can get in as early as 6:30 PM_
+    
+    This meeting is sponsored by [Viximo](http://www.viximo.com)
+    
+    The agenda for Tuesday, 5/13 is:
+    
+     * Mark Bates will be presenting the Mack Framework.
+     * [Mack](http://www.mackframework.com) is a Ruby web framework being designed for distributed, portal-like applications, using 'best of breed' technologies and form, with an emphasis on performance.
+  lat: "42.3644"
+  event_type: Meeting
+  location: 215 First Street, Cambridge, MA
+  created_at: 2008-04-30 20:56:51
+events_007: 
+  updated_at: 2008-05-19 13:47:39
+  date: 2008-05-20 19:00:00
+  lng: "-71.0616"
+  id: "530957964"
+  description: "It's that time of month for another hackfest. Sorry for the delay in\r\n\
+    announcing it.\r\n\
+    \r\n\
+    Same hackfest time, same hackfest place:\r\n\
+    \r\n\
+    7-9pm\r\n\
+    \r\n\
+    Food, beverages, wireless provided by [thoughtbot](http://thoughtbot.com).\r\n\
+    \r\n\
+    41 Winter Street, 3rd floor, near the Park St T stop\r\n\
+    \r\n\
+    As for what to work, we're open for suggestions:\r\n\
+    \r\n * Do you want feedback on your app or library?\r\n * Trying to solve a particular problem you've been banging your head against?\r\n * Want to write some tool, library, or plugin to make your life easier? "
+  lat: "42.3562"
+  event_type: Hackfest
+  location: 41 Winter Street, Boston, MA, 02018
+  created_at: 2008-05-19 13:45:45

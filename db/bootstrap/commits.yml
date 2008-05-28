@@ -1,0 +1,320 @@
+commits_038: 
+  updated_at: 2008-04-27 21:25:12
+  project_id: "916386294"
+  title: added james golick blog link, different email address
+  url: http://github.com/thoughtbot/quietbacktrace/commit/666c9fec7e83e673d575ef5d1ee6da2a4e855d54
+  id: "38"
+  published_at: 
+  created_at: 2008-04-27 21:25:12
+commits_027: 
+  updated_at: 2008-04-27 21:21:34
+  project_id: "916386295"
+  title: testing git rm
+  url: http://github.com/dancroak/spec_factories/commit/0c04eaccbfbba1d0675cfcddc5213424ba80cbe3
+  id: "27"
+  published_at: 
+  created_at: 2008-04-27 21:21:34
+commits_016: 
+  updated_at: 2008-04-27 21:21:32
+  project_id: "183206821"
+  title: Merged in from paging branch.
+  url: http://github.com/technicalpickles/ambitious-sphinx/commit/2414d0c29ce705ff193d2e5b63c9e4f5493b8fa7
+  id: "16"
+  published_at: 
+  created_at: 2008-04-27 21:21:32
+commits_005: 
+  updated_at: 2008-04-27 21:21:29
+  project_id: "18703980"
+  title: recommendable macro passing tests
+  url: http://github.com/dancroak/recommendable/commit/7cb7b43ea2bf7a0cd7868475227f564445e4394e
+  id: "5"
+  published_at: 
+  created_at: 2008-04-27 21:21:29
+commits_039: 
+  updated_at: 2008-04-27 21:25:12
+  project_id: "916386294"
+  title: fixed most test failures
+  url: http://github.com/thoughtbot/quietbacktrace/commit/93f93a84e8c4d7756f11d4a720a711d0a386bf36
+  id: "39"
+  published_at: 
+  created_at: 2008-04-27 21:25:12
+commits_028: 
+  updated_at: 2008-04-27 21:21:34
+  project_id: "916386295"
+  title: removing unnecessary gem stuff, decided to do stripped-down rails generator
+  url: http://github.com/dancroak/spec_factories/commit/1795ea0ce0e468c3600f4c1f4c2c286e290b3b50
+  id: "28"
+  published_at: 
+  created_at: 2008-04-27 21:21:34
+commits_017: 
+  updated_at: 2008-04-27 21:21:32
+  project_id: "183206821"
+  title: More rdoc improvements
+  url: http://github.com/technicalpickles/ambitious-sphinx/commit/753416af4550d0bc834f7891526e128d16c116d6
+  id: "17"
+  published_at: 
+  created_at: 2008-04-27 21:21:32
+commits_006: 
+  updated_at: 2008-04-27 21:21:29
+  project_id: "18703980"
+  title: added notes back in
+  url: http://github.com/dancroak/recommendable/commit/8322abc8d55842e6be43e2200299175d0b306bf3
+  id: "6"
+  published_at: 
+  created_at: 2008-04-27 21:21:29
+commits_040: 
+  updated_at: 2008-04-27 21:25:12
+  project_id: "916386294"
+  title: baby steps toward turning this sucker into a gem
+  url: http://github.com/thoughtbot/quietbacktrace/commit/902995b05088becfaffe0ec1bc1a82084216209e
+  id: "40"
+  published_at: 
+  created_at: 2008-04-27 21:25:12
+commits_029: 
+  updated_at: 2008-04-27 21:21:34
+  project_id: "916386295"
+  title: adding rest of newgem-created files
+  url: http://github.com/dancroak/spec_factories/commit/5a71d803a52ded352bd703915ac13afd0b366296
+  id: "29"
+  published_at: 
+  created_at: 2008-04-27 21:21:34
+commits_018: 
+  updated_at: 2008-04-27 21:21:32
+  project_id: "183206821"
+  title: Playing around with modules.
+  url: http://github.com/technicalpickles/ambitious-sphinx/commit/c1588c2424dbf9b47f16ef40bde58d34ce0ac6a6
+  id: "18"
+  published_at: 
+  created_at: 2008-04-27 21:21:32
+commits_007: 
+  updated_at: 2008-04-27 21:21:29
+  project_id: "18703980"
+  title: rolled back to pre-polymorphs
+  url: http://github.com/dancroak/recommendable/commit/c3fe788b38d2fbb32892f6cd4edf3356394a9fd7
+  id: "7"
+  published_at: 
+  created_at: 2008-04-27 21:21:29
+commits_030: 
+  updated_at: 2008-04-27 21:21:34
+  project_id: "916386295"
+  title: first commit
+  url: http://github.com/dancroak/spec_factories/commit/302c17f0d3d933252cc58b854c4b9026432c9a5b
+  id: "30"
+  published_at: 
+  created_at: 2008-04-27 21:21:34
+commits_019: 
+  updated_at: 2008-04-27 21:21:32
+  project_id: "183206821"
+  title: Better docs.
+  url: http://github.com/technicalpickles/ambitious-sphinx/commit/2f1350285f55c6ea69b6dae00294d14fc183a1da
+  id: "19"
+  published_at: 
+  created_at: 2008-04-27 21:21:32
+commits_008: 
+  updated_at: 2008-04-27 21:21:29
+  project_id: "18703980"
+  title: last commit before rolling back to pre-polymoprhs
+  url: http://github.com/dancroak/recommendable/commit/0779a55f2d5f4b1ab24ac09b5a3884b2be6f376f
+  id: "8"
+  published_at: 
+  created_at: 2008-04-27 21:21:29
+commits_031: 
+  updated_at: 2008-04-27 21:25:11
+  project_id: "916386294"
+  title: adding james and joe to copyright
+  url: http://github.com/thoughtbot/quietbacktrace/commit/51255856d97f935d6415897053529e4cb1318a3e
+  id: "31"
+  published_at: 
+  created_at: 2008-04-27 21:25:11
+commits_020: 
+  updated_at: 2008-04-27 21:21:32
+  project_id: "183206821"
+  title: Minor rdoc cleanup.
+  url: http://github.com/technicalpickles/ambitious-sphinx/commit/68437f4becda9392b8f50e7011a1d4f6505230ab
+  id: "20"
+  published_at: 
+  created_at: 2008-04-27 21:21:32
+commits_009: 
+  updated_at: 2008-04-27 21:21:29
+  project_id: "18703980"
+  title: going the has_many_polymorphs route
+  url: http://github.com/dancroak/recommendable/commit/d24ed8e25cb7ec3514500fbe3e9a3a253e4a8a87
+  id: "9"
+  published_at: 
+  created_at: 2008-04-27 21:21:29
+commits_032: 
+  updated_at: 2008-04-27 21:25:12
+  project_id: "916386294"
+  title: added licensing to ActiveSupport snippets
+  url: http://github.com/thoughtbot/quietbacktrace/commit/825ba1f03d8df72408aa943a15561b11598d8c47
+  id: "32"
+  published_at: 
+  created_at: 2008-04-27 21:25:12
+commits_021: 
+  updated_at: 2008-04-27 21:21:34
+  project_id: "916386295"
+  title: making the README use markdown
+  url: http://github.com/dancroak/spec_factories/commit/c2b923cfc6747dcd66d566607c28d7bd6484348f
+  id: "21"
+  published_at: 
+  created_at: 2008-04-27 21:21:34
+commits_010: 
+  updated_at: 2008-04-27 21:21:29
+  project_id: "18703980"
+  title: trying some reflection on AR
+  url: http://github.com/dancroak/recommendable/commit/8fc5a3a7122de0afbcc336907fce6a429a9c47c0
+  id: "10"
+  published_at: 
+  created_at: 2008-04-27 21:21:29
+commits_033: 
+  updated_at: 2008-04-27 21:25:12
+  project_id: "916386294"
+  title: changed gem install line to match the request made to rubyforge
+  url: http://github.com/thoughtbot/quietbacktrace/commit/72eb5ea00c48fbf897246f9b350088ff59c57470
+  id: "33"
+  published_at: 
+  created_at: 2008-04-27 21:25:12
+commits_022: 
+  updated_at: 2008-04-27 21:21:34
+  project_id: "916386295"
+  title: she works! updated README with instructions for usage
+  url: http://github.com/dancroak/spec_factories/commit/295f90421bdcea6140fd63436f28f04ae3926837
+  id: "22"
+  published_at: 
+  created_at: 2008-04-27 21:21:34
+commits_011: 
+  updated_at: 2008-04-27 21:21:32
+  project_id: "183206821"
+  title: Updated rakefile.
+  url: http://github.com/technicalpickles/ambitious-sphinx/commit/d71e376ab10280a17f76207d0535535aad526d1f
+  id: "11"
+  published_at: 
+  created_at: 2008-04-27 21:21:32
+commits_034: 
+  updated_at: 2008-04-27 21:25:12
+  project_id: "916386294"
+  title: altered how vendor directory works in Rails, improved README
+  url: http://github.com/thoughtbot/quietbacktrace/commit/d069cafc627e1d343c1ff37dd498a0956b7d4d0c
+  id: "34"
+  published_at: 
+  created_at: 2008-04-27 21:25:12
+commits_023: 
+  updated_at: 2008-04-27 21:21:34
+  project_id: "916386295"
+  title: a few bug fixes, more dir cleaning
+  url: http://github.com/dancroak/spec_factories/commit/5943bcf23ee02795cb6e139d6ae2bc404f57e439
+  id: "23"
+  published_at: 
+  created_at: 2008-04-27 21:21:34
+commits_012: 
+  updated_at: 2008-04-27 21:21:32
+  project_id: "183206821"
+  title: README updates.
+  url: http://github.com/technicalpickles/ambitious-sphinx/commit/c10f14778f8346128fceacdf03749c4556eb6e69
+  id: "12"
+  published_at: 
+  created_at: 2008-04-27 21:21:32
+commits_001: 
+  updated_at: 2008-04-27 21:21:29
+  project_id: "18703980"
+  title: Messing with git configs, updating README to declare "alpha" status.
+  url: http://github.com/dancroak/recommendable/commit/51bac8797bcc33b77790a822b4fcaa4edf844e86
+  id: "1"
+  published_at: 
+  created_at: 2008-04-27 21:21:29
+commits_035: 
+  updated_at: 2008-04-27 21:25:12
+  project_id: "916386294"
+  title: altered the e1 silencer
+  url: http://github.com/thoughtbot/quietbacktrace/commit/d170278d9fc54b0d07ae926155cb94a536690931
+  id: "35"
+  published_at: 
+  created_at: 2008-04-27 21:25:12
+commits_024: 
+  updated_at: 2008-04-27 21:21:34
+  project_id: "916386295"
+  title: inching toward a working generator
+  url: http://github.com/dancroak/spec_factories/commit/17903d44b1c26a62eec483c2ef8a548e87c67072
+  id: "24"
+  published_at: 
+  created_at: 2008-04-27 21:21:34
+commits_013: 
+  updated_at: 2008-04-27 21:21:32
+  project_id: "183206821"
+  title: Added appropriate nodoc.
+  url: http://github.com/technicalpickles/ambitious-sphinx/commit/c2cade9d26c6980f024518de484dcfa917b91edd
+  id: "13"
+  published_at: 
+  created_at: 2008-04-27 21:21:32
+commits_002: 
+  updated_at: 2008-04-27 21:21:29
+  project_id: "18703980"
+  title: updated README
+  url: http://github.com/dancroak/recommendable/commit/6a46a9b097894d7fdb7f4d3c82e5d62e412b896c
+  id: "2"
+  published_at: 
+  created_at: 2008-04-27 21:21:29
+commits_036: 
+  updated_at: 2008-04-27 21:25:12
+  project_id: "916386294"
+  title: fixed final test failures based on James patch
+  url: http://github.com/thoughtbot/quietbacktrace/commit/5bc4ef7ca2700b3d90116197e437a06ce0d1c81e
+  id: "36"
+  published_at: 
+  created_at: 2008-04-27 21:25:12
+commits_025: 
+  updated_at: 2008-04-27 21:21:34
+  project_id: "916386295"
+  title: changing README
+  url: http://github.com/dancroak/spec_factories/commit/765a1220ad1b0ac161ec1e0be6e0b56d2c26f529
+  id: "25"
+  published_at: 
+  created_at: 2008-04-27 21:21:34
+commits_014: 
+  updated_at: 2008-04-27 21:21:32
+  project_id: "183206821"
+  title: A few more cleanups.
+  url: http://github.com/technicalpickles/ambitious-sphinx/commit/14d66d6877688d4b4a9133fd3def7460effc2851
+  id: "14"
+  published_at: 
+  created_at: 2008-04-27 21:21:32
+commits_003: 
+  updated_at: 2008-04-27 21:21:29
+  project_id: "18703980"
+  title: all conditions in similar query no longer hard-coded
+  url: http://github.com/dancroak/recommendable/commit/3f53df0ab372935cdd99e877a2bd6715ed17d22d
+  id: "3"
+  published_at: 
+  created_at: 2008-04-27 21:21:29
+commits_037: 
+  updated_at: 2008-04-27 21:25:12
+  project_id: "916386294"
+  title: added e1 nonsense silencer
+  url: http://github.com/thoughtbot/quietbacktrace/commit/cab9ec9cd9c074c4a29819d053c8eb20dff1e733
+  id: "37"
+  published_at: 
+  created_at: 2008-04-27 21:25:12
+commits_026: 
+  updated_at: 2008-04-27 21:21:34
+  project_id: "916386295"
+  title: removing old gem stuff
+  url: http://github.com/dancroak/spec_factories/commit/628b2780a325dfc3dbe004f1158a301a97504917
+  id: "26"
+  published_at: 
+  created_at: 2008-04-27 21:21:34
+commits_015: 
+  updated_at: 2008-04-27 21:21:32
+  project_id: "183206821"
+  title: Put modules back to the way they were.
+  url: http://github.com/technicalpickles/ambitious-sphinx/commit/c1efe67d2285a3c5ea5fd5186d1f7936de0877a9
+  id: "15"
+  published_at: 
+  created_at: 2008-04-27 21:21:32
+commits_004: 
+  updated_at: 2008-04-27 21:21:29
+  project_id: "18703980"
+  title: we do not know why this is here
+  url: http://github.com/dancroak/recommendable/commit/f7fe8228cc43b8e05bc8a03ba225a554bee59d5a
+  id: "4"
+  published_at: 
+  created_at: 2008-04-27 21:21:29
