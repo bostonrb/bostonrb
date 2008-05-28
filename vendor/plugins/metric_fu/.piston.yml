@@ -1,0 +1,7 @@
+--- 
+format: 1
+handler: 
+  piston:remote-revision: 16
+  piston:root: http://metric-fu.rubyforge.org/svn/tags/CURRENT/metric_fu
+  piston:uuid: 4597c40d-3cec-48d9-97c4-7f736bdd9cc0
+lock: false

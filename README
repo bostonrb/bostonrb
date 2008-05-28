@@ -1,0 +1,4 @@
+
+
+This needs to be called by cron:
+PATH_TO_APP/script/runner Project.download_entries

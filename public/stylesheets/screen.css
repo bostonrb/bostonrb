@@ -1,0 +1,157 @@
+body {
+  background-color: #111; }
+
+a:link, a:active {
+  color: #c61a1a; }
+
+a:visited {
+  color: #c61a1a; }
+
+a:hover, a:hover:visited {
+  background-color: #111;
+  color: white;
+  text-decoration: none; }
+
+#header h1 {
+  color: white; }
+#header a {
+  color: white;
+  text-decoration: none; }
+#header ul {
+  font-size: 1.4em;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center; }
+  #header ul li {
+    display: inline;
+    padding: .5em 0; }
+    #header ul li a {
+      text-decoration: none;
+      padding: .3em 1em;
+      color: #fff;
+      background-color: #c61a1a; }
+    #header ul li a:hover {
+      color: #000;
+      background-color: #fff; }
+  #header ul a.current {
+    color: #000;
+    background-color: #fff; }
+
+#content {
+  background-color: white;
+  padding: 1em; }
+  #content h2, #content h3 {
+    text-align: center; }
+
+#left, #right {
+  margin-top: 4em;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 400px; }
+  #left h1, #left h2, #left h3, #left h4, #right h1, #right h2, #right h3, #right h4 {
+    text-decoration: underline; }
+  #left ul, #right ul {
+    list-style: none;
+    margin-left: 1em;
+    padding-left: 1em;
+    text-indent: -0.8em; }
+    #left ul li:before, #right ul li:before {
+      content: "\00BB \0020"; }
+
+#center {
+  min-height: 400px;
+  background-color: #c61a1a;
+  color: white; }
+  #center a:link, #center a:active, #center a:visited {
+    color: white; }
+  #center a:hover, #center a:hover:visited {
+    background-color: black;
+    color: white;
+    text-decoration: none; }
+  #center h1, #center h2, #center h3, #center h4 {
+    color: white;
+    text-decoration: underline; }
+    #center h1 a:link, #center h1 a:active, #center h1 a:visited, #center h2 a:link, #center h2 a:active, #center h2 a:visited, #center h3 a:link, #center h3 a:active, #center h3 a:visited, #center h4 a:link, #center h4 a:active, #center h4 a:visited {
+      color: black; }
+    #center h1 a:hover, #center h2 a:hover, #center h3 a:hover, #center h4 a:hover {
+      color: white;
+      background-color: black; }
+
+#projects_body #center ul {
+  font-size: .9em;
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 -10px;
+  width: 225px; }
+  #projects_body #center ul li {
+    display: block;
+    margin: 0;
+    padding: 0; }
+    #projects_body #center ul li a {
+      display: block;
+      width: 100%;
+      padding: 0.5em 0 0.5em 2em;
+      border-width: 1px;
+      border-color: #ffe #aaab9c #ccc #fff;
+      border-style: solid;
+      text-decoration: none;
+      background: #fff; }
+#projects_body #center a:link, #projects_body #center a:active, #projects_body #center a:visited {
+  color: black; }
+#projects_body #center a:hover, #projects_body #center a:hover:visited {
+  background-color: #111;
+  color: white;
+  text-decoration: none; }
+
+.video {
+  padding: 0 0 25px; }
+
+div.event {
+  text-align: left;
+  margin: 10px 0 5px 0; }
+
+.past {
+  background-color: #ddd;
+  border: 1px; }
+
+#next_event_banner {
+  margin: 5px 0 10px 0; }
+
+#map {
+  width: 300px;
+  height: 300px;
+  background-color: black; }
+
+input {
+  margin: 5px; }
+
+h3 a, h3 a:link, h3 a:visited {
+  color: black;
+  text-decoration: none; }
+h3 a:hover, h3 a:hover:visited {
+  background-color: #111;
+  color: white;
+  text-decoration: none; }
+
+#flash {
+  background-color: yellow;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold; }
+
+textarea {
+  width: 420px;
+  height: 100px;
+  margin: 5px 0 10px 0; }
+
+textarea.job_description {
+  width: 500px;
+  height: 220px;
+  margin: 5px 0 10px 0; }
+
+#VideoPlayback {
+  margin-left: auto;
+  margin-right: auto; }

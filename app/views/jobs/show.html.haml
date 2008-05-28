@@ -1,0 +1,14 @@
+%h2= "#{@job.title} at #{@job.organization}"
+
+#jobbed{ :class => 'column span-12 prepend-6 append-6' }
+  %dl
+    %dt Location
+    %dd= @job.location
+
+    - unless @job.email.blank?
+      %dt To apply, contact:
+      %dd= @job.email
+
+  = markdown(@job.description)
+
+  %p= link_to 'Edit', edit_job_path(@job)

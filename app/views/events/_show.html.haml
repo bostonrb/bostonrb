@@ -1,0 +1,4 @@
+%div{ :id => "event_#{event.id}", :class => 'event' }
+  %h3= link_to event.date.to_s(:european), edit_event_path(event)
+  %div{ :id => "event_description_#{event.description}", :class => 'event_description' }
+    = markdown event.description

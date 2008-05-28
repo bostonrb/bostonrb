@@ -1,0 +1,29 @@
+#left_fields{ :class => 'column span-7 prepend-1 append-1' }
+  %dl
+    %dt Job title
+    %dd= form.text_field :title, :size => 35
+
+    %dt Location
+    %dd= form.text_field :location, :size => 35
+
+    %dt Organization
+    %dd= form.text_field :organization, :size => 35
+
+    %br/
+
+    %dt Full-time?
+    %dd= form.radio_button :gig, false
+
+    %dt Gig?
+    %dd= form.radio_button :gig, true
+    
+#right_fields{ :class => 'column span-11 prepend-1 append-2 last' }
+  %dl
+    %dt Contact email
+    %dd= form.text_field :email, :size => 25
+
+    %dt Description
+    %dd
+      ~ form.text_area :description, { :class => 'job_description' }
+      %br/
+      = link_to 'The description is Markdown-enabled', 'http://daringfireball.net/projects/markdown/syntax'

@@ -1,0 +1,17 @@
+%dl
+  %dt Date
+  %dd= form.datetime_select :date
+  
+  %dt Event type
+  %dd= form.select :event_type, Event::EVENT_TYPES
+
+  %dt Location
+  %dd= form.text_field :location
+  %dd.example
+    ex: 41 Winter Street, Boston, MA, 02018
+
+  %dt Description
+  %dd
+    ~ form.text_area :description
+    %br/
+    = link_to 'The description is Markdown-enabled', 'http://daringfireball.net/projects/markdown/syntax'

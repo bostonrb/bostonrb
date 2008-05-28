@@ -1,0 +1,6 @@
+%h3= link_to project.name, project.homepage_url
+%p= project.description
+%ul
+  - project.commits.each do |commit|
+    %li= link_to commit.title, commit.url
+= link_to 'Edit', edit_project_url(project)

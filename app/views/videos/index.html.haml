@@ -1,0 +1,8 @@
+.top{ :class => 'column span-8 prepend-8 append-8'}
+  %h2 Videos
+  %p We often record the talks from our monthly meetings. In case you missed one, you might be able to find it here.
+  %p= link_to 'Add a new video', new_video_path
+
+%ul
+  - @videos.each do |video|
+    %li= link_to video.title, video

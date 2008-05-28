@@ -1,0 +1,7 @@
+--- 
+format: 1
+handler: 
+  piston:remote-revision: 8
+  piston:root: http://betterpartials.googlecode.com/svn/trunk/better_partials
+  piston:uuid: 234a6c58-084a-0410-9f82-1b8ed3c9a822
+lock: false

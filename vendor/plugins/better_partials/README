@@ -1,0 +1,38 @@
+better_partials by railsjedi.com
+==============
+Provides syntactic suger for render :partial
+
+Example
+=======
+Render a partial
+<%= partial "people/search_box" %>
+
+Pass some parameters in
+<% form_for @person do |f| %>
+  <%= partial "people/form", :f => f %>
+<% end %>
+
+Pass in a collection
+<%= partial "people/person", :collection => @people %>
+
+Or the terse way
+<%= partials @people %>
+
+Also works, but not as nice reading
+<%= partial @people %>
+
+Rendering a block
+<% partial "people/box" do %>
+  Inner connect goes here.. (gets called in your partial's yield statement)
+<% end %>
+
+Special Partial Options pass through to render :partial
+(all others are passed through to the :locals parameter)
+=======
+:collection,
+:spacer_template,
+:object, 
+:use_full_path
+
+
+Copyright (c) 2008 Jacques Crocker (www.railsjedi.com), released under the MIT license

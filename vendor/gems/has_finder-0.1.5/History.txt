@@ -1,0 +1,23 @@
+== 0.1.0 2007-08-26
+
+* 1 major enhancement:
+  * Initial release
+
+== 0.1.2 2007-09-02
+
+* Fix for protected with_scope (using send)
+* README Documentation
+
+== 0.1.3 2007-09-10
+
+* Using `class_inheritable_hash` from ActiveSupport so that `has_finders` works well with STI.
+* Reorganized method missing and delegation to proxy_found in order not to have redundant `with_scopes` and unnecessary queries.
+
+== 0.1.4 2007-09-11
+
+* Superficial Code Cleanup
+* Now running tests in Edge Rails
+
+== 0.1.5 2007-09-11
+
+* Fixed sum clash

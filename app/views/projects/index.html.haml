@@ -1,0 +1,13 @@
+.top{ :class => 'column prepend-8 append-8 span-8'}
+  %h2 Projects
+  %p Here are some of the projects that Boston Rubyists have created
+  %p= link_to 'Add a new project', new_project_path
+      
+= partial 'layouts/left_half' do
+  - @left_projects.each do |project|
+    = partial 'projects/show', :project => project
+
+    
+= partial 'layouts/right_half' do
+  - @right_projects.each do |project|
+    = partial 'projects/show', :project => project

@@ -1,0 +1,7 @@
+%h2 Add a job
+= error_messages_for :job
+
+- form_for(@job) do |form|
+  = partial 'jobs/form', :form => form
+    
+  = form.submit 'Create', :disable_with => 'Please wait...'
