@@ -1,0 +1,7 @@
+--- 
+format: 1
+handler: 
+  piston:remote-revision: 334
+  piston:root: http://thmadb.com/public_svn/plugins/fixture_replacement2
+  piston:uuid: 6dbbdfbd-06da-443d-8068-b1bdd22a71ef
+lock: false
