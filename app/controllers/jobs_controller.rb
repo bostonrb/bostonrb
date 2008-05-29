@@ -1,8 +1,7 @@
 class JobsController < ApplicationController
   
   def index
-    @jobs = Job.full_time
-    @gigs = Job.gigs
+    @jobs = Job.all
 
     respond_to do |format|
       format.html

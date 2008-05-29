@@ -1,3 +1,3 @@
 %dt= link_to job.title, job_path(job)
-%dd= "#{job.organization} in #{job.location}"
+%dd= "#{job.organization} in #{job.location} (#{job.job_type})"
 %dd= "Last updated on #{job.updated_at.to_s(:european)}"

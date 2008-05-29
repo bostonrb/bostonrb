@@ -1,22 +1,13 @@
-.top{ :class => 'column span-8 prepend-8 append-8'}
+= partial 'layouts/left_half' do
   %h2 Jobs
   %p This is a free service for Boston Rubyists and those seeking Boston Rubyists.
   %p= link_to 'Add a job', new_job_path
-
-= partial 'layouts/left_half' do
-  %h3 Full-time Jobs
+    
+= partial 'layouts/right_half' do
+  %h3 Job Postings
   - unless @jobs.empty?
     %dl
       - @jobs.each do |job|
-        = partial 'jobs/list_item', :job => job
-  - else
-    %p None at this time.
-    
-= partial 'layouts/right_half' do
-  %h3 One-time gigs
-  - unless @gigs.empty?
-    %dl
-      - @gigs.each do |job|
         = partial 'jobs/list_item', :job => job
   - else
     %p None at this time.

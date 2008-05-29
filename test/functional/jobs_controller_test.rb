@@ -14,7 +14,6 @@ class JobsControllerTest < ActionController::TestCase
     
     should_respond_with :success
     should_assign_to :jobs
-    should_assign_to :gigs
   end
 
   context 'on GET to :new' do
