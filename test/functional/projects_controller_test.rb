@@ -37,7 +37,7 @@ class ProjectsControllerTest < ActionController::TestCase
   context 'A POST to /projects' do
     setup do
       @old_count = Project.count
-      post :create, :project => valid_project_attributes
+      post :create, :project => new_project.attributes
     end
 
     should 'recognize route' do

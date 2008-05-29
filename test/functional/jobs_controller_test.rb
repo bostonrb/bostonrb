@@ -41,7 +41,7 @@ class JobsControllerTest < ActionController::TestCase
   context 'A POST to /jobs' do
     setup do
       @old_count = Job.count
-      post :create, :job => valid_fulltime_job_attributes
+      post :create, :job => new_fulltime_job.attributes
     end
 
     should 'recognize route' do

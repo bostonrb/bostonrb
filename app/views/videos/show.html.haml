@@ -1,4 +1,5 @@
-%h2= link_to @video.title, edit_video_url(@video)
+%h2= link_to @video.title
+%p= "Presented by #{@video.presenter} at #{@video.source}" 
 = @video.embed
 
 %p= link_to 'Edit', edit_video_url(@video)

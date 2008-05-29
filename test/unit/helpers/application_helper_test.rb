@@ -26,7 +26,7 @@ class ApplicationHelperTest < HelperTestCase
   context 'ApplicationHelper#next_event' do
     context 'when there is a next event' do
       setup do
-        @event = build_event
+        @event = new_event
         Event.stubs(:next).returns(@event)
         @result = next_event
       end
@@ -36,7 +36,7 @@ class ApplicationHelperTest < HelperTestCase
       end
       
       should 'have #next_event' do
-        assert @result.include?(%q(id="next_event"))
+        assert @result.include?(%q(id="next_event_banner"))
       end
       
       should 'have event type in text' do

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 10) do
 
   create_table "commits", :force => true do |t|
     t.string   "title"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(:version => 9) do
     t.text     "embed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "presenter"
+    t.string   "source"
   end
 
 end

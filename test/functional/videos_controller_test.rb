@@ -35,7 +35,7 @@ class VideosControllerTest < ActionController::TestCase
   context 'A POST to /videos' do
     setup do
       @old_count = Video.count
-      post :create, :video => valid_video_attributes
+      post :create, :video => new_video.attributes
     end
 
     should 'recognize route' do

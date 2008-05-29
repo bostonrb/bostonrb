@@ -72,7 +72,7 @@ class EventsControllerTest < ActionController::TestCase
   context 'A POST to :create' do
     setup do
       @old_count = Event.count
-      post :create, :event => valid_hackfest_event_attributes
+      post :create, :event => new_hackfest_event.attributes
     end
 
     should 'recognize route' do
