@@ -2,3 +2,5 @@ config/database.yml
 log/*.log
 tmp
 db/*.sqlite3
+coverage.data
+metrics
