@@ -14,21 +14,12 @@
 #  lat         :float           
 #
 
-class Event < ActiveRecord::Base
-  EVENT_TYPES = ['Hackfest', 'Meeting', 'Kata']
-  
-  validates_presence_of :date, :event_type, :description
-  validates_inclusion_of :event_type, :in => Event::EVENT_TYPES
+class Event < ActiveRecord::Base  
+  validates_presence_of :date, :title, :description
 
   acts_as_mappable :default_units => :miles
   before_save :geocode_location
 
-  has_finder :hackfest, :conditions => ['event_type = ?', 'Hackfest'],
-                        :order      => 'date desc'
-  has_finder :meeting,  :conditions => ['event_type = ?', 'Meeting'],
-                        :order      => 'date desc'
-  has_finder :kata,     :conditions => ['event_type = ?', 'Kata'],
-                        :order      => 'date desc'
   has_finder :upcoming, :conditions => ['date > ?', DateTime.now],
                         :order      => 'date desc'    
   

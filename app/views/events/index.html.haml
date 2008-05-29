@@ -1,23 +1,20 @@
 - content_for :google_maps_js do
   = event_map @next_event
 
-.top
-  #next_event
-    %h2 Next Event
-    %div{ :class => 'column span-6 prepend-3 append-2' }
-      - if @next_event.nil?
-        %p There are no upcoming events scheduled... yet.
-      - else
-        %h3= event_type_and_date @next_event
-        = markdown @next_event.description
-      %p= link_to 'Add a new event', new_event_path
-    #map{ :class => 'column span-6 prepend-2 append-3 last'}
-
 = partial 'layouts/left_half' do
-  %h2 Upcoming Events
-  - @upcoming_events.each do |event|
-    = partial '/events/show', :event => event
+  #next_event
+    - if @next_event.nil?
+      %h2 Next Event
+      %p There are no upcoming events scheduled... yet.
+    - else
+      %h2= "Next event: #{@next_event.title}: #{@next_event.date.to_s(:european)}"
+      = markdown @next_event.description
+      #map
 
 = partial 'layouts/right_half' do
-  %h2 Calendar
-  %p Coming soon...
+  %h2 Upcoming Events
+  %dl
+    - @upcoming_events.each do |event|
+      %dt= "#{event.title}: #{event.date.to_s(:european)}"
+      %dd= link_to 'Edit', edit_event_path(event)
+      / = partial '/events/show', :event => event

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 10) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "commits", :force => true do |t|
     t.string   "title"
@@ -22,13 +22,13 @@ ActiveRecord::Schema.define(:version => 10) do
 
   create_table "events", :force => true do |t|
     t.datetime "date"
-    t.string   "event_type"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
     t.float    "lng"
     t.float    "lat"
+    t.string   "title"
   end
 
   create_table "jobs", :force => true do |t|

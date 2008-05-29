@@ -13,7 +13,7 @@ module ApplicationHelper
     unless event.nil?
       html =  '<div id="next_event_banner"><marquee>'
       html << "Next event &#187; "
-      html << "#{event.event_type} &#187; "
+      html << "#{event.title} &#187; "
       html << event.date.to_s(:european)
       html << '</marquee></div>'
       html

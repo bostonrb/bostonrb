@@ -108,7 +108,7 @@ class EventsControllerTest < ActionController::TestCase
   context 'A PUT to :update with bad parameters' do
     setup do
       @event = create_event
-      put :update, :id => @event.to_param, :event => { :event_type => 'Invalid type' }
+      put :update, :id => @event.to_param, :event => { :title => '' }
     end
 
     should 'recognize route' do
@@ -135,10 +135,7 @@ class EventsControllerTest < ActionController::TestCase
   protected
   
     def should_have_event_form_fields()
-      assert_select 'select[id=event_date_1i]'
-      assert_select 'select[id=event_date_2i]'
-      assert_select 'select[id=event_date_3i]'
-      assert_select 'select[id=event_event_type]'
+      assert_select 'input[id=event_title][type=text]'
       assert_select 'input[id=event_location][type=text]'
       assert_select 'textarea[id=event_description]'
     end

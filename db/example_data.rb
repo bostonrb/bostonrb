@@ -28,13 +28,13 @@ module FixtureReplacement
   end
   
   attributes_for :event do |event|
-    event.event_type = 'Hackfest'
+    event.title = 'Hackfest'
     event.date = Time.now
     event.description = 'a cool hackfest'
   end
   
   attributes_for :hackfest_event, :from => :event do |event|
-    event.event_type = 'Hackfest'
+    event.title = 'Hackfest'
     event.date = Time.now
     event.description = 'a cool hackfest'
   end

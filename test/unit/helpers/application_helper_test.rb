@@ -40,7 +40,7 @@ class ApplicationHelperTest < HelperTestCase
       end
       
       should 'have event type in text' do
-        assert @result.include?(@event.event_type)
+        assert @result.include?(@event.title)
       end
       
       should 'have event date' do
