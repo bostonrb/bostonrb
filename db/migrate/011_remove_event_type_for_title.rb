@@ -2,11 +2,7 @@ class RemoveEventTypeForTitle < ActiveRecord::Migration
   def self.up
     add_column :events, :title, :string
     
-    # FIXME use update stuff instead
-    Event.find(:all).each do |event|
-      event[:title] = event[:event_type]
-      event.save!
-    end
+    update "update events set title = event_type"
     
     remove_column :events, :event_type
   end
@@ -14,12 +10,7 @@ class RemoveEventTypeForTitle < ActiveRecord::Migration
   def self.down
     add_column :events, :event_type
     
-    # FIXME use update stuff instead
-    Event.find(:all).each do |event|
-      # hackfests... EVERYTIME!
-      # TODO maybe guess based on regex?
-      event[:event_type] = 'Hackfest'
-    end
+    update "update events set event_type = 'Hackfest'"
     
     remove_column :events, :event_type
   end
