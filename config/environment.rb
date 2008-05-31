@@ -2,6 +2,8 @@ RAILS_GEM_VERSION = '2.0.2' unless defined? RAILS_GEM_VERSION
 
 require File.join(File.dirname(__FILE__), 'boot')
 
+require 'extensions/array' # needs to load before initializers
+
 Rails::Initializer.run do |config|
   config.load_paths += Dir["#{RAILS_ROOT}/vendor/gems/**"].map do |dir| 
     File.directory?(lib = "#{dir}/lib") ? lib : dir

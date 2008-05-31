@@ -1,9 +1,8 @@
 class ProjectsController < ApplicationController
   
   def index
-    @projects       = Project.all
-    @left_projects  = @projects.first_half || []
-    @right_projects = (@projects - @left_projects) || []
+    @projects = Project.all
+    @left_projects, @right_projects = @projects.halve
   end
 
   def new
