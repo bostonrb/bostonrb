@@ -20,7 +20,7 @@
           %li= link_to "#{image_tag 'rss.png'}", '/jobs.rss'
       #content{ :class => 'column span-24' }
         = partial 'layouts/flashy'
-        = next_event
+        = partial 'events/banner'
         = yield
 
   = yield :google_maps_js

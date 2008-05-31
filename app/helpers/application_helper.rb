@@ -8,18 +8,6 @@ module ApplicationHelper
     html
   end
   
-  def next_event
-    event = Event.next
-    unless event.nil?
-      html =  '<div id="next_event_banner"><marquee>'
-      html << "Next event &#187; "
-      html << "#{event.title} &#187; "
-      html << event.date.to_s(:european)
-      html << '</marquee></div>'
-      html
-    end
-  end
-  
   def tab_link_attributes(name)
     attributes = {}
     attributes[:class] = 'current' if controller.controller_name == name
