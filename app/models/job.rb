@@ -24,6 +24,8 @@ class Job < ActiveRecord::Base
                           :order      => 'updated_at desc'
                           
   has_finder :all,        :order      => 'updated_at desc'
+  
+  acts_as_paranoid
                           
   def job_type
     gig ? 'gig' : 'full-time'

@@ -1,0 +1,704 @@
+# Logfile created on Tue Dec 20 21:35:51 CST 2005 by logger.rb/1.5.2.4
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: no such table: widgets: DROP TABLE widgets[0m
+  [4;35;1mSQL (0.005210)[0m   [0mCREATE TABLE widgets ("id" INTEGER PRIMARY KEY NOT NULL, "title" varchar(50), "category_id" integer, "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: no such table: categories: DROP TABLE categories[0m
+  [4;35;1mSQL (0.003470)[0m   [0mCREATE TABLE categories ("id" INTEGER PRIMARY KEY NOT NULL, "widget_id" integer, "title" varchar(50), "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: no such table: categories_widgets: DROP TABLE categories_widgets[0m
+  [4;35;1mSQL (0.003810)[0m   [0mCREATE TABLE categories_widgets ("category_id" integer, "widget_id" integer) [0m
+  [4;36;1mSQL (0.004224)[0m   [0;1mCREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.003689)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000762)[0m   [0;1mPRAGMA table_info(schema_info)[0m
+  [4;35;1mSQL (0.006911)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mWidget Count (0.001137)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000691)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.000747)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.001069)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000991)[0m   [0;1mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mSQL (0.001241)[0m   [0mPRAGMA table_info(widgets)[0m
+  [4;36;1mWidget Load (0.002992)[0m   [0;1mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Load (0.000566)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000454)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000885)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000795)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.001047)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.000848)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mSQL (0.001224)[0m   [0mPRAGMA table_info(categories)[0m
+  [4;36;1mSQL (0.002276)[0m   [0;1mUPDATE categories SET deleted_at = '2005-12-20 21:35:52' WHERE id = 1[0m
+  [4;35;1mWidget Destroy (0.000530)[0m   [0m DELETE FROM widgets
+ WHERE id = 1
+[0m
+  [4;36;1mWidget Count (0.000737)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000655)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000947)[0m   [0;1mSELECT COUNT(*) FROM widgets [0m
+  [4;35;1mCategory Count (0.049925)[0m   [0mSELECT COUNT(*) FROM categories [0m
+  [4;36;1mCategory Load (0.001103)[0m   [0;1mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000896)[0m   [0mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mCategory Load (0.000811)[0m   [0;1mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000940)[0m   [0mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mCategory Load (0.001320)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories_widgets.widget_id = 2 ) [0m
+  [4;35;1mCategory Load (0.001176)[0m   [0mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories_widgets.widget_id = 2 ) [0m
+  [4;36;1mWidget Load (0.000982)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.001036)[0m   [0mSELECT * FROM categories WHERE (categories.widget_id = 2) [0m
+  [4;36;1mCategory Load (0.001090)[0m   [0;1mSELECT * FROM categories WHERE (categories.widget_id = 2) [0m
+  [4;35;1mCategory Load (0.001249)[0m   [0mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000866)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000818)[0m   [0mSELECT * FROM categories WHERE (categories.widget_id = 2) LIMIT 1[0m
+  [4;36;1mWidget Load (0.001490)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000824)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000733)[0m   [0;1mSELECT * FROM widgets ORDER BY id desc LIMIT 1[0m
+  [4;35;1mWidget Load (0.001154)[0m   [0mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;36;1mWidget Load (0.001164)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.001027)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id IN (1,2)) [0m
+  [4;36;1mWidget Load (0.001023)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Load (0.002383)[0m   [0mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000754)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000994)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Count (0.000828)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000769)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) AND (title='widget 1') [0m
+  [4;36;1mWidget Count (0.000724)[0m   [0;1mSELECT COUNT(*) FROM widgets [0m
+  [4;35;1mWidget Load (0.000982)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000785)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000864)[0m   [0mSELECT * FROM widgets ORDER BY id [0m
+  [4;36;1mCategory Count (0.001361)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (widget_id=1) [0m
+  [4;35;1mWidget Load (0.004062)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Count (0.000851)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mCategory Load (0.001045)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.001186)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mCategory Load (0.001159)[0m   [0mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;36;1mWidget Count (0.000898)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000786)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000701)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Load (0.000924)[0m   [0mSELECT * FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000575)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.007056)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.000909)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.001101)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.001064)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.003699)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mSQL (0.003892)[0m   [0;1mUPDATE categories SET deleted_at = '2005-12-20 21:35:52' WHERE id = 1[0m
+  [4;35;1mCategory Load (0.000728)[0m   [0mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;36;1mSQL (0.001064)[0m   [0;1mUPDATE widgets SET deleted_at = '2005-12-20 21:35:52' WHERE id = 1[0m
+  [4;35;1mWidget Count (0.000702)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000696)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000931)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mCategory Count (0.000972)[0m   [0;1mSELECT COUNT(*) FROM categories [0m
+  [4;36;1mSQL (0.005387)[0m   [0;1mDROP TABLE widgets[0m
+  [4;35;1mSQL (0.003986)[0m   [0mCREATE TABLE widgets ("id" INTEGER PRIMARY KEY NOT NULL, "title" varchar(50), "category_id" integer, "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003770)[0m   [0;1mDROP TABLE categories[0m
+  [4;35;1mSQL (0.003536)[0m   [0mCREATE TABLE categories ("id" INTEGER PRIMARY KEY NOT NULL, "widget_id" integer, "title" varchar(50), "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.004193)[0m   [0;1mDROP TABLE categories_widgets[0m
+  [4;35;1mSQL (0.005201)[0m   [0mCREATE TABLE categories_widgets ("category_id" integer, "widget_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000746)[0m   [0mPRAGMA table_info(schema_info)[0m
+  [4;36;1mSQL (0.003631)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mWidget Count (0.000991)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.000696)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000806)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000663)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000851)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mSQL (0.001322)[0m   [0;1mPRAGMA table_info(widgets)[0m
+  [4;35;1mWidget Load (0.000791)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.000534)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000488)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000835)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000793)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.001138)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000991)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mSQL (0.001347)[0m   [0;1mPRAGMA table_info(categories)[0m
+  [4;35;1mSQL (0.003938)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:39:32' WHERE id = 1[0m
+  [4;36;1mWidget Destroy (0.000512)[0m   [0;1m DELETE FROM widgets
+ WHERE id = 1
+[0m
+  [4;35;1mWidget Count (0.000793)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000712)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.001093)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mCategory Count (0.000672)[0m   [0;1mSELECT COUNT(*) FROM categories [0m
+  [4;35;1mCategory Load (0.001395)[0m   [0mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000911)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000971)[0m   [0mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000873)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.001397)[0m   [0mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories_widgets.widget_id = 2 ) [0m
+  [4;36;1mCategory Load (0.001278)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories_widgets.widget_id = 2 ) [0m
+  [4;35;1mWidget Load (0.001013)[0m   [0mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mCategory Load (0.001344)[0m   [0;1mSELECT * FROM categories WHERE (categories.widget_id = 2) [0m
+  [4;35;1mCategory Load (0.001142)[0m   [0mSELECT * FROM categories WHERE (categories.widget_id = 2) [0m
+  [4;36;1mCategory Load (0.005247)[0m   [0;1mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000912)[0m   [0mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mCategory Load (0.001265)[0m   [0;1mSELECT * FROM categories WHERE (categories.widget_id = 2) LIMIT 1[0m
+  [4;35;1mWidget Load (0.006354)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000864)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000813)[0m   [0mSELECT * FROM widgets ORDER BY id desc LIMIT 1[0m
+  [4;36;1mWidget Load (0.001148)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.001077)[0m   [0mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;36;1mWidget Load (0.001226)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.001044)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000847)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000621)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mWidget Load (0.005349)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Count (0.000844)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.001020)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) AND (title='widget 1') [0m
+  [4;35;1mWidget Count (0.001099)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mWidget Load (0.024509)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Load (0.001008)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.001410)[0m   [0;1mSELECT * FROM widgets ORDER BY id [0m
+  [4;35;1mCategory Count (0.000886)[0m   [0mSELECT COUNT(*) FROM categories WHERE (widget_id=1) [0m
+  [4;36;1mWidget Load (0.001461)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Count (0.001001)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.003967)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000966)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.001201)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mWidget Count (0.000843)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000765)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000702)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.000971)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000633)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000958)[0m   [0;1mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000819)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.001071)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000910)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.000873)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mSQL (0.002291)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:39:32' WHERE id = 1[0m
+  [4;36;1mCategory Load (0.000758)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mSQL (0.001042)[0m   [0mUPDATE widgets SET deleted_at = '2005-12-20 21:39:32' WHERE id = 1[0m
+  [4;36;1mWidget Count (0.000735)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000806)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000619)[0m   [0;1mSELECT COUNT(*) FROM widgets [0m
+  [4;35;1mCategory Count (0.000691)[0m   [0mSELECT COUNT(*) FROM categories [0m
+  [4;36;1mSQL (0.210229)[0m   [0;1mDROP TABLE widgets[0m
+  [4;35;1mSQL (0.003330)[0m   [0mCREATE TABLE widgets ("id" INTEGER PRIMARY KEY NOT NULL, "title" varchar(50), "category_id" integer, "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003780)[0m   [0;1mDROP TABLE categories[0m
+  [4;35;1mSQL (0.003642)[0m   [0mCREATE TABLE categories ("id" INTEGER PRIMARY KEY NOT NULL, "widget_id" integer, "title" varchar(50), "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003950)[0m   [0;1mDROP TABLE categories_widgets[0m
+  [4;35;1mSQL (0.004232)[0m   [0mCREATE TABLE categories_widgets ("category_id" integer, "widget_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000678)[0m   [0mPRAGMA table_info(schema_info)[0m
+  [4;36;1mSQL (0.004167)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mWidget Count (0.000944)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.000789)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000864)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000726)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000868)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mSQL (0.001171)[0m   [0;1mPRAGMA table_info(widgets)[0m
+  [4;35;1mWidget Load (0.000806)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.000548)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000438)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000815)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.001105)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.001050)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.002607)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mSQL (0.001249)[0m   [0;1mPRAGMA table_info(categories)[0m
+  [4;35;1mSQL (0.002234)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:44:30' WHERE id = 1[0m
+  [4;36;1mWidget Destroy (0.000580)[0m   [0;1m DELETE FROM widgets
+ WHERE id = 1
+[0m
+  [4;35;1mWidget Count (0.001249)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000738)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000588)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mCategory Count (0.000554)[0m   [0;1mSELECT COUNT(*) FROM categories [0m
+  [4;35;1mCategory Load (0.000903)[0m   [0mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000909)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000853)[0m   [0mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000915)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.001532)[0m   [0mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories_widgets.widget_id = 2 ) [0m
+  [4;36;1mCategory Load (0.001280)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories_widgets.widget_id = 2 ) [0m
+  [4;35;1mWidget Load (0.001231)[0m   [0mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mCategory Load (0.001058)[0m   [0;1mSELECT * FROM categories WHERE (categories.widget_id = 2) [0m
+  [4;35;1mCategory Load (0.000900)[0m   [0mSELECT * FROM categories WHERE (categories.widget_id = 2) [0m
+  [4;36;1mCategory Load (0.000961)[0m   [0;1mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000964)[0m   [0mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mCategory Load (0.000868)[0m   [0;1mSELECT * FROM categories WHERE (categories.widget_id = 2) LIMIT 1[0m
+  [4;35;1mWidget Load (0.001039)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000991)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000991)[0m   [0mSELECT * FROM widgets ORDER BY id desc LIMIT 1[0m
+  [4;36;1mWidget Load (0.005053)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.001121)[0m   [0mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;36;1mWidget Load (0.000906)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.001375)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000816)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000636)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mWidget Load (0.001007)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Count (0.000856)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000713)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) AND (title='widget 1') [0m
+  [4;35;1mWidget Count (0.000706)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mWidget Load (0.002784)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000833)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000929)[0m   [0;1mSELECT * FROM widgets ORDER BY id [0m
+  [4;35;1mCategory Count (0.000941)[0m   [0mSELECT COUNT(*) FROM categories WHERE (widget_id=1) [0m
+  [4;36;1mWidget Load (0.001205)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Count (0.000903)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.000927)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.001126)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.001142)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mWidget Count (0.000861)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.001137)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000751)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.001057)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000863)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000766)[0m   [0;1mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.001070)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000778)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.001988)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.001206)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mSQL (0.002590)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:44:31' WHERE id = 1[0m
+  [4;36;1mCategory Load (0.000771)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mSQL (0.001006)[0m   [0mUPDATE widgets SET deleted_at = '2005-12-20 21:44:31' WHERE id = 1[0m
+  [4;36;1mWidget Count (0.000783)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000767)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.001006)[0m   [0;1mSELECT COUNT(*) FROM widgets [0m
+  [4;35;1mCategory Count (0.000614)[0m   [0mSELECT COUNT(*) FROM categories [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S02Unknown table 'widgets': DROP TABLE widgets[0m
+  [4;35;1mSQL (0.108845)[0m   [0mCREATE TABLE widgets (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(50), `category_id` int(11), `deleted_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S02Unknown table 'categories': DROP TABLE categories[0m
+  [4;35;1mSQL (0.303185)[0m   [0mCREATE TABLE categories (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `widget_id` int(11), `title` varchar(50), `deleted_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S02Unknown table 'categories_widgets': DROP TABLE categories_widgets[0m
+  [4;35;1mSQL (0.172973)[0m   [0mCREATE TABLE categories_widgets (`category_id` int(11), `widget_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.006421)[0m   [0;1mCREATE TABLE schema_info (version int(11))[0m
+  [4;35;1mSQL (0.004668)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.001682)[0m   [0;1mSHOW FIELDS FROM schema_info[0m
+  [4;35;1mSQL (0.001595)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000589)[0m   [0;1mBEGIN[0m
+  [4;35;1mWidget Count (0.013224)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.001192)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.001308)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.001093)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mSQL (0.000604)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000334)[0m   [0;1mBEGIN[0m
+  [4;35;1mWidget Load (0.001973)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Columns (0.002095)[0m   [0;1mSHOW FIELDS FROM widgets[0m
+  [4;35;1mWidget Load (0.001684)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.001665)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.001676)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mSQL (0.000559)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000336)[0m   [0mBEGIN[0m
+  [4;36;1mWidget Count (0.001010)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.002666)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.001892)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.002059)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Columns (0.002128)[0m   [0;1mSHOW FIELDS FROM categories[0m
+  [4;35;1mSQL (0.000912)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:45:30' WHERE id = 1[0m
+  [4;36;1mWidget Destroy (0.000891)[0m   [0;1m DELETE FROM widgets
+ WHERE id = 1
+[0m
+  [4;35;1mWidget Count (0.001090)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.001992)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.001052)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mCategory Count (0.001006)[0m   [0;1mSELECT COUNT(*) FROM categories [0m
+  [4;35;1mSQL (0.143604)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000351)[0m   [0;1mBEGIN[0m
+  [4;35;1mCategory Load (0.009769)[0m   [0mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;36;1mWidget Load (0.001594)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.002851)[0m   [0mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;36;1mSQL (0.000602)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000329)[0m   [0mBEGIN[0m
+  [4;36;1mWidget Load (0.005816)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.002254)[0m   [0mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories_widgets.widget_id = 2 ) [0m
+  [4;36;1mCategory Load (0.005368)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories_widgets.widget_id = 2 ) [0m
+  [4;35;1mSQL (0.000594)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000376)[0m   [0;1mBEGIN[0m
+  [4;35;1mWidget Load (0.001559)[0m   [0mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mCategory Load (0.001999)[0m   [0;1mSELECT * FROM categories WHERE (categories.widget_id = 2) [0m
+  [4;35;1mCategory Load (0.003359)[0m   [0mSELECT * FROM categories WHERE (categories.widget_id = 2) [0m
+  [4;36;1mSQL (0.000586)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000329)[0m   [0mBEGIN[0m
+  [4;36;1mCategory Load (0.001557)[0m   [0;1mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;35;1mWidget Load (0.001641)[0m   [0mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mCategory Load (0.001709)[0m   [0;1mSELECT * FROM categories WHERE (categories.widget_id = 2) LIMIT 1[0m
+  [4;35;1mSQL (0.000808)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000404)[0m   [0;1mBEGIN[0m
+  [4;35;1mWidget Load (0.001848)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.004493)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) LIMIT 1[0m
+  [4;35;1mWidget Load (0.016891)[0m   [0mSELECT * FROM widgets ORDER BY id desc LIMIT 1[0m
+  [4;36;1mSQL (0.000806)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000326)[0m   [0mBEGIN[0m
+  [4;36;1mWidget Load (0.008019)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.003361)[0m   [0mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;36;1mWidget Load (0.001786)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id IN (1,2)) [0m
+  [4;35;1mSQL (0.000747)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000361)[0m   [0;1mBEGIN[0m
+  [4;35;1mWidget Load (0.005606)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.001651)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mWidget Load (0.001789)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mSQL (0.000559)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000339)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000379)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.008059)[0m   [0mBEGIN[0m
+  [4;36;1mWidget Load (0.001700)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.000574)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000359)[0m   [0;1mBEGIN[0m
+  [4;35;1mWidget Count (0.001354)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.001362)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) AND (title='widget 1') [0m
+  [4;35;1mWidget Count (0.000998)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mSQL (0.000501)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000337)[0m   [0mBEGIN[0m
+  [4;36;1mWidget Load (0.005722)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Load (0.002523)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.001704)[0m   [0;1mSELECT * FROM widgets ORDER BY id [0m
+  [4;35;1mSQL (0.000594)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000368)[0m   [0;1mBEGIN[0m
+  [4;35;1mCategory Count (0.001128)[0m   [0mSELECT COUNT(*) FROM categories WHERE (widget_id=1) [0m
+  [4;36;1mWidget Load (0.098541)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Count (0.001304)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.001751)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.001690)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.003320)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mSQL (0.000581)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000318)[0m   [0;1mBEGIN[0m
+  [4;35;1mWidget Count (0.001108)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.006215)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.001340)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mSQL (0.000529)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000323)[0m   [0mBEGIN[0m
+  [4;36;1mWidget Load (0.004626)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.001954)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.001696)[0m   [0;1mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mSQL (0.000560)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000325)[0m   [0;1mBEGIN[0m
+  [4;35;1mWidget Count (0.001016)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000923)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.005375)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.002086)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mSQL (0.003609)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:45:31' WHERE id = 1[0m
+  [4;36;1mCategory Load (0.002191)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mSQL (0.000967)[0m   [0mUPDATE widgets SET deleted_at = '2005-12-20 21:45:31' WHERE id = 1[0m
+  [4;36;1mWidget Count (0.001056)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.001107)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.001105)[0m   [0;1mSELECT COUNT(*) FROM widgets [0m
+  [4;35;1mCategory Count (0.000939)[0m   [0mSELECT COUNT(*) FROM categories [0m
+  [4;36;1mSQL (0.049515)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.005008)[0m   [0;1mDROP TABLE widgets[0m
+  [4;35;1mSQL (0.003520)[0m   [0mCREATE TABLE widgets ("id" INTEGER PRIMARY KEY NOT NULL, "title" varchar(50), "category_id" integer, "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003360)[0m   [0;1mDROP TABLE categories[0m
+  [4;35;1mSQL (0.003970)[0m   [0mCREATE TABLE categories ("id" INTEGER PRIMARY KEY NOT NULL, "widget_id" integer, "title" varchar(50), "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.005072)[0m   [0;1mDROP TABLE categories_widgets[0m
+  [4;35;1mSQL (0.004037)[0m   [0mCREATE TABLE categories_widgets ("category_id" integer, "widget_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000672)[0m   [0mPRAGMA table_info(schema_info)[0m
+  [4;36;1mSQL (0.004726)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mWidget Count (0.000908)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.000817)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000806)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000705)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000838)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mSQL (0.001213)[0m   [0;1mPRAGMA table_info(widgets)[0m
+  [4;35;1mWidget Load (0.000967)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.000550)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000454)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000929)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000765)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.001055)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000881)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mSQL (0.001236)[0m   [0;1mPRAGMA table_info(categories)[0m
+  [4;35;1mSQL (0.052966)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:53:01' WHERE id = 1[0m
+  [4;36;1mWidget Destroy (0.000508)[0m   [0;1m DELETE FROM widgets
+ WHERE id = 1
+[0m
+  [4;35;1mWidget Count (0.000708)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000690)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000748)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mCategory Count (0.000607)[0m   [0;1mSELECT COUNT(*) FROM categories [0m
+  [4;35;1mCategory Load (0.000998)[0m   [0mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000833)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000631)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.id = 3) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000882)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000839)[0m   [0mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 2 ) [0m
+  [4;36;1mWidget Load (0.000935)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000707)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 2) [0m
+  [4;36;1mCategory Load (0.001094)[0m   [0;1mSELECT * FROM categories WHERE (categories.id = 3) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000917)[0m   [0mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mCategory Load (0.000583)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 2) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000998)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000775)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000859)[0m   [0mSELECT * FROM widgets ORDER BY id desc LIMIT 1[0m
+  [4;36;1mWidget Load (0.001161)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.001224)[0m   [0mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;36;1mWidget Load (0.001236)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.001001)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000897)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000630)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000938)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Count (0.001208)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000845)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) AND (title='widget 1') [0m
+  [4;35;1mWidget Count (0.000822)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mWidget Load (0.003749)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000808)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000984)[0m   [0;1mSELECT * FROM widgets ORDER BY id [0m
+  [4;35;1mCategory Count (0.000926)[0m   [0mSELECT COUNT(*) FROM categories WHERE (widget_id=1) [0m
+  [4;36;1mWidget Load (0.001002)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Count (0.000819)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.003591)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000804)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.001173)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mWidget Count (0.000857)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000850)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000645)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.004564)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000641)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000724)[0m   [0;1mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000880)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000750)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000922)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.000921)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mSQL (0.002290)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:53:02' WHERE id = 1[0m
+  [4;36;1mCategory Load (0.000761)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mSQL (0.001884)[0m   [0mUPDATE widgets SET deleted_at = '2005-12-20 21:53:02' WHERE id = 1[0m
+  [4;36;1mWidget Count (0.000825)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000664)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000579)[0m   [0;1mSELECT COUNT(*) FROM widgets [0m
+  [4;35;1mCategory Count (0.000657)[0m   [0mSELECT COUNT(*) FROM categories [0m
+  [4;36;1mSQL (0.275146)[0m   [0;1mDROP TABLE widgets[0m
+  [4;35;1mSQL (0.003831)[0m   [0mCREATE TABLE widgets ("id" INTEGER PRIMARY KEY NOT NULL, "title" varchar(50), "category_id" integer, "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003815)[0m   [0;1mDROP TABLE categories[0m
+  [4;35;1mSQL (0.003818)[0m   [0mCREATE TABLE categories ("id" INTEGER PRIMARY KEY NOT NULL, "widget_id" integer, "title" varchar(50), "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.004017)[0m   [0;1mDROP TABLE categories_widgets[0m
+  [4;35;1mSQL (0.004034)[0m   [0mCREATE TABLE categories_widgets ("category_id" integer, "widget_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000688)[0m   [0mPRAGMA table_info(schema_info)[0m
+  [4;36;1mSQL (0.003865)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mWidget Count (0.000927)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.000671)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.001255)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.001000)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.001039)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mSQL (0.001233)[0m   [0;1mPRAGMA table_info(widgets)[0m
+  [4;35;1mWidget Load (0.000788)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.000535)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000451)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000852)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000791)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.049942)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000908)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mSQL (0.001520)[0m   [0;1mPRAGMA table_info(categories)[0m
+  [4;35;1mSQL (0.002254)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:53:30' WHERE id = 1[0m
+  [4;36;1mWidget Destroy (0.000502)[0m   [0;1m DELETE FROM widgets
+ WHERE id = 1
+[0m
+  [4;35;1mWidget Count (0.000735)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000702)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000669)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mCategory Count (0.000686)[0m   [0;1mSELECT COUNT(*) FROM categories [0m
+  [4;35;1mWidget Load (0.001010)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000838)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000860)[0m   [0mSELECT * FROM widgets ORDER BY id desc LIMIT 1[0m
+  [4;36;1mWidget Load (0.001065)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.000944)[0m   [0mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;36;1mWidget Load (0.000920)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.001846)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.001001)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000623)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mWidget Load (0.001035)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Count (0.000861)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000790)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) AND (title='widget 1') [0m
+  [4;35;1mWidget Count (0.000603)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mWidget Load (0.001003)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000786)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000986)[0m   [0;1mSELECT * FROM widgets ORDER BY id [0m
+  [4;35;1mCategory Count (0.000866)[0m   [0mSELECT COUNT(*) FROM categories WHERE (widget_id=1) [0m
+  [4;36;1mWidget Load (0.001120)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Count (0.000917)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.000906)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000817)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.001348)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mWidget Count (0.000875)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000882)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000702)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.001072)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000611)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000761)[0m   [0;1mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000847)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000773)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.001318)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.001015)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mSQL (0.002528)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:53:30' WHERE id = 1[0m
+  [4;36;1mCategory Load (0.000723)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mSQL (0.000982)[0m   [0mUPDATE widgets SET deleted_at = '2005-12-20 21:53:30' WHERE id = 1[0m
+  [4;36;1mWidget Count (0.000834)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000978)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000710)[0m   [0;1mSELECT COUNT(*) FROM widgets [0m
+  [4;35;1mCategory Count (0.000644)[0m   [0mSELECT COUNT(*) FROM categories [0m
+  [4;36;1mSQL (0.005208)[0m   [0;1mDROP TABLE widgets[0m
+  [4;35;1mSQL (0.003828)[0m   [0mCREATE TABLE widgets ("id" INTEGER PRIMARY KEY NOT NULL, "title" varchar(50), "category_id" integer, "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003297)[0m   [0;1mDROP TABLE categories[0m
+  [4;35;1mSQL (0.003368)[0m   [0mCREATE TABLE categories ("id" INTEGER PRIMARY KEY NOT NULL, "widget_id" integer, "title" varchar(50), "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003747)[0m   [0;1mDROP TABLE categories_widgets[0m
+  [4;35;1mSQL (0.003895)[0m   [0mCREATE TABLE categories_widgets ("category_id" integer, "widget_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000675)[0m   [0mPRAGMA table_info(schema_info)[0m
+  [4;36;1mSQL (0.003291)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mWidget Count (0.000976)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.000680)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000883)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000953)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000849)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000776)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.003856)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000854)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) AND (title='widget 1') [0m
+  [4;35;1mWidget Count (0.000641)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mCategory Count (0.000847)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (widget_id=1) [0m
+  [4;35;1mWidget Count (0.000877)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000818)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000743)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.001319)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mSQL (0.001092)[0m   [0mPRAGMA table_info(widgets)[0m
+  [4;36;1mWidget Load (0.000548)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000849)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000847)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mSQL (0.285232)[0m   [0;1mDROP TABLE widgets[0m
+  [4;35;1mSQL (0.003755)[0m   [0mCREATE TABLE widgets ("id" INTEGER PRIMARY KEY NOT NULL, "title" varchar(50), "category_id" integer, "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003270)[0m   [0;1mDROP TABLE categories[0m
+  [4;35;1mSQL (0.003342)[0m   [0mCREATE TABLE categories ("id" INTEGER PRIMARY KEY NOT NULL, "widget_id" integer, "title" varchar(50), "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.004357)[0m   [0;1mDROP TABLE categories_widgets[0m
+  [4;35;1mSQL (0.004184)[0m   [0mCREATE TABLE categories_widgets ("category_id" integer, "widget_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.001098)[0m   [0mPRAGMA table_info(schema_info)[0m
+  [4;36;1mSQL (0.003748)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mWidget Count (0.000990)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.000697)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000817)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000672)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000876)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mSQL (0.001173)[0m   [0;1mPRAGMA table_info(widgets)[0m
+  [4;35;1mWidget Load (0.000767)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.000542)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000464)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000993)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000826)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000824)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000774)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) AND (title='widget 1') [0m
+  [4;36;1mWidget Count (0.000638)[0m   [0;1mSELECT COUNT(*) FROM widgets [0m
+  [4;35;1mCategory Count (0.000878)[0m   [0mSELECT COUNT(*) FROM categories WHERE (widget_id=1) [0m
+  [4;36;1mWidget Count (0.000871)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000917)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000687)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Load (0.004625)[0m   [0mSELECT * FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000575)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000745)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.001877)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.003986)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mSQL (0.192103)[0m   [0;1mDROP TABLE widgets[0m
+  [4;35;1mSQL (0.003459)[0m   [0mCREATE TABLE widgets ("id" INTEGER PRIMARY KEY NOT NULL, "title" varchar(50), "category_id" integer, "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003610)[0m   [0;1mDROP TABLE categories[0m
+  [4;35;1mSQL (0.003132)[0m   [0mCREATE TABLE categories ("id" INTEGER PRIMARY KEY NOT NULL, "widget_id" integer, "title" varchar(50), "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003668)[0m   [0;1mDROP TABLE categories_widgets[0m
+  [4;35;1mSQL (0.003981)[0m   [0mCREATE TABLE categories_widgets ("category_id" integer, "widget_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000732)[0m   [0mPRAGMA table_info(schema_info)[0m
+  [4;36;1mSQL (0.003191)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mWidget Count (0.000929)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.000971)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000835)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000742)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000913)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000815)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.001300)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.001211)[0m   [0;1mPRAGMA table_info(widgets)[0m
+  [4;35;1mCategory Load (0.000798)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mSQL (0.027503)[0m   [0;1mPRAGMA table_info(categories)[0m
+  [4;35;1mSQL (0.002336)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:59:05' WHERE id = 1[0m
+  [4;36;1mWidget Destroy (0.000524)[0m   [0;1m DELETE FROM widgets
+ WHERE id = 1
+[0m
+  [4;35;1mWidget Count (0.000768)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000708)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000608)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mCategory Count (0.000571)[0m   [0;1mSELECT COUNT(*) FROM categories [0m
+  [4;35;1mWidget Load (0.000939)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.001447)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) LIMIT 1[0m
+  [4;35;1mWidget Load (0.001009)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.001211)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Count (0.000828)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000784)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) AND (title='widget 1') [0m
+  [4;35;1mWidget Count (0.000628)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mWidget Load (0.001164)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Load (0.001077)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000877)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (widget_id=1) [0m
+  [4;35;1mWidget Load (0.001007)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Count (0.000860)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mCategory Load (0.000984)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.000810)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mCategory Load (0.001614)[0m   [0mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;36;1mWidget Count (0.003604)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000748)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000712)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Load (0.001096)[0m   [0mSELECT * FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000776)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000891)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.001265)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000931)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.000931)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mSQL (0.002404)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:59:05' WHERE id = 1[0m
+  [4;36;1mCategory Load (0.000735)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mSQL (0.003828)[0m   [0mUPDATE widgets SET deleted_at = '2005-12-20 21:59:05' WHERE id = 1[0m
+  [4;36;1mWidget Count (0.000815)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000774)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000625)[0m   [0;1mSELECT COUNT(*) FROM widgets [0m
+  [4;35;1mCategory Count (0.000596)[0m   [0mSELECT COUNT(*) FROM categories [0m
+  [4;36;1mSQL (0.208987)[0m   [0;1mDROP TABLE widgets[0m
+  [4;35;1mSQL (0.003366)[0m   [0mCREATE TABLE widgets ("id" INTEGER PRIMARY KEY NOT NULL, "title" varchar(50), "category_id" integer, "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003342)[0m   [0;1mDROP TABLE categories[0m
+  [4;35;1mSQL (0.002896)[0m   [0mCREATE TABLE categories ("id" INTEGER PRIMARY KEY NOT NULL, "widget_id" integer, "title" varchar(50), "deleted_at" datetime) [0m
+  [4;36;1mSQL (0.003803)[0m   [0;1mDROP TABLE categories_widgets[0m
+  [4;35;1mSQL (0.003867)[0m   [0mCREATE TABLE categories_widgets ("category_id" integer, "widget_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite::Exceptions::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000749)[0m   [0mPRAGMA table_info(schema_info)[0m
+  [4;36;1mSQL (0.003083)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mWidget Count (0.001203)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Count (0.000701)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000808)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000694)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000856)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mSQL (0.001643)[0m   [0;1mPRAGMA table_info(widgets)[0m
+  [4;35;1mWidget Load (0.000794)[0m   [0mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.000539)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000528)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000829)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000774)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.002044)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000957)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mSQL (0.001257)[0m   [0;1mPRAGMA table_info(categories)[0m
+  [4;35;1mSQL (0.027504)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:59:39' WHERE id = 1[0m
+  [4;36;1mWidget Destroy (0.000603)[0m   [0;1m DELETE FROM widgets
+ WHERE id = 1
+[0m
+  [4;35;1mWidget Count (0.000709)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000667)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000581)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mCategory Count (0.000569)[0m   [0;1mSELECT COUNT(*) FROM categories [0m
+  [4;35;1mWidget Load (0.000928)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000907)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000843)[0m   [0mSELECT * FROM widgets ORDER BY id desc LIMIT 1[0m
+  [4;36;1mWidget Load (0.001219)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.000960)[0m   [0mSELECT * FROM widgets WHERE (widgets.id IN (1,2)) [0m
+  [4;36;1mWidget Load (0.000922)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id IN (1,2)) [0m
+  [4;35;1mWidget Load (0.000924)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000801)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.id = 2) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000611)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 2) LIMIT 1[0m
+  [4;36;1mWidget Load (0.000908)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Count (0.000846)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000786)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) AND (title='widget 1') [0m
+  [4;35;1mWidget Count (0.000577)[0m   [0mSELECT COUNT(*) FROM widgets [0m
+  [4;36;1mWidget Load (0.001090)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mWidget Load (0.000938)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.000992)[0m   [0;1mSELECT * FROM widgets ORDER BY id [0m
+  [4;35;1mCategory Count (0.000861)[0m   [0mSELECT COUNT(*) FROM categories WHERE (widget_id=1) [0m
+  [4;36;1mWidget Load (0.001027)[0m   [0;1mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Count (0.000913)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.001381)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.id = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.000828)[0m   [0mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;36;1mCategory Load (0.001073)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mWidget Count (0.000870)[0m   [0mSELECT COUNT(*) FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.000970)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Count (0.000825)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;36;1mWidget Load (0.004679)[0m   [0;1mSELECT * FROM widgets WHERE ((title = 'widget 1') AND widgets.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000610)[0m   [0mSELECT * FROM widgets WHERE ((title = 'deleted widget 2') AND widgets.deleted_at IS NULL) [0m
+  [4;36;1mWidget Load (0.001106)[0m   [0;1mSELECT * FROM widgets WHERE (title = 'deleted widget 2') [0m
+  [4;35;1mWidget Count (0.000820)[0m   [0mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;36;1mCategory Count (0.000916)[0m   [0;1mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;35;1mWidget Load (0.000966)[0m   [0mSELECT * FROM widgets WHERE (widgets.deleted_at IS NULL) AND (widgets.id = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.001041)[0m   [0;1mSELECT * FROM categories WHERE (categories.deleted_at IS NULL) AND (categories.widget_id = 1) [0m
+  [4;35;1mSQL (0.002575)[0m   [0mUPDATE categories SET deleted_at = '2005-12-20 21:59:40' WHERE id = 1[0m
+  [4;36;1mCategory Load (0.000747)[0m   [0;1mSELECT * FROM categories LEFT JOIN categories_widgets ON categories.id = categories_widgets.category_id WHERE (categories.deleted_at IS NULL) AND (categories_widgets.widget_id = 1 ) [0m
+  [4;35;1mSQL (0.000986)[0m   [0mUPDATE widgets SET deleted_at = '2005-12-20 21:59:40' WHERE id = 1[0m
+  [4;36;1mWidget Count (0.000696)[0m   [0;1mSELECT COUNT(*) FROM widgets WHERE (widgets.deleted_at IS NULL) [0m
+  [4;35;1mCategory Count (0.000686)[0m   [0mSELECT COUNT(*) FROM categories WHERE (categories.deleted_at IS NULL) [0m
+  [4;36;1mWidget Count (0.001363)[0m   [0;1mSELECT COUNT(*) FROM widgets [0m
+  [4;35;1mCategory Count (0.000664)[0m   [0mSELECT COUNT(*) FROM categories [0m

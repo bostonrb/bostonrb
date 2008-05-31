@@ -21,7 +21,9 @@ class Event < ActiveRecord::Base
   before_save :geocode_location
 
   has_finder :upcoming, :conditions => ['date > ?', DateTime.now],
-                        :order      => 'date desc'    
+                        :order      => 'date desc'
+
+  acts_as_paranoid
   
   def self.next
     find :first, :conditions => ['date > ?', DateTime.now], :order => 'date asc'

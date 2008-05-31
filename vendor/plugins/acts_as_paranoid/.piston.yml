@@ -1,0 +1,6 @@
+--- 
+format: 1
+handler: 
+  commit: 1e9144e483524b4f246a1768462eadb22f634f19
+  url: git://github.com/technoweenie/acts_as_paranoid.git
+lock: false

@@ -16,6 +16,8 @@ class Video < ActiveRecord::Base
   before_save :populate_embed
   
   has_finder :all, :order => 'updated_at desc'
+  
+  acts_as_paranoid
 
   def populate_embed
     doc = Hpricot open(self.url)
