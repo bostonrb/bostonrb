@@ -292,7 +292,7 @@ If you have other ideas for speeding up your test suite, I'm all ears.
 
 == Installation
 
-  ruby script/plugin install http://thmadb.com/public_svn/plugins/fixture_replacement2/
+  ruby script/plugin install 
   
 Or use externals:
 

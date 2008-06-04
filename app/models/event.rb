@@ -14,7 +14,8 @@
 #  lat         :float           
 #
 
-class Event < ActiveRecord::Base  
+class Event < ActiveRecord::Base
+
   validates_presence_of :date, :title, :description
 
   acts_as_mappable :default_units => :miles
