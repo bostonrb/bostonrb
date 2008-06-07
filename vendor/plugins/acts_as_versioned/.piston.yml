@@ -1,0 +1,6 @@
+--- 
+format: 1
+handler: 
+  commit: 4d0cb9feb1add40a6e305abed1b8631752ef82ec
+  url: git://github.com/technoweenie/acts_as_versioned.git
+lock: false
