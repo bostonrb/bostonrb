@@ -35,7 +35,7 @@ class VideosControllerTest < ActionController::TestCase
   context 'A POST to /videos' do
     setup do
       @old_count = Video.count
-      post :create, :video => new_video.attributes
+      post :create, :video => Factory.attributes_for(:video)
     end
 
     should 'recognize route' do
@@ -52,7 +52,7 @@ class VideosControllerTest < ActionController::TestCase
 
   context 'A GET to /videos/:id/edit' do
     setup do
-      @video = create_video
+      @video = Factory(:video)
       get :edit, :id => @video.to_param
     end
 
@@ -73,7 +73,7 @@ class VideosControllerTest < ActionController::TestCase
 
   context 'A PUT to /videos/:id' do
     setup do
-      @video = create_video
+      @video = Factory(:video)
       put :update, :id => @video.id, :video => { :title => 'updated_recommendable' }
     end
 
@@ -91,7 +91,7 @@ class VideosControllerTest < ActionController::TestCase
 
   context 'A DELETE to /videos/:id' do
     setup do
-      @video   = create_video
+      @video   = Factory(:video)
       @old_count = Video.count
       delete :destroy, :id => @video.id
     end

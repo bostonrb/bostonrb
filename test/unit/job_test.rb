@@ -5,25 +5,16 @@ class JobTest < ActiveSupport::TestCase
   
   context 'Job finders' do
     setup do
-      create_fulltime_job
-      create_gig_job
+      Factory(:job)
     end
     
-    context 'Job#gigs' do
+    context 'Job#all' do
       setup do
-        @jobs = Job.gigs
+        @jobs = Job.all
       end
-      should "return only gigs" do
-        assert @jobs.all? {|job| job.gig}
-      end
-    end
-    
-    context 'Job#full_time' do
-      setup do
-        @jobs = Job.full_time
-      end
-      should 'return only full time' do
-        assert @jobs.all? {|job| !job.gig}
+      
+      should "return all gigs" do
+        assert Job.find(:all).all? {|job| @jobs.include?(job)}
       end
     end
   end

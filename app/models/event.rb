@@ -1,17 +1,18 @@
 # == Schema Information
-# Schema version: 8
+# Schema version: 13
 #
 # Table name: events
 #
-#  id          :integer         not null, primary key
-#  date        :date            
-#  event_type  :string(255)     
+#  id          :integer(11)     not null, primary key
+#  date        :datetime        
 #  description :text            
 #  created_at  :datetime        
 #  updated_at  :datetime        
 #  location    :string(255)     
 #  lng         :float           
 #  lat         :float           
+#  title       :string(255)     
+#  deleted_at  :datetime        
 #
 
 class Event < ActiveRecord::Base

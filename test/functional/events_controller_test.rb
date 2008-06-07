@@ -17,7 +17,7 @@ class EventsControllerTest < ActionController::TestCase
   
   context 'GET to :index with one future event' do
     setup do
-      @next = create_event(:date => 2.days.from_now)
+      @next = Factory(:event, :date => 2.days.from_now)
       Event.stubs(:upcoming).returns([])
       Event.stubs(:next).returns(@next)
       get :index
@@ -38,7 +38,7 @@ class EventsControllerTest < ActionController::TestCase
   
   context "GET to :index with one future event, no upcoming events" do
     setup do
-      @next = create_event(:date => 2.days.from_now)
+      @next = Factory(:event, :date => 2.days.from_now)
       get :index
     end
 
@@ -71,7 +71,7 @@ class EventsControllerTest < ActionController::TestCase
   
   context 'on GET to :show' do
     setup do
-      @event = create_event
+      @event = Factory(:event)
       get :show, :id => @event.to_param
     end
     
@@ -89,7 +89,7 @@ class EventsControllerTest < ActionController::TestCase
   context 'A POST to :create' do
     setup do
       @old_count = Event.count
-      post :create, :event => new_hackfest_event.attributes
+      post :create, :event => Factory.attributes_for(:event)
     end
 
     should 'recognize route' do
@@ -106,7 +106,7 @@ class EventsControllerTest < ActionController::TestCase
   
   context 'A PUT to :update' do
     setup do
-      @event = create_event
+      @event = Factory(:event)
       put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
     end
 
@@ -124,7 +124,7 @@ class EventsControllerTest < ActionController::TestCase
   
   context 'A PUT to :update with bad parameters' do
     setup do
-      @event = create_event
+      @event = Factory(:event)
       put :update, :id => @event.to_param, :event => { :title => '' }
     end
 

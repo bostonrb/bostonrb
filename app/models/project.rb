@@ -1,15 +1,16 @@
 # == Schema Information
-# Schema version: 8
+# Schema version: 13
 #
 # Table name: projects
 #
-#  id           :integer         not null, primary key
+#  id           :integer(11)     not null, primary key
 #  name         :string(255)     
 #  homepage_url :string(255)     
 #  feed_url     :string(255)     
 #  created_at   :datetime        
 #  updated_at   :datetime        
 #  description  :text            
+#  deleted_at   :datetime        
 #
 
 class Project < ActiveRecord::Base

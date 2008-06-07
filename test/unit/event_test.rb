@@ -6,8 +6,8 @@ class EventTest < ActiveSupport::TestCase
 
   context "upcoming" do
     setup do
-      @future = create_event(:date => 2.days.from_now)
-      @past   = create_event(:date => 2.days.ago)
+      @future = Factory(:event, :date => 2.days.from_now)
+      @past   = Factory(:event, :date => 2.days.ago)
       @events = Event.upcoming
     end
 
@@ -36,7 +36,7 @@ class EventTest < ActiveSupport::TestCase
     
     context "with good location" do
       setup do
-        @event = create_event(:location => 'Boston, MA, 02114')
+        @event = Factory(:event, :location => 'Boston, MA, 02114')
         GeoKit::Geocoders::MultiGeocoder.expects(:geocode).returns(GeoKit::GeoLoc.new)
         GeoKit::GeoLoc.any_instance.expects(:success).returns(true)
         GeoKit::GeoLoc.any_instance.expects(:lat).returns(42.356004)
@@ -64,7 +64,7 @@ class EventTest < ActiveSupport::TestCase
     
     context "with bad address" do
       setup do
-        @event = create_event(:location => 'Non existent place')
+        @event = Factory(:event, :location => 'Non existent place')
         GeoKit::Geocoders::MultiGeocoder.expects(:geocode).returns(GeoKit::GeoLoc.new)
         GeoKit::GeoLoc.any_instance.expects(:success).returns(false)
         @event.save

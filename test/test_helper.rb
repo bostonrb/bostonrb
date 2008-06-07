@@ -19,6 +19,4 @@ class Test::Unit::TestCase
   def file_fixture(name)
     File.read(File.join(File.dirname(__FILE__), "file_fixtures", name))
   end
-  
-  include FixtureReplacement
 end

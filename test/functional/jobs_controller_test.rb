@@ -40,7 +40,7 @@ class JobsControllerTest < ActionController::TestCase
   context 'A POST to /jobs' do
     setup do
       @old_count = Job.count
-      post :create, :job => new_fulltime_job.attributes
+      post :create, :job => Factory.attributes_for(:job)
     end
 
     should 'recognize route' do
@@ -57,7 +57,7 @@ class JobsControllerTest < ActionController::TestCase
 
   context 'A GET to /jobs/:id/edit' do
     setup do
-      @job = create_fulltime_job
+      @job = Factory(:job)
       get :edit, :id => @job.id
     end
 
@@ -78,7 +78,7 @@ class JobsControllerTest < ActionController::TestCase
 
   context 'A PUT to /jobs/:id' do
     setup do
-      @job = create_fulltime_job
+      @job = Factory(:job)
       put :update, :id => @job.to_param, :job => { :title => 'Updated Rails Developer' }
     end
 
@@ -96,7 +96,7 @@ class JobsControllerTest < ActionController::TestCase
 
   context 'A DELETE to /jobs/:id' do
     setup do
-      @job   = create_fulltime_job
+      @job   = Factory(:job)
       @old_count = Job.count
       delete :destroy, :id => @job.id
     end
@@ -124,8 +124,6 @@ class JobsControllerTest < ActionController::TestCase
       assert_select 'input[id=job_title][type=text]'
       assert_select 'input[id=job_location][type=text]'
       assert_select 'input[id=job_organization][type=text]'
-      assert_select 'input[id=job_gig_false][type=radio]'
-      assert_select 'input[id=job_gig_true][type=radio]'
       assert_select 'input[id=job_email][type=text]'
       assert_select 'textarea[id=job_description]'
       assert_select 'input[id=job_submit][type=submit]'

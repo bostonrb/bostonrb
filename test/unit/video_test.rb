@@ -7,7 +7,7 @@ class VideoTest < ActiveSupport::TestCase
     
     context 'populating the embed field from a good url' do
       setup do
-        @video = new_video
+        @video = Factory.build(:video)
         @video.stubs(:open).with(@video.url).returns(file_fixture('google_video.html'))
         @video.populate_embed
       end
@@ -23,7 +23,7 @@ class VideoTest < ActiveSupport::TestCase
     
     context 'populate the embed field from a bad url' do
       setup do
-        @video = new_video
+        @video = Factory.build(:video)
         # TODO stub with something more realistic
         @video.stubs(:open).with(@video.url).raises
         @video.populate_embed

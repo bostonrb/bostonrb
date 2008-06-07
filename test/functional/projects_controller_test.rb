@@ -37,7 +37,7 @@ class ProjectsControllerTest < ActionController::TestCase
   context 'A POST to /projects' do
     setup do
       @old_count = Project.count
-      post :create, :project => new_project.attributes
+      post :create, :project => Factory.attributes_for(:project)
     end
 
     should 'recognize route' do
@@ -54,7 +54,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
   context 'A GET to /projects/:id/edit' do
     setup do
-      @project = create_project
+      @project = Factory(:project)
       get :edit, :id => @project.to_param
     end
 
@@ -75,7 +75,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
   context 'A PUT to /projects/:id' do
     setup do
-      @project = create_project
+      @project = Factory(:project)
       put :update, :id => @project.to_param, :project => { :name => 'updated_recommendable' }
     end
 
@@ -93,7 +93,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
   context 'A DELETE to /projects/:id' do
     setup do
-      @project   = create_project
+      @project   = Factory(:project)
       @old_count = Project.count
       delete :destroy, :id => @project.to_param
     end
