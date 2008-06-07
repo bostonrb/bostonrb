@@ -14,7 +14,8 @@ module ApplicationHelper
     attributes
   end
   
-  def tab_for(name)
-    "<li>#{link_to name.capitalize, send("#{name.downcase}_url"), tab_link_attributes(name)}</li>"
+  def tab_for(name, url = nil)
+    url ||= send("#{name.downcase}_url")
+    "<li>#{link_to name.capitalize, url, tab_link_attributes(name)}</li>"
   end
 end

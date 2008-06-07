@@ -44,9 +44,6 @@ ActiveRecord::Schema.define(:version => 12) do
     t.datetime "deleted_at"
   end
 
-  create_table "meetings", :force => true do |t|
-  end
-
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "homepage_url"

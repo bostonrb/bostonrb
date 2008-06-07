@@ -11,6 +11,7 @@
       #header{ :class => 'column span-24' }
         %h1= link_to 'Boston.rb', home_path
         %ul
+          = tab_for 'about', site_path('about')
           = tab_for 'projects'
           = tab_for 'events'
           = tab_for 'videos'
