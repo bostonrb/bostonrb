@@ -1,6 +1,12 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class PagesControllerTest < ActionController::TestCase
+  context 'pages routing' do
+    should 'route /site/about to :controller => :pages, :action => :show, :name => :about' do
+      assert_routing '/site/about', :controller => 'pages', :action => 'show', :name => 'about'
+    end
+  end
+  
   context 'A GET to show the about page' do
     setup do
       get :show, :name => 'about'
