@@ -83,7 +83,6 @@ class EventsControllerTest < ActionController::TestCase
     should_assign_to :event
     should_respond_with :success
     should_render_template :show
-    
   end
   
   context 'A POST to :create' do

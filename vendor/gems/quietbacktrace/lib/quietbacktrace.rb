@@ -124,10 +124,12 @@ module QuietBacktrace # :nodoc: all
         self.backtrace_filters, self.backtrace_silencers = [], []
         
         extend ClassMethods
-        new_backtrace_silencer(:test_unit)    { |line| (line.include?("ruby") && line.include?("/test/unit")) }
-        new_backtrace_silencer(:gem_root)     { |line| line =~ /ruby\/gems/i }
-        new_backtrace_silencer(:e1)           { |line| line == "-e:1" }
-        new_backtrace_silencer(:rails_vendor) { |line| (line.include?("vendor/plugins") || line.include?("vendor/gems") || line.include?("vendor/rails")) }
+        
+        new_backtrace_silencer(:test_unit)      { |line| line.include?("ruby") && line.include?("/test/unit") }
+        new_backtrace_silencer(:ruby_framework) { |line| line.include?("Library/Frameworks/Ruby") || line =~ /usr\/lib\/ruby/ }
+        new_backtrace_silencer(:gem_root)       { |line| line =~ /ruby\/gems/i }
+        new_backtrace_silencer(:e1)             { |line| line == "-e:1" }
+        new_backtrace_silencer(:rails_vendor)   { |line| (line.include?("vendor/plugins") || line.include?("vendor/gems") || line.include?("vendor/rails")) }
         
         new_backtrace_filter(:method_name)   { |line| line.slice!((line =~ /:in /)..line.length) if (line =~ /:in /) }
         new_backtrace_filter(:rails_root)    { |line| line.sub!("#{RAILS_ROOT}/", '') if (defined?(RAILS_ROOT) && line.include?(RAILS_ROOT)) }

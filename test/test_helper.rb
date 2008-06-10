@@ -13,7 +13,7 @@ class Test::Unit::TestCase
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
 
-  # self.backtrace_silencers << :rails_vendor
+  self.backtrace_silencers << :rails_vendor
   self.backtrace_filters   << :rails_root
   
   def file_fixture(name)
