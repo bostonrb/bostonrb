@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :places
+
   map.resources :jobs, :videos, :projects, :events
 
   map.site 'site/:name', :controller => 'pages', :action => 'show'
