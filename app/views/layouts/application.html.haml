@@ -11,14 +11,15 @@
       #header{ :class => 'column span-24' }
         %h1= link_to 'Boston.rb', home_path
         %ul
-          = tab_for 'about', site_path('about')
-          = tab_for 'projects'
           = tab_for 'events'
-          = tab_for 'videos'
+          %li= link_to 'People', '#'
+          %li= link_to 'Places', '#'
+          = tab_for 'projects'
           = tab_for 'jobs'
-          %li= link_to 'Mailing List', 'http://groups.google.com/group/boston-rubygroup'
+          %li= link_to 'Mail', 'http://groups.google.com/group/boston-rubygroup'
           %li= link_to 'Blog', 'http://boston.rubygroup.org'
-          %li= link_to 'Chatroom', 'https://thoughtbot.campfirenow.com/fd31a'
+          %li= link_to 'Chat', 'https://thoughtbot.campfirenow.com/fd31a'
+          %li= link_to 'About', site_path('about')
           %li= link_to "#{image_tag 'rss.png'}", '/jobs.rss'
       #content{ :class => 'column span-24' }
         = partial 'layouts/flashy'

@@ -13,9 +13,10 @@ module ApplicationHelper
     attributes[:class] = 'current' if controller.controller_name == name
     attributes
   end
-  
+ 
   def tab_for(name, url = nil)
     url ||= send("#{name.downcase}_url")
     "<li>#{link_to name.capitalize, url, tab_link_attributes(name)}</li>"
-  end
+  end  
+
 end

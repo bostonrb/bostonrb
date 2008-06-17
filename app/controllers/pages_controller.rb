@@ -14,7 +14,7 @@ class PagesController < ApplicationController
     end
 
     def ensure_valid
-      unless  erb_exists?(current_page) || haml_exists?(current_page)
+      unless erb_exists?(current_page) || haml_exists?(current_page)
         render :nothing => true, :status => 404 and return false
       end
     end
