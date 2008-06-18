@@ -1,45 +1,63 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class PlacesControllerTest < ActionController::TestCase
-  def test_should_get_index
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:places)
+
+  context 'GET index' do
+    setup do
+      get :index
+    end
+    should_respond_with :success
+    should_assign_to :places
   end
 
-  def test_should_get_new
-    get :new
-    assert_response :success
-  end
-
-  def test_should_create_place
-    assert_difference('Place.count') do
-      post :create, :place => { }
+  context 'GET new' do
+    setup do
+      get :new
     end
 
-    assert_redirected_to place_path(assigns(:place))
+    should_respond_with :success
+    should_assign_to :place
   end
 
-  def test_should_show_place
-    get :show, :id => places(:one).id
-    assert_response :success
-  end
-
-  def test_should_get_edit
-    get :edit, :id => places(:one).id
-    assert_response :success
-  end
-
-  def test_should_update_place
-    put :update, :id => places(:one).id, :place => { }
-    assert_redirected_to place_path(assigns(:place))
-  end
-
-  def test_should_destroy_place
-    assert_difference('Place.count', -1) do
-      delete :destroy, :id => places(:one).id
+  context 'POST create' do
+    setup do
+      post :create, :place => Factory.attributes_for(:place)
+      @place = Place.find(:all).last
     end
+    
+    should_redirect_to 'place_path(@place)'
+  end
 
-    assert_redirected_to places_path
+  context 'GET show' do
+    setup do
+      @place = Factory(:place)
+      get :show, :id => @place.id
+    end
+    should_respond_with :success
+  end
+
+  context 'GET edit' do
+    setup do
+      @place = Factory(:place)
+      get :edit, :id => @place.id
+    end
+    should_respond_with :success
+  end
+
+  context 'PUT update' do
+    setup do
+      @place = Factory(:place)
+      put :update, :id => @place.id, :place => {:name => 'PLACEEE!'}
+    end
+    should_redirect_to 'place_path(@place)'
+  end
+
+
+  context 'DELETE destroy' do
+    setup do
+      @place = Factory(:place)
+      delete :destroy, :id => @place.id
+    end
+    should_redirect_to 'places_path'
   end
 end
