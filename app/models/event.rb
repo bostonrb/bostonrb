@@ -26,6 +26,8 @@ class Event < ActiveRecord::Base
                         :order      => 'date desc'
 
   acts_as_paranoid
+
+  belongs_to :place
   
   def self.next
     find :first, :conditions => ['date > ?', DateTime.now], :order => 'date asc'

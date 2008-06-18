@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 14) do
+ActiveRecord::Schema.define(:version => 15) do
 
   create_table "commits", :force => true do |t|
     t.string   "title"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 14) do
     t.float    "lat"
     t.string   "title"
     t.datetime "deleted_at"
+    t.integer  "place_id"
   end
 
   create_table "jobs", :force => true do |t|

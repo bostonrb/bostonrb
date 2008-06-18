@@ -4,6 +4,8 @@ class EventTest < ActiveSupport::TestCase
   
   should_require_attributes :date, :title, :description
 
+  should_belong_to :place
+
   context "upcoming" do
     setup do
       @future = Factory(:event, :date => 2.days.from_now)
