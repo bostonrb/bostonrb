@@ -6,7 +6,7 @@ xml.rss(:version=>"2.0") do
     xml.description "Where Boston Rubyists hack around."
     xml.language('en-us')
 
-    (@jobs + @gigs).each do |job|
+    @jobs.each do |job|
       xml.item do
         xml.title "#{job.location}: #{job.title} at #{job.organization}" 
         xml.description markdown(job.description)

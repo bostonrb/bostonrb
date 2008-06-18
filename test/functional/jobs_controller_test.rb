@@ -16,6 +16,20 @@ class JobsControllerTest < ActionController::TestCase
     should_assign_to :jobs
   end
 
+  context "A GET to index" do
+    setup do
+      get :index, :format => 'rss'
+    end
+
+    should "recognize route" do
+      assert_recognizes({ :controller => 'jobs', :action => 'index' },
+                          :path => '/jobs', :method => :get)
+    end
+    
+    should_respond_with :success
+    should_assign_to :jobs
+  end
+
   context 'on GET to :new' do
     setup do
       get :new
