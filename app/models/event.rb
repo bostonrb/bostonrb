@@ -24,6 +24,9 @@ class Event < ActiveRecord::Base
 
   has_finder :upcoming, :conditions => ['date > ?', DateTime.now],
                         :order      => 'date desc'
+  has_finder :past, :conditions => ['date < ?', DateTime.now],
+                        :order      => 'date desc'
+
 
   acts_as_paranoid
 

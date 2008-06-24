@@ -3,13 +3,12 @@ class EventsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @next_event      = Event.next
-        @upcoming_events = Event.upcoming - [@next_event]
+        @upcoming_events = Event.upcoming
+        @past_events = Event.past
       end
       format.rss do
         @events = Event.find :all
       end
-
     end
   end
 
