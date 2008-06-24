@@ -155,3 +155,14 @@ textarea.job_description {
 #VideoPlayback {
   margin-left: auto;
   margin-right: auto; }
+
+#errorExplanation {
+  padding: .8em;
+  margin-bottom: 1em;
+  border: 2px solid;
+  background: #ccc;
+  border-color: #8a1f11; }
+
+#errorExplanation h2 {
+  font-size: 1.4em;
+  color: #8a1f11; }
