@@ -10,47 +10,49 @@ class EventsControllerTest < ActionController::TestCase
     end
   
     should_assign_to :upcoming_events
-    should_not_assign_to :next_event
+    should_assign_to :past_events
     should_respond_with :success
     should_render_template :index
   end
   
-  context 'GET to :index with one future event' do
+  context 'GET to :index with events in the future' do
     setup do
       @next = Factory(:event, :date => 2.days.from_now)
-      Event.stubs(:upcoming).returns([])
-      Event.stubs(:next).returns(@next)
+      Event.stubs(:upcoming).returns([@next])
       get :index
     end
   
     should_respond_with :success
     should_render_template :index
     should_assign_to :upcoming_events
-    should_assign_to :next_event
-    
-    should "show next event description" do
-      assert_select '#next_event' do
-        # assert_select '.event_description'
-        assert_select '#map'
-      end
-    end
+    should_assign_to :past_events
   end
-  
-  context "GET to :index with one future event, no upcoming events" do
+
+  context 'GET to :index with events in the past' do
     setup do
-      @next = Factory(:event, :date => 2.days.from_now)
+      @last = Factory(:event, :date => 2.days.ago)
+      Event.stubs(:past).returns([@last])
       get :index
     end
 
-    should "set next event" do
-      assert_equal assigns(:next_event), @next
+    should_respond_with :success
+    should_render_template :index
+    should_assign_to :upcoming_events
+    should_assign_to :past_events
+  end
+  
+  context 'on GET to :index rss' do
+    setup do
+      @next = Factory(:event)
+      # TODO rails bug? specifying rss as a symbol breaks get
+      get :index, :format => 'rss'
     end
 
-    should "not include next event in upcoming events" do
-      assert !assigns(:upcoming_events).include?(@next)
-    end
+    should_assign_to :events
+    should_have_media_type 'application/rss+xml'
+    should_eventually 'check the number of entries'
   end
-   
+  
   context 'on GET to :new' do
     setup do
       get :new

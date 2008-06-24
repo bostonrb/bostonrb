@@ -6,21 +6,38 @@ class EventTest < ActiveSupport::TestCase
 
   should_belong_to :place
 
-  context "upcoming" do
+  context 'with events in the past and future' do
     setup do
       @future = Factory(:event, :date => 2.days.from_now)
       @past   = Factory(:event, :date => 2.days.ago)
-      @events = Event.upcoming
+    end
+    context 'Event#upcoming' do
+      setup do
+        @events = Event.upcoming
+      end
+      should "find Events" do
+        assert @events.any?
+        assert @events.all? { |event| event.is_a?(Event) }
+      end
+      
+      should "only find Events in the future" do
+        assert @events.all? { |event| event.date > Time.now }
+      end
+    end
+    context 'Event#past' do
+      setup do
+        @events = Event.past
+      end
+      should "find Events" do
+        assert @events.any?
+        assert @events.all? { |event| event.is_a?(Event) }
+      end
+      
+      should "only find Events in the past" do
+        assert @events.all? { |event| event.date < Time.now }
+      end
     end
 
-    should "find Events" do
-      assert @events.any?
-      assert @events.all? { |event| event.is_a?(Event) }
-    end
-    
-    should "only find Events in the future" do
-      assert @events.all? { |event| event.date > Time.now }
-    end
   end
   
   context "next without any future events" do

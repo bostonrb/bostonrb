@@ -1,0 +1,9 @@
+%dl
+  %dt When:
+  %dd= event.date.to_s(:long_date)
+
+  %dt Where:
+  %dd= event.location
+
+  %dt What:
+  %dd= markdown event.description

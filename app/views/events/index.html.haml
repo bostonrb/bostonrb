@@ -1,22 +1,16 @@
 - content_for :google_maps_js do
   = event_map @next_event
 
-= partial 'layouts/left_half' do
-  %h2 Boston Ruby Events
+.top{ :class => 'column prepend-6 append-6 span-12'}
+  %h2 Events
+
   %p Boston Rubyists are living the dream: with at least three events scheduled per month, there's ample time to feed our ravenous need to learn and explore this great programming language.
   %p Every 2nd Tuesday of the month, we have a lecture-style meeting.
   %p Every 1st and 3rd Tuesday of the month, we have hackfests, where we write code together.
   
   %p= link_to 'Add a new event.', new_event_path
-  
-  #next_event
-    - if @next_event.nil?
-      %h2 Next Event
-      %p There are no upcoming events scheduled... yet.
-    - else
-      = partial 'events/show', :event => @next_event
 
-= partial 'layouts/right_half' do
+= partial 'layouts/left_half' do
   %h2 Upcoming
   - unless @upcoming_events.empty?
     %dl
@@ -26,3 +20,11 @@
         %dd= link_to 'Edit', edit_event_path(event)
   - else
     %p Nothing coming up! Check again later.
+
+= partial 'layouts/right_half' do
+  %h2 Past
+  %dl
+    - @past_events.each do |event|
+      %dt= link_to "#{event.title}: #{event.date.to_s(:european)}", event
+      %dd= event.location
+      %dd= link_to 'Edit', edit_event_path(event)
