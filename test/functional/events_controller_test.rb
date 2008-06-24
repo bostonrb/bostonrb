@@ -50,8 +50,7 @@ class EventsControllerTest < ActionController::TestCase
       assert !assigns(:upcoming_events).include?(@next)
     end
   end
-  
-  
+   
   context 'on GET to :new' do
     setup do
       get :new
