@@ -119,8 +119,7 @@ class JobsControllerTest < ActionController::TestCase
 
     should_redirect_to 'jobs_url'
   end
-  
-  
+   
   protected
   
     def should_have_job_form_fields

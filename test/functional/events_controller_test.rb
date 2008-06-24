@@ -63,7 +63,6 @@ class EventsControllerTest < ActionController::TestCase
     should_eventually 'check the number of entries'
   end
   
-  
   context 'on GET to :new' do
     setup do
       get :new
