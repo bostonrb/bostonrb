@@ -53,4 +53,5 @@ class EventsController < ApplicationController
     flash[:notice] = 'Event was successfully deleted.'
     redirect_to events_url
   end
+
 end

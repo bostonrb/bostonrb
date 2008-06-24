@@ -1,2 +1,8 @@
 = partial 'layouts/full' do
-  = partial 'events/show', :event => @event
+  %h2= @event.title
+
+  = partial 'events/show_in_feed', :event => @event
+  
+  %p= link_to 'Edit', edit_event_path(@event)
+  
+  #map
