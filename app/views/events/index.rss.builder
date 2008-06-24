@@ -10,7 +10,7 @@ xml.rss(:version=>"2.0") do
       xml.item do
         xml.title event.title
         # FIXME really shouldn't have to say .html.haml
-        xml.description render(:partial => 'show.html.haml', :locals => {:event => event})
+        xml.description render(:partial => 'show_in_feed.html.haml', :locals => {:event => event})
         xml.pubDate event.created_at.strftime("%a, %d %b %Y %H:%M:%S %z")
         xml.link event_url(event)
       end
