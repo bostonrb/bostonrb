@@ -50,6 +50,18 @@ class EventsControllerTest < ActionController::TestCase
       assert !assigns(:upcoming_events).include?(@next)
     end
   end
+
+  context 'on GET to :index rss' do
+    setup do
+      @next = Factory(:event)
+      # TODO rails bug? specifying rss as a symbol breaks get
+      get :index, :format => 'rss'
+    end
+
+    should_assign_to :events
+    should_have_media_type 'application/rss+xml'
+    should_eventually 'check the number of entries'
+  end
   
   
   context 'on GET to :new' do

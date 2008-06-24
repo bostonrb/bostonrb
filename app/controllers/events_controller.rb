@@ -1,8 +1,16 @@
 class EventsController < ApplicationController
   
   def index
-    @next_event      = Event.next
-    @upcoming_events = Event.upcoming - [@next_event]
+    respond_to do |format|
+      format.html do
+        @next_event      = Event.next
+        @upcoming_events = Event.upcoming - [@next_event]
+      end
+      format.rss do
+        @events = Event.find :all
+      end
+
+    end
   end
 
   def new
