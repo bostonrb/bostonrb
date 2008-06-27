@@ -23,7 +23,7 @@ class Event < ActiveRecord::Base
   before_save :geocode_location
 
   has_finder :upcoming, :conditions => ['date > ?', DateTime.now],
-                        :order      => 'date desc'
+                        :order      => 'date asc'
   has_finder :past, :conditions => ['date < ?', DateTime.now],
                         :order      => 'date desc'
 
