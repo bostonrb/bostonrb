@@ -9,7 +9,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
     should 'recognize route' do
       assert_recognizes({ :controller => 'projects', :action => 'index' },
-                          :path       => '/',        :method => :get)
+                          :path       => '/projects',        :method => :get)
     end
     
     should_respond_with :success
@@ -49,7 +49,7 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_equal @old_count + 1, Project.count
     end
 
-    should_redirect_to 'home_path'
+    should_redirect_to 'projects_path'
   end
 
   context 'A GET to /projects/:id/edit' do
@@ -111,7 +111,7 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_equal 'Project was successfully deleted.', flash[:notice]
     end
 
-    should_redirect_to 'home_path'
+    should_redirect_to 'projects_path'
   end
 
   protected
