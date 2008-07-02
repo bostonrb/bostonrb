@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
   
   has_many :commits, :limit => 5, :order => 'published_at desc', :dependent => :destroy
   
-  has_finder :all, :order => 'name asc'
+  named_scope :all, :order => 'name asc'
 
   #acts_as_paranoid
   

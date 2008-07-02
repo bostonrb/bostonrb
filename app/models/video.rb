@@ -18,7 +18,7 @@ class Video < ActiveRecord::Base
   
   before_save :populate_embed
   
-  has_finder :all, :order => 'updated_at desc'
+  named_scope :all, :order => 'updated_at desc'
   
   #acts_as_paranoid
 

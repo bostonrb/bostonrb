@@ -18,7 +18,7 @@ class Job < ActiveRecord::Base
   
   validates_presence_of :location, :organization, :title, :description
   
-  has_finder :all,        :order      => 'updated_at desc'
+  named_scope :all,        :order      => 'updated_at desc'
   
   #acts_as_paranoid
 

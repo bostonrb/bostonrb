@@ -22,11 +22,14 @@ class Event < ActiveRecord::Base
   acts_as_mappable :default_units => :miles
   before_save :geocode_location
 
-  has_finder :upcoming, :conditions => ['date > ?', DateTime.now],
+  named_scope :upcoming, :conditions => ['date > ?', DateTime.now],
                         :order      => 'date asc'
-  has_finder :past, :conditions => ['date < ?', DateTime.now],
-                        :order      => 'date desc'
-
+  named_scope :upcoming, lambda {{
+                :conditions => ['date > ?', DateTime.now],
+                :order      => 'date asc' } }
+  named_scope :past, lambda {{:conditions => ['date < ?', DateTime.now],
+                        :order      => 'date desc'}}
+                      
 
   #acts_as_paranoid
 
