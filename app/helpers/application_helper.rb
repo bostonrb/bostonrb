@@ -3,7 +3,7 @@ module ApplicationHelper
   
   def blueprint_ie
     html = "<!--[if IE]>"
-    html << stylesheet_link_tag('/blueprint/ie', :media => 'screen')
+    html << stylesheet_link_tag('blueprint/ie', :media => 'screen')
     html << "<![endif]-->"
     html
   end
