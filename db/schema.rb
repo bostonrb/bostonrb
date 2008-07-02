@@ -1,5 +1,5 @@
 # This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of ActiveRecord to incrementally modify your database, and
+# please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
 # Note that this schema.rb definition is the authoritative source for your database schema. If you need
@@ -42,9 +42,6 @@ ActiveRecord::Schema.define(:version => 15) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
-  end
-
-  create_table "meetings", :force => true do |t|
   end
 
   create_table "places", :force => true do |t|
