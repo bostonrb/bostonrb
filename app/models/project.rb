@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   
   has_finder :all, :order => 'name asc'
 
-  acts_as_paranoid
+  #acts_as_paranoid
   
   def self.download_entries
     projects = Project.find :all, :conditions => ['feed_url <> ?', '']

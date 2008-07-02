@@ -17,14 +17,16 @@ Rails::Initializer.run do |config|
   
   config.gem 'validates_email_format_of', :source => 'http://gems.github.com'
   config.gem 'BlueCloth', :lib => 'bluecloth'
-  config.gem 'acts_as_paranoid', :version => '0.3.1'
+#  config.gem 'acts_as_paranoid', :version => '0.3.1'
   config.gem 'builder', :version => '2.1.2'
   config.gem 'feed-normalizer', :version => '1.4.0'
   config.gem 'haml', :version => '2.0.1'
   config.gem 'has_finder', :version => '0.1.5'
   config.gem 'hpricot', :version => '0.6'
+  config.gem 'simple-rss', :version => '1.1'
+  
   config.gem 'mocha', :version => '0.5.6'
   config.gem 'quietbacktrace'
-  config.gem 'simple-rss', :version => '1.1'
   config.gem 'thoughtbot-factory_girl', :version => '1.1', :lib => 'factory_girl', :source => 'http://gems.github.com'
+
 end

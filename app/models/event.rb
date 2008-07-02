@@ -28,7 +28,7 @@ class Event < ActiveRecord::Base
                         :order      => 'date desc'
 
 
-  acts_as_paranoid
+  #acts_as_paranoid
 
   belongs_to :place
   

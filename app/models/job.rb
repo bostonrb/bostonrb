@@ -20,6 +20,6 @@ class Job < ActiveRecord::Base
   
   has_finder :all,        :order      => 'updated_at desc'
   
-  acts_as_paranoid
+  #acts_as_paranoid
 
 end

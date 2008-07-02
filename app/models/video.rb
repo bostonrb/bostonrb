@@ -20,7 +20,7 @@ class Video < ActiveRecord::Base
   
   has_finder :all, :order => 'updated_at desc'
   
-  acts_as_paranoid
+  #acts_as_paranoid
 
   def populate_embed
     doc = Hpricot open(self.url)
