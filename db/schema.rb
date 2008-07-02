@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 15) do
     t.string   "title"
     t.string   "url"
     t.datetime "published_at"
-    t.integer  "project_id"
+    t.integer  "project_id",   :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 15) do
     t.float    "lat"
     t.string   "title"
     t.datetime "deleted_at"
-    t.integer  "place_id"
+    t.integer  "place_id",    :limit => 11
   end
 
   create_table "jobs", :force => true do |t|
