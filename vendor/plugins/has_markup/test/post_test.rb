@@ -8,7 +8,7 @@ class PostTest < Test::Unit::TestCase
       @post = Post.new
     end
     
-    should 'not flail when doing cache_content' do
+    should 'not cache anything doing cache_content' do
       @post.cache_content_html
       assert_nil @post.cached_content_html
     end
