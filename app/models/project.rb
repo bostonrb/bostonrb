@@ -14,13 +14,11 @@
 #
 
 class Project < ActiveRecord::Base
-  
   has_many :commits, :limit => 5, :order => 'published_at desc', :dependent => :destroy
+  has_markup :description, :cache_html => true
   
   named_scope :all, :order => 'name asc'
 
-  #acts_as_paranoid
-  
   def self.download_entries
     projects = Project.find :all, :conditions => ['feed_url <> ?', '']
     

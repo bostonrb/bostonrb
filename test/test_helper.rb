@@ -9,6 +9,8 @@ end
 
 begin require 'redgreen'; rescue LoadError; end
 
+require 'has_markup/shoulda'
+
 class Test::Unit::TestCase
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false

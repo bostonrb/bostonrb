@@ -1,7 +1,8 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class JobTest < ActiveSupport::TestCase
-  should_require_attributes :title, :location, :organization, :description
+  should_require_attributes :title, :location, :organization
+  should_have_markup :description, :required => true, :cache_html => true
   
   context 'Job finders' do
     setup do

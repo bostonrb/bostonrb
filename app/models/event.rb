@@ -17,8 +17,8 @@
 
 class Event < ActiveRecord::Base
 
-  validates_presence_of :date, :title, :description, :location
-
+  validates_presence_of :date, :title, :location
+  has_markup :description, :required => true, :cache_html => true
   acts_as_mappable :default_units => :miles
   before_save :geocode_location
 

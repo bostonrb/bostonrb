@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  
-  should_require_attributes :date, :title, :description, :location
+  should_require_attributes :date, :title, :location
+  should_have_markup :description, :required => true, :cache_html => true
 
   should_belong_to :place
 

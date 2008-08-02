@@ -15,11 +15,8 @@
 #
 
 class Job < ActiveRecord::Base
-  
-  validates_presence_of :location, :organization, :title, :description
+  validates_presence_of :location, :organization, :title
+  has_markup :description, :required => true, :cache_html => true
   
   named_scope :all,        :order      => 'updated_at desc'
-  
-  #acts_as_paranoid
-
 end

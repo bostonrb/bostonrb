@@ -1,0 +1,6 @@
+--- 
+format: 1
+handler: 
+  commit: 86f2f7ad3e45da0eac45dcd6b65a5a61bd5de236
+  url: git://github.com/technicalpickles/has_markup.git
+lock: false

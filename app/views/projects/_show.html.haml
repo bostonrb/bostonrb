@@ -1,5 +1,5 @@
 %h3= link_to project.name, project.homepage_url
-%p= project.description
+~ project.cached_description_html
 %ul
   - project.commits.each do |commit|
     %li= link_to commit.title, commit.url
