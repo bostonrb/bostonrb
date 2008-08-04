@@ -2,4 +2,4 @@
 - unless event.nil?
   #next_event_banner
     %marquee
-      = "Next event: #{link_to event.title, event} on #{event.date.to_s(:european)}"
+      = "Next event: #{link_to event.title, event} on #{event.date.to_s(:long)}"

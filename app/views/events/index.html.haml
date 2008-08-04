@@ -15,7 +15,7 @@
   - unless @upcoming_events.empty?
     %dl
       - @upcoming_events.each do |event|
-        %dt= link_to "#{event.title}: #{event.date.to_s(:european)}", event
+        %dt= link_to "#{event.title}: #{event.date.to_s(:long)}", event
         %dd= event.location
         %dd= link_to 'Edit', edit_event_path(event)
   - else
@@ -25,6 +25,6 @@
   %h2 Past
   %dl
     - @past_events.each do |event|
-      %dt= link_to "#{event.title}: #{event.date.to_s(:european)}", event
+      %dt= link_to "#{event.title}: #{event.date.to_s(:long)}", event
       %dd= event.location
       %dd= link_to 'Edit', edit_event_path(event)
