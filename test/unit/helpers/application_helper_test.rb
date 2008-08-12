@@ -12,7 +12,7 @@ class ApplicationHelperTest < HelperTestCase
       assert_not_nil @result
     end
     
-    should 'include blueprint ie css' do
+    should_eventually 'include blueprint ie css' do
       expected = %q(<link href="/blueprint/ie.css" media="screen" rel="stylesheet" type="text/css" />)
       assert @result.include?(expected)
     end
