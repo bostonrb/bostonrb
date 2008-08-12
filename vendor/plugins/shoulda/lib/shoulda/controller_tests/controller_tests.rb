@@ -145,14 +145,16 @@ module ThoughtBot # :nodoc:
           attr_accessor :identifier
           
           # Name of the ActiveRecord class this resource is responsible for.  Automatically determined from
-          # test class if not explicitly set.  UserTest => :user
+          # test class if not explicitly set.  UserTest => "User"
           attr_accessor :klass
 
           # Name of the instantiated ActiveRecord object that should be used by some of the tests.  
           # Defaults to the underscored name of the AR class.  CompanyManager => :company_manager
           attr_accessor :object
 
-          # Name of the parent AR objects.
+          # Name of the parent AR objects.  Can be set as parent= or parents=, and can take either
+          # the name of the parent resource (if there's only one), or an array of names (if there's
+          # more than one).
           #
           # Example:
           #   # in the routes...
@@ -334,25 +336,31 @@ module ThoughtBot # :nodoc:
           should_set_the_flash_to nil
         end
         
-        # Macro that creates a test asserting that the controller assigned to @name
+        # Macro that creates a test asserting that the controller assigned to
+        # each of the named instance variable(s).
         #
         # Example:
         #
-        #   should_assign_to :user
-        def should_assign_to(name)
-          should "assign @#{name}" do
-            assert assigns(name.to_sym), "The action isn't assigning to @#{name}"
+        #   should_assign_to :user, :posts
+        def should_assign_to(*names)
+          names.each do |name|
+            should "assign @#{name}" do
+              assert assigns(name.to_sym), "The action isn't assigning to @#{name}"
+            end
           end
         end
 
-        # Macro that creates a test asserting that the controller did not assign to @name
+        # Macro that creates a test asserting that the controller did not assign to
+        # any of the named instance variable(s).
         #
         # Example:
         #
-        #   should_not_assign_to :user
-        def should_not_assign_to(name)
-          should "not assign to @#{name}" do
-            assert !assigns(name.to_sym), "@#{name} was visible"
+        #   should_not_assign_to :user, :posts
+        def should_not_assign_to(*names)
+          names.each do |name|
+            should "not assign to @#{name}" do
+              assert !assigns(name.to_sym), "@#{name} was visible"
+            end
           end
         end
 
@@ -371,7 +379,7 @@ module ThoughtBot # :nodoc:
         #
         #   should_render_template :new
         def should_render_template(template)
-          should "render '#{template}' template" do            
+          should "render template #{template.inspect}" do            
             assert_template template.to_s
           end
         end
@@ -384,7 +392,7 @@ module ThoughtBot # :nodoc:
         #   should_redirect_to '"/"'
         #   should_redirect_to "users_url(@user)"
         def should_redirect_to(url)
-          should "redirect to \"#{url}\"" do
+          should "redirect to #{url.inspect}" do
             instantiate_variables_from_assigns do
               assert_redirected_to eval(url, self.send(:binding), __FILE__, __LINE__)
             end
@@ -455,7 +463,7 @@ module ThoughtBot # :nodoc:
           parent_name = parent_names.shift
           parent = record ? record.send(parent_name) : parent_name.to_s.classify.constantize.find(:first)
 
-          { :"#{parent_name}_id" => parent.id }.merge(make_parent_params(resource, parent, parent_names))
+          { :"#{parent_name}_id" => parent.to_param }.merge(make_parent_params(resource, parent, parent_names))
         end
 
       end

@@ -1,7 +1,9 @@
 class JobsController < ApplicationController
   
   def index
-    @jobs = Job.all
+    @jobs = Job.recent
+    @old_job_count = Job.old.count
+    
 
     respond_to do |format|
       format.html
