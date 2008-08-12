@@ -16,6 +16,7 @@ class JobsControllerTest < ActionController::TestCase
       
       should_respond_with :success
       should_assign_to :jobs
+      should_assign_to :old_job_count
     end
   end
 
@@ -38,6 +39,16 @@ class JobsControllerTest < ActionController::TestCase
         should_have_job_form_fields
       end
     end
+  end
+  
+  context 'A GET to /jobs/old' do
+    setup do
+      get :old
+    end
+    should_respond_with :success
+    should_assign_to :jobs
+    should_assign_to :recent_job_count
+    should_render_template :index
   end
 
   context 'A POST to /jobs' do

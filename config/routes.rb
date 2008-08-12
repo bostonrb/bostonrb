@@ -1,7 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :places
 
-  map.resources :jobs, :videos, :projects, :events
+  map.resources :jobs, :collection => {:old => :get}
+  map.resources :videos
+  map.resources :projects
+  map.resources :events
 
   map.site 'site/:name', :controller => 'pages', :action => 'show'
 

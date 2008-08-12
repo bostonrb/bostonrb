@@ -10,6 +10,12 @@ class JobsController < ApplicationController
       format.rss  { render :template => '/jobs/index' }
     end
   end
+  
+  def old
+    @jobs = Job.old
+    @recent_job_count = Job.recent.count
+    render :template => '/jobs/index'
+  end
 
   def show
     @job = Job.find params[:id]

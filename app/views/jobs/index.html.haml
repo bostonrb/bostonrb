@@ -11,4 +11,5 @@
         = partial 'jobs/list_item', :job => job
   - else
     %p None at this time.
-  %p= "#{@old_job_count} older job posts"
+  = link_to "#{@old_job_count} older job posts", old_jobs_path if @old_job_count
+  = link_to "#{@recent_job_count} recent job posts", jobs_path if @recent_job_count
