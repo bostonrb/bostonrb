@@ -9,6 +9,6 @@
       %dt To apply, contact:
       %dd= @job.email
 
-  ~ @job.cached_description_html
+  ~ @job.cached_description_html || @job.description_html
 
   %p= link_to 'Edit', edit_job_path(@job)
