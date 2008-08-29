@@ -55,12 +55,4 @@ class EventsController < ApplicationController
     flash[:notice] = 'Event was successfully deleted.'
     redirect_to events_url
   end
-
-  private
-    def protect_from_bots
-      unless params[:captcha].blank?
-        render :file => "#{RAILS_ROOT}/public/404.html", :status => 404 and return
-      end
-    end
-
 end
