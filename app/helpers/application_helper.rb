@@ -17,6 +17,12 @@ module ApplicationHelper
   def tab_for(name, url = nil)
     url ||= send("#{name.downcase}_url")
     "<li>#{link_to name.capitalize, url, tab_link_attributes(name)}</li>"
-  end  
+  end
+  
+  def anticaptcha
+    content_tag(:div, :class => 'captcha') do
+      label_tag(:captcha, 'Answer this is if you are a roboto') + text_field_tag(:captcha)
+    end
+  end
 
 end

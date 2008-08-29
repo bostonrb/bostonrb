@@ -68,6 +68,10 @@ class EventsControllerTest < ActionController::TestCase
         assert_select 'input[type=submit][id=event_submit]'
       end
     end
+    
+    should 'render anticaptcha' do
+      assert_select '#captcha'
+    end
   end
   
   context 'on GET to :show' do
@@ -114,6 +118,28 @@ class EventsControllerTest < ActionController::TestCase
 
     should 'not create a job' do
       assert_equal @old_count, Event.count
+    end
+  end
+  
+  context 'A GET to :edit' do
+    setup do
+      @event = Factory(:event)
+      get :edit, :id => @event.to_param
+    end
+    
+    should_assign_to :event
+    should_respond_with :success
+    should_render_template :edit
+    
+    should 'have event form' do
+      assert_select "form[id=edit_event_#{@event.to_param}]" do
+        should_have_event_form_fields
+        assert_select 'input[type=submit][id=event_submit]'
+      end
+    end
+    
+    should 'render anticaptcha' do
+      assert_select '#captcha'
     end
   end
   
