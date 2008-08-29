@@ -69,9 +69,7 @@ class EventsControllerTest < ActionController::TestCase
       end
     end
     
-    should 'render anticaptcha' do
-      assert_select '#captcha'
-    end
+    should_render_captcha
   end
   
   context 'on GET to :show' do
@@ -138,9 +136,7 @@ class EventsControllerTest < ActionController::TestCase
       end
     end
     
-    should 'render anticaptcha' do
-      assert_select '#captcha'
-    end
+    should_render_captcha
   end
   
   context 'A PUT to :update without filling in anticaptcha' do
