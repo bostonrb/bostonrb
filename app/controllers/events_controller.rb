@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   
+  before_filter :protect_from_bots, :only => [:create, :update]
+  
   def index
     respond_to do |format|
       format.html do
@@ -25,17 +27,13 @@ class EventsController < ApplicationController
   end
 
   def create
-    if params[:captcha].blank?
-      @event = Event.new params[:event]
+    @event = Event.new params[:event]
 
-      if @event.save
-        flash[:notice] = 'Event was successfully created.'
-        redirect_to events_url
-      else
-        render :action => 'new'
-      end
-    else
+    if @event.save
+      flash[:notice] = 'Event was successfully created.'
       redirect_to events_url
+    else
+      render :action => 'new'
     end
   end
 
@@ -57,5 +55,12 @@ class EventsController < ApplicationController
     flash[:notice] = 'Event was successfully deleted.'
     redirect_to events_url
   end
+
+  private
+    def protect_from_bots
+      unless params[:captcha].blank?
+        render :file => "#{RAILS_ROOT}/public/404.html", :status => 404 and return
+      end
+    end
 
 end

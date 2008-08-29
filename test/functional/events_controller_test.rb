@@ -86,7 +86,7 @@ class EventsControllerTest < ActionController::TestCase
     should_render_template :show
   end
   
-  context 'A POST to :create without filling in captcha' do
+  context 'A POST to :create without filling in anticaptcha' do
     setup do
       @old_count = Event.count
       post :create, :event => Factory.attributes_for(:event)
@@ -104,20 +104,20 @@ class EventsControllerTest < ActionController::TestCase
     should_redirect_to 'events_path'
   end
   
-  context 'A POST to :create with filling in captcha' do
+  context 'A POST to :create with filling in anticaptcha' do
     setup do
       @old_count = Event.count
       post :create, :event => Factory.attributes_for(:event), :captcha => 'als;khfadslihwelksdf'
     end
+    
+    should_respond_with 404
 
     should 'not create a job' do
       assert_equal @old_count, Event.count
     end
-
-    should_redirect_to 'events_path'
   end
   
-  context 'A PUT to :update' do
+  context 'A PUT to :update without filling in anticaptcha' do
     setup do
       @event = Factory(:event)
       put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
@@ -133,6 +133,19 @@ class EventsControllerTest < ActionController::TestCase
     end
 
     should_redirect_to 'events_path'
+  end
+  
+  context 'A PUT to :update with filling in anticaptcha' do
+    setup do
+      @event = Factory(:event)
+      put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }, :captcha => 'asdfasldkfzxoiczlxcnvk'
+    end
+    
+    should_respond_with 404
+
+    should 'not update event description' do
+      assert_equal @event.description, Event.find_by_id(@event.id).description
+    end
   end
   
   context 'A PUT to :update with bad parameters' do
