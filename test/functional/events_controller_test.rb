@@ -88,34 +88,77 @@ class EventsControllerTest < ActionController::TestCase
     should_render_template :show
   end
   
-  context 'A POST to :create without filling in anticaptcha' do
+  context 'When not filing in notacaptcha' do
     setup do
-      @old_count = Event.count
-      post :create, :event => Factory.attributes_for(:event)
-    end
-
-    should 'recognize route' do
-      assert_recognizes({ :controller => 'events', :action => 'create' },
-                          :path       => '/events', :method => :post)
-    end
-
-    should 'create a job' do
-      assert_equal @old_count + 1, Event.count
-    end
-
-    should_redirect_to 'events_path'
-  end
-  
-  context 'A POST to :create with filling in anticaptcha' do
-    setup do
-      @old_count = Event.count
-      post :create, :event => Factory.attributes_for(:event), :captcha => 'als;khfadslihwelksdf'
+      @params = {}
     end
     
-    should_respond_with 404
+    context 'a POST to :create' do
+      setup do
+        @old_count = Event.count
+        post :create, @params.merge(:event => Factory.attributes_for(:event))
+      end
 
-    should 'not create a job' do
-      assert_equal @old_count, Event.count
+      should 'recognize route' do
+        assert_recognizes({ :controller => 'events', :action => 'create' },
+                            :path       => '/events', :method => :post)
+      end
+
+      should 'create a job' do
+        assert_equal @old_count + 1, Event.count
+      end
+
+      should_redirect_to 'events_path'
+    end
+    
+    context 'a PUT to :update' do
+      setup do
+        @event = Factory(:event)
+        put :update, @params.merge(:id => @event.to_param, :event => { :description => 'Updated Rails Developer' })
+      end
+
+      should 'recognize route' do
+        assert_recognizes({ :controller => 'events', :action => 'update', :id => @event.to_param },
+                            :path       => "/events/#{@event.id}", :method => :put)
+      end
+
+      should 'update event description' do
+        assert_not_equal @event.description, Event.find_by_id(@event.id).description
+      end
+
+      should_redirect_to 'events_path'
+    end
+  end
+  
+  context 'When filing in notacaptcha' do
+    setup do
+      @params = { :captcha => 'als;khfadslihwelksdf' }
+    end
+    
+    context 'a POST to :create' do
+      setup do
+        @old_count = Event.count
+        post :create, @params.merge(:event => Factory.attributes_for(:event))
+      end
+
+      should_respond_with 404
+
+      should 'not create a job' do
+        assert_equal @old_count, Event.count
+      end
+    end
+
+    context 'a PUT to :update' do
+      setup do
+        @event = Factory(:event)
+        put :update, @params.merge(:id => @event.to_param, :event => { :description => 'Updated Rails Developer' })
+      end
+
+      should_respond_with 404
+
+      should 'not update event description' do
+        assert_equal @event.description, Event.find_by_id(@event.id).description
+      end
     end
   end
   
@@ -137,37 +180,6 @@ class EventsControllerTest < ActionController::TestCase
     end
     
     should_render_captcha
-  end
-  
-  context 'A PUT to :update without filling in anticaptcha' do
-    setup do
-      @event = Factory(:event)
-      put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
-    end
-
-    should 'recognize route' do
-      assert_recognizes({ :controller => 'events', :action => 'update', :id => @event.to_param },
-                          :path       => "/events/#{@event.id}", :method => :put)
-    end
-
-    should 'update event description' do
-      assert_not_equal @event.description, Event.find_by_id(@event.id).description
-    end
-
-    should_redirect_to 'events_path'
-  end
-  
-  context 'A PUT to :update with filling in anticaptcha' do
-    setup do
-      @event = Factory(:event)
-      put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }, :captcha => 'asdfasldkfzxoiczlxcnvk'
-    end
-    
-    should_respond_with 404
-
-    should 'not update event description' do
-      assert_equal @event.description, Event.find_by_id(@event.id).description
-    end
   end
   
   context 'A PUT to :update with bad parameters' do
