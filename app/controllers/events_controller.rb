@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   
-  before_filter :protect_from_bots, :only => [:create, :update]
+  before_filter :protect_with_notacaptcha, :only => [:create, :update]
   
   def index
     respond_to do |format|
