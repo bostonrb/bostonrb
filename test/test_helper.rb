@@ -3,10 +3,6 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 require File.expand_path(File.dirname(__FILE__) + '/helper_testcase')
 
-Dir[File.join(RAILS_ROOT, 'test', 'factories', '*')].each do |file|
-  require file
-end
-
 begin require 'redgreen'; rescue LoadError; end
 
 require 'has_markup/shoulda'
