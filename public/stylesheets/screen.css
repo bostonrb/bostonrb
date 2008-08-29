@@ -166,3 +166,7 @@ textarea.job_description {
 #errorExplanation h2 {
   font-size: 1.4em;
   color: #8a1f11; }
+
+.captcha {
+  display: none;
+}

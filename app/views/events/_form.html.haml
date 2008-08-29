@@ -15,3 +15,7 @@
     ~ form.text_area :description
     %br/
     = link_to 'The description is Markdown-enabled', 'http://daringfireball.net/projects/markdown/syntax'
+
+  .captcha
+    %dt Answer if you are a robot
+    %dd= text_field_tag :captcha

@@ -86,7 +86,7 @@ class EventsControllerTest < ActionController::TestCase
     should_render_template :show
   end
   
-  context 'A POST to :create' do
+  context 'A POST to :create without filling in captcha' do
     setup do
       @old_count = Event.count
       post :create, :event => Factory.attributes_for(:event)
@@ -99,6 +99,19 @@ class EventsControllerTest < ActionController::TestCase
 
     should 'create a job' do
       assert_equal @old_count + 1, Event.count
+    end
+
+    should_redirect_to 'events_path'
+  end
+  
+  context 'A POST to :create with filling in captcha' do
+    setup do
+      @old_count = Event.count
+      post :create, :event => Factory.attributes_for(:event), :captcha => 'als;khfadslihwelksdf'
+    end
+
+    should 'not create a job' do
+      assert_equal @old_count, Event.count
     end
 
     should_redirect_to 'events_path'

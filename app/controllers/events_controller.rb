@@ -25,13 +25,17 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new params[:event]
+    if params[:captcha].blank?
+      @event = Event.new params[:event]
 
-    if @event.save
-      flash[:notice] = 'Event was successfully created.'
-      redirect_to events_url
+      if @event.save
+        flash[:notice] = 'Event was successfully created.'
+        redirect_to events_url
+      else
+        render :action => 'new'
+      end
     else
-      render :action => 'new'
+      redirect_to events_url
     end
   end
 
