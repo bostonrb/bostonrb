@@ -21,7 +21,7 @@ module ApplicationHelper
   
   def anticaptcha
     content_tag(:div, :class => 'captcha') do
-      label_tag(:captcha, 'Answer this is if you are a roboto') + text_field_tag(:captcha)
+      label_tag(:captcha, 'Answer this if you are a roboto') + text_field_tag(:captcha)
     end
   end
 
