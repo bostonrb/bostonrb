@@ -15,7 +15,9 @@ Rails::Initializer.run do |config|
     :secret      => 'a406a09e903c61fa55fadce763e5df7cae1320592290a64e0665412cd9aff9b18116daeab3309fe69bfb3ffc6da224671f5ea5ab96ad7245b276a06a448f2c0a'
   }
   
-  config.gem 'validates_email_format_of', :source => 'http://gems.github.com'
+  config.gem 'dancroak-validates_email_format_of', 
+    :source => 'http://gems.github.com', 
+    :lib => 'validates_email_format_of'
   config.gem 'BlueCloth', :lib => 'bluecloth'
 #  config.gem 'acts_as_paranoid', :version => '0.3.1'
   config.gem 'builder', :version => '2.1.2'
