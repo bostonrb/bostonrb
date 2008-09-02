@@ -7,8 +7,12 @@ class ApplicationController < ActionController::Base
   
   protected
     def protect_with_notacaptcha
-      unless params[:captcha].blank?
+      if failed_notacaptcha?
         render :file => "#{RAILS_ROOT}/public/404.html", :status => 404 and return
       end
+    end
+    
+    def failed_notacaptcha?
+      ! params[:captcha].blank?
     end
 end
