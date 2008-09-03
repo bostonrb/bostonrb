@@ -69,9 +69,40 @@ class JobsControllerTest < ActionController::TestCase
     should_redirect_to 'jobs_url'
   end
 
+  context 'A GET to /jobs/:id without editing privileges' do
+    setup do
+      @job = Factory :job
+      UserSession.any_instance.expects(:edit_job?).returns(false)
+      get :show, :id => @job.id
+    end
+
+    should_respond_with :success
+    should_render_template :show
+    
+    should 'not show Edit link' do
+      assert_select "a[href=?]", edit_job_path(@job), false
+    end
+  end
+
+  context 'A GET to /jobs/:id with editing privileges' do
+    setup do
+      @job = Factory :job
+      UserSession.any_instance.expects(:edit_job?).returns(true)
+      get :show, :id => @job.id
+    end
+
+    should_respond_with :success
+    should_render_template :show
+    
+    should 'show Edit link' do  
+      assert_select "a[href=?]", edit_job_path(@job), "Edit"
+    end
+  end
+
   context 'A GET to /jobs/:id/edit' do
     setup do
       @job = Factory(:job)
+      UserSession.any_instance.expects(:edit_job?).returns(true)
       get :edit, :id => @job.id
     end
 
@@ -88,6 +119,17 @@ class JobsControllerTest < ActionController::TestCase
         should_have_job_form_fields
       end
     end
+  end
+  
+  context 'A GET to /jobs/:id/edit without edit privileges' do
+    setup do
+      @job = Factory(:job)
+      UserSession.any_instance.expects(:edit_job?).returns(false)
+      get :edit, :id => @job.id
+    end
+    
+    should_set_the_flash_to 'Editing time expired.'
+    should_redirect_to 'jobs_url'
   end
 
   context 'A PUT to /jobs/:id' do

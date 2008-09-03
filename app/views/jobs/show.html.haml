@@ -11,4 +11,5 @@
 
   ~ @job.description_html
 
-  %p= link_to 'Edit', edit_job_path(@job)
+  - if user_session.edit_job? @job
+    %p= link_to 'Edit', edit_job_path(@job)

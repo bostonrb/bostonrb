@@ -1,9 +1,10 @@
 class JobsController < ApplicationController
   
+  before_filter :authorize, :only => [:edit]
+  
   def index
     @jobs = Job.recent
     @old_job_count = Job.old.count
-    
 
     respond_to do |format|
       format.html
@@ -58,4 +59,14 @@ class JobsController < ApplicationController
     flash[:notice] = 'Job was successfully deleted.'
     redirect_to jobs_url
   end
+  
+  private
+  
+  def authorize
+    unless user_session.edit_job? Job.find(params[:id])
+      flash[:notice] = 'Editing time expired.'
+      redirect_to jobs_url
+    end
+  end
+  
 end
