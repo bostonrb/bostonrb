@@ -1,7 +1,4 @@
 class EventsController < ApplicationController
-  
-  before_filter :protect_with_notacaptcha, :only => [:create, :update]
-  
   def index
     respond_to do |format|
       format.html do
@@ -29,7 +26,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new params[:event]
 
-    if @event.save
+    if verify_recaptcha(@event) && @event.save
       flash[:notice] = 'Event was successfully created.'
       redirect_to events_url
     else
@@ -40,7 +37,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    if @event.update_attributes(params[:event])
+    if verify_recaptcha(@event) && @event.update_attributes(params[:event])
       flash[:notice] = 'Event was successfully updated.'
       redirect_to events_url
     else

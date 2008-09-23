@@ -68,8 +68,6 @@ class EventsControllerTest < ActionController::TestCase
         assert_select 'input[type=submit][id=event_submit]'
       end
     end
-    
-    should_render_captcha
   end
   
   context 'on GET to :show' do
@@ -88,15 +86,15 @@ class EventsControllerTest < ActionController::TestCase
     should_render_template :show
   end
   
-  context 'When not filing in notacaptcha' do
+  context 'When passing recaptcha' do
     setup do
-      @params = {}
+      @controller.stubs(:verify_recaptcha).returns(true)
     end
     
     context 'a POST to :create' do
       setup do
         @old_count = Event.count
-        post :create, @params.merge(:event => Factory.attributes_for(:event))
+        post :create, :event => Factory.attributes_for(:event)
       end
 
       should 'recognize route' do
@@ -114,7 +112,7 @@ class EventsControllerTest < ActionController::TestCase
     context 'a PUT to :update' do
       setup do
         @event = Factory(:event)
-        put :update, @params.merge(:id => @event.to_param, :event => { :description => 'Updated Rails Developer' })
+        put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
       end
 
       should 'recognize route' do
@@ -130,27 +128,29 @@ class EventsControllerTest < ActionController::TestCase
     end
   end
   
-  context 'When filing in notacaptcha' do
+  context 'When not passing recaptcha' do
     setup do
-      @params = { :captcha => 'als;khfadslihwelksdf' }
+      @controller.stubs(:verify_recaptcha).returns(false)
     end
     
     context 'a POST to :create' do
       setup do
         @old_count = Event.count
-        post :create, @params.merge(:event => Factory.attributes_for(:event))
+        post :create, :event => Factory.attributes_for(:event)
       end
 
-      should_foil_bots
+      should_respond_with :success
+      should_render_template :new
     end
 
     context 'a PUT to :update' do
       setup do
         @event = Factory(:event)
-        put :update, @params.merge(:id => @event.to_param, :event => { :description => 'Updated Rails Developer' })
+        put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
       end
 
-      should_foil_bots
+      should_respond_with :success
+      should_render_template :edit
     end
   end
   
@@ -170,8 +170,6 @@ class EventsControllerTest < ActionController::TestCase
         assert_select 'input[type=submit][id=event_submit]'
       end
     end
-    
-    should_render_captcha
   end
   
   context 'A PUT to :update with bad parameters' do
