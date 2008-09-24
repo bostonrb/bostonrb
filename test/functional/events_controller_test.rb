@@ -86,11 +86,7 @@ class EventsControllerTest < ActionController::TestCase
     should_render_template :show
   end
   
-  context 'When passing recaptcha' do
-    setup do
-      @controller.stubs(:verify_recaptcha).returns(true)
-    end
-    
+  passing_captcha_context do
     context 'a POST to :create' do
       setup do
         @old_count = Event.count
@@ -102,9 +98,7 @@ class EventsControllerTest < ActionController::TestCase
                             :path       => '/events', :method => :post)
       end
 
-      should 'create a job' do
-        assert_equal @old_count + 1, Event.count
-      end
+      should_change "Event.count", :by => 1
 
       should_redirect_to 'events_path'
     end
@@ -128,11 +122,7 @@ class EventsControllerTest < ActionController::TestCase
     end
   end
   
-  context 'When not passing recaptcha' do
-    setup do
-      @controller.stubs(:verify_recaptcha).returns(false)
-    end
-    
+  failing_captcha_context do
     context 'a POST to :create' do
       setup do
         @old_count = Event.count
