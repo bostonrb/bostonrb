@@ -72,7 +72,7 @@ class JobsControllerTest < ActionController::TestCase
   context 'A GET to /jobs/:id without editing privileges' do
     setup do
       @job = Factory :job
-      UserSession.any_instance.expects(:edit_job?).returns(false)
+      UserSession.any_instance.stubs(:edit_job?).returns(false)
       get :show, :id => @job.id
     end
 
@@ -87,7 +87,7 @@ class JobsControllerTest < ActionController::TestCase
   context 'A GET to /jobs/:id with editing privileges' do
     setup do
       @job = Factory :job
-      UserSession.any_instance.expects(:edit_job?).returns(true)
+      UserSession.any_instance.stubs(:edit_job?).returns(true)
       get :show, :id => @job.id
     end
 
