@@ -21,5 +21,3 @@ config.action_view.cache_template_loading            = true
 config.action_mailer.delivery_method = :sendmail
 
 GOOGLE_MAP_API_KEY = 'ABQIAAAA5DmfAcONGodqQq2WJjcL2xRVmJNk76XDhrH9yChLo28oBQNqVhTI1FI8bDPEtkxfWbI5NT2tPk5DqA'
-
-load File.join(RAILS_ROOT, 'config', 'recaptcha.rb')
