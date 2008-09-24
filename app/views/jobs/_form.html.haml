@@ -9,6 +9,9 @@
     %dt Organization
     %dd= form.text_field :organization, :size => 35
     
+    %dt We're sorry to ask, but mind proving you are a human?
+    %dd= recaptcha_tags
+    
 #right_fields{ :class => 'column span-11 prepend-1 append-2 last' }
   %dl
     %dt Contact email

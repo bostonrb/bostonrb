@@ -51,22 +51,73 @@ class JobsControllerTest < ActionController::TestCase
     should_render_template :index
   end
 
-  context 'A POST to /jobs' do
-    setup do
-      @old_count = Job.count
-      post :create, :job => Factory.attributes_for(:job)
-    end
+  passing_captcha_context do
+    context 'A POST to /jobs' do
+      setup do
+        @old_count = Job.count
+        post :create, :job => Factory.attributes_for(:job)
+      end
 
-    should 'recognize route' do
-      assert_recognizes({ :controller => 'jobs', :action => 'create' },
-                          :path       => '/jobs', :method => :post)
-    end
+      should 'recognize route' do
+        assert_recognizes({ :controller => 'jobs', :action => 'create' },
+                            :path       => '/jobs', :method => :post)
+      end
 
-    should 'create a job' do
-      assert_equal @old_count + 1, Job.count
-    end
+      should 'create a job' do
+        assert_equal @old_count + 1, Job.count
+      end
 
-    should_redirect_to 'jobs_url'
+      should_redirect_to 'jobs_url'
+    end
+    
+    context 'A PUT to /jobs/:id' do
+      setup do
+        @job = Factory(:job)
+        put :update, :id => @job.to_param, :job => { :title => 'Updated Rails Developer' }
+      end
+
+      should 'recognize route' do
+        assert_recognizes({ :controller => 'jobs', :action => 'update', :id => @job.to_param },
+                            :path       => "/jobs/#{@job.to_param}", :method => :put)
+      end
+
+      should 'update job' do
+        assert @job.title != Job.find_by_id(@job.id).title
+      end
+
+      should_redirect_to 'jobs_path'
+    end
+  end
+  
+  failing_captcha_context do
+    context 'A POST to /jobs' do
+      setup do
+        @old_count = Job.count
+        post :create, :job => Factory.attributes_for(:job)
+      end
+      
+      should_respond_with :success
+      should_render_template :new
+      
+      should_not_change "Job.count"
+    end
+    
+    context "with an existing job" do
+      setup do
+        @job = Factory(:job)
+      end
+
+      context 'a PUT to /jobs/:id' do
+        setup do
+          put :update, :id => @job.to_param, :job => { :title => 'Updated Rails Developer' }
+        end
+
+        should_respond_with :success
+        should_render_template :edit
+
+        should_not_change "@job.title"
+      end
+    end
   end
 
   context 'A GET to /jobs/:id without editing privileges' do
@@ -130,24 +181,6 @@ class JobsControllerTest < ActionController::TestCase
     
     should_set_the_flash_to 'Editing time expired.'
     should_redirect_to 'jobs_url'
-  end
-
-  context 'A PUT to /jobs/:id' do
-    setup do
-      @job = Factory(:job)
-      put :update, :id => @job.to_param, :job => { :title => 'Updated Rails Developer' }
-    end
-
-    should 'recognize route' do
-      assert_recognizes({ :controller => 'jobs', :action => 'update', :id => @job.to_param },
-                          :path       => "/jobs/#{@job.to_param}", :method => :put)
-    end
-
-    should 'update job' do
-      assert @job.title != Job.find_by_id(@job.id).title
-    end
-
-    should_redirect_to 'jobs_path'
   end
 
   context 'A DELETE to /jobs/:id' do

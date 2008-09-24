@@ -33,7 +33,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new params[:job]
 
-    if @job.save
+    if verify_recaptcha(@job) && @job.save
       flash[:notice] = 'Job was successfully created.'
       redirect_to jobs_url
     else
@@ -44,7 +44,7 @@ class JobsController < ApplicationController
   def update
     @job = Job.find params[:id]
 
-    if @job.update_attributes(params[:job])
+    if verify_recaptcha(@job) && @job.update_attributes(params[:job])
       flash[:notice] = 'Job was successfully updated.'
       redirect_to jobs_url
     else
