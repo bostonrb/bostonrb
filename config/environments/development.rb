@@ -17,3 +17,12 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 
 GOOGLE_MAP_API_KEY = 'ABQIAAAAzMUFFnT9uH0xq39J0Y4kbhTJQa0g3IQ9GZqIMmInSLzwtGDKaBR6j135zrztfTGVOm2QlWnkaidDIQ'
+
+recaptcha_config = File.join ENV['HOME'], '.bostonrb', 'recaptcha.rb'
+if File.exists?(recaptcha_config)
+  load recaptcha_config
+else
+  ENV['RECAPTCHA_PUBLIC_KEY']  = '0000000000000000000000000000000000000000'
+  ENV['RECAPTCHA_PRIVATE_KEY'] = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+  Ambethia::ReCaptcha::SKIP_VERIFY_ENV << 'development'
+end
