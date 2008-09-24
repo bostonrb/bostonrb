@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '7ed60f9b9e04d00c05d3d81aa2176e7c'
   
+  include HoptoadNotifier::Catcher
+  
   protected
   
     def protect_with_notacaptcha
