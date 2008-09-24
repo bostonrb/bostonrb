@@ -9,7 +9,7 @@
       %dt To apply, contact:
       %dd= @job.email
 
-  ~ @job.description_html
+  ~ @job.cached_description_html
 
   - if user_session.edit_job? @job
     %p= "#{link_to 'Edit', edit_job_path(@job)} for another #{user_session.editing_time_remaining(@job)} minutes"
