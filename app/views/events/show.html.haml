@@ -1,3 +1,6 @@
+- content_for :google_maps_js do
+  = event_map @event
+  
 = partial 'layouts/full' do
   %h2= @event.title
 

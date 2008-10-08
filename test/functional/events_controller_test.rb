@@ -74,6 +74,7 @@ class EventsControllerTest < ActionController::TestCase
     setup do
       @event = Factory(:event)
       get :show, :id => @event.to_param
+      
     end
     
     should 'recognize route' do
@@ -84,6 +85,13 @@ class EventsControllerTest < ActionController::TestCase
     should_assign_to :event
     should_respond_with :success
     should_render_template :show
+    
+    before_should "include javascript for google maps" do
+      stubbed_action_view do |view|
+        view.expects(:content_for).with(:google_maps_js)
+      end
+    end
+    
   end
   
   passing_captcha_context do

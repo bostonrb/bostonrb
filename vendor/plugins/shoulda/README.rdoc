@@ -2,11 +2,11 @@
 
 Shoulda makes it easy to write elegant, understandable, and maintainable tests.  Shoulda consists of test macros, assertions, and helpers added on to the Test::Unit framework.  It's fully compatible with your existing tests, and requires no retooling to use.
 
-Helpers:: #context and #should give you rSpec like test blocks.  
+Helpers:: #context and #should give you rSpec like test blocks.
           In addition, you get nested contexts and a much more readable syntax.
-Macros:: Generate hundreds of lines of Controller and ActiveRecord tests with these powerful macros.  
+Macros:: Generate hundreds of lines of Controller and ActiveRecord tests with these powerful macros.
          They get you started quickly, and can help you ensure that your application is conforming to best practices.
-Assertions:: Many common rails testing idioms have been distilled into a set of useful assertions. 
+Assertions:: Many common rails testing idioms have been distilled into a set of useful assertions.
 
 = Usage
 
@@ -14,21 +14,21 @@ Assertions:: Many common rails testing idioms have been distilled into a set of 
 
 Stop killing your fingers with all of those underscores...  Name your tests with plain sentences!
 
-  class UserTest << Test::Unit::TestCase 
+  class UserTest << Test::Unit::TestCase
     context "A User instance" do
       setup do
         @user = User.find(:first)
       end
-    
+
       should "return its full name" do
         assert_equal 'John Doe', @user.full_name
       end
-    
+
       context "with a profile" do
         setup do
           @user.profile = Profile.find(:first)
         end
-      
+
         should "return true when sent #has_profile?" do
           assert @user.has_profile?
         end
@@ -43,12 +43,12 @@ Produces the following test methods:
 
 So readable!
 
-=== ActiveRecord Tests (ThoughtBot::Shoulda::ActiveRecord)
+=== ActiveRecord Tests (ThoughtBot::Shoulda::ActiveRecord::Macros)
 
 Quick macro tests for your ActiveRecord associations and validations:
 
   class PostTest < Test::Unit::TestCase
-    load_all_fixtures
+    fixtures :all
 
     should_belong_to :user
     should_have_many :tags, :through => :taggings
@@ -60,8 +60,6 @@ Quick macro tests for your ActiveRecord associations and validations:
   end
 
   class UserTest < Test::Unit::TestCase
-    load_all_fixtures
-
     should_have_many :posts
 
     should_not_allow_values_for :email, "blah", "b lah"
@@ -73,7 +71,7 @@ Quick macro tests for your ActiveRecord associations and validations:
 
 Makes TDD so much easier.
 
-=== Controller Tests (ThoughtBot::Shoulda::Controller::ClassMethods)
+=== Controller Tests (ThoughtBot::Shoulda::Controller::Macros)
 
 Macros to test the most common controller patterns...
 
@@ -81,7 +79,7 @@ Macros to test the most common controller patterns...
     setup do
       get :show, :id => 1
     end
-  
+
     should_assign_to :user
     should_respond_with :success
     should_render_template :show
@@ -105,11 +103,10 @@ Test entire controllers in a few lines...
 
 should_be_restful generates 40 tests on the fly, for both html and xml requests.
 
-=== Helpful Assertions (ThoughtBot::Shoulda::General)
+=== Helpful Assertions (ThoughtBot::Shoulda::Assertions)
 
 More to come here, but have fun with what's there.
 
-  load_all_fixtures
   assert_same_elements([:a, :b, :c], [:c, :a, :b])
   assert_contains(['a', '1'], /\d/)
   assert_contains(['a', '1'], 'a')
@@ -128,7 +125,7 @@ Any *.rb file under RAILS_ROOT/test/shoulda_macros/ or vendor/(plugins|gems)/gem
 
 = Credits
 
-Shoulda is maintained by {Tammer Saleh}[mailto:tsaleh@thoughtbot.com], and is funded by Thoughtbot[http://www.thoughtbot.com], inc. 
+Shoulda is maintained by {Tammer Saleh}[mailto:tsaleh@thoughtbot.com], and is funded by Thoughtbot[http://www.thoughtbot.com], inc.
 
 = License
 

@@ -40,7 +40,7 @@ class Test::Unit::TestCase
       assert_response_media_type media_type
     end
   end
-  
+
   def stubbed_action_view
     view = ActionView::Base.new(@controller.class.view_paths, {}, @controller)
     yield view
