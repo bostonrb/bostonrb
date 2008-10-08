@@ -26,5 +26,4 @@ Rails::Initializer.run do |config|
   config.gem 'has_finder', :version => '0.1.5'
   config.gem 'hpricot', :version => '0.6'
   config.gem 'simple-rss', :version => '1.1'
-  config.gem 'ruby-debug'
 end
