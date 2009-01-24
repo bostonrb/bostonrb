@@ -2,10 +2,12 @@
   = event_map @event
   
 = partial 'layouts/full' do
-  %h2= @event.title
+  %div.vevent
+    %h2
+      %a.url.summary{:href=>event_url(@event)}= @event.title
 
-  = partial 'events/show_in_feed', :event => @event
+    = partial 'events/show_in_feed', :event => @event
   
-  %p= link_to 'Edit', edit_event_path(@event)
+    %p= link_to 'Edit', edit_event_path(@event)
   
-  #map
+    #map

@@ -170,3 +170,7 @@ textarea.job_description {
 .captcha {
   display: none;
 }
+
+.hidden {
+  display: none;
+}

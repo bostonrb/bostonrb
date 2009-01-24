@@ -15,9 +15,15 @@
   - unless @upcoming_events.empty?
     %dl
       - @upcoming_events.each do |event|
-        %dt= link_to "#{event.title}: #{event.date.to_s(:long)}", event
-        %dd= event.location
-        %dd= link_to 'Edit', edit_event_path(event)
+        %div.vevent
+          %dt
+            %a.url{:href=>event_url(event)}
+              %span.summary= event.title
+              \:
+              %span.dtstart{:title=>event.date.iso8601}= event.date.to_s(:long)
+          %dd.hidden.uid= "#{event.id}.bostonrb.org"
+          %dd.location= event.location
+          %dd= link_to 'Edit', edit_event_path(event)
   - else
     %p Nothing coming up! Check again later.
 
