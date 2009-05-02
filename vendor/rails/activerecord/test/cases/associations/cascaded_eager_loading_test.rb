@@ -9,7 +9,7 @@ require 'models/topic'
 require 'models/reply'
 
 class CascadedEagerLoadingTest < ActiveRecord::TestCase
-  fixtures :authors, :mixins, :companies, :posts, :topics
+  fixtures :authors, :mixins, :companies, :posts, :topics, :accounts, :comments, :categorizations
 
   def test_eager_association_loading_with_cascaded_two_levels
     authors = Author.find(:all, :include=>{:posts=>:comments}, :order=>"authors.id")
@@ -68,6 +68,18 @@ class CascadedEagerLoadingTest < ActiveRecord::TestCase
     end
   end
 
+  def test_eager_association_loading_with_has_many_sti_and_subclasses
+    silly = SillyReply.new(:title => "gaga", :content => "boo-boo", :parent_id => 1)
+    silly.parent_id = 1
+    assert silly.save
+
+    topics = Topic.find(:all, :include => :replies, :order => 'topics.id, replies_topics.id')
+    assert_no_queries do
+      assert_equal 2, topics[0].replies.size
+      assert_equal 0, topics[1].replies.size
+    end
+  end
+
   def test_eager_association_loading_with_belongs_to_sti
     replies = Reply.find(:all, :include => :topic, :order => 'topics.id')
     assert replies.include?(topics(:second))
@@ -90,6 +102,14 @@ class CascadedEagerLoadingTest < ActiveRecord::TestCase
     assert_no_queries do
       authors.first.posts.first.special_comments.first.post.special_comments
       authors.first.posts.first.special_comments.first.post.very_special_comment
+    end
+  end
+  
+  def test_eager_association_loading_where_first_level_returns_nil
+    authors = Author.find(:all, :include => {:post_about_thinking => :comments}, :order => 'authors.id DESC')
+    assert_equal [authors(:mary), authors(:david)], authors
+    assert_no_queries do
+      authors[1].post_about_thinking.comments.first
     end
   end
 end

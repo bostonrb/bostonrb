@@ -17,7 +17,9 @@
 development:
   adapter: mysql
   encoding: utf8
+  reconnect: false
   database: <%= app_name %>_development
+  pool: 5
   username: root
   password:
 <% if socket -%>
@@ -32,7 +34,9 @@ development:
 test:
   adapter: mysql
   encoding: utf8
+  reconnect: false
   database: <%= app_name %>_test
+  pool: 5
   username: root
   password:
 <% if socket -%>
@@ -44,7 +48,9 @@ test:
 production:
   adapter: mysql
   encoding: utf8
+  reconnect: false
   database: <%= app_name %>_production
+  pool: 5
   username: root
   password: 
 <% if socket -%>

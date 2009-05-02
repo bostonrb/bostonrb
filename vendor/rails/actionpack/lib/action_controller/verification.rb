@@ -80,7 +80,7 @@ module ActionController #:nodoc:
       #   array (may also be a single value).
       def verify(options={})
         before_filter :only => options[:only], :except => options[:except] do |c|
-          c.send! :verify_action, options
+          c.__send__ :verify_action, options
         end
       end
     end
@@ -90,7 +90,7 @@ module ActionController #:nodoc:
     def verify_action(options) #:nodoc:
       if prereqs_invalid?(options)
         flash.update(options[:add_flash])              if options[:add_flash]
-        response.headers.update(options[:add_headers]) if options[:add_headers]
+        response.headers.merge!(options[:add_headers]) if options[:add_headers]
         apply_remaining_actions(options)               unless performed?
       end
     end
@@ -116,7 +116,7 @@ module ActionController #:nodoc:
     end
     
     def apply_redirect_to(redirect_to_option) # :nodoc:
-      redirect_to_option.is_a?(Symbol) ? self.send!(redirect_to_option) : redirect_to_option
+      (redirect_to_option.is_a?(Symbol) && redirect_to_option != :back) ? self.__send__(redirect_to_option) : redirect_to_option
     end
     
     def apply_remaining_actions(options) # :nodoc:

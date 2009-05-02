@@ -1,17 +1,26 @@
 module ActionView #:nodoc:
   class ActionViewError < StandardError #:nodoc:
   end
-  
+
   class MissingTemplate < ActionViewError #:nodoc:
+    attr_reader :path
+
+    def initialize(paths, path, template_format = nil)
+      @path = path
+      full_template_path = path.include?('.') ? path : "#{path}.erb"
+      display_paths = paths.compact.join(":")
+      template_type = (path =~ /layouts/i) ? 'layout' : 'template'
+      super("Missing #{template_type} #{full_template_path} in view path #{display_paths}")
+    end
   end
 
-  # Action View templates can be written in three ways. If the template file has a <tt>.erb</tt> (or <tt>.rhtml</tt>) extension then it uses a mixture of ERb 
-  # (included in Ruby) and HTML. If the template file has a <tt>.builder</tt> (or <tt>.rxml</tt>) extension then Jim Weirich's Builder::XmlMarkup library is used. 
+  # Action View templates can be written in three ways. If the template file has a <tt>.erb</tt> (or <tt>.rhtml</tt>) extension then it uses a mixture of ERb
+  # (included in Ruby) and HTML. If the template file has a <tt>.builder</tt> (or <tt>.rxml</tt>) extension then Jim Weirich's Builder::XmlMarkup library is used.
   # If the template file has a <tt>.rjs</tt> extension then it will use ActionView::Helpers::PrototypeHelper::JavaScriptGenerator.
-  # 
+  #
   # = ERb
-  # 
-  # You trigger ERb by using embeddings such as <% %>, <% -%>, and <%= %>. The <%= %> tag set is used when you want output. Consider the 
+  #
+  # You trigger ERb by using embeddings such as <% %>, <% -%>, and <%= %>. The <%= %> tag set is used when you want output. Consider the
   # following loop for names:
   #
   #   <b>Names of all the people</b>
@@ -51,7 +60,7 @@ module ActionView #:nodoc:
   #   <title><%= @page_title %></title>
   #
   # == Passing local variables to sub templates
-  # 
+  #
   # You can pass local variables to sub templates by using a hash with the variable names as keys and the objects as values:
   #
   #   <%= render "shared/header", { :headline => "Welcome", :person => person } %>
@@ -77,8 +86,8 @@ module ActionView #:nodoc:
   #
   # == Builder
   #
-  # Builder templates are a more programmatic alternative to ERb. They are especially useful for generating XML content. An XmlMarkup object 
-  # named +xml+ is automatically made available to templates with a <tt>.builder</tt> extension. 
+  # Builder templates are a more programmatic alternative to ERb. They are especially useful for generating XML content. An XmlMarkup object
+  # named +xml+ is automatically made available to templates with a <tt>.builder</tt> extension.
   #
   # Here are some basic examples:
   #
@@ -87,7 +96,7 @@ module ActionView #:nodoc:
   #   xml.a("A Link", "href"=>"http://onestepback.org") # => <a href="http://onestepback.org">A Link</a>
   #   xml.target("name"=>"compile", "option"=>"fast")   # => <target option="fast" name="compile"\>
   #                                                     # NOTE: order of attributes is not specified.
-  # 
+  #
   # Any method with a block will be treated as an XML markup tag with nested markup in the block. For example, the following:
   #
   #   xml.div {
@@ -111,7 +120,7 @@ module ActionView #:nodoc:
   #       xml.description "Basecamp: Recent items"
   #       xml.language "en-us"
   #       xml.ttl "40"
-  # 
+  #
   #       for item in @recent_items
   #         xml.item do
   #           xml.title(item_title(item))
@@ -119,7 +128,7 @@ module ActionView #:nodoc:
   #           xml.pubDate(item_pubDate(item))
   #           xml.guid(@person.firm.account.url + @recent_items.url(item))
   #           xml.link(@person.firm.account.url + @recent_items.url(item))
-  #       
+  #
   #           xml.tag!("dc:creator", item.author_name) if item_has_creator?(item)
   #         end
   #       end
@@ -130,12 +139,12 @@ module ActionView #:nodoc:
   #
   # == JavaScriptGenerator
   #
-  # JavaScriptGenerator templates end in <tt>.rjs</tt>. Unlike conventional templates which are used to 
-  # render the results of an action, these templates generate instructions on how to modify an already rendered page. This makes it easy to 
-  # modify multiple elements on your page in one declarative Ajax response. Actions with these templates are called in the background with Ajax 
+  # JavaScriptGenerator templates end in <tt>.rjs</tt>. Unlike conventional templates which are used to
+  # render the results of an action, these templates generate instructions on how to modify an already rendered page. This makes it easy to
+  # modify multiple elements on your page in one declarative Ajax response. Actions with these templates are called in the background with Ajax
   # and make updates to the page where the request originated from.
-  # 
-  # An instance of the JavaScriptGenerator object named +page+ is automatically made available to your template, which is implicitly wrapped in an ActionView::Helpers::PrototypeHelper#update_page block. 
+  #
+  # An instance of the JavaScriptGenerator object named +page+ is automatically made available to your template, which is implicitly wrapped in an ActionView::Helpers::PrototypeHelper#update_page block.
   #
   # When an <tt>.rjs</tt> action is called with +link_to_remote+, the generated JavaScript is automatically evaluated.  Example:
   #
@@ -145,199 +154,204 @@ module ActionView #:nodoc:
   #
   #   page.replace_html  'sidebar', :partial => 'sidebar'
   #   page.remove        "person-#{@person.id}"
-  #   page.visual_effect :highlight, 'user-list' 
+  #   page.visual_effect :highlight, 'user-list'
   #
   # This refreshes the sidebar, removes a person element and highlights the user list.
-  # 
+  #
   # See the ActionView::Helpers::PrototypeHelper::GeneratorMethods documentation for more details.
   class Base
-    include ERB::Util
+    include Helpers, Partials, ::ERB::Util
+    extend ActiveSupport::Memoizable
 
-    attr_reader   :finder
-    attr_accessor :base_path, :assigns, :template_extension, :first_render
+    attr_accessor :base_path, :assigns, :template_extension
     attr_accessor :controller
-    
+
     attr_writer :template_format
-    attr_accessor :current_render_extension
 
-    # Specify trim mode for the ERB compiler. Defaults to '-'.
-    # See ERb documentation for suitable values.
-    @@erb_trim_mode = '-'
-    cattr_accessor :erb_trim_mode
+    attr_accessor :output_buffer
 
-    # Specify whether file modification times should be checked to see if a template needs recompilation
-    @@cache_template_loading = false
-    cattr_accessor :cache_template_loading
-    
-    def self.cache_template_extensions=(*args)
-      ActiveSupport::Deprecation.warn("config.action_view.cache_template_extensions option has been deprecated and has no affect. " <<
-                                       "Please remove it from your config files.", caller)
+    class << self
+      delegate :erb_trim_mode=, :to => 'ActionView::TemplateHandlers::ERB'
+      delegate :logger, :to => 'ActionController::Base'
     end
 
-    # Specify whether RJS responses should be wrapped in a try/catch block
-    # that alert()s the caught exception (and then re-raises it). 
     @@debug_rjs = false
+    ##
+    # :singleton-method:
+    # Specify whether RJS responses should be wrapped in a try/catch block
+    # that alert()s the caught exception (and then re-raises it).
     cattr_accessor :debug_rjs
-    
-    @@erb_variable = '_erbout'
-    cattr_accessor :erb_variable
-    
+
+    # Specify whether templates should be cached. Otherwise the file we be read everytime it is accessed.
+    # Automatically reloading templates are not thread safe and should only be used in development mode.
+    @@cache_template_loading = nil
+    cattr_accessor :cache_template_loading
+
+    def self.cache_template_loading?
+      ActionController::Base.allow_concurrency || (cache_template_loading.nil? ? !ActiveSupport::Dependencies.load? : cache_template_loading)
+    end
+
     attr_internal :request
 
     delegate :request_forgery_protection_token, :template, :params, :session, :cookies, :response, :headers,
-             :flash, :logger, :action_name, :to => :controller
- 
+             :flash, :logger, :action_name, :controller_name, :to => :controller
+
     module CompiledTemplates #:nodoc:
       # holds compiled template code
     end
     include CompiledTemplates
 
-    # Maps inline templates to their method names
-    cattr_accessor :method_names
-    @@method_names = {}
-    # Map method names to the names passed in local assigns so far
-    @@template_args = {}
-
-    # Cache public asset paths
-    cattr_reader :computed_public_paths
-    @@computed_public_paths = {}
-
-    class ObjectWrapper < Struct.new(:value) #:nodoc:
+    def self.process_view_paths(value)
+      ActionView::PathSet.new(Array(value))
     end
 
-    def self.helper_modules #:nodoc:
-      helpers = []
-      Dir.entries(File.expand_path("#{File.dirname(__FILE__)}/helpers")).sort.each do |file|
-        next unless file =~ /^([a-z][a-z_]*_helper).rb$/
-        require "action_view/helpers/#{$1}"
-        helper_module_name = $1.camelize
-        if Helpers.const_defined?(helper_module_name)
-          helpers << Helpers.const_get(helper_module_name)
-        end
+    attr_reader :helpers
+
+    class ProxyModule < Module
+      def initialize(receiver)
+        @receiver = receiver
       end
-      return helpers
+
+      def include(*args)
+        super(*args)
+        @receiver.extend(*args)
+      end
     end
 
     def initialize(view_paths = [], assigns_for_first_render = {}, controller = nil)#:nodoc:
       @assigns = assigns_for_first_render
       @assigns_added = nil
       @controller = controller
-      @finder = TemplateFinder.new(self, view_paths)
+      @helpers = ProxyModule.new(self)
+      self.view_paths = view_paths
+
+      @_first_render = nil
+      @_current_render = nil
     end
 
-    # Renders the template present at <tt>template_path</tt>. If <tt>use_full_path</tt> is set to true, 
-    # it's relative to the view_paths array, otherwise it's absolute. The hash in <tt>local_assigns</tt> 
-    # is made available as local variables.
-    def render_file(template_path, use_full_path = true, local_assigns = {}) #:nodoc:
-      if defined?(ActionMailer) && defined?(ActionMailer::Base) && controller.is_a?(ActionMailer::Base) && !template_path.include?("/")
-        raise ActionViewError, <<-END_ERROR
-Due to changes in ActionMailer, you need to provide the mailer_name along with the template name.
+    attr_reader :view_paths
 
-  render "user_mailer/signup"
-  render :file => "user_mailer/signup"
-
-If you are rendering a subtemplate, you must now use controller-like partial syntax:
-
-  render :partial => 'signup' # no mailer_name necessary
-        END_ERROR
-      end
-      
-      Template.new(self, template_path, use_full_path, local_assigns).render_template
-    end
-    
-    # Renders the template present at <tt>template_path</tt> (relative to the view_paths array). 
-    # The hash in <tt>local_assigns</tt> is made available as local variables.
-    def render(options = {}, local_assigns = {}, &block) #:nodoc:
-      if options.is_a?(String)
-        render_file(options, true, local_assigns)
-      elsif options == :update
-        update_page(&block)
-      elsif options.is_a?(Hash)
-        options = options.reverse_merge(:locals => {}, :use_full_path => true)
-
-        if partial_layout = options.delete(:layout)
-          if block_given?
-            wrap_content_for_layout capture(&block) do 
-              concat(render(options.merge(:partial => partial_layout)), block.binding)
-            end
-          else
-            wrap_content_for_layout render(options) do
-              render(options.merge(:partial => partial_layout))
-            end
-          end
-        elsif options[:file]
-          render_file(options[:file], options[:use_full_path], options[:locals])
-        elsif options[:partial] && options[:collection]
-          render_partial_collection(options[:partial], options[:collection], options[:spacer_template], options[:locals])
-        elsif options[:partial]
-          render_partial(options[:partial], ActionView::Base::ObjectWrapper.new(options[:object]), options[:locals])
-        elsif options[:inline]
-          template = InlineTemplate.new(self, options[:inline], options[:locals], options[:type])
-          render_template(template)
-        end
-      end
+    def view_paths=(paths)
+      @view_paths = self.class.process_view_paths(paths)
+      # we might be using ReloadableTemplates, so we need to let them know this a new request
+      @view_paths.load!
     end
 
-    def render_template(template) #:nodoc:
-      template.render_template
-    end
-
-    # Returns true is the file may be rendered implicitly.
-    def file_public?(template_path)#:nodoc:
-      template_path.split('/').last[0,1] != '_'
-    end
-
-    # Returns a symbolized version of the <tt>:format</tt> parameter of the request,
-    # or <tt>:html</tt> by default.
+    # Returns the result of a render that's dictated by the options hash. The primary options are:
     #
-    # EXCEPTION: If the <tt>:format</tt> parameter is not set, the Accept header will be examined for
-    # whether it contains the JavaScript mime type as its first priority. If that's the case,
-    # it will be used. This ensures that Ajax applications can use the same URL to support both
-    # JavaScript and non-JavaScript users.
-    def template_format
-      return @template_format if @template_format
+    # * <tt>:partial</tt> - See ActionView::Partials.
+    # * <tt>:update</tt> - Calls update_page with the block given.
+    # * <tt>:file</tt> - Renders an explicit template file (this used to be the old default), add :locals to pass in those.
+    # * <tt>:inline</tt> - Renders an inline template similar to how it's done in the controller.
+    # * <tt>:text</tt> - Renders the text passed in out.
+    #
+    # If no options hash is passed or :update specified, the default is to render a partial and use the second parameter
+    # as the locals hash.
+    def render(options = {}, local_assigns = {}, &block) #:nodoc:
+      local_assigns ||= {}
 
-      if controller && controller.respond_to?(:request)
-        parameter_format = controller.request.parameters[:format]
-        accept_format    = controller.request.accepts.first
-
-        case
-        when parameter_format.blank? && accept_format != :js
-          @template_format = :html
-        when parameter_format.blank? && accept_format == :js
-          @template_format = :js
-        else
-          @template_format = parameter_format.to_sym
+      case options
+      when Hash
+        options = options.reverse_merge(:locals => {})
+        if options[:layout]
+          _render_with_layout(options, local_assigns, &block)
+        elsif options[:file]
+          template = self.view_paths.find_template(options[:file], template_format)
+          template.render_template(self, options[:locals])
+        elsif options[:partial]
+          render_partial(options)
+        elsif options[:inline]
+          InlineTemplate.new(options[:inline], options[:type]).render(self, options[:locals])
+        elsif options[:text]
+          options[:text]
         end
+      when :update
+        update_page(&block)
+      else
+        render_partial(:partial => options, :locals => local_assigns)
+      end
+    end
+
+    # The format to be used when choosing between multiple templates with
+    # the same name but differing formats.  See +Request#template_format+
+    # for more details.
+    def template_format
+      if defined? @template_format
+        @template_format
+      elsif controller && controller.respond_to?(:request)
+        @template_format = controller.request.template_format.to_sym
       else
         @template_format = :html
       end
     end
 
-    private
-      def wrap_content_for_layout(content)
-        original_content_for_layout = @content_for_layout
-        @content_for_layout = content
-        returning(yield) { @content_for_layout = original_content_for_layout }
-      end
+    # Access the current template being rendered.
+    # Returns a ActionView::Template object.
+    def template
+      @_current_render
+    end
 
-      # Evaluate the local assigns and pushes them to the view.
-      def evaluate_assigns
+    def template=(template) #:nodoc:
+      @_first_render ||= template
+      @_current_render = template
+    end
+
+    def with_template(current_template)
+      last_template, self.template = template, current_template
+      yield
+    ensure
+      self.template = last_template
+    end
+
+    private
+      # Evaluates the local assigns and controller ivars, pushes them to the view.
+      def _evaluate_assigns_and_ivars #:nodoc:
         unless @assigns_added
-          assign_variables_from_controller
+          @assigns.each { |key, value| instance_variable_set("@#{key}", value) }
+          _copy_ivars_from_controller
           @assigns_added = true
         end
       end
 
-      # Assigns instance variables from the controller to the view.
-      def assign_variables_from_controller
-        @assigns.each { |key, value| instance_variable_set("@#{key}", value) }
+      def _copy_ivars_from_controller #:nodoc:
+        if @controller
+          variables = @controller.instance_variable_names
+          variables -= @controller.protected_instance_variables if @controller.respond_to?(:protected_instance_variables)
+          variables.each { |name| instance_variable_set(name, @controller.instance_variable_get(name)) }
+        end
       end
-      
-      def execute(template)
-        send(template.method, template.locals) do |*names|
-          instance_variable_get "@content_for_#{names.first || 'layout'}"
-        end        
+
+      def _set_controller_content_type(content_type) #:nodoc:
+        if controller.respond_to?(:response)
+          controller.response.content_type ||= content_type
+        end
+      end
+
+      def _render_with_layout(options, local_assigns, &block) #:nodoc:
+        partial_layout = options.delete(:layout)
+
+        if block_given?
+          begin
+            @_proc_for_layout = block
+            concat(render(options.merge(:partial => partial_layout)))
+          ensure
+            @_proc_for_layout = nil
+          end
+        else
+          begin
+            original_content_for_layout = @content_for_layout if defined?(@content_for_layout)
+            @content_for_layout = render(options)
+
+            if (options[:inline] || options[:file] || options[:text])
+              @cached_content_for_layout = @content_for_layout
+              render(:file => partial_layout, :locals => local_assigns)
+            else
+              render(options.merge(:partial => partial_layout))
+            end
+          ensure
+            @content_for_layout = original_content_for_layout
+          end
+        end
       end
   end
 end

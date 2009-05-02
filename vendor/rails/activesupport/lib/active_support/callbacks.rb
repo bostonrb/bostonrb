@@ -96,15 +96,12 @@ module ActiveSupport
         end
       end
 
-      def |(chain)
-        if chain.is_a?(CallbackChain)
-          chain.each { |callback| self | callback }
+      # TODO: Decompose into more Array like behavior
+      def replace_or_append!(chain)
+        if index = index(chain)
+          self[index] = chain
         else
-          if (found_callback = find(chain)) && (index = index(chain))
-            self[index] = chain
-          else
-            self << chain
-          end
+          self << chain
         end
         self
       end
@@ -157,6 +154,14 @@ module ActiveSupport
         self.class.new(@kind, @method, @options.dup)
       end
 
+      def hash
+        if @identifier
+          @identifier.hash
+        else
+          @method.hash
+        end
+      end
+
       def call(*args, &block)
         evaluate_method(method, *args, &block) if should_run_callback?(*args)
       rescue LocalJumpError
@@ -183,17 +188,12 @@ module ActiveSupport
                   "Callbacks must be a symbol denoting the method to call, a string to be evaluated, " +
                   "a block to be invoked, or an object responding to the callback method."
               end
-            end
+          end
         end
 
         def should_run_callback?(*args)
-          if options[:if]
-            evaluate_method(options[:if], *args)
-          elsif options[:unless]
-            !evaluate_method(options[:unless], *args)
-          else
-            true
-          end
+          [options[:if]].flatten.compact.all? { |a| evaluate_method(a, *args) } &&
+          ![options[:unless]].flatten.compact.any? { |a| evaluate_method(a, *args) }
         end
     end
 
@@ -205,20 +205,24 @@ module ActiveSupport
       def define_callbacks(*callbacks)
         callbacks.each do |callback|
           class_eval <<-"end_eval"
-            def self.#{callback}(*methods, &block)
-              callbacks = CallbackChain.build(:#{callback}, *methods, &block)
-              (@#{callback}_callbacks ||= CallbackChain.new).concat callbacks
-            end
-
-            def self.#{callback}_callback_chain
-              @#{callback}_callbacks ||= CallbackChain.new
-
-              if superclass.respond_to?(:#{callback}_callback_chain)
-                CallbackChain.new(superclass.#{callback}_callback_chain + @#{callback}_callbacks)
-              else
-                @#{callback}_callbacks
-              end
-            end
+            def self.#{callback}(*methods, &block)                             # def self.before_save(*methods, &block)
+              callbacks = CallbackChain.build(:#{callback}, *methods, &block)  #   callbacks = CallbackChain.build(:before_save, *methods, &block)
+              @#{callback}_callbacks ||= CallbackChain.new                     #   @before_save_callbacks ||= CallbackChain.new
+              @#{callback}_callbacks.concat callbacks                          #   @before_save_callbacks.concat callbacks
+            end                                                                # end
+                                                                               #
+            def self.#{callback}_callback_chain                                # def self.before_save_callback_chain
+              @#{callback}_callbacks ||= CallbackChain.new                     #   @before_save_callbacks ||= CallbackChain.new
+                                                                               #
+              if superclass.respond_to?(:#{callback}_callback_chain)           #   if superclass.respond_to?(:before_save_callback_chain)
+                CallbackChain.new(                                             #     CallbackChain.new(
+                  superclass.#{callback}_callback_chain +                      #       superclass.before_save_callback_chain +
+                  @#{callback}_callbacks                                       #       @before_save_callbacks
+                )                                                              #     )
+              else                                                             #   else
+                @#{callback}_callbacks                                         #     @before_save_callbacks
+              end                                                              #   end
+            end                                                                # end
           end_eval
         end
       end

@@ -6,7 +6,7 @@ silence_warnings do
     alias_method :title_before_type_cast, :title unless respond_to?(:title_before_type_cast)
     alias_method :body_before_type_cast, :body unless respond_to?(:body_before_type_cast)
     alias_method :author_name_before_type_cast, :author_name unless respond_to?(:author_name_before_type_cast)
-    alias_method :secret?, :secret 
+    alias_method :secret?, :secret
 
     def new_record=(boolean)
       @new_record = boolean
@@ -15,21 +15,31 @@ silence_warnings do
     def new_record?
       @new_record
     end
+
+    attr_accessor :author
+    def author_attributes=(attributes); end
+
+    attr_accessor :comments
+    def comments_attributes=(attributes); end
   end
 
   class Comment
     attr_reader :id
     attr_reader :post_id
+    def initialize(id = nil, post_id = nil); @id, @post_id = id, post_id end
     def save; @id = 1; @post_id = 1 end
     def new_record?; @id.nil? end
+    def to_param; @id; end
     def name
-      @id.nil? ? 'new comment' : "comment ##{@id}"
+      @id.nil? ? "new #{self.class.name.downcase}" : "#{self.class.name.downcase} ##{@id}"
     end
   end
+
+  class Author < Comment
+    attr_accessor :post
+    def post_attributes=(attributes); end
+  end
 end
-
-class Comment::Nested < Comment; end
-
 
 class FormHelperTest < ActionView::TestCase
   tests ActionView::Helpers::FormHelper
@@ -160,36 +170,36 @@ class FormHelperTest < ActionView::TestCase
 
   def test_check_box
     assert_dom_equal(
-      '<input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="1" /><input name="post[secret]" type="hidden" value="0" />',
+      '<input name="post[secret]" type="hidden" value="0" /><input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="1" />',
       check_box("post", "secret")
     )
     @post.secret = 0
     assert_dom_equal(
-      '<input id="post_secret" name="post[secret]" type="checkbox" value="1" /><input name="post[secret]" type="hidden" value="0" />',
+      '<input name="post[secret]" type="hidden" value="0" /><input id="post_secret" name="post[secret]" type="checkbox" value="1" />',
       check_box("post", "secret")
     )
     assert_dom_equal(
-      '<input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="1" /><input name="post[secret]" type="hidden" value="0" />',
+      '<input name="post[secret]" type="hidden" value="0" /><input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="1" />',
       check_box("post", "secret" ,{"checked"=>"checked"})
     )
     @post.secret = true
     assert_dom_equal(
-      '<input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="1" /><input name="post[secret]" type="hidden" value="0" />',
+      '<input name="post[secret]" type="hidden" value="0" /><input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="1" />',
       check_box("post", "secret")
     )
     assert_dom_equal(
-      '<input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="1" /><input name="post[secret]" type="hidden" value="0" />',
+      '<input name="post[secret]" type="hidden" value="0" /><input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="1" />',
       check_box("post", "secret?")
     )
 
     @post.secret = ['0']
     assert_dom_equal(
-      '<input id="post_secret" name="post[secret]" type="checkbox" value="1" /><input name="post[secret]" type="hidden" value="0" />',
+      '<input name="post[secret]" type="hidden" value="0" /><input id="post_secret" name="post[secret]" type="checkbox" value="1" />',
       check_box("post", "secret")
     )
     @post.secret = ['1']
     assert_dom_equal(
-      '<input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="1" /><input name="post[secret]" type="hidden" value="0" />',
+      '<input name="post[secret]" type="hidden" value="0" /><input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="1" />',
       check_box("post", "secret")
     )
   end
@@ -197,14 +207,14 @@ class FormHelperTest < ActionView::TestCase
   def test_check_box_with_explicit_checked_and_unchecked_values
     @post.secret = "on"
     assert_dom_equal(
-      '<input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="on" /><input name="post[secret]" type="hidden" value="off" />',
+      '<input name="post[secret]" type="hidden" value="off" /><input checked="checked" id="post_secret" name="post[secret]" type="checkbox" value="on" />',
       check_box("post", "secret", {}, "on", "off")
     )
   end
 
   def test_checkbox_disabled_still_submits_checked_value
     assert_dom_equal(
-      '<input checked="checked" disabled="disabled" id="post_secret" name="post[secret]" type="checkbox" value="1" /><input name="post[secret]" type="hidden" value="1" />',
+      '<input name="post[secret]" type="hidden" value="1" /><input checked="checked" disabled="disabled" id="post_secret" name="post[secret]" type="checkbox" value="1" />',
       check_box("post", "secret", { :disabled => :true })
     )
   end
@@ -279,7 +289,7 @@ class FormHelperTest < ActionView::TestCase
       text_area("post", "body", "name" => "really!")
     )
     assert_dom_equal(
-      '<input checked="checked" id="post_secret" name="i mean it" type="checkbox" value="1" /><input name="i mean it" type="hidden" value="0" />',
+      '<input name="i mean it" type="hidden" value="0" /><input checked="checked" id="post_secret" name="i mean it" type="checkbox" value="1" />',
       check_box("post", "secret", "name" => "i mean it")
     )
     assert_dom_equal text_field("post", "title", "name" => "dont guess"),
@@ -299,7 +309,7 @@ class FormHelperTest < ActionView::TestCase
       text_area("post", "body", "id" => "really!")
     )
     assert_dom_equal(
-      '<input checked="checked" id="i mean it" name="post[secret]" type="checkbox" value="1" /><input name="post[secret]" type="hidden" value="0" />',
+      '<input name="post[secret]" type="hidden" value="0" /><input checked="checked" id="i mean it" name="post[secret]" type="checkbox" value="1" />',
       check_box("post", "secret", "id" => "i mean it")
     )
     assert_dom_equal text_field("post", "title", "id" => "dont guess"),
@@ -324,7 +334,7 @@ class FormHelperTest < ActionView::TestCase
       text_area("post[]", "body")
     )
     assert_dom_equal(
-      "<input checked=\"checked\" id=\"post_#{pid}_secret\" name=\"post[#{pid}][secret]\" type=\"checkbox\" value=\"1\" /><input name=\"post[#{pid}][secret]\" type=\"hidden\" value=\"0\" />",
+      "<input name=\"post[#{pid}][secret]\" type=\"hidden\" value=\"0\" /><input checked=\"checked\" id=\"post_#{pid}_secret\" name=\"post[#{pid}][secret]\" type=\"checkbox\" value=\"1\" />",
       check_box("post[]", "secret")
     )
    assert_dom_equal(
@@ -337,14 +347,12 @@ class FormHelperTest < ActionView::TestCase
   end
 
   def test_form_for
-    _erbout = ''
-
     form_for(:post, @post, :html => { :id => 'create-post' }) do |f|
-      _erbout.concat f.label(:title)
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
-      _erbout.concat f.submit('Create post')
+      concat f.label(:title)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
+      concat f.submit('Create post')
     end
 
     expected =
@@ -352,21 +360,19 @@ class FormHelperTest < ActionView::TestCase
       "<label for='post_title'>Title</label>" +
       "<input name='post[title]' size='30' type='text' id='post_title' value='Hello World' />" +
       "<textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
       "<input name='post[secret]' type='hidden' value='0' />" +
+      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
       "<input name='commit' id='post_submit' type='submit' value='Create post' />" +
       "</form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_form_for_with_method
-    _erbout = ''
-
     form_for(:post, @post, :html => { :id => 'create-post', :method => :put }) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
@@ -374,41 +380,37 @@ class FormHelperTest < ActionView::TestCase
       "<div style='margin:0;padding:0'><input name='_method' type='hidden' value='put' /></div>" +
       "<input name='post[title]' size='30' type='text' id='post_title' value='Hello World' />" +
       "<textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
       "<input name='post[secret]' type='hidden' value='0' />" +
+      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
       "</form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_form_for_without_object
-    _erbout = ''
-
     form_for(:post, :html => { :id => 'create-post' }) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<form action='http://www.example.com' id='create-post' method='post'>" +
       "<input name='post[title]' size='30' type='text' id='post_title' value='Hello World' />" +
       "<textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
       "<input name='post[secret]' type='hidden' value='0' />" +
+      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
       "</form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_form_for_with_index
-    _erbout = ''
-
     form_for("post[]", @post) do |f|
-      _erbout.concat f.label(:title)
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.label(:title)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
@@ -416,38 +418,35 @@ class FormHelperTest < ActionView::TestCase
       "<label for=\"post_123_title\">Title</label>" +
       "<input name='post[123][title]' size='30' type='text' id='post_123_title' value='Hello World' />" +
       "<textarea name='post[123][body]' id='post_123_body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[123][secret]' checked='checked' type='checkbox' id='post_123_secret' value='1' />" +
       "<input name='post[123][secret]' type='hidden' value='0' />" +
+      "<input name='post[123][secret]' checked='checked' type='checkbox' id='post_123_secret' value='1' />" +
       "</form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_form_for_with_nil_index_option_override
-    _erbout = ''
-
     form_for("post[]", @post, :index => nil) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<form action='http://www.example.com' method='post'>" +
       "<input name='post[][title]' size='30' type='text' id='post__title' value='Hello World' />" +
       "<textarea name='post[][body]' id='post__body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[][secret]' checked='checked' type='checkbox' id='post__secret' value='1' />" +
       "<input name='post[][secret]' type='hidden' value='0' />" +
+      "<input name='post[][secret]' checked='checked' type='checkbox' id='post__secret' value='1' />" +
       "</form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_nested_fields_for
-    _erbout = ''
     form_for(:post, @post) do |f|
       f.fields_for(:comment, @post) do |c|
-        _erbout.concat c.text_field(:title)
+        concat c.text_field(:title)
       end
     end
 
@@ -455,137 +454,388 @@ class FormHelperTest < ActionView::TestCase
                "<input name='post[comment][title]' size='30' type='text' id='post_comment_title' value='Hello World' />" +
                "</form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_nested_collections
+    form_for('post[]', @post) do |f|
+      concat f.text_field(:title)
+      f.fields_for('comment[]', @comment) do |c|
+        concat c.text_field(:name)
+      end
+    end
+
+    expected = "<form action='http://www.example.com' method='post'>" +
+               "<input name='post[123][title]' size='30' type='text' id='post_123_title' value='Hello World' />" +
+               "<input name='post[123][comment][][name]' size='30' type='text' id='post_123_comment__name' value='new comment' />" +
+               "</form>"
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_index_and_parent_fields
+    form_for('post', @post, :index => 1) do |c|
+      concat c.text_field(:title)
+      c.fields_for('comment', @comment, :index => 1) do |r|
+        concat r.text_field(:name)
+      end
+    end
+
+    expected = "<form action='http://www.example.com' method='post'>" +
+               "<input name='post[1][title]' size='30' type='text' id='post_1_title' value='Hello World' />" +
+               "<input name='post[1][comment][1][name]' size='30' type='text' id='post_1_comment_1_name' value='new comment' />" +
+               "</form>"
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_form_for_with_index_and_nested_fields_for
+    form_for(:post, @post, :index => 1) do |f|
+      f.fields_for(:comment, @post) do |c|
+        concat c.text_field(:title)
+      end
+    end
+
+    expected = "<form action='http://www.example.com' method='post'>" +
+               "<input name='post[1][comment][title]' size='30' type='text' id='post_1_comment_title' value='Hello World' />" +
+               "</form>"
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_index_on_both
+    form_for(:post, @post, :index => 1) do |f|
+      f.fields_for(:comment, @post, :index => 5) do |c|
+        concat c.text_field(:title)
+      end
+    end
+
+    expected = "<form action='http://www.example.com' method='post'>" +
+               "<input name='post[1][comment][5][title]' size='30' type='text' id='post_1_comment_5_title' value='Hello World' />" +
+               "</form>"
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_auto_index
+    form_for("post[]", @post) do |f|
+      f.fields_for(:comment, @post) do |c|
+        concat c.text_field(:title)
+      end
+    end
+
+    expected = "<form action='http://www.example.com' method='post'>" +
+               "<input name='post[123][comment][title]' size='30' type='text' id='post_123_comment_title' value='Hello World' />" +
+               "</form>"
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_auto_index_on_both
+    form_for("post[]", @post) do |f|
+      f.fields_for("comment[]", @post) do |c|
+        concat c.text_field(:title)
+      end
+    end
+
+    expected = "<form action='http://www.example.com' method='post'>" +
+               "<input name='post[123][comment][123][title]' size='30' type='text' id='post_123_comment_123_title' value='Hello World' />" +
+               "</form>"
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_index_and_auto_index
+    form_for("post[]", @post) do |f|
+      f.fields_for(:comment, @post, :index => 5) do |c|
+        concat c.text_field(:title)
+      end
+    end
+
+    form_for(:post, @post, :index => 1) do |f|
+      f.fields_for("comment[]", @post) do |c|
+        concat c.text_field(:title)
+      end
+    end
+
+    expected = "<form action='http://www.example.com' method='post'>" +
+               "<input name='post[123][comment][5][title]' size='30' type='text' id='post_123_comment_5_title' value='Hello World' />" +
+               "</form>" +
+               "<form action='http://www.example.com' method='post'>" +
+               "<input name='post[1][comment][123][title]' size='30' type='text' id='post_1_comment_123_title' value='Hello World' />" +
+               "</form>"
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_a_new_record_on_a_nested_attributes_one_to_one_association
+    @post.author = Author.new
+
+    form_for(:post, @post) do |f|
+      concat f.text_field(:title)
+      f.fields_for(:author) do |af|
+        concat af.text_field(:name)
+      end
+    end
+
+    expected = '<form action="http://www.example.com" method="post">' +
+               '<input name="post[title]" size="30" type="text" id="post_title" value="Hello World" />' +
+               '<input id="post_author_attributes_name" name="post[author_attributes][name]" size="30" type="text" value="new author" />' +
+               '</form>'
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_explicitly_passed_object_on_a_nested_attributes_one_to_one_association
+    form_for(:post, @post) do |f|
+      f.fields_for(:author, Author.new(123)) do |af|
+        assert_not_nil af.object
+        assert_equal 123, af.object.id
+      end
+    end
+  end
+
+  def test_nested_fields_for_with_an_existing_record_on_a_nested_attributes_one_to_one_association
+    @post.author = Author.new(321)
+
+    form_for(:post, @post) do |f|
+      concat f.text_field(:title)
+      f.fields_for(:author) do |af|
+        concat af.text_field(:name)
+      end
+    end
+
+    expected = '<form action="http://www.example.com" method="post">' +
+               '<input name="post[title]" size="30" type="text" id="post_title" value="Hello World" />' +
+               '<input id="post_author_attributes_id" name="post[author_attributes][id]" type="hidden" value="321" />' +
+               '<input id="post_author_attributes_name" name="post[author_attributes][name]" size="30" type="text" value="author #321" />' +
+               '</form>'
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_existing_records_on_a_nested_attributes_collection_association
+    @post.comments = Array.new(2) { |id| Comment.new(id + 1) }
+
+    form_for(:post, @post) do |f|
+      concat f.text_field(:title)
+      @post.comments.each do |comment|
+        f.fields_for(:comments, comment) do |cf|
+          concat cf.text_field(:name)
+        end
+      end
+    end
+
+    expected = '<form action="http://www.example.com" method="post">' +
+               '<input name="post[title]" size="30" type="text" id="post_title" value="Hello World" />' +
+               '<input id="post_comments_attributes_0_id" name="post[comments_attributes][0][id]" type="hidden" value="1" />' +
+               '<input id="post_comments_attributes_0_name" name="post[comments_attributes][0][name]" size="30" type="text" value="comment #1" />' +
+               '<input id="post_comments_attributes_1_id" name="post[comments_attributes][1][id]" type="hidden" value="2" />' +
+               '<input id="post_comments_attributes_1_name" name="post[comments_attributes][1][name]" size="30" type="text" value="comment #2" />' +
+               '</form>'
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_new_records_on_a_nested_attributes_collection_association
+    @post.comments = [Comment.new, Comment.new]
+
+    form_for(:post, @post) do |f|
+      concat f.text_field(:title)
+      @post.comments.each do |comment|
+        f.fields_for(:comments, comment) do |cf|
+          concat cf.text_field(:name)
+        end
+      end
+    end
+
+    expected = '<form action="http://www.example.com" method="post">' +
+               '<input name="post[title]" size="30" type="text" id="post_title" value="Hello World" />' +
+               '<input id="post_comments_attributes_0_name" name="post[comments_attributes][0][name]" size="30" type="text" value="new comment" />' +
+               '<input id="post_comments_attributes_1_name" name="post[comments_attributes][1][name]" size="30" type="text" value="new comment" />' +
+               '</form>'
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_with_existing_and_new_records_on_a_nested_attributes_collection_association
+    @post.comments = [Comment.new(321), Comment.new]
+
+    form_for(:post, @post) do |f|
+      concat f.text_field(:title)
+      @post.comments.each do |comment|
+        f.fields_for(:comments, comment) do |cf|
+          concat cf.text_field(:name)
+        end
+      end
+    end
+
+    expected = '<form action="http://www.example.com" method="post">' +
+               '<input name="post[title]" size="30" type="text" id="post_title" value="Hello World" />' +
+               '<input id="post_comments_attributes_0_id" name="post[comments_attributes][0][id]" type="hidden" value="321" />' +
+               '<input id="post_comments_attributes_0_name" name="post[comments_attributes][0][name]" size="30" type="text" value="comment #321" />' +
+               '<input id="post_comments_attributes_1_name" name="post[comments_attributes][1][name]" size="30" type="text" value="new comment" />' +
+               '</form>'
+
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_nested_fields_for_on_a_nested_attributes_collection_association_yields_only_builder
+    @post.comments = [Comment.new(321), Comment.new]
+    yielded_comments = []
+
+    form_for(:post, @post) do |f|
+      concat f.text_field(:title)
+      f.fields_for(:comments) do |cf|
+        concat cf.text_field(:name)
+        yielded_comments << cf.object
+      end
+    end
+
+    expected = '<form action="http://www.example.com" method="post">' +
+               '<input name="post[title]" size="30" type="text" id="post_title" value="Hello World" />' +
+               '<input id="post_comments_attributes_0_id" name="post[comments_attributes][0][id]" type="hidden" value="321" />' +
+               '<input id="post_comments_attributes_0_name" name="post[comments_attributes][0][name]" size="30" type="text" value="comment #321" />' +
+               '<input id="post_comments_attributes_1_name" name="post[comments_attributes][1][name]" size="30" type="text" value="new comment" />' +
+               '</form>'
+
+    assert_dom_equal expected, output_buffer
+    assert_equal yielded_comments, @post.comments
+  end
+
+  def test_nested_fields_for_with_child_index_option_override_on_a_nested_attributes_collection_association
+    @post.comments = []
+
+    form_for(:post, @post) do |f|
+      f.fields_for(:comments, Comment.new(321), :child_index => 'abc') do |cf|
+        concat cf.text_field(:name)
+      end
+    end
+
+    expected = '<form action="http://www.example.com" method="post">' +
+               '<input id="post_comments_attributes_abc_id" name="post[comments_attributes][abc][id]" type="hidden" value="321" />' +
+               '<input id="post_comments_attributes_abc_name" name="post[comments_attributes][abc][name]" size="30" type="text" value="comment #321" />' +
+               '</form>'
+
+    assert_dom_equal expected, output_buffer
   end
 
   def test_fields_for
-    _erbout = ''
-
     fields_for(:post, @post) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<input name='post[title]' size='30' type='text' id='post_title' value='Hello World' />" +
       "<textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
-      "<input name='post[secret]' type='hidden' value='0' />"
+      "<input name='post[secret]' type='hidden' value='0' />" +
+      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_fields_for_with_index
-    _erbout = ''
-
     fields_for("post[]", @post) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<input name='post[123][title]' size='30' type='text' id='post_123_title' value='Hello World' />" +
       "<textarea name='post[123][body]' id='post_123_body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[123][secret]' checked='checked' type='checkbox' id='post_123_secret' value='1' />" +
-      "<input name='post[123][secret]' type='hidden' value='0' />"
+      "<input name='post[123][secret]' type='hidden' value='0' />" +
+      "<input name='post[123][secret]' checked='checked' type='checkbox' id='post_123_secret' value='1' />"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_fields_for_with_nil_index_option_override
-    _erbout = ''
-
     fields_for("post[]", @post, :index => nil) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<input name='post[][title]' size='30' type='text' id='post__title' value='Hello World' />" +
       "<textarea name='post[][body]' id='post__body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[][secret]' checked='checked' type='checkbox' id='post__secret' value='1' />" +
-      "<input name='post[][secret]' type='hidden' value='0' />"
+      "<input name='post[][secret]' type='hidden' value='0' />" +
+      "<input name='post[][secret]' checked='checked' type='checkbox' id='post__secret' value='1' />"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_fields_for_with_index_option_override
-    _erbout = ''
-
     fields_for("post[]", @post, :index => "abc") do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<input name='post[abc][title]' size='30' type='text' id='post_abc_title' value='Hello World' />" +
       "<textarea name='post[abc][body]' id='post_abc_body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[abc][secret]' checked='checked' type='checkbox' id='post_abc_secret' value='1' />" +
-      "<input name='post[abc][secret]' type='hidden' value='0' />"
+      "<input name='post[abc][secret]' type='hidden' value='0' />" +
+      "<input name='post[abc][secret]' checked='checked' type='checkbox' id='post_abc_secret' value='1' />"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_fields_for_without_object
-    _erbout = ''
     fields_for(:post) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<input name='post[title]' size='30' type='text' id='post_title' value='Hello World' />" +
       "<textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
-      "<input name='post[secret]' type='hidden' value='0' />"
+      "<input name='post[secret]' type='hidden' value='0' />" +
+      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_fields_for_with_only_object
-    _erbout = ''
     fields_for(@post) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<input name='post[title]' size='30' type='text' id='post_title' value='Hello World' />" +
       "<textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
-      "<input name='post[secret]' type='hidden' value='0' />"
+      "<input name='post[secret]' type='hidden' value='0' />" +
+      "<input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_fields_for_object_with_bracketed_name
-    _erbout = ''
     fields_for("author[post]", @post) do |f|
-      _erbout.concat f.label(:title)
-      _erbout.concat f.text_field(:title)
+      concat f.label(:title)
+      concat f.text_field(:title)
     end
 
     assert_dom_equal "<label for=\"author_post_title\">Title</label>" +
     "<input name='author[post][title]' size='30' type='text' id='author_post_title' value='Hello World' />",
-      _erbout
+      output_buffer
   end
 
   def test_fields_for_object_with_bracketed_name_and_index
-    _erbout = ''
     fields_for("author[post]", @post, :index => 1) do |f|
-      _erbout.concat f.label(:title)
-      _erbout.concat f.text_field(:title)
+      concat f.label(:title)
+      concat f.text_field(:title)
     end
 
     assert_dom_equal "<label for=\"author_post_1_title\">Title</label>" +
       "<input name='author[post][1][title]' size='30' type='text' id='author_post_1_title' value='Hello World' />",
-      _erbout
+      output_buffer
   end
 
   def test_form_builder_does_not_have_form_for_method
@@ -593,14 +843,12 @@ class FormHelperTest < ActionView::TestCase
   end
 
   def test_form_for_and_fields_for
-    _erbout = ''
-
     form_for(:post, @post, :html => { :id => 'create-post' }) do |post_form|
-      _erbout.concat post_form.text_field(:title)
-      _erbout.concat post_form.text_area(:body)
+      concat post_form.text_field(:title)
+      concat post_form.text_area(:body)
 
       fields_for(:parent_post, @post) do |parent_fields|
-        _erbout.concat parent_fields.check_box(:secret)
+        concat parent_fields.check_box(:secret)
       end
     end
 
@@ -608,22 +856,20 @@ class FormHelperTest < ActionView::TestCase
       "<form action='http://www.example.com' id='create-post' method='post'>" +
       "<input name='post[title]' size='30' type='text' id='post_title' value='Hello World' />" +
       "<textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea>" +
-      "<input name='parent_post[secret]' checked='checked' type='checkbox' id='parent_post_secret' value='1' />" +
       "<input name='parent_post[secret]' type='hidden' value='0' />" +
+      "<input name='parent_post[secret]' checked='checked' type='checkbox' id='parent_post_secret' value='1' />" +
       "</form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_form_for_and_fields_for_with_object
-    _erbout = ''
-
     form_for(:post, @post, :html => { :id => 'create-post' }) do |post_form|
-      _erbout.concat post_form.text_field(:title)
-      _erbout.concat post_form.text_area(:body)
+      concat post_form.text_field(:title)
+      concat post_form.text_area(:body)
 
       post_form.fields_for(@comment) do |comment_fields|
-        _erbout.concat comment_fields.text_field(:name)
+        concat comment_fields.text_field(:name)
       end
     end
 
@@ -634,7 +880,7 @@ class FormHelperTest < ActionView::TestCase
       "<input name='post[comment][name]' type='text' id='post_comment_name' value='new comment' size='30' />" +
       "</form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   class LabelledFormBuilder < ActionView::Helpers::FormBuilder
@@ -649,55 +895,48 @@ class FormHelperTest < ActionView::TestCase
   end
 
   def test_form_for_with_labelled_builder
-    _erbout = ''
-
     form_for(:post, @post, :builder => LabelledFormBuilder) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<form action='http://www.example.com' method='post'>" +
       "<label for='title'>Title:</label> <input name='post[title]' size='30' type='text' id='post_title' value='Hello World' /><br/>" +
       "<label for='body'>Body:</label> <textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea><br/>" +
-      "<label for='secret'>Secret:</label> <input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
-      "<input name='post[secret]' type='hidden' value='0' /><br/>" +
+      "<label for='secret'>Secret:</label> <input name='post[secret]' type='hidden' value='0' /><input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' /><br/>" +
       "</form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_default_form_builder
     old_default_form_builder, ActionView::Base.default_form_builder =
       ActionView::Base.default_form_builder, LabelledFormBuilder
 
-    _erbout = ''
     form_for(:post, @post) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<form action='http://www.example.com' method='post'>" +
       "<label for='title'>Title:</label> <input name='post[title]' size='30' type='text' id='post_title' value='Hello World' /><br/>" +
       "<label for='body'>Body:</label> <textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea><br/>" +
-      "<label for='secret'>Secret:</label> <input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
-      "<input name='post[secret]' type='hidden' value='0' /><br/>" +
+      "<label for='secret'>Secret:</label> <input name='post[secret]' type='hidden' value='0' /><input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' /><br/>" +
       "</form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   ensure
     ActionView::Base.default_form_builder = old_default_form_builder
   end
 
   def test_default_form_builder_with_active_record_helpers
-
-    _erbout = ''
     form_for(:post, @post) do |f|
-       _erbout.concat f.error_message_on('author_name')
-       _erbout.concat f.error_messages
+       concat f.error_message_on('author_name')
+       concat f.error_messages
     end
 
     expected = %(<form action='http://www.example.com' method='post'>) +
@@ -705,7 +944,7 @@ class FormHelperTest < ActionView::TestCase
                %(<div class="errorExplanation" id="errorExplanation"><h2>1 error prohibited this post from being saved</h2><p>There were problems with the following fields:</p><ul><li>Author name can't be empty</li></ul></div>) +
                %(</form>)
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
 
   end
 
@@ -713,10 +952,9 @@ class FormHelperTest < ActionView::TestCase
     post = @post
     @post = nil
 
-    _erbout = ''
     form_for(:post, post) do |f|
-       _erbout.concat f.error_message_on('author_name')
-       _erbout.concat f.error_messages
+       concat f.error_message_on('author_name')
+       concat f.error_messages
     end
 
     expected = %(<form action='http://www.example.com' method='post'>) +
@@ -724,70 +962,100 @@ class FormHelperTest < ActionView::TestCase
                %(<div class="errorExplanation" id="errorExplanation"><h2>1 error prohibited this post from being saved</h2><p>There were problems with the following fields:</p><ul><li>Author name can't be empty</li></ul></div>) +
                %(</form>)
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
 
   end
 
   # Perhaps this test should be moved to prototype helper tests.
   def test_remote_form_for_with_labelled_builder
     self.extend ActionView::Helpers::PrototypeHelper
-     _erbout = ''
 
      remote_form_for(:post, @post, :builder => LabelledFormBuilder) do |f|
-       _erbout.concat f.text_field(:title)
-       _erbout.concat f.text_area(:body)
-       _erbout.concat f.check_box(:secret)
+       concat f.text_field(:title)
+       concat f.text_area(:body)
+       concat f.check_box(:secret)
      end
 
      expected =
        %(<form action="http://www.example.com" onsubmit="new Ajax.Request('http://www.example.com', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;" method="post">) +
        "<label for='title'>Title:</label> <input name='post[title]' size='30' type='text' id='post_title' value='Hello World' /><br/>" +
        "<label for='body'>Body:</label> <textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea><br/>" +
-       "<label for='secret'>Secret:</label> <input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
-       "<input name='post[secret]' type='hidden' value='0' /><br/>" +
+       "<label for='secret'>Secret:</label> <input name='post[secret]' type='hidden' value='0' /><input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' /><br/>" +
        "</form>"
 
-     assert_dom_equal expected, _erbout
+     assert_dom_equal expected, output_buffer
   end
 
   def test_fields_for_with_labelled_builder
-    _erbout = ''
-
     fields_for(:post, @post, :builder => LabelledFormBuilder) do |f|
-      _erbout.concat f.text_field(:title)
-      _erbout.concat f.text_area(:body)
-      _erbout.concat f.check_box(:secret)
+      concat f.text_field(:title)
+      concat f.text_area(:body)
+      concat f.check_box(:secret)
     end
 
     expected =
       "<label for='title'>Title:</label> <input name='post[title]' size='30' type='text' id='post_title' value='Hello World' /><br/>" +
       "<label for='body'>Body:</label> <textarea name='post[body]' id='post_body' rows='20' cols='40'>Back to the hill and over it again!</textarea><br/>" +
-      "<label for='secret'>Secret:</label> <input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' />" +
-      "<input name='post[secret]' type='hidden' value='0' /><br/>"
+      "<label for='secret'>Secret:</label> <input name='post[secret]' type='hidden' value='0' /><input name='post[secret]' checked='checked' type='checkbox' id='post_secret' value='1' /><br/>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
+  end
+
+  def test_form_for_with_labelled_builder_with_nested_fields_for_without_options_hash
+    klass = nil
+
+    form_for(:post, @post, :builder => LabelledFormBuilder) do |f|
+      f.fields_for(:comments, Comment.new) do |nested_fields|
+        klass = nested_fields.class
+        ''
+      end
+    end
+
+    assert_equal LabelledFormBuilder, klass
+  end
+
+  def test_form_for_with_labelled_builder_with_nested_fields_for_with_options_hash
+    klass = nil
+
+    form_for(:post, @post, :builder => LabelledFormBuilder) do |f|
+      f.fields_for(:comments, Comment.new, :index => 'foo') do |nested_fields|
+        klass = nested_fields.class
+        ''
+      end
+    end
+
+    assert_equal LabelledFormBuilder, klass
+  end
+
+  class LabelledFormBuilderSubclass < LabelledFormBuilder; end
+
+  def test_form_for_with_labelled_builder_with_nested_fields_for_with_custom_builder
+    klass = nil
+
+    form_for(:post, @post, :builder => LabelledFormBuilder) do |f|
+      f.fields_for(:comments, Comment.new, :builder => LabelledFormBuilderSubclass) do |nested_fields|
+        klass = nested_fields.class
+        ''
+      end
+    end
+
+    assert_equal LabelledFormBuilderSubclass, klass
   end
 
   def test_form_for_with_html_options_adds_options_to_form_tag
-    _erbout = ''
-
     form_for(:post, @post, :html => {:id => 'some_form', :class => 'some_class'}) do |f| end
     expected = "<form action=\"http://www.example.com\" class=\"some_class\" id=\"some_form\" method=\"post\"></form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_form_for_with_string_url_option
-    _erbout = ''
-
     form_for(:post, @post, :url => 'http://www.otherdomain.com') do |f| end
 
-    assert_equal '<form action="http://www.otherdomain.com" method="post"></form>', _erbout
+    assert_equal '<form action="http://www.otherdomain.com" method="post"></form>', output_buffer
   end
 
   def test_form_for_with_hash_url_option
-    _erbout = ''
-
     form_for(:post, @post, :url => {:controller => 'controller', :action => 'action'}) do |f| end
 
     assert_equal 'controller', @controller.url_for_options[:controller]
@@ -795,26 +1063,20 @@ class FormHelperTest < ActionView::TestCase
   end
 
   def test_form_for_with_record_url_option
-    _erbout = ''
-
     form_for(:post, @post, :url => @post) do |f| end
 
     expected = "<form action=\"/posts/123\" method=\"post\"></form>"
-    assert_equal expected, _erbout
+    assert_equal expected, output_buffer
   end
 
   def test_form_for_with_existing_object
-    _erbout = ''
-
     form_for(@post) do |f| end
 
     expected = "<form action=\"/posts/123\" class=\"edit_post\" id=\"edit_post_123\" method=\"post\"><div style=\"margin:0;padding:0\"><input name=\"_method\" type=\"hidden\" value=\"put\" /></div></form>"
-    assert_equal expected, _erbout
+    assert_equal expected, output_buffer
   end
 
   def test_form_for_with_new_object
-    _erbout = ''
-
     post = Post.new
     post.new_record = true
     def post.id() nil end
@@ -822,66 +1084,62 @@ class FormHelperTest < ActionView::TestCase
     form_for(post) do |f| end
 
     expected = "<form action=\"/posts\" class=\"new_post\" id=\"new_post\" method=\"post\"></form>"
-    assert_equal expected, _erbout
+    assert_equal expected, output_buffer
   end
 
   def test_form_for_with_existing_object_in_list
     @post.new_record = false
     @comment.save
-    _erbout = ''
+
     form_for([@post, @comment]) {}
 
     expected = %(<form action="#{comment_path(@post, @comment)}" class="edit_comment" id="edit_comment_1" method="post"><div style="margin:0;padding:0"><input name="_method" type="hidden" value="put" /></div></form>)
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_form_for_with_new_object_in_list
     @post.new_record = false
-    _erbout = ''
+
     form_for([@post, @comment]) {}
 
     expected = %(<form action="#{comments_path(@post)}" class="new_comment" id="new_comment" method="post"></form>)
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_form_for_with_existing_object_and_namespace_in_list
     @post.new_record = false
     @comment.save
-    _erbout = ''
+
     form_for([:admin, @post, @comment]) {}
 
     expected = %(<form action="#{admin_comment_path(@post, @comment)}" class="edit_comment" id="edit_comment_1" method="post"><div style="margin:0;padding:0"><input name="_method" type="hidden" value="put" /></div></form>)
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_form_for_with_new_object_and_namespace_in_list
     @post.new_record = false
-    _erbout = ''
+
     form_for([:admin, @post, @comment]) {}
 
     expected = %(<form action="#{admin_comments_path(@post)}" class="new_comment" id="new_comment" method="post"></form>)
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
 
   def test_form_for_with_existing_object_and_custom_url
-    _erbout = ''
-
     form_for(@post, :url => "/super_posts") do |f| end
 
     expected = "<form action=\"/super_posts\" class=\"edit_post\" id=\"edit_post_123\" method=\"post\"><div style=\"margin:0;padding:0\"><input name=\"_method\" type=\"hidden\" value=\"put\" /></div></form>"
-    assert_equal expected, _erbout
+    assert_equal expected, output_buffer
   end
 
   def test_remote_form_for_with_html_options_adds_options_to_form_tag
     self.extend ActionView::Helpers::PrototypeHelper
-    _erbout = ''
 
     remote_form_for(:post, @post, :html => {:id => 'some_form', :class => 'some_class'}) do |f| end
     expected = "<form action=\"http://www.example.com\" class=\"some_class\" id=\"some_form\" method=\"post\" onsubmit=\"new Ajax.Request('http://www.example.com', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;\"></form>"
 
-    assert_dom_equal expected, _erbout
+    assert_dom_equal expected, output_buffer
   end
-
 
   protected
     def comments_path(post)

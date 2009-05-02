@@ -1,9 +1,6 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
-require File.expand_path(File.dirname(__FILE__) + '/helper_testcase')
-
-begin require 'redgreen'; rescue LoadError; end
 
 require 'has_markup/shoulda'
 

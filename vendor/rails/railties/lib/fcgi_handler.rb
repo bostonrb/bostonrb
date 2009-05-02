@@ -18,7 +18,6 @@ class RailsFCGIHandler
   attr_accessor :log_file_path
   attr_accessor :gc_request_period
 
-
   # Initialize and run the FastCGI instance, passing arguments through to new.
   def self.process!(*args, &block)
     new(*args, &block).process!
@@ -38,6 +37,8 @@ class RailsFCGIHandler
 
     # Safely install signal handlers.
     install_signal_handlers
+
+    @app = Dispatcher.new
 
     # Start error timestamp at 11 seconds ago.
     @last_error_on = Time.now - 11
@@ -68,39 +69,38 @@ class RailsFCGIHandler
     end
   end
 
-
   protected
     def process_each_request(provider)
-      cgi = nil
+      request = nil
 
       catch :exit do
-        provider.each_cgi do |cgi|
-          process_request(cgi)
+        provider.each do |request|
+          process_request(request)
 
           case when_ready
             when :reload
               reload!
             when :restart
-              close_connection(cgi)
+              close_connection(request)
               restart!
             when :exit
-              close_connection(cgi)
+              close_connection(request)
               throw :exit
           end
         end
       end
     rescue SignalException => signal
       raise unless signal.message == 'SIGUSR1'
-      close_connection(cgi)
+      close_connection(request)
     end
 
-    def process_request(cgi)
+    def process_request(request)
       @processing, @when_ready = true, nil
       gc_countdown
 
       with_signal_handler 'USR1' do
         begin
-          Dispatcher.dispatch(cgi)
+          ::Rack::Handler::FastCGI.serve(request, @app)
         rescue SignalException, SystemExit
           raise
         rescue Exception => error
@@ -197,7 +197,7 @@ class RailsFCGIHandler
       # close resources as they won't be closed by
       # the OS when using exec
       logger.close rescue nil
-      RAILS_DEFAULT_LOGGER.close rescue nil
+      Rails.logger.close rescue nil
 
       exec(command_line)
     end
@@ -233,7 +233,7 @@ class RailsFCGIHandler
       end
     end
 
-    def close_connection(cgi)
-      cgi.instance_variable_get("@request").finish if cgi
+    def close_connection(request)
+      request.finish if request
     end
 end

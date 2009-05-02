@@ -47,17 +47,74 @@ class Module
   #   Foo.new.min # => 4
   #   Foo.new.max # => 11
   #
+  # Delegates can optionally be prefixed using the <tt>:prefix</tt> option. If the value
+  # is <tt>true</tt>, the delegate methods are prefixed with the name of the object being
+  # delegated to.
+  #
+  #   Person = Struct.new(:name, :address)
+  #
+  #   class Invoice < Struct.new(:client)
+  #     delegate :name, :address, :to => :client, :prefix => true
+  #   end
+  #
+  #   john_doe = Person.new("John Doe", "Vimmersvej 13")
+  #   invoice = Invoice.new(john_doe)
+  #   invoice.client_name    # => "John Doe"
+  #   invoice.client_address # => "Vimmersvej 13"
+  #
+  # It is also possible to supply a custom prefix.
+  #
+  #   class Invoice < Struct.new(:client)
+  #     delegate :name, :address, :to => :client, :prefix => :customer
+  #   end
+  #
+  #   invoice = Invoice.new(john_doe)
+  #   invoice.customer_name    # => "John Doe"
+  #   invoice.customer_address # => "Vimmersvej 13"
+  #
+  # If the object to which you delegate can be nil, you may want to use the
+  # :allow_nil option. In that case, it returns nil instead of raising a
+  # NoMethodError exception:
+  #
+  #  class Foo
+  #    attr_accessor :bar
+  #    def initialize(bar = nil)
+  #      @bar = bar
+  #    end
+  #    delegate :zoo, :to => :bar
+  #  end
+  #
+  #  Foo.new.zoo   # raises NoMethodError exception (you called nil.zoo)
+  #
+  #  class Foo
+  #    attr_accessor :bar
+  #    def initialize(bar = nil)
+  #      @bar = bar
+  #    end
+  #    delegate :zoo, :to => :bar, :allow_nil => true
+  #  end
+  #
+  #  Foo.new.zoo   # returns nil
+  #
   def delegate(*methods)
     options = methods.pop
     unless options.is_a?(Hash) && to = options[:to]
       raise ArgumentError, "Delegation needs a target. Supply an options hash with a :to key as the last argument (e.g. delegate :hello, :to => :greeter)."
     end
 
+    if options[:prefix] == true && options[:to].to_s =~ /^[^a-z_]/
+      raise ArgumentError, "Can only automatically set the delegation prefix when delegating to a method."
+    end
+
+    prefix = options[:prefix] && "#{options[:prefix] == true ? to : options[:prefix]}_"
+
+    allow_nil = options[:allow_nil] && "#{to} && "
+
     methods.each do |method|
       module_eval(<<-EOS, "(__DELEGATION__)", 1)
-        def #{method}(*args, &block)
-          #{to}.__send__(#{method.inspect}, *args, &block)
-        end
+        def #{prefix}#{method}(*args, &block)                           # def customer_name(*args, &block)
+          #{allow_nil}#{to}.__send__(#{method.inspect}, *args, &block)  #   client && client.__send__(:name, *args, &block)
+        end                                                             # end
       EOS
     end
   end

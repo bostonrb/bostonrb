@@ -4,6 +4,7 @@ require 'models/customer'
 require 'models/company'
 require 'models/company_in_module'
 require 'models/subscriber'
+require 'models/pirate'
 
 class ReflectionTest < ActiveRecord::TestCase
   fixtures :topics, :customers, :companies, :subscribers
@@ -91,6 +92,15 @@ class ReflectionTest < ActiveRecord::TestCase
     assert_equal Money, Customer.reflect_on_aggregation(:balance).klass
   end
 
+  def test_reflect_on_all_autosave_associations
+    expected = Pirate.reflect_on_all_associations.select { |r| r.options[:autosave] }
+    received = Pirate.reflect_on_all_autosave_associations
+
+    assert !received.empty?
+    assert_not_equal Pirate.reflect_on_all_associations.length, received.length
+    assert_equal expected, received
+  end
+
   def test_has_many_reflection
     reflection_for_clients = ActiveRecord::Reflection::AssociationReflection.new(:has_many, :clients, { :order => "id", :dependent => :destroy }, Firm)
 
@@ -160,10 +170,18 @@ class ReflectionTest < ActiveRecord::TestCase
 
   def test_reflection_of_all_associations
     # FIXME these assertions bust a lot
-    assert_equal 20, Firm.reflect_on_all_associations.size
-    assert_equal 16, Firm.reflect_on_all_associations(:has_many).size
-    assert_equal 4, Firm.reflect_on_all_associations(:has_one).size
+    assert_equal 28, Firm.reflect_on_all_associations.size
+    assert_equal 21, Firm.reflect_on_all_associations(:has_many).size
+    assert_equal 7, Firm.reflect_on_all_associations(:has_one).size
     assert_equal 0, Firm.reflect_on_all_associations(:belongs_to).size
+  end
+
+  def test_reflection_should_not_raise_error_when_compared_to_other_object
+    assert_nothing_raised { Firm.reflections[:clients] == Object.new }
+  end
+
+  def test_has_many_through_reflection
+    assert_kind_of ActiveRecord::Reflection::ThroughReflection, Subscriber.reflect_on_association(:books)
   end
 
   private
