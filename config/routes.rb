@@ -6,6 +6,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pages
   map.resources :places
 
-  map.home '/', :controller => 'events', :action => 'index'
+  map.root :controller => 'events', :action => 'index'
 end
 

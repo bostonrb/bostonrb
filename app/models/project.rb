@@ -1,22 +1,10 @@
-# == Schema Information
-# Schema version: 13
-#
-# Table name: projects
-#
-#  id           :integer(11)     not null, primary key
-#  name         :string(255)     
-#  homepage_url :string(255)     
-#  feed_url     :string(255)     
-#  created_at   :datetime        
-#  updated_at   :datetime        
-#  description  :text            
-#  deleted_at   :datetime        
-#
-
 class Project < ActiveRecord::Base
-  has_many :commits, :limit => 5, :order => 'published_at desc', :dependent => :destroy
+  has_many :commits,
+    :limit     => 5,
+    :order     => 'published_at desc',
+    :dependent => :destroy
   has_markup :description, :cache_html => true
-  
+
   named_scope :all, :order => 'name asc'
 
   def self.download_entries
@@ -46,5 +34,5 @@ class Project < ActiveRecord::Base
       end
     end
   end
-  
+
 end
