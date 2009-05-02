@@ -3,7 +3,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html do
         @upcoming_events = Event.upcoming
-        @past_events = Event.past
+        @past_events     = Event.past
       end
       format.rss do
         @events = Event.find :all
