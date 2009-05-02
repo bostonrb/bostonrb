@@ -1,0 +1,6 @@
+h1. To-do
+
+* remove commits
+* add companies
+* get to 100% test coverage on helpers
+

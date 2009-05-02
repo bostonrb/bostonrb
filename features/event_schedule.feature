@@ -15,3 +15,10 @@ Feature: Event Schedule
       And I should see "Pub Night"
       And I should see "Theatre"
 
+   Scenario: Other events of interest
+     Given an event exists with a title of "Web Inno"
+     And the "Web Inno" event is not a main event
+     When I go to the homepage
+     Then I should see "Other events of interest"
+     And I should see "Web Inno"
+

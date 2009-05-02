@@ -18,4 +18,24 @@
             = link_to "<strong>23</strong> Jobs", jobs_path
       = partial 'layouts/flashes'
       #events
+        #events_i
+          .row
+            %h2 Events
+            #hackfest.quarter>
+              %h3 Hackfest
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            #meeting.quarter>
+              %h3 Meeting
+              %p Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            #pub_night.quarter>
+              %h3 Pub Night
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            #theatre.quarter>
+              %h3 Theatre
+              %p Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      #other_events.row
+        %h3{ :class => "center" } Other events of interest
+        %p{ :class => "center" }
+          = sentence_of_linkable_events
+
 
