@@ -25,9 +25,13 @@ Rails::Initializer.run do |config|
   config.gem 'feed-normalizer',
              :version => '1.4.0'
   config.gem 'haml',
-             :version => '2.0.1'
+             :version => '2.1.0'
   config.gem 'hpricot',
              :version => '0.8.1'
   config.gem 'simple-rss',
              :version => '1.1'
+  config.gem 'technicalpickles-has_markup',
+             :lib     => 'has_markup',
+             :source  => 'http://gems.github.com',
+             :version => '0.1.2'
 end

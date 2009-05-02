@@ -1,8 +1,6 @@
-require File.dirname(__FILE__) + '/../../test_helper'
+require 'test_helper'
 
-class ApplicationHelperTest < HelperTestCase
-  include ApplicationHelper
-  
+class ApplicationHelperTest < ActionView::TestCase
   context 'ApplicationHelper#blueprint_ie' do
     setup do
       @result = blueprint_ie
@@ -22,7 +20,7 @@ class ApplicationHelperTest < HelperTestCase
       assert @result.include?(expected)
     end 
   end
-  
+
   # FIXME the helper uses events/_banner now, so should have a view test instead
   # context 'ApplicationHelper#next_event' do
   #   context 'when there is a next event' do
@@ -31,30 +29,30 @@ class ApplicationHelperTest < HelperTestCase
   #       Event.stubs(:next).returns(@event)
   #       @result = next_event
   #     end
-  #     
+  #
   #     should 'output something' do
   #       assert_not_nil @result
   #     end
-  #     
+  #
   #     should 'have #next_event' do
   #       assert @result.include?(%q(id="next_event_banner"))
   #     end
-  #     
+  #
   #     should 'have event type in text' do
   #       assert @result.include?(@event.title)
   #     end
-  #     
+  #
   #     should 'have event date' do
   #       assert @result.include?(@event.date.to_s(:european))
   #     end
   #   end
-  #   
+  #
   #   context 'when there is not a next event' do
   #     setup do
   #       Event.stubs(:next).returns(nil)
   #       @result = next_event
   #     end
-  #     
+  #
   #     should "not output anything" do
   #       assert_nil @result
   #     end
