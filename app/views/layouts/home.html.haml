@@ -1,0 +1,21 @@
+!!! Strict
+%html
+  %head
+    %title boston.rb
+    = stylesheet_link_tag 'screen', :media => 'screen'
+    = auto_discovery_link_tag :rss, '/jobs.rss', :title => 'Jobs feed'
+  %body
+    .grid_960.middle
+      .row
+        %h1= link_to 'boston.rb', root_path
+      #boston_rb
+        .row
+          %p
+            = link_to "<strong>4</strong> Events", events_path
+            = link_to "<strong>12,000</strong> Projects", projects_path
+            = link_to "<strong>110</strong> People", "#"
+            = link_to "<strong>25</strong> Companies", "#"
+            = link_to "<strong>23</strong> Jobs", jobs_path
+      = partial 'layouts/flashes'
+      #events
+
