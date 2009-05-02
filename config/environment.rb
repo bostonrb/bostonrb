@@ -27,7 +27,7 @@ Rails::Initializer.run do |config|
   config.gem 'haml',
              :version => '2.0.1'
   config.gem 'hpricot',
-             :version => '0.6'
+             :version => '0.8.1'
   config.gem 'simple-rss',
              :version => '1.1'
 end
