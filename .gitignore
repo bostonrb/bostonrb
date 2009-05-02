@@ -4,3 +4,5 @@ tmp
 db/*.sqlite3
 coverage.data
 metrics
+*.swp
+*.swo

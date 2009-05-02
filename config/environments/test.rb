@@ -24,6 +24,7 @@ config.action_mailer.delivery_method = :test
 GOOGLE_MAP_API_KEY = 'ABQIAAAAzMUFFnT9uH0xq39J0Y4kbhTJQa0g3IQ9GZqIMmInSLzwtGDKaBR6j135zrztfTGVOm2QlWnkaidDIQ'
 
 config.gem 'mocha', :version => '0.5.6'
-config.gem 'quietbacktrace'
-config.gem 'thoughtbot-factory_girl', :version => '1.1', :lib => 'factory_girl', :source => 'http://gems.github.com'
-config.gem 'ruby-debug'
+config.gem 'thoughtbot-factory_girl', 
+  :version => '1.1', 
+  :lib     => 'factory_girl', 
+  :source  => 'http://gems.github.com'
