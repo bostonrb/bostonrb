@@ -33,6 +33,14 @@ config.gem 'thoughtbot-shoulda',
            :lib     => 'shoulda', 
            :source  => 'http://gems.github.com', 
            :version => '= 2.10.1'
+config.gem 'webrat',
+           :version => '= 0.4.3'
+config.gem 'nokogiri',
+           :version => '= 1.2.3'
+config.gem 'cucumber',
+           :version => '= 0.3.0'
+config.gem 'fakeweb',
+           :version => '= 1.2.0'
 
 HOST = 'localhost'
 

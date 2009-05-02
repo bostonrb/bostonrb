@@ -1,0 +1,18 @@
+h1. Boston.rb
+
+This is the source code to "Boston.rb":http://bostonrb.org, a Rails app which helps Boston Rubyists communicate.
+
+It is open source under the MIT license. Fork away, modify to your own user group's needs, & send us pull requests!
+
+h2. Tests
+
+We use Cucumber & Webrat for acceptance testing and Shoulda, Factory Girl, & Mocha for unit testing. We use Fakeweb to stop the test suite from hitting external services. We use Nokogiri for parsing markup, especially in acceptance tests.
+
+All testing gems are vendored except for Nokogiri, which has native extensions.
+
+h2. Production
+
+This must be added to cron:
+
+    PATH_TO_APP/script/runner Project.download_entries
+
