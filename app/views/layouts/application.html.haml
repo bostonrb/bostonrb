@@ -2,8 +2,6 @@
 %html
   %head
     %title Boston.rb
-    = stylesheet_link_tag 'blueprint/screen', :media => 'screen'
-    = blueprint_ie
     = stylesheet_link_tag 'screen', :media => 'screen'
     = auto_discovery_link_tag :rss, '/jobs.rss', :title => 'Jobs feed'
   %body{ :id => "#{controller.controller_name}_body" }

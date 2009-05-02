@@ -1,0 +1,173 @@
+.half,
+.quarter,
+.three_quarters {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.middle {
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}
+
+/* grid 960 { 480 240 120 60 30 15 5 } */
+
+/*.grid_960 */ 
+.grid_960 .row{
+  width: 96em;
+  margin: 0 auto;
+}
+
+.grid_960 .half {
+  width: 48em;
+}
+
+.grid_960 .quarter {
+  width: 24em;
+}
+
+.grid_960 .three_quarters {
+  width: 72em;
+}
+
+/* testing framework */
+.test {
+  -moz-opacity: .7;
+  background: #000;
+  color: #FFF;
+}
+.test h1 {
+  background: #0F0;
+}
+.test h2 {
+  background: #0C0;
+}
+.test h3 {
+  background: #090;
+}
+.test h4 {
+  background: #060;
+}
+.test ul {
+  background: #c00;
+}
+.test p {
+  background: #c00;
+}
+
+/* custom layout */
+
+body {
+  margin: 2.1em 0 0 0;
+  background: #300 url(../images/red.gif);
+  color: #FED;
+  color: #BDF;
+  color: #eee !important;
+}
+
+#other_events {
+  padding: 2.1em 0 2.1em 0;
+}
+#other_events h3 {
+  color: #C30;
+}
+#other_events p {
+  margin: 0;
+}
+
+.collage {
+  background: #123;
+  height: 16.8em;
+}
+
+#boston_rb {
+  margin-bottom: 2.1em;
+}
+
+#companies {
+  background: #000919;
+  padding: 2.1em 0;
+}
+
+#events,
+#projects,
+#people,
+#companies,
+#jobs {
+  background: #000919;
+}
+
+#events {
+  background: #000919 url(../images/ribbon.gif) 50% 100% repeat-x;
+}
+#events_i {
+  background: url(../images/ribbon_i.gif) 50% 0% repeat-x;
+  padding: 2.1em 0 0 0;
+}
+#projects {
+  padding: 2.1em 0 0 0;
+  margin-bottom: 2.1em;
+}
+
+#people {
+  padding: 2.1em 0;
+}
+
+#twitter_blogs {
+  background: url(../images/red.gif) 0 0 repeat-x;
+  padding: 2.1em 0 0 0;
+}
+#twitter_blogs h3 {
+  color: #C30;
+}
+#twitter_blogs p,
+#twitter_blogs li {
+  color: #FDB;
+}
+
+#boston_rb p a {
+  color: #f53;
+  background: #400;
+/* blue
+  color: #39C;
+  background: #001626;
+*/
+  font-style: italic;
+  margin-right: .75em;
+  font-family: Georgia;
+  text-decoration: none;
+  padding: .75em .75em .75em 0;
+}
+
+#boston_rb p a:hover {
+  background: #500;
+  color: #F75;
+/* blue
+  color: #09F;
+  background: #001C2C;
+*/
+}
+
+#boston_rb p a strong {
+  font-style: normal;
+  font-weight: normal;
+  margin-right: .5em;
+  padding: .75em;
+  background: #200000;
+  color: #FC9;
+/* blue
+  color: #0CF;
+  background: #023;
+*/
+}
+
+#boston_rb p a:hover strong {
+  background: #290000;
+/* blue
+  color: #09F;
+  background: #034;
+*/
+}
