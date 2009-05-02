@@ -1,7 +1,7 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  should_require_attributes :date, :title, :location
+  should_validate_presence_of :date, :title, :location
   should_have_markup :description, :required => true, :cache_html => true
 
   should_belong_to :place
@@ -39,7 +39,7 @@ class EventTest < ActiveSupport::TestCase
     end
 
   end
-  
+
   context "next without any future events" do
     setup do
       @next = Event.next
@@ -49,10 +49,10 @@ class EventTest < ActiveSupport::TestCase
       assert_nil @next
     end
   end
-  
+
   context "In order to geocode, Event" do
     should_have_db_columns :lat, :lng
-    
+
     context "with good location" do
       setup do
         @event = Factory(:event, :location => 'Boston, MA, 02114')
@@ -70,17 +70,17 @@ class EventTest < ActiveSupport::TestCase
       should "set lng after save" do
         assert_not_nil @event.lng
       end
-      
+
       should "have lat_lng_pair" do
         assert @event.lat_lng_pair.any?
         assert @event.lat_lng_pair.all? { |x| x.is_a? Float }
       end
-      
+
       should "be geocoded" do
         assert @event.geocoded?
       end
     end
-    
+
     context "with bad address" do
       setup do
         @event = Factory(:event, :location => 'Non existent place')
@@ -92,16 +92,16 @@ class EventTest < ActiveSupport::TestCase
       should "not raise an error" do
         assert @event.errors.empty?
       end
-      
+
       should "not be geocoded" do
         assert !@event.geocoded?
       end
-      
+
       should "fail silently" do
         assert @event.lat.nil?
         assert @event.lng.nil?
       end
     end
   end
-  
+
 end

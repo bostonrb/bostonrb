@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class PlacesControllerTest < ActionController::TestCase
 
@@ -24,8 +24,8 @@ class PlacesControllerTest < ActionController::TestCase
       post :create, :place => Factory.attributes_for(:place)
       @place = Place.find(:all).last
     end
-    
-    should_redirect_to 'place_path(@place)'
+
+    should_redirect_to("place show") { place_path(@place) }
   end
 
   context 'GET show' do
@@ -49,15 +49,15 @@ class PlacesControllerTest < ActionController::TestCase
       @place = Factory(:place)
       put :update, :id => @place.id, :place => {:name => 'PLACEEE!'}
     end
-    should_redirect_to 'place_path(@place)'
+    should_redirect_to("place show") { place_path(@place) }
   end
-
 
   context 'DELETE destroy' do
     setup do
       @place = Factory(:place)
       delete :destroy, :id => @place.id
     end
-    should_redirect_to 'places_path'
+    should_redirect_to("places index") { places_path }
   end
+
 end

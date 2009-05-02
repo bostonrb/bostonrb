@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class JobsControllerTest < ActionController::TestCase
-  
+
   %w(html rss).each do |format|
     context "A GET to index #{format}" do
       setup do
@@ -40,7 +40,7 @@ class JobsControllerTest < ActionController::TestCase
       end
     end
   end
-  
+
   context 'A GET to /jobs/old' do
     setup do
       get :old
@@ -67,9 +67,9 @@ class JobsControllerTest < ActionController::TestCase
         assert_equal @old_count + 1, Job.count
       end
 
-      should_redirect_to 'jobs_url'
+      should_redirect_to("jobs index") { jobs_url }
     end
-    
+
     context 'A PUT to /jobs/:id' do
       setup do
         @job = Factory(:job)
@@ -85,10 +85,10 @@ class JobsControllerTest < ActionController::TestCase
         assert @job.title != Job.find_by_id(@job.id).title
       end
 
-      should_redirect_to 'jobs_path'
+      should_redirect_to("jobs index") { jobs_url }
     end
   end
-  
+
   failing_captcha_context do
     context 'A POST to /jobs' do
       setup do
@@ -171,16 +171,16 @@ class JobsControllerTest < ActionController::TestCase
       end
     end
   end
-  
+
   context 'A GET to /jobs/:id/edit without edit privileges' do
     setup do
       @job = Factory(:job)
       UserSession.any_instance.expects(:edit_job?).returns(false)
       get :edit, :id => @job.id
     end
-    
+
     should_set_the_flash_to 'Editing time expired.'
-    should_redirect_to 'jobs_url'
+    should_redirect_to("jobs index") { jobs_url }
   end
 
   context 'A DELETE to /jobs/:id' do
@@ -203,18 +203,18 @@ class JobsControllerTest < ActionController::TestCase
       assert flash[:notice] == 'Job was successfully deleted.'
     end
 
-    should_redirect_to 'jobs_url'
+    should_redirect_to("jobs index") { jobs_url }
   end
-   
+
   protected
-  
-    def should_have_job_form_fields
-      assert_select 'input[id=job_title][type=text]'
-      assert_select 'input[id=job_location][type=text]'
-      assert_select 'input[id=job_organization][type=text]'
-      assert_select 'input[id=job_email][type=text]'
-      assert_select 'textarea[id=job_description]'
-      assert_select 'input[id=job_submit][type=submit]'
-    end
+
+  def should_have_job_form_fields
+    assert_select 'input[id=job_title][type=text]'
+    assert_select 'input[id=job_location][type=text]'
+    assert_select 'input[id=job_organization][type=text]'
+    assert_select 'input[id=job_email][type=text]'
+    assert_select 'textarea[id=job_description]'
+    assert_select 'input[id=job_submit][type=submit]'
+  end
 
 end

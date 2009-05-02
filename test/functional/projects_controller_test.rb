@@ -1,7 +1,7 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
-  
+
   context 'A GET to index' do
     setup do
       get :index
@@ -49,7 +49,7 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_equal @old_count + 1, Project.count
     end
 
-    should_redirect_to 'projects_path'
+    should_redirect_to("projects index") { projects_path }
   end
 
   context 'A GET to /projects/:id/edit' do
@@ -88,7 +88,7 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_not_equal @project.name, Project.find_by_id(@project.to_param).name
     end
 
-    should_redirect_to 'projects_url'
+    should_redirect_to("projects index") { projects_path }
   end
 
   context 'A DELETE to /projects/:id' do
@@ -111,17 +111,17 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_equal 'Project was successfully deleted.', flash[:notice]
     end
 
-    should_redirect_to 'projects_path'
+    should_redirect_to("projects index") { projects_path }
   end
 
   protected
-  
-    def should_have_project_form_fields
-      assert_select 'input[id=project_name][type=text]'
-      assert_select 'input[id=project_homepage_url][type=text]'
-      assert_select 'input[id=project_feed_url][type=text]'
-      assert_select 'textarea[id=project_description]'
-      assert_select 'input[id=project_submit][type=submit]'
-    end
+
+  def should_have_project_form_fields
+    assert_select 'input[id=project_name][type=text]'
+    assert_select 'input[id=project_homepage_url][type=text]'
+    assert_select 'input[id=project_feed_url][type=text]'
+    assert_select 'textarea[id=project_description]'
+    assert_select 'input[id=project_submit][type=submit]'
+  end
 
 end

@@ -1,7 +1,7 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class VideosControllerTest < ActionController::TestCase
-  
+
   context 'A GET to index' do
     setup do
       get :index
@@ -47,7 +47,7 @@ class VideosControllerTest < ActionController::TestCase
       assert_equal @old_count + 1, Video.count
     end
 
-    should_redirect_to 'videos_path'
+    should_redirect_to("videos index") { videos_path }
   end
 
   context 'A GET to /videos/:id/edit' do
@@ -86,7 +86,7 @@ class VideosControllerTest < ActionController::TestCase
       assert_not_equal @video.title, Video.find_by_id(@video.id).title
     end
 
-    should_redirect_to 'videos_path'
+    should_redirect_to("videos index") { videos_path }
   end
 
   context 'A DELETE to /videos/:id' do
@@ -109,15 +109,15 @@ class VideosControllerTest < ActionController::TestCase
       assert_equal 'Video was successfully deleted.', flash[:notice]
     end
 
-    should_redirect_to 'videos_path'
+    should_redirect_to("videos index") { videos_path }
   end
 
   protected
-  
-    def should_have_video_form_fields
-      assert_select 'input[id=video_title][type=text]'
-      assert_select 'input[id=video_url][type=text]'
-      assert_select 'input[id=video_submit][type=submit]'
-    end
+
+  def should_have_video_form_fields
+    assert_select 'input[id=video_title][type=text]'
+    assert_select 'input[id=video_url][type=text]'
+    assert_select 'input[id=video_submit][type=submit]'
+  end
 
 end

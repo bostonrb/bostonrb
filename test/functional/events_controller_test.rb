@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class EventsControllerTest < ActionController::TestCase
-  
+
   context 'GET to :index with no events' do
     setup do
       Event.stubs(:upcoming).returns([])
@@ -14,7 +14,7 @@ class EventsControllerTest < ActionController::TestCase
     should_respond_with :success
     should_render_template :index
   end
-  
+
   context 'GET to :index with events in the future' do
     setup do
       @next = Factory(:event, :date => 2.days.from_now)
@@ -40,19 +40,17 @@ class EventsControllerTest < ActionController::TestCase
     should_assign_to :upcoming_events
     should_assign_to :past_events
   end
-  
+
   context 'on GET to :index rss' do
     setup do
       @next = Factory(:event)
-      # TODO rails bug? specifying rss as a symbol breaks get
       get :index, :format => 'rss'
     end
 
     should_assign_to :events
     should_have_media_type 'application/rss+xml'
-    should_eventually 'check the number of entries'
   end
-  
+
   context 'on GET to :new' do
     setup do
       get :new
@@ -69,7 +67,7 @@ class EventsControllerTest < ActionController::TestCase
       end
     end
   end
-  
+
   context 'on GET to :show' do
     setup do
       @event = Factory(:event)
@@ -93,7 +91,7 @@ class EventsControllerTest < ActionController::TestCase
     end
     
   end
-  
+
   passing_captcha_context do
     context 'a POST to :create' do
       setup do
@@ -108,9 +106,9 @@ class EventsControllerTest < ActionController::TestCase
 
       should_change "Event.count", :by => 1
 
-      should_redirect_to 'events_path'
+      should_redirect_to("events index") { events_path }
     end
-    
+
     context 'a PUT to :update' do
       setup do
         @event = Factory(:event)
@@ -126,10 +124,10 @@ class EventsControllerTest < ActionController::TestCase
         assert_not_equal @event.description, Event.find_by_id(@event.id).description
       end
 
-      should_redirect_to 'events_path'
+      should_redirect_to("events index") { events_path }
     end
   end
-  
+
   failing_captcha_context do
     context 'a POST to :create' do
       setup do
@@ -151,7 +149,7 @@ class EventsControllerTest < ActionController::TestCase
       should_render_template :edit
     end
   end
-  
+
   context 'A GET to :edit' do
     setup do
       @event = Factory(:event)
@@ -169,7 +167,7 @@ class EventsControllerTest < ActionController::TestCase
       end
     end
   end
-  
+
   context 'A PUT to :update with bad parameters' do
     setup do
       @event = Factory(:event)
@@ -196,13 +194,13 @@ class EventsControllerTest < ActionController::TestCase
       end
     end
   end
-  
+
   protected
-  
-    def should_have_event_form_fields()
-      assert_select 'input[id=event_title][type=text]'
-      assert_select 'input[id=event_location][type=text]'
-      assert_select 'textarea[id=event_description]'
-    end
-  
+
+  def should_have_event_form_fields()
+    assert_select 'input[id=event_title][type=text]'
+    assert_select 'input[id=event_location][type=text]'
+    assert_select 'textarea[id=event_description]'
+  end
+
 end
