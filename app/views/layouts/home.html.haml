@@ -6,16 +6,7 @@
     = auto_discovery_link_tag :rss, '/jobs.rss', :title => 'Jobs feed'
   %body
     .grid_960.middle
-      .row
-        %h1= link_to 'boston.rb', root_path
-      #boston_rb
-        .row
-          %p
-            = link_to "<strong>4</strong> Events", events_path
-            = link_to "<strong>110</strong> Users", "#"
-            = link_to "<strong>12,000</strong> Projects", projects_path
-            = link_to "<strong>23</strong> Jobs", jobs_path
-            = link_to "<strong>8</strong> Presentations", "#"
+      = render :partial => 'layouts/header'
       = partial 'layouts/flashes'
       #events
         .ribbon
@@ -103,11 +94,5 @@
             %ul
               - linkable_presentations.each do |presentation|
                 %li= presentation
-      #about.row
-        %h3.center About
-        %p.center
-          == Founded 2005. Monthly meetings, hackfests, &amp; theatre. Frequent pub nights. Thanks to our #{ link_to "sponsors", page_path(:sponsors) }.
-        %p.center
-          We communicate via <a href="http://groups.google.com/group/boston-rubygroup">mailing list</a> &amp; #offrails on IRC.
-        %p.center= signed_out_links
+      = render :partial => '/layouts/about'
 
