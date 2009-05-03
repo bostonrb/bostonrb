@@ -1,8 +1,7 @@
 h1. To-do
 
-* remove videos
+* rename videos presentations
 * add companies
-* add presentations
 * add apps
 * link_to_each helper
 * add a .quarter section for images in projects, jobs, presentations sections

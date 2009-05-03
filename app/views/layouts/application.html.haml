@@ -7,8 +7,7 @@
   %body
     .grid_960.middle
       = render :partial => 'layouts/header'
-      #content{ :class => 'column span-24' }
-        = partial 'layouts/flashes'
-        = yield
+      = partial 'layouts/flashes'
+      = yield
       = render :partial => '/layouts/about'
     = yield :javascripts

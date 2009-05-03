@@ -1,14 +1,6 @@
 class EventsController < ApplicationController
   def index
-    respond_to do |format|
-      format.html do
-        @upcoming_events = Event.upcoming
-        @past_events     = Event.past
-      end
-      format.rss do
-        @events = Event.find :all
-      end
-    end
+    @events = Event.upcoming
   end
 
   def new
@@ -18,7 +10,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find params[:id]
   end
-  
+
   def show
     @event = Event.find params[:id]
   end

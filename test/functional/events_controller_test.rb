@@ -8,9 +8,8 @@ class EventsControllerTest < ActionController::TestCase
       Event.stubs(:next).returns(nil)
       get :index
     end
-  
-    should_assign_to :upcoming_events
-    should_assign_to :past_events
+
+    should_assign_to :events
     should_respond_with :success
     should_render_template :index
   end
@@ -21,11 +20,10 @@ class EventsControllerTest < ActionController::TestCase
       Event.stubs(:upcoming).returns([@next])
       get :index
     end
-  
+
     should_respond_with :success
     should_render_template :index
-    should_assign_to :upcoming_events
-    should_assign_to :past_events
+    should_assign_to :events
   end
 
   context 'GET to :index with events in the past' do
@@ -37,8 +35,7 @@ class EventsControllerTest < ActionController::TestCase
 
     should_respond_with :success
     should_render_template :index
-    should_assign_to :upcoming_events
-    should_assign_to :past_events
+    should_assign_to :events
   end
 
   context 'on GET to :index rss' do
@@ -55,11 +52,11 @@ class EventsControllerTest < ActionController::TestCase
     setup do
       get :new
     end
-    
+
     should_assign_to :event
     should_respond_with :success
     should_render_template :new
-    
+
     should 'have new_event form' do
       assert_select 'form[id=new_event]' do
         should_have_event_form_fields
@@ -74,10 +71,8 @@ class EventsControllerTest < ActionController::TestCase
       get :show, :id => @event.to_param
     end
 
-    should 'recognize route' do
-      assert_recognizes({ :controller => 'events', :action => 'show', :id => @event.to_param},
-                          :path => "/events/#{@event.to_param}", :method => :get)
-    end
+    should_route :get, '/events/1',
+      :controller => 'events', :action => 'show', :id => '1'
 
     should_assign_to :event
     should_respond_with :success
@@ -91,19 +86,19 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   passing_captcha_context do
+    should_route :put, "/events/1",
+      :controller => 'events', :action => 'update', :id => '1'
+
+    should_route :post, '/events',
+      :controller => 'events', :action => 'create'
+
     context 'a POST to :create' do
       setup do
         @old_count = Event.count
         post :create, :event => Factory.attributes_for(:event)
       end
 
-      should 'recognize route' do
-        assert_recognizes({ :controller => 'events', :action => 'create' },
-                            :path       => '/events', :method => :post)
-      end
-
       should_change "Event.count", :by => 1
-
       should_redirect_to("events index") { events_path }
     end
 
@@ -111,11 +106,6 @@ class EventsControllerTest < ActionController::TestCase
       setup do
         @event = Factory(:event)
         put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
-      end
-
-      should 'recognize route' do
-        assert_recognizes({ :controller => 'events', :action => 'update', :id => @event.to_param },
-                            :path       => "/events/#{@event.id}", :method => :put)
       end
 
       should 'update event description' do
@@ -153,11 +143,11 @@ class EventsControllerTest < ActionController::TestCase
       @event = Factory(:event)
       get :edit, :id => @event.to_param
     end
-    
+
     should_assign_to :event
     should_respond_with :success
     should_render_template :edit
-    
+
     should 'have event form' do
       assert_select "form[id=edit_event_#{@event.to_param}]" do
         should_have_event_form_fields
@@ -172,19 +162,14 @@ class EventsControllerTest < ActionController::TestCase
       put :update, :id => @event.to_param, :event => { :title => '' }
     end
 
-    should 'recognize route' do
-      assert_recognizes({ :controller => 'events', :action => 'update', :id => @event.to_param },
-                          :path       => "/events/#{@event.to_param}", :method => :put)
-    end
-
     should 'not update event description' do
       assert_equal @event.description, Event.find_by_id(@event.id).description
     end
-    
+
     should_assign_to :event
     should_respond_with :success
     should_render_template :edit
-    
+
     should 'have update event form' do
       assert_select "form[id=edit_event_#{@event.to_param}]" do
         should_have_event_form_fields
