@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  
+
   def index
     @projects = Project.all
     @left_projects, @right_projects = @projects.halve
@@ -38,15 +38,15 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    
+
     flash[:notice] = 'Project was successfully deleted.'
     redirect_to projects_url
   end
-  
+
   protected
-  
-    def load_feed_entries
-      YAML.load(File.read(Project.feed_entries_path))
-    end
-  
+
+  def load_feed_entries
+    YAML.load(File.read(Project.feed_entries_path))
+  end
+
 end

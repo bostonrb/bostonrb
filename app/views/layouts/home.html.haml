@@ -14,7 +14,9 @@
             = link_to "<strong>4</strong> Events", events_path
             = link_to "<strong>110</strong> Users", "#"
             = link_to "<strong>12,000</strong> Projects", projects_path
+            = link_to "<strong>89</strong> Apps", "#"
             = link_to "<strong>23</strong> Jobs", jobs_path
+            = link_to "<strong>8</strong> Presentations", "#"
             = link_to "<strong>25</strong> Companies", "#"
       = partial 'layouts/flashes'
       #events
@@ -85,10 +87,10 @@
           .half>
             %ul
               %li= job_title_and_company_name
-      #places.row
-        %h3.center Places to hack
+      #presentations.row
+        %h3.center Presentations
         %p.center
-          = sentence_of_linkable_places
+          = sentence_of_linkable_presentations
       #companies
         .row
           %h2 Companies

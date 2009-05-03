@@ -5,7 +5,8 @@ h1. To-do
 * extract footer into partial
 * add companies
 * add presentations
-* add places
+* add apps
+* upgrade has_markup
 * get to 100% test coverage on helpers
 * do a database index audit
 
