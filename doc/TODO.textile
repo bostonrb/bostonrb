@@ -1,7 +1,5 @@
 h1. To-do
 
-* upgrade has_markup
-* remove places
 * remove videos
 * add companies
 * add presentations

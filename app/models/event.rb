@@ -13,8 +13,6 @@ class Event < ActiveRecord::Base
   named_scope :past, lambda {{:conditions => ['date < ?', DateTime.now],
                         :order      => 'date desc'}}
 
-  belongs_to :place
-
   def self.next
     find :first, :conditions => ['date > ?', DateTime.now], :order => 'date asc'
   end

@@ -4,8 +4,6 @@ class EventTest < ActiveSupport::TestCase
   should_validate_presence_of :date, :title, :location
   should_have_markup :description, :required => true, :cache_html => true
 
-  should_belong_to :place
-
   context 'with events in the past and future' do
     setup do
       @future = Factory(:event, :date => 2.days.from_now)
