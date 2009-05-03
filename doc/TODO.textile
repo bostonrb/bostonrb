@@ -1,6 +1,11 @@
 h1. To-do
 
-* remove commits
+* add IRC & mailing list links to footer
+* extract header into partial
+* extract footer into partial
 * add companies
+* add presentations
+* add places
 * get to 100% test coverage on helpers
+* do a database index audit
 
