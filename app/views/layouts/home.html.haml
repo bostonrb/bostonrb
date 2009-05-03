@@ -34,8 +34,8 @@
               %h3 Theatre
               %p Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       #other_events.row
-        %h3{ :class => "center" } Special events
-        %p{ :class => "center" }
+        %h3.center Special events
+        %p.center
           = sentence_of_linkable_events
       #people
         .row
@@ -73,8 +73,8 @@
               %li= project_name_and_link
               %li= project_name_and_link
       #apps.row
-        %h3{ :class => "center" } Apps written by Boston Rubyists
-        %p{ :class => "center" }
+        %h3.center Apps written by Boston Rubyists
+        %p.center
           = sentence_of_linkable_apps
       #jobs
         .row
@@ -86,12 +86,13 @@
             %ul
               %li= job_title_and_company_name
       #places.row
-        %h3{ :class => "center" } Places to hack
-        %p{ :class => "center" }
+        %h3.center Places to hack
+        %p.center
           = sentence_of_linkable_places
       #companies
         .row
           %h2 Companies
           .collage
-
+      #authentication.row
+        %p.center= signed_out_links
 
