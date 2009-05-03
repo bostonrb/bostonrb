@@ -1,6 +1,5 @@
 h1. To-do
 
-* add IRC & mailing list links to footer
 * extract header into partial
 * extract footer into partial
 * write signed in authentication links
