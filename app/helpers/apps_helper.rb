@@ -1,11 +1,8 @@
 module AppsHelper
 
-  def sentence_of_linkable_apps
+  def app_links
     apps = ["Hoptoad", "Umbrella Today", "Widgetfinger"]
-    linkable_apps = apps.collect do |app|
-      link_to app, "#"
-    end
-    linkable_apps.to_sentence
+    apps.collect { |app| link_to(app, "#") }
   end
 
 end

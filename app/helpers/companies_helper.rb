@@ -1,10 +1,7 @@
 module CompaniesHelper
-  def sentence_of_linkable_companies
+  def company_links
     companies = ["thoughtbot", "Sermo", "Enlight Solutions",
                  "Big Room Technology"]
-    linkable_companies = companies.collect do |company|
-      link_to company, "#"
-    end
-    linkable_companies.to_sentence
+    companies.collect { |company| link_to(company, "#") }
   end
 end

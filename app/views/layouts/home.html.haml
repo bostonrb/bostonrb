@@ -58,15 +58,15 @@
             %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           .half>
             %ul
-              %li= linkable_project
-              %li= linkable_project
-              %li= linkable_project
-              %li= linkable_project
-              %li= linkable_project
+              %li= project_link
+              %li= project_link
+              %li= project_link
+              %li= project_link
+              %li= project_link
       #apps.row
         %h3.center Apps written by Boston Rubyists
         %p.center
-          = sentence_of_linkable_apps
+          = sentence_of_app_links
       #jobs
         .row
           %h2 Jobs
@@ -75,15 +75,15 @@
             %p We are looking for someone with expert knowledge of Ruby on Rails to join our team of Ruby on Rails developers full-time in either our Boston, MA or New York City office. The ideal individual will have been using Ruby on Rails extensively (probably since before 1.0), have an excellent knowledge of Javascript, HTML, and CSS, and experience in TDD.
           .half>
             %ul
-              %li= linkable_job
-              %li= linkable_job
-              %li= linkable_job
-              %li= linkable_job
-              %li= linkable_job
+              %li= job_link
+              %li= job_link
+              %li= job_link
+              %li= job_link
+              %li= job_link
       #companies.row
         %h3.center Companies
         %p.center
-          = sentence_of_linkable_companies
+          = sentence_of(company_links)
       #presentations
         .row
           %h2 Presentations
@@ -92,7 +92,7 @@
             %p Dan Pickett talks about lorem ipsum dolor sit amet.
           .half>
             %ul
-              - linkable_presentations.each do |presentation|
-                %li= presentation
+              - presentation_links.each do |each|
+                %li= each
       = render :partial => '/layouts/about'
 

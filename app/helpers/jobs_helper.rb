@@ -7,7 +7,7 @@ module JobsHelper
     html
   end
 
-  def linkable_job
+  def job_link
     name = html_escape("Rails developer")
     link = html_escape("jobs/5")
     link_to name, link

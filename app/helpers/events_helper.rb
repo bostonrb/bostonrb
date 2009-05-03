@@ -17,12 +17,9 @@ module EventsHelper
     end
   end
 
-  def sentence_of_linkable_events
+  def event_links
     events = ["Web Inno", "DevHouse Boston", "Pro RubyConf"]
-    linkable_events = events.collect do |event|
-      link_to event, "#"
-    end
-    linkable_events.to_sentence
+    events.collect { |event| link_to(event, "#") }
   end
 
 end
