@@ -38,7 +38,7 @@ config.gem 'webrat',
 config.gem 'nokogiri',
            :version => '= 1.2.3'
 config.gem 'cucumber',
-           :version => '= 0.3.0'
+           :version => '= 0.3.1'
 config.gem 'fakeweb',
            :version => '= 1.2.0'
 
