@@ -68,7 +68,7 @@ body {
   color: #eee !important;
 }
 
-#other_events, #companies {
+#other_events, #companies, #authentication {
   padding: 2.1em 0 2.1em 0;
 }
 
@@ -121,8 +121,12 @@ body {
   margin-bottom: 2.1em;
 }
 
-#people, #about {
+#people {
   padding: 2.1em 0;
+}
+
+#about {
+  padding: 2.1em 0 0 0;
 }
 
 #twitter_blogs {
