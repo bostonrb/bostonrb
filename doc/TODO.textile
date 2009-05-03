@@ -1,6 +1,5 @@
 h1. To-do
 
-* write signed in authentication links
 * style the flashes
 * add companies
 * add presentations
