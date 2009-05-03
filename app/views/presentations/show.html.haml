@@ -1,0 +1,5 @@
+%h2= link_to @presentation.title
+%p= "Presented by #{@presentation.presenter} at #{@presentation.source}" 
+= @presentation.embed
+
+%p= link_to 'Edit', edit_presentation_url(@presentation)

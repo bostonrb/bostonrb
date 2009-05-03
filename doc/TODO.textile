@@ -1,6 +1,5 @@
 h1. To-do
 
-* rename videos presentations
 * add companies
 * add apps
 * link_to_each helper

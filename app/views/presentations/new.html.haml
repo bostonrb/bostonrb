@@ -1,0 +1,6 @@
+%h2 New presentation
+= error_messages_for :presentation
+
+- form_for @presentation do |form|
+  = partial 'presentations/form', :form => form
+  = form.submit 'Create', :disable_with => 'Please wait...'

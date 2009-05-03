@@ -1,9 +1,0 @@
-%h2 Edit video
-
-= error_messages_for :video
-
-- form_for(@video) do |form|
-  = partial 'videos/form', :form => form
-    
-  %p= form.submit 'Update', :disable_with => 'Please wait...'
-  %p= link_to 'Delete', video_path(@video), :method => :delete, :confirm => 'Are you sure?'

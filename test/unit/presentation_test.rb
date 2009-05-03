@@ -8,7 +8,7 @@ class PresentationTest < ActiveSupport::TestCase
     context 'populating the embed field from a good url' do
       setup do
         @presentation = Factory.build(:presentation)
-        @presentation.stubs(:open).with(@presentation.url).returns(file_fixture('google_presentation.html'))
+        @presentation.stubs(:open).with(@presentation.url).returns(file_fixture('google_video.html'))
         @presentation.populate_embed
       end
 
