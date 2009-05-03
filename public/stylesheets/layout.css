@@ -76,7 +76,7 @@ body {
   padding: 0 0 2em 0;
 }
 
-#other_events h3, #apps h3, #companies h3 {
+#other_events h3, #apps h3, #companies h3, #twitter_blogs h3, #about h3 {
   color: #C30;
 }
 #other_events p, #apps p, #companies p {
@@ -120,15 +120,12 @@ body {
   margin-bottom: 2.1em;
 }
 
-#people, #authentication {
+#people, #about {
   padding: 2.1em 0;
 }
 
 #twitter_blogs {
   padding: 2.1em 0 0 0;
-}
-#twitter_blogs h3 {
-  color: #C30;
 }
 #twitter_blogs p,
 #twitter_blogs li {

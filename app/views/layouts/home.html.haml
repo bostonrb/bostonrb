@@ -103,6 +103,11 @@
             %ul
               - linkable_presentations.each do |presentation|
                 %li= presentation
-      #authentication.row
+      #about.row
+        %h3.center About
+        %p.center
+          == Founded 2005. Monthly meetings, hackfests, &amp; theatre. Frequent pub nights. Thanks to our #{ link_to "sponsors", page_path(:sponsors) }.
+        %p.center
+          We communicate via <a href="http://groups.google.com/group/boston-rubygroup">mailing list</a> &amp; #offrails on IRC.
         %p.center= signed_out_links
 
