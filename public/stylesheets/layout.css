@@ -62,7 +62,7 @@
 
 body {
   margin: 2.1em 0 0 0;
-  background: #300 url(../images/red.gif);
+  background: url(../images/red.gif);
   color: #FED;
   color: #BDF;
   color: #eee !important;
@@ -125,7 +125,6 @@ body {
 }
 
 #twitter_blogs {
-  background: url(../images/red.gif) 0 0 repeat-x;
   padding: 2.1em 0 0 0;
 }
 #twitter_blogs h3 {
@@ -137,7 +136,7 @@ body {
 }
 
 #boston_rb p a {
-  color: #f53;
+  color: #fff;
   background: #400;
   font-style: italic;
   margin-right: .75em;
@@ -148,7 +147,6 @@ body {
 
 #boston_rb p a:hover {
   background: #500;
-  color: #F75;
 }
 
 #boston_rb p a strong {
