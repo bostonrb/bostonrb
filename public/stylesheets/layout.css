@@ -111,7 +111,7 @@ body {
 #events {
   background: #000919 url(../images/ribbon.gif) 50% 100% repeat-x;
 }
-#events_i {
+.ribbon {
   background: url(../images/ribbon_i.gif) 50% 0% repeat-x;
   padding: 2.1em 0 0 0;
 }

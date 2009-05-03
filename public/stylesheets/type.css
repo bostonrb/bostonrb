@@ -77,9 +77,8 @@ h2 {
   background: url(../images/header.png) 0 0 no-repeat;
   font-family: "Baskerville", "Garamond", "Times New Roman", Times, serif;
   text-shadow: 0 0 4px #000;
-  color: #F63;
-  color: #9C3; /* green */
   color: #9CF; /* blue */
+  color: #fff;
 }
 
 h3 {
@@ -100,11 +99,16 @@ p, li {
 
 #projects a,
 #jobs a {
-  color: #09f;
+  color: #09C;
 }
 
 a {
   color: #F90;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 #boston_rb p {
