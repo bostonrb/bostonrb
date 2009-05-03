@@ -6,6 +6,7 @@ h1. To-do
 * link_to_each helper
 * add a .quarter section for images in projects, jobs, presentations sections
 * put company logo next to job title, no company name
+* refactor Presentation#populate_embed to Youtube class
 * get to 100% test coverage on helpers
 * do a database index audit
 

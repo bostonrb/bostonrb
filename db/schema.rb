@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090503203924) do
+ActiveRecord::Schema.define(:version => 20090503210648) do
 
   create_table "commits", :force => true do |t|
     t.string   "title"
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(:version => 20090503203924) do
     t.text     "cached_description_html"
   end
 
+  create_table "presentations", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "embed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "presenter"
+    t.string   "source"
+    t.datetime "deleted_at"
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "homepage_url"
@@ -70,16 +81,5 @@ ActiveRecord::Schema.define(:version => 20090503203924) do
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["id", "token"], :name => "index_users_on_id_and_token"
   add_index "users", ["token"], :name => "index_users_on_token"
-
-  create_table "videos", :force => true do |t|
-    t.string   "title"
-    t.string   "url"
-    t.text     "embed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "presenter"
-    t.string   "source"
-    t.datetime "deleted_at"
-  end
 
 end

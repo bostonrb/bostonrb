@@ -1,4 +1,4 @@
-class Video < ActiveRecord::Base
+class Presentation < ActiveRecord::Base
 
   before_save :populate_embed
 
