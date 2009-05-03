@@ -98,7 +98,8 @@ p, li {
 }
 
 #projects a,
-#jobs a {
+#jobs a,
+#presentations a {
   color: #09C;
 }
 
