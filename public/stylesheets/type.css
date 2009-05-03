@@ -78,17 +78,32 @@ h2 {
   font-family: "Baskerville", "Garamond", "Times New Roman", Times, serif;
   text-shadow: 0 0 4px #000;
   color: #9CF; /* blue */
-  color: #fff;
+  color: #99CCFF;
 }
 
-h3 {
+h3, #flash_notice, #flash_success, #flash_failure {
   font-family: "Baskerville", "Garamond", "Times New Roman", Times, serif;
   text-shadow: 0 0 3px #036;
+  font-style: italic;
+}
+
+h3, #flash_success {
   color: #09C;
 }
 
-h3 {
-  font-style: italic;
+#flash_notice {
+  color: #fff;
+}
+
+#flash_failure {
+  color: #C30;
+}
+
+#flash {
+  font-size: 2.4em;
+  width: 100%;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 p, li {

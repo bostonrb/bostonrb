@@ -1,10 +1,13 @@
 h1. To-do
 
 * style the flashes
+* upgrade has_markup
+* remove places
+* remove videos
 * add companies
 * add presentations
 * add apps
-* upgrade has_markup
+* link_to_each helper
 * add a .quarter section for images in projects, jobs, presentations sections
 * put company logo next to job title, no company name
 * get to 100% test coverage on helpers
