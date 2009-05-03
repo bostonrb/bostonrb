@@ -1,5 +1,6 @@
 h1. To-do
 
+* switch companies & presentations
 * add IRC & mailing list links to footer
 * extract header into partial
 * extract footer into partial
@@ -7,6 +8,7 @@ h1. To-do
 * add presentations
 * add apps
 * upgrade has_markup
+* put company logo next to job title, no company name
 * get to 100% test coverage on helpers
 * do a database index audit
 
