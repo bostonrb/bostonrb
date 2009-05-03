@@ -68,13 +68,18 @@ body {
   color: #eee !important;
 }
 
-#other_events {
+#other_events, #places {
   padding: 2.1em 0 2.1em 0;
 }
-#other_events h3 {
+
+#apps {
+  padding: 0 0 2em 0;
+}
+
+#other_events h3, #apps h3 {
   color: #C30;
 }
-#other_events p {
+#other_events p, #apps p {
   margin: 0;
 }
 
@@ -131,10 +136,6 @@ body {
 #boston_rb p a {
   color: #f53;
   background: #400;
-/* blue
-  color: #39C;
-  background: #001626;
-*/
   font-style: italic;
   margin-right: .75em;
   font-family: Georgia;
@@ -145,10 +146,6 @@ body {
 #boston_rb p a:hover {
   background: #500;
   color: #F75;
-/* blue
-  color: #09F;
-  background: #001C2C;
-*/
 }
 
 #boston_rb p a strong {
@@ -158,16 +155,8 @@ body {
   padding: .75em;
   background: #200000;
   color: #FC9;
-/* blue
-  color: #0CF;
-  background: #023;
-*/
 }
 
 #boston_rb p a:hover strong {
   background: #290000;
-/* blue
-  color: #09F;
-  background: #034;
-*/
 }
