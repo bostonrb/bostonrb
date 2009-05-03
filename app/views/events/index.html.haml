@@ -8,7 +8,8 @@
       %p= link_to 'New event', new_event_path
       - unless @events.empty?
         - @events.each do |event|
-          = link_to "#{event.title}: #{event.date.to_s(:long)}", event
-          = event.location
+          .quarter
+            %h3= link_to event.title, event
+            %p= event.description
       - else
         %p Nothing coming up! Check again later.
