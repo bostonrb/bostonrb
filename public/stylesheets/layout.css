@@ -68,7 +68,7 @@ body {
   color: #eee !important;
 }
 
-#other_events, #places {
+#other_events, #presentations {
   padding: 2.1em 0 2.1em 0;
 }
 
@@ -76,10 +76,10 @@ body {
   padding: 0 0 2em 0;
 }
 
-#other_events h3, #apps h3, #places h3 {
+#other_events h3, #apps h3, #presentations h3 {
   color: #C30;
 }
-#other_events p, #apps p, #places p {
+#other_events p, #apps p, #presentations p {
   margin: 0;
 }
 
