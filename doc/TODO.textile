@@ -1,6 +1,5 @@
 h1. To-do
 
-* style the flashes
 * upgrade has_markup
 * remove places
 * remove videos
