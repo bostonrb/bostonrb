@@ -1,27 +1,20 @@
-#left_fields{ :class => 'column span-7 prepend-1 append-1' }
-  %dl
-    %dt Job title
-    %dd= form.text_field :title, :size => 35
+%dl
+  %dt Job title
+  %dd= form.text_field :title, :size => 35
 
-    %dt Location
-    %dd= form.text_field :location, :size => 35
+  %dt Location
+  %dd= form.text_field :location, :size => 35
 
-    %dt Organization
-    %dd= form.text_field :organization, :size => 35
-    
-    %dt We're sorry to ask, but mind proving you are a human?
-    %dd= recaptcha_tags
-    
-#right_fields{ :class => 'column span-11 prepend-1 append-2 last' }
-  %dl
-    %dt Contact email
-    %dd= form.text_field :email, :size => 25
+  %dt Organization
+  %dd= form.text_field :organization, :size => 35
 
-    %dt Description
-    %dd
-      ~ form.text_area :description, { :class => 'job_description' }
-      %br/
-      = link_to 'The description is Markdown-enabled', 'http://daringfireball.net/projects/markdown/syntax'
+%dl
+  %dt Contact email
+  %dd= form.text_field :email, :size => 25
 
-  %p We're sorry to ask, but mind proving you are a human?
-  = recaptcha_tags
+  %dt Description
+  %dd
+    ~ form.text_area :description, { :class => 'job_description' }
+    %br/
+    = link_to 'The description is Markdown-enabled', 'http://daringfireball.net/projects/markdown/syntax'
+

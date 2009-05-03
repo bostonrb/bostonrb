@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
-  
+
   before_filter :authorize, :only => [:edit]
-  
+
   def index
     @jobs = Job.recent
     @old_job_count = Job.old.count
@@ -10,12 +10,6 @@ class JobsController < ApplicationController
       format.html
       format.rss  { render :template => '/jobs/index' }
     end
-  end
-  
-  def old
-    @jobs = Job.old
-    @recent_job_count = Job.recent.count
-    render :template => '/jobs/index'
   end
 
   def show
@@ -33,7 +27,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new params[:job]
 
-    if verify_recaptcha(@job) && @job.save
+    if @job.save
       flash[:notice] = 'Job was successfully created.'
       redirect_to jobs_url
     else
@@ -44,7 +38,7 @@ class JobsController < ApplicationController
   def update
     @job = Job.find params[:id]
 
-    if verify_recaptcha(@job) && @job.update_attributes(params[:job])
+    if @job.update_attributes(params[:job])
       flash[:notice] = 'Job was successfully updated.'
       redirect_to jobs_url
     else
@@ -59,14 +53,14 @@ class JobsController < ApplicationController
     flash[:notice] = 'Job was successfully deleted.'
     redirect_to jobs_url
   end
-  
+
   private
-  
+
   def authorize
     unless user_session.edit_job? Job.find(params[:id])
       flash[:notice] = 'Editing time expired.'
       redirect_to jobs_url
     end
   end
-  
+
 end

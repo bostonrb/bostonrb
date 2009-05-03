@@ -85,57 +85,33 @@ class EventsControllerTest < ActionController::TestCase
     end
   end
 
-  passing_captcha_context do
-    should_route :put, "/events/1",
-      :controller => 'events', :action => 'update', :id => '1'
+  should_route :put, "/events/1",
+    :controller => 'events', :action => 'update', :id => '1'
 
-    should_route :post, '/events',
-      :controller => 'events', :action => 'create'
+  should_route :post, '/events',
+    :controller => 'events', :action => 'create'
 
-    context 'a POST to :create' do
-      setup do
-        @old_count = Event.count
-        post :create, :event => Factory.attributes_for(:event)
-      end
-
-      should_change "Event.count", :by => 1
-      should_redirect_to("events index") { events_path }
+  context 'a POST to :create' do
+    setup do
+      @old_count = Event.count
+      post :create, :event => Factory.attributes_for(:event)
     end
 
-    context 'a PUT to :update' do
-      setup do
-        @event = Factory(:event)
-        put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
-      end
-
-      should 'update event description' do
-        assert_not_equal @event.description, Event.find_by_id(@event.id).description
-      end
-
-      should_redirect_to("events index") { events_path }
-    end
+    should_change "Event.count", :by => 1
+    should_redirect_to("events index") { events_path }
   end
 
-  failing_captcha_context do
-    context 'a POST to :create' do
-      setup do
-        @old_count = Event.count
-        post :create, :event => Factory.attributes_for(:event)
-      end
-
-      should_respond_with :success
-      should_render_template :new
+  context 'a PUT to :update' do
+    setup do
+      @event = Factory(:event)
+      put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
     end
 
-    context 'a PUT to :update' do
-      setup do
-        @event = Factory(:event)
-        put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
-      end
-
-      should_respond_with :success
-      should_render_template :edit
+    should 'update event description' do
+      assert_not_equal @event.description, Event.find_by_id(@event.id).description
     end
+
+    should_redirect_to("events index") { events_path }
   end
 
   context 'A GET to :edit' do

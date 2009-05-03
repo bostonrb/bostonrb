@@ -41,83 +41,40 @@ class JobsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'A GET to /jobs/old' do
+  context 'A POST to /jobs' do
     setup do
-      get :old
+      @old_count = Job.count
+      post :create, :job => Factory.attributes_for(:job)
     end
-    should_respond_with :success
-    should_assign_to :jobs
-    should_assign_to :recent_job_count
-    should_render_template :index
+
+    should 'recognize route' do
+      assert_recognizes({ :controller => 'jobs', :action => 'create' },
+                          :path       => '/jobs', :method => :post)
+    end
+
+    should 'create a job' do
+      assert_equal @old_count + 1, Job.count
+    end
+
+    should_redirect_to("jobs index") { jobs_url }
   end
 
-  passing_captcha_context do
-    context 'A POST to /jobs' do
-      setup do
-        @old_count = Job.count
-        post :create, :job => Factory.attributes_for(:job)
-      end
-
-      should 'recognize route' do
-        assert_recognizes({ :controller => 'jobs', :action => 'create' },
-                            :path       => '/jobs', :method => :post)
-      end
-
-      should 'create a job' do
-        assert_equal @old_count + 1, Job.count
-      end
-
-      should_redirect_to("jobs index") { jobs_url }
+  context 'A PUT to /jobs/:id' do
+    setup do
+      @job = Factory(:job)
+      put :update, :id => @job.to_param, :job => { :title => 'Updated Rails Developer' }
     end
 
-    context 'A PUT to /jobs/:id' do
-      setup do
-        @job = Factory(:job)
-        put :update, :id => @job.to_param, :job => { :title => 'Updated Rails Developer' }
-      end
-
-      should 'recognize route' do
-        assert_recognizes({ :controller => 'jobs', :action => 'update', :id => @job.to_param },
-                            :path       => "/jobs/#{@job.to_param}", :method => :put)
-      end
-
-      should 'update job' do
-        assert @job.title != Job.find_by_id(@job.id).title
-      end
-
-      should_redirect_to("jobs index") { jobs_url }
+    should 'recognize route' do
+      assert_recognizes({ :controller => 'jobs', :action => 'update', :id => @job.to_param },
+                          :path       => "/jobs/#{@job.to_param}", :method => :put)
     end
-  end
 
-  failing_captcha_context do
-    context 'A POST to /jobs' do
-      setup do
-        @old_count = Job.count
-        post :create, :job => Factory.attributes_for(:job)
-      end
-      
-      should_respond_with :success
-      should_render_template :new
-      
-      should_not_change "Job.count"
+    should 'update job' do
+      assert @job.title != Job.find_by_id(@job.id).title
     end
-    
-    context "with an existing job" do
-      setup do
-        @job = Factory(:job)
-      end
 
-      context 'a PUT to /jobs/:id' do
-        setup do
-          put :update, :id => @job.to_param, :job => { :title => 'Updated Rails Developer' }
-        end
-
-        should_respond_with :success
-        should_render_template :edit
-
-        should_not_change "@job.title"
-      end
-    end
+    should_redirect_to("jobs index") { jobs_url }
   end
 
   context 'A GET to /jobs/:id without editing privileges' do

@@ -1,0 +1,19 @@
+%div
+  = form.label :date
+  = form.datetime_select :date
+
+%div
+  = form.label :title
+  = form.text_field :title
+
+%div
+  = form.label :location
+  = form.text_field :location
+  .instruct ex: 41 Winter Street, Boston, MA, 02018
+
+%div
+  = form.label :description
+  = form.text_area :description
+  .instruct
+    == Format description using #{link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax'}.
+

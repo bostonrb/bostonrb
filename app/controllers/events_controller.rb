@@ -18,7 +18,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new params[:event]
 
-    if verify_recaptcha(@event) && @event.save
+    if @event.save
       flash[:notice] = 'Event was successfully created.'
       redirect_to events_url
     else
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    if verify_recaptcha(@event) && @event.update_attributes(params[:event])
+    if @event.update_attributes(params[:event])
       flash[:notice] = 'Event was successfully updated.'
       redirect_to events_url
     else

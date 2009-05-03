@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new params[:project]
 
-    if verify_recaptcha(@project) && @project.save
+    if @project.save
       flash[:notice] = 'Project was successfully created.'
       redirect_to projects_url
     else
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find params[:id]
 
-    if verify_recaptcha(@project) && @project.update_attributes(params[:project])
+    if @project.update_attributes(params[:project])
       flash[:notice] = 'Project was successfully updated.'
       redirect_to projects_url
     else
