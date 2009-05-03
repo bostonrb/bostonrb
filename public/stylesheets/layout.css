@@ -76,10 +76,10 @@ body {
   padding: 0 0 2em 0;
 }
 
-#other_events h3, #apps h3 {
+#other_events h3, #apps h3, #places h3 {
   color: #C30;
 }
-#other_events p, #apps p {
+#other_events p, #apps p, #places p {
   margin: 0;
 }
 
@@ -93,8 +93,11 @@ body {
 }
 
 #companies {
-  background: #000919;
   padding: 2.1em 0;
+}
+
+#jobs {
+  padding: 2.1em 0 0 0;
 }
 
 #events,
