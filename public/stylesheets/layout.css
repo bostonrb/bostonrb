@@ -104,11 +104,12 @@ body {
 #projects,
 #people,
 #presentations,
-#jobs {
+#jobs,
+#new_event {
   background: #000919;
 }
 
-#events {
+#events, #new_event {
   background: #000919 url(../images/ribbon.gif) 50% 100% repeat-x;
 }
 .ribbon {
