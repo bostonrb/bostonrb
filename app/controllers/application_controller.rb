@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Clearance::Authentication
   helper :all
 
   protect_from_forgery # :secret => '7ed60f9b9e04d00c05d3d81aa2176e7c'

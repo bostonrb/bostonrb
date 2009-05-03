@@ -34,7 +34,7 @@ config.gem 'thoughtbot-shoulda',
            :source  => 'http://gems.github.com', 
            :version => '= 2.10.1'
 config.gem 'webrat',
-           :version => '= 0.4.3'
+           :version => '= 0.4.4'
 config.gem 'nokogiri',
            :version => '= 1.2.3'
 config.gem 'cucumber',

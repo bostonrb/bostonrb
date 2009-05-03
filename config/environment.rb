@@ -34,4 +34,10 @@ Rails::Initializer.run do |config|
              :lib     => 'has_markup',
              :source  => 'http://gems.github.com',
              :version => '0.1.2'
+  config.gem "thoughtbot-clearance", 
+    :lib     => 'clearance', 
+    :source  => 'http://gems.github.com', 
+    :version => '0.6.3'
 end
+
+DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"
