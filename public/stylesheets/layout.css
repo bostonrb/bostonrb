@@ -68,7 +68,7 @@ body {
   color: #eee !important;
 }
 
-#other_events, #presentations {
+#other_events, #companies {
   padding: 2.1em 0 2.1em 0;
 }
 
@@ -76,10 +76,10 @@ body {
   padding: 0 0 2em 0;
 }
 
-#other_events h3, #apps h3, #presentations h3 {
+#other_events h3, #apps h3, #companies h3 {
   color: #C30;
 }
-#other_events p, #apps p, #presentations p {
+#other_events p, #apps p, #companies p {
   margin: 0;
 }
 
@@ -92,7 +92,7 @@ body {
   margin-bottom: 2.1em;
 }
 
-#companies {
+#presentations {
   padding: 2.1em 0;
 }
 
@@ -103,7 +103,7 @@ body {
 #events,
 #projects,
 #people,
-#companies,
+#presentations,
 #jobs {
   background: #000919;
 }
