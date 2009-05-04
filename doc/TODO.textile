@@ -16,6 +16,7 @@ h2. Behavior
 
 h2. Refactoring
 
+* move partials in layouts to shared
 * link_to_each helper
 * refactor Presentation#populate_embed to Youtube class
 

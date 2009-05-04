@@ -6,8 +6,8 @@
     = auto_discovery_link_tag :rss, '/jobs.rss', :title => 'Jobs feed'
   %body
     .grid_960.middle
-      = render :partial => 'layouts/header'
-      = partial 'layouts/flashes'
+      = render :partial => 'shared/header'
+      = partial 'shared/flashes'
       #events
         .ribbon
           .row
@@ -94,6 +94,6 @@
             %ul
               - presentation_links.each do |each|
                 %li= each
-      = render :partial => '/layouts/about'
+      = render :partial => '/shared/about'
       = render :partial => '/shared/authentication'
 
