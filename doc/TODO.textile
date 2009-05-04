@@ -7,6 +7,7 @@ h2. Structure
 
 h2. Presentation
 
+* add user avatars (gravatar cascade to paperclip)
 * add a .quarter section for images in projects, jobs, presentations sections
 * put company logo next to job title, no company name
 
@@ -16,7 +17,6 @@ h2. Behavior
 
 h2. Refactoring
 
-* move partials in layouts to shared
 * link_to_each helper
 * refactor Presentation#populate_embed to Youtube class
 

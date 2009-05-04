@@ -38,20 +38,8 @@ class EventsControllerTest < ActionController::TestCase
     should_assign_to :events
   end
 
-  context 'on GET to :index rss' do
-    setup do
-      @next = Factory(:event)
-      get :index, :format => 'rss'
-    end
-
-    should_assign_to :events
-    should_have_media_type 'application/rss+xml'
-  end
-
   context 'on GET to :new' do
-    setup do
-      get :new
-    end
+    setup { get :new }
 
     should_assign_to :event
     should_respond_with :success

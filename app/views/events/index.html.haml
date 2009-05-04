@@ -8,7 +8,7 @@
       %p= link_to 'New event', new_event_path
       - unless @events.empty?
         - @events.each do |event|
-          .quarter
+          .quarter>
             %h3= link_to event.title, event
             %p= event.description
       - else
