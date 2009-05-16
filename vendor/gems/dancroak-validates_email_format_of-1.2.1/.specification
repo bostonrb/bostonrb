@@ -60,6 +60,10 @@ rdoc_options:
 - Validates_email_format_of
 require_paths: 
 - bin
+- bin
+- bin
+- bin
+- bin
 - lib
 required_ruby_version: !ruby/object:Gem::Requirement 
   requirements: 
