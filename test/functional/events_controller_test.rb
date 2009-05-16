@@ -4,8 +4,7 @@ class EventsControllerTest < ActionController::TestCase
 
   context 'GET to :index with no events' do
     setup do
-      Event.stubs(:upcoming).returns([])
-      Event.stubs(:next).returns(nil)
+      Event.stubs(:next).returns([])
       get :index
     end
 
@@ -17,7 +16,7 @@ class EventsControllerTest < ActionController::TestCase
   context 'GET to :index with events in the future' do
     setup do
       @next = Factory(:event, :date => 2.days.from_now)
-      Event.stubs(:upcoming).returns([@next])
+      Event.stubs(:next).returns([@next])
       get :index
     end
 

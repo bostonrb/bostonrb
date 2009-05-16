@@ -2,6 +2,7 @@ require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
   should_validate_presence_of :date, :title, :location
+
   should_have_markup :description, :required => true, :cache_html => true
 
   context 'with events in the past and future' do
@@ -9,42 +10,43 @@ class EventTest < ActiveSupport::TestCase
       @future = Factory(:event, :date => 2.days.from_now)
       @past   = Factory(:event, :date => 2.days.ago)
     end
-    context 'Event#upcoming' do
-      setup do
-        @events = Event.upcoming
-      end
+
+    context 'Event#next' do
+      setup { @events = Event.next }
+
       should "find Events" do
         assert @events.any?
         assert @events.all? { |event| event.is_a?(Event) }
       end
-      
+
       should "only find Events in the future" do
         assert @events.all? { |event| event.date > Time.now }
       end
     end
-    context 'Event#past' do
-      setup do
-        @events = Event.past
-      end
-      should "find Events" do
-        assert @events.any?
-        assert @events.all? { |event| event.is_a?(Event) }
-      end
-      
-      should "only find Events in the past" do
-        assert @events.all? { |event| event.date < Time.now }
-      end
-    end
-
   end
 
   context "next without any future events" do
-    setup do
-      @next = Event.next
-    end
+    setup { @next = Event.next }
 
     should "not find Events" do
-      assert_nil @next
+      assert_equal [], @next
+    end
+  end
+
+  context "next with future events" do
+    setup do
+      @event = Factory(:event, :date => 3.days.from_now)
+      @next  = Event.next
+    end
+
+    should "find the event" do
+      assert_equal [@event], @next
+    end
+  end
+
+  context "given recurring and special events" do
+    setup do
+      @recurring = Event.new_hackfest
     end
   end
 
@@ -101,5 +103,4 @@ class EventTest < ActiveSupport::TestCase
       end
     end
   end
-
 end

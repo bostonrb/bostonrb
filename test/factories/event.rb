@@ -4,3 +4,4 @@ Factory.define :event do |u|
   u.description 'Whoops!'
   u.location    '41 Winter St, Boston, MA'
 end
+

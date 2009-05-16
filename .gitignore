@@ -6,3 +6,4 @@ coverage.data
 metrics
 *.swp
 *.swo
+.DS_Store

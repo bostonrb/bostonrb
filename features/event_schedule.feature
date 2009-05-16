@@ -3,7 +3,7 @@ Feature: Event Schedule
   I want to see the upcoming events schedule
   So that I can attend if I am available
 
-    Scenario: Main events
+    Scenario: Recurring events on the homepage
       Given an event exists with a title of "Hackfest"
       And an event exists with a title of "Meeting"
       And an event exists with a title of "Pub Night"
@@ -15,7 +15,7 @@ Feature: Event Schedule
       And I should see "Pub Night"
       And I should see "Theatre"
 
-   Scenario: Recurring Events
+   Scenario: Special events on the homepage
      Given an event exists with a title of "Web Inno"
      And the "Web Inno" event is not a main event
      When I go to the homepage

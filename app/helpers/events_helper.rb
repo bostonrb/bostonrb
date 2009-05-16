@@ -22,4 +22,8 @@ module EventsHelper
     events.collect { |event| link_to(event, "#") }
   end
 
+  def next_four_recurring_events
+    Event.next(4).recurring
+  end
+
 end

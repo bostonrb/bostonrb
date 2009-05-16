@@ -11,19 +11,13 @@
       #events
         .ribbon
           .row
+            .crud
+              %p= link_to 'New event', new_event_path
             %h2 Recurring Events
-            #hackfest.quarter>
-              %h3= link_to("Hackfest", "#")
-              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            #meeting.quarter>
-              %h3= link_to("Meeting", "#")
-              %p Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            #pub_night.quarter>
-              %h3= link_to("Pub Night", "#")
-              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            #theatre.quarter>
-              %h3= link_to("Theatre", "#")
-              %p Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            - next_four_recurring_events.each do |event|
+              .quarter>
+                %h3= link_to(event.title, "#")
+                %p = event.description
       #other_events.row
         %h3.center Special events
         %p.center
@@ -96,4 +90,5 @@
                 %li= each
       = render :partial => '/shared/about'
       = render :partial => '/shared/authentication'
+    = render :partial => '/shared/javascripts'
 

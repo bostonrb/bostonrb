@@ -163,3 +163,8 @@ body {
 #boston_rb p a:hover strong {
   background: #290000;
 }
+
+.crud {
+  display: block;
+  float: right;
+}
