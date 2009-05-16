@@ -55,6 +55,9 @@ class EventsControllerTest < ActionController::TestCase
   context 'on GET to :show' do
     setup do
       @event = Factory(:event)
+      stubbed_action_view do |view|
+        view.stubs(:event_map)
+      end
       get :show, :id => @event.to_param
     end
 
@@ -65,11 +68,12 @@ class EventsControllerTest < ActionController::TestCase
     should_respond_with :success
     should_render_template :show
 
-    before_should "include javascript for google maps" do
+    should "generate the event's map" do
       stubbed_action_view do |view|
-        view.expects(:content_for).with(:javascripts)
+        assert_received(view, :event_map) {|expect| expect.with(@event) }
       end
     end
+
   end
 
   should_route :put, "/events/1",

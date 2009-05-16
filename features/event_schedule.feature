@@ -22,3 +22,12 @@ Feature: Event Schedule
      Then I should see "Recurring Events"
      And I should see "Web Inno"
 
+   Scenario: Viewing details about an event
+     Given a future recurring event exists with a title of "Hackfest"
+     And the "Hackfest" event's location is "41 Winter Street, Boston, MA, 02108"
+     When I go to the homepage
+     And I follow "Hackfest"
+     Then I should see "Hackfest"
+     And I should see "41 Winter Street, Boston, MA, 02108"
+     And I should see a map
+      

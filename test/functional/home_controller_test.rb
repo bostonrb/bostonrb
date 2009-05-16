@@ -9,5 +9,16 @@ class HomeControllerTest < ActionController::TestCase
     should_render_template :index
   end
 
+  context "given a future recurring event on GET to index" do
+    setup do
+      @event = Factory(:recurring_event, :date => 2.days.from_now)
+      get :index
+    end
+
+    should "should link to event" do
+      assert_select "a[href=?]", event_path(@event), :text => @event.title
+    end
+  end
+
 end
 

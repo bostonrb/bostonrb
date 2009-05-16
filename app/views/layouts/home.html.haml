@@ -17,7 +17,7 @@
             %h2 Recurring Events
             - next_four_recurring_events.each do |event|
               .quarter>
-                %h3= link_to(event.title, "#")
+                %h3= link_to event.title, event
                 %p= event.description
       #other_events.row
         %h3.center Special events
