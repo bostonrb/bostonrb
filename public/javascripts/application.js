@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    $('#events').hover(
+    $('#events, #jobs').hover(
       function() {
         $(this).find('.crud').show('blind');
       },

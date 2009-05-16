@@ -118,7 +118,7 @@ p, li {
   color: #09C;
 }
 
-a {
+a, #jobs .crud a {
   color: #F90;
   text-decoration: none;
 }

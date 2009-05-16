@@ -4,10 +4,10 @@ Feature: Event Schedule
   So that I can attend if I am available
 
     Scenario: Recurring events on the homepage
-      Given an event exists with a title of "Hackfest"
-      And an event exists with a title of "Meeting"
-      And an event exists with a title of "Pub Night"
-      And an event exists with a title of "Theatre"
+      Given a future recurring event exists with a title of "Hackfest"
+      And a future recurring event exists with a title of "Meeting"
+      And a future recurring event exists with a title of "Pub Night"
+      And a future recurring event exists with a title of "Theatre"
       When I go to the homepage
       Then I should see "Events"
       And I should see "Hackfest"

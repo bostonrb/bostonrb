@@ -1,12 +1,12 @@
 class Event < ActiveRecord::Base
 
-  RECURRING = {
-    :hackfest => { :title    => "Hackfest",
-                   :location => "41 Winter Street, Boston, MA, 02108",
-                   :when     => { :first => :tuesday,
-                                  :at    => 7.pm,
-                                  :each  => :month } }
-  }
+  #RECURRING = {
+    #:hackfest => { :title    => "Hackfest",
+                   #:location => "41 Winter Street, Boston, MA, 02108",
+                   #:when     => { :first => :tuesday,
+                                  #:at    => 7.pm,
+                                  #:each  => :month } }
+  #}
 
   has_markup :description,
     :required   => true,
