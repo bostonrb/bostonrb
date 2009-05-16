@@ -46,7 +46,51 @@ class EventTest < ActiveSupport::TestCase
 
   context "given recurring and special events" do
     setup do
-      @recurring = Event.new_hackfest
+      @recurring_event = Factory(:recurring_event)
+      @special_event   = Factory(:special_event)
+    end
+
+    context "recurring named_scope" do
+      setup { @events = Event.recurring }
+
+      should "include the recurring event" do
+        assert_contains @events, @recurring_event
+      end
+
+      should "not include the special event" do
+        assert_does_not_contain @events, @special_event
+      end
+    end
+
+    context "special named_scope" do
+      setup { @events = Event.special }
+
+      should "not include the recurring event" do
+        assert_does_not_contain @events, @recurring_event
+      end
+
+      should "include the special event" do
+        assert_contains @events, @special_event
+      end
+    end
+  end
+
+  context "next five special" do
+    setup do
+      @next_scope = stub('next_scope')
+      @special_scope = stub('special_scope')
+      @next_scope.stubs(:special).returns(@special_scope)
+
+      Event.stubs(:next).returns(@next_scope)
+      Event.next_five_special
+    end
+
+    should "get next 5 events" do
+      assert_received(Event, :next) {|expect| expect.with(5)}
+    end
+
+    should "get special events" do
+      assert_received(@next_scope, :special)
     end
   end
 

@@ -16,11 +16,10 @@ Feature: Event Schedule
       And I should see "Theatre"
 
    Scenario: Special events on the homepage
-     Given an event exists with a title of "Web Inno"
-     And the "Web Inno" event is not a main event
+     Given a future special event exists with a title of "Barcamp Boston"
      When I go to the homepage
-     Then I should see "Recurring Events"
-     And I should see "Web Inno"
+     Then I should see "Special events"
+     And I should see "Barcamp Boston"
 
    Scenario: Viewing details about an event
      Given a future recurring event exists with a title of "Hackfest"

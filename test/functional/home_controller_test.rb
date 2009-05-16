@@ -15,8 +15,21 @@ class HomeControllerTest < ActionController::TestCase
       get :index
     end
 
-    should "should link to event" do
+    should "link to event" do
       assert_select "a[href=?]", event_path(@event), :text => @event.title
+    end
+  end
+
+  context "given a future special event on GET to index" do
+    setup do
+      @event = Factory(:special_event, :date => 2.days.from_now)
+      get :index
+    end
+
+    should "link to event" do
+      assert_select "#other_events .center" do
+        assert_select "a[href=?]", event_path(@event), :text => @event.title
+      end
     end
   end
 

@@ -31,11 +31,19 @@ class Event < ActiveRecord::Base
     lat && lng
   end
 
-  named_scope :next, lambda {|limit|
+  named_scope :next, lambda {|*args|
+    limit = args.first || 1
     { :conditions => ['date > ?', DateTime.now],
       :order      => 'date asc',
-      :limit      => (limit || 1) }
+      :limit      => limit }
   }
+
+  named_scope :recurring, :conditions => { :recurring => true }
+  named_scope :special, :conditions => { :recurring => false }
+
+  def self.next_five_special
+    self.next(5).special
+  end
 
   protected
 

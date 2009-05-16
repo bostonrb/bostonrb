@@ -6,6 +6,10 @@ Factory.define :event do |u|
 end
 
 Factory.define :recurring_event, :parent => :event do |factory|
-  
+  factory.recurring true 
+end
+
+Factory.define :special_event, :parent => :event do |factory|
+  factory.recurring false
 end
 

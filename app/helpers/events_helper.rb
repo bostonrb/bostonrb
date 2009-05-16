@@ -16,10 +16,11 @@ module EventsHelper
       html
     end
   end
+  
 
-  def event_links
-    events = ["Web Inno", "DevHouse Boston", "Pro RubyConf"]
-    events.collect { |event| link_to(event, "#") }
+  def next_five_special_event_links
+    events = Event.next_five_special
+    events.collect { |event| link_to event.title, event_path(event) }
   end
 
   def next_four_recurring_events
