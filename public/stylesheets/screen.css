@@ -1,6 +1,7 @@
 @import url("reset.css");
 @import url("type.css");
 @import url("layout.css");
+@import url("forms.css");
 
 h1 a { text-decoration: none; }
 

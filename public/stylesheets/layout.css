@@ -105,16 +105,16 @@ body {
 #people,
 #presentations,
 #jobs,
-#new_event {
+#new, #show, #edit {
   background: #000919;
 }
 
-#events, #new_event {
+#events, #new, #show, #edit {
   background: #000919 url(../images/ribbon.gif) 50% 100% repeat-x;
 }
 .ribbon {
   background: url(../images/ribbon_i.gif) 50% 0% repeat-x;
-  padding: 2.1em 0 0.3em 0;
+  padding: 2.1em 0 2em 0;
 }
 #projects {
   padding: 2.1em 0 0 0;
