@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
   helper :all
-
   protect_from_forgery
 
   include HoptoadNotifier::Catcher
   include Clearance::Authentication
+
+  before_filter :authenticate,
+    :only => [:new, :create, :edit, :update, :destroy]
 
   protected
 

@@ -11,22 +11,23 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_recognizes({ :controller => 'projects', :action => 'index' },
                           :path       => '/projects',        :method => :get)
     end
-    
+
     should_respond_with :success
     should_assign_to :projects
     should_assign_to :left_projects
     should_assign_to :right_projects
   end
 
-  context 'on GET to :new' do
+  context 'on GET to #new when signed in' do
     setup do
+      sign_in
       get :new
     end
-    
+
     should_assign_to :project
     should_respond_with :success
     should_render_template :new
-    
+
     should 'have a form to create a new Project' do
       assert_select 'form[id=new_project][action=/projects]' do
         should_have_project_form_fields
@@ -34,8 +35,9 @@ class ProjectsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'A POST to /projects' do
+  context 'on POST to #create when signed in' do
     setup do
+      sign_in
       @old_count = Project.count
       post :create, :project => Factory.attributes_for(:project)
     end
@@ -52,8 +54,9 @@ class ProjectsControllerTest < ActionController::TestCase
     should_redirect_to("projects index") { projects_path }
   end
 
-  context 'A GET to /projects/:id/edit' do
+  context 'on GET to /projects/:id/edit when signed in' do
     setup do
+      sign_in
       @project = Factory(:project)
       get :edit, :id => @project.to_param
     end
@@ -65,7 +68,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
     should_respond_with :success
     should_render_template :edit
-    
+
     should 'have a form to create a new Project' do
       assert_select "form[id=edit_project_#{@project.to_param}][action=/projects/#{@project.to_param}]" do
         should_have_project_form_fields
@@ -73,8 +76,9 @@ class ProjectsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'A PUT to /projects/:id' do
+  context 'on PUT to #update when signed in' do
     setup do
+      sign_in
       @project = Factory(:project)
       put :update, :id => @project.to_param, :project => { :name => 'updated_recommendable' }
     end
@@ -91,8 +95,9 @@ class ProjectsControllerTest < ActionController::TestCase
     should_redirect_to("projects index") { projects_path }
   end
 
-  context 'A DELETE to /projects/:id' do
+  context 'on DELETE to #destroy when signed in' do
     setup do
+      sign_in
       @project   = Factory(:project)
       @old_count = Project.count
       delete :destroy, :id => @project.to_param

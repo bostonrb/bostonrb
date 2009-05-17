@@ -17,15 +17,18 @@ class PresentationsControllerTest < ActionController::TestCase
   should_route :delete, '/presentations/1',
     :controller => 'presentations', :action => 'destroy', :id => '1'
 
-  context 'A GET to index' do
+  context 'on GET to index' do
     setup { get :index }
 
     should_respond_with :success
     should_assign_to :presentations
   end
 
-  context 'on GET to new' do
-    setup { get :new }
+  context 'on GET to new when signed in' do
+    setup do
+      sign_in
+      get :new
+    end
 
     should_assign_to :presentation
     should_respond_with :success
@@ -38,8 +41,9 @@ class PresentationsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'A POST to /presentations' do
+  context 'on POST to #create when signed in' do
     setup do
+      sign_in
       @old_count = Presentation.count
       post :create, :presentation => Factory.attributes_for(:presentation)
     end
@@ -51,8 +55,9 @@ class PresentationsControllerTest < ActionController::TestCase
     should_redirect_to("presentations index") { presentations_path }
   end
 
-  context 'A GET to /presentations/:id/edit' do
+  context 'on GET to #edit when signed in' do
     setup do
+      sign_in
       @presentation = Factory(:presentation)
       get :edit, :id => @presentation.to_param
     end
@@ -67,8 +72,9 @@ class PresentationsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'A PUT to /presentations/:id' do
+  context 'on PUT to /presentations/:id when signed in' do
     setup do
+      sign_in
       @presentation = Factory(:presentation)
       put :update, :id => @presentation.id, :presentation => { :title => 'updated_recommendable' }
     end
@@ -80,8 +86,9 @@ class PresentationsControllerTest < ActionController::TestCase
     should_redirect_to("presentations index") { presentations_path }
   end
 
-  context 'A DELETE to /presentations/:id' do
+  context 'on DELETE to /presentations/:id when signed in' do
     setup do
+      sign_in
       @presentation   = Factory(:presentation)
       @old_count = Presentation.count
       delete :destroy, :id => @presentation.id

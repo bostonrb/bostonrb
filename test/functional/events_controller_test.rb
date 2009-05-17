@@ -2,15 +2,17 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class EventsControllerTest < ActionController::TestCase
 
+  should_route :get, '/events', :controller => 'events', :action => 'index'
+
   context 'GET to :index with no events' do
     setup do
       Event.stubs(:next).returns([])
       get :index
     end
 
-    should_assign_to :events
-    should_respond_with :success
+    should_assign_to       :events
     should_render_template :index
+    should_respond_with    :success
   end
 
   context 'GET to :index with events in the future' do
@@ -20,9 +22,9 @@ class EventsControllerTest < ActionController::TestCase
       get :index
     end
 
-    should_respond_with :success
+    should_assign_to       :events
     should_render_template :index
-    should_assign_to :events
+    should_respond_with    :success
   end
 
   context 'GET to :index with events in the past' do
@@ -32,13 +34,23 @@ class EventsControllerTest < ActionController::TestCase
       get :index
     end
 
-    should_respond_with :success
+    should_assign_to       :events
     should_render_template :index
-    should_assign_to :events
+    should_respond_with    :success
   end
 
-  context 'on GET to :new' do
+  should_route :get, '/events/new', :controller => 'events', :action => 'new'
+
+  context "on GET to #new when signed out" do
     setup { get :new }
+    should_deny_access
+  end
+
+  context 'on GET to :new when signed in' do
+    setup do
+      sign_in
+      get :new
+    end
 
     should_assign_to :event
     should_respond_with :success
@@ -52,6 +64,9 @@ class EventsControllerTest < ActionController::TestCase
     end
   end
 
+  should_route :get, '/events/1',
+    :controller => 'events', :action => 'show', :id => '1'
+
   context 'on GET to :show' do
     setup do
       @event = Factory(:event)
@@ -60,9 +75,6 @@ class EventsControllerTest < ActionController::TestCase
       end
       get :show, :id => @event.to_param
     end
-
-    should_route :get, '/events/1',
-      :controller => 'events', :action => 'show', :id => '1'
 
     should_assign_to :event
     should_respond_with :success
@@ -73,17 +85,19 @@ class EventsControllerTest < ActionController::TestCase
         assert_received(view, :event_map) {|expect| expect.with(@event) }
       end
     end
-
   end
-
-  should_route :put, "/events/1",
-    :controller => 'events', :action => 'update', :id => '1'
 
   should_route :post, '/events',
     :controller => 'events', :action => 'create'
 
-  context 'a POST to :create' do
+  context "on POST to #create when signed out" do
+    setup { post :create }
+    should_deny_access
+  end
+
+  context 'on POST to :create when signed in' do
     setup do
+      sign_in
       @old_count = Event.count
       post :create, :event => Factory.attributes_for(:event)
     end
@@ -92,21 +106,17 @@ class EventsControllerTest < ActionController::TestCase
     should_redirect_to("events index") { events_path }
   end
 
-  context 'a PUT to :update' do
-    setup do
-      @event = Factory(:event)
-      put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
-    end
+  should_route :get, "/events/1/edit",
+    :controller => 'events', :action => 'edit', :id => '1'
 
-    should 'update event description' do
-      assert_not_equal @event.description, Event.find_by_id(@event.id).description
-    end
-
-    should_redirect_to("events index") { events_path }
+  context "on GET to #edit when signed out" do
+    setup { get :edit, :id => 1 }
+    should_deny_access
   end
 
-  context 'A GET to :edit' do
+  context 'on GET to :edit when signed in' do
     setup do
+      sign_in
       @event = Factory(:event)
       get :edit, :id => @event.to_param
     end
@@ -123,8 +133,31 @@ class EventsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'A PUT to :update with bad parameters' do
+  should_route :put, "/events/1",
+    :controller => 'events', :action => 'update', :id => '1'
+
+  context "on PUT to #update when signed out" do
+    setup { put :update, :id => 1 }
+    should_deny_access
+  end
+
+  context 'a PUT to :update when signed in' do
     setup do
+      sign_in
+      @event = Factory(:event)
+      put :update, :id => @event.to_param, :event => { :description => 'Updated Rails Developer' }
+    end
+
+    should 'update event description' do
+      assert_not_equal @event.description, Event.find_by_id(@event.id).description
+    end
+
+    should_redirect_to("events index") { events_path }
+  end
+
+  context 'A PUT to :update with bad parameters when signed in' do
+    setup do
+      sign_in
       @event = Factory(:event)
       put :update, :id => @event.to_param, :event => { :title => '' }
     end
