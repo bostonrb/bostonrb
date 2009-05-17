@@ -31,3 +31,12 @@ Feature: Event Schedule
    And I should see "41 Winter Street, Boston, MA, 02108"
    And I should see a map
     
+
+  Scenario: Viewing number of events
+    Given a future special event exists with a title of "Barcamp Boston"
+    Given a future recurring event exists with a title of "Hackfest"
+    And a future recurring event exists with a title of "Meeting"
+    And a future recurring event exists with a title of "Pub Night"
+    And a future recurring event exists with a title of "Theatre"
+    When I go to the homepage
+    Then I should see that there are 5 future events

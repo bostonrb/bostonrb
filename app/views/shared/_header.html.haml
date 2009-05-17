@@ -3,7 +3,7 @@
 #boston_rb
   .row
     %p
-      = link_to "<strong>4</strong> Events", events_path
+      = link_to "<strong>#{Event.future.count}</strong> Events", events_path
       = link_to "<strong>110</strong> Users", "#"
       = link_to "<strong>12,000</strong> Projects", projects_path
       = link_to "<strong>23</strong> Jobs", jobs_path

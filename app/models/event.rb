@@ -38,6 +38,11 @@ class Event < ActiveRecord::Base
       :limit      => limit }
   }
 
+  named_scope :future, lambda {
+    { :conditions => ['date > ?', DateTime.now],
+      :order      => 'date asc'}
+  }
+
   named_scope :recurring, :conditions => { :recurring => true }
   named_scope :special, :conditions => { :recurring => false }
 

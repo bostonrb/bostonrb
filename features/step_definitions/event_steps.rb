@@ -29,3 +29,9 @@ Then /^I should not see "([^\"]*)" under (.*)$/ do |text, id|
   end
 end
 
+Then /^I should see that there are (\d+) future events$/ do |count|
+  within "#boston_rb a[href='/events']" do |scope|
+    assert_contain "#{count}", scope
+  end
+end
+

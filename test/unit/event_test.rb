@@ -23,6 +23,19 @@ class EventTest < ActiveSupport::TestCase
         assert @events.all? { |event| event.date > Time.now }
       end
     end
+
+    context "Event#future" do
+      setup { @events = Event.future }
+
+      should "find Events" do
+        assert @events.any?
+        assert @events.all? { |event| event.is_a?(Event) }
+      end
+
+      should "only find Events in the future" do
+        assert @events.all? { |event| event.date > Time.now }
+      end
+    end
   end
 
   context "next without any future events" do
