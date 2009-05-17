@@ -24,7 +24,7 @@ module EventsHelper
   end
 
   def next_four_recurring_events
-    Event.next(4)
+    Event.next_four_recurring
   end
 
 end

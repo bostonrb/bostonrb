@@ -94,6 +94,26 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
+  context "next four recurring" do
+    setup do
+      @next_scope = stub('next_scope')
+      @recurring_scope = stub('recurring_scope')
+      @next_scope.stubs(:recurring).returns(@recurring_scope)
+
+      Event.stubs(:next).returns(@next_scope)
+      Event.next_four_recurring
+    end
+
+    should "get next 4 events" do
+      assert_received(Event, :next) {|expect| expect.with(4)}
+    end
+
+    should "get recurring events" do
+      assert_received(@next_scope, :recurring)
+    end
+
+  end
+
   context "In order to geocode, Event" do
     should_have_db_columns :lat, :lng
 

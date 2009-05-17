@@ -15,3 +15,17 @@ Then /^I should see a map$/ do
   assert_select "#map"
 end
 
+When /^I should see "([^\"]*)" under (.*)$/ do |text, id|
+  id = id.gsub(' ', '_')
+  within "##{id}" do |scope|
+    assert_contain text, scope
+  end
+end
+
+Then /^I should not see "([^\"]*)" under (.*)$/ do |text, id|
+  id = id.gsub(' ', '_')
+  within "##{id}" do |scope|
+    assert_not_contain text, scope
+  end
+end
+

@@ -45,6 +45,10 @@ class Event < ActiveRecord::Base
     self.next(5).special
   end
 
+  def self.next_four_recurring
+    self.next(4).recurring
+  end
+
   protected
 
   def geocode_location
