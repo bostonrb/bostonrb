@@ -38,6 +38,8 @@ Rails::Initializer.run do |config|
     :lib     => 'clearance', 
     :source  => 'http://gems.github.com', 
     :version => '0.6.5'
+  config.gem 'gravtastic', :version => '>= 2.1.0'
+  
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"
