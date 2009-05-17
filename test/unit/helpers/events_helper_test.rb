@@ -1,26 +1,10 @@
 require 'test_helper'
 
 class EventsHelperTest < ActionView::TestCase
-  context "given some recurring events" do
-    setup do
-      @event = stub('event')
-      Event.stubs(:next_four_recurring).returns([@event])
-    end
-
-    context "the next four recurring event links" do
-      setup { @events = next_four_recurring_events }
-
-      should "find next five special events" do
-        assert_received(Event, :next_four_recurring)
-      end
-
-    end
-  end
-
   context "given some special events" do
     setup do
       @event = stub('event', :title => 'some title')
-      Event.stubs(:next_five_special).returns([@event])
+      Event.stub_chain(:next, :special).returns([@event])
       self.stubs(:link_to)
     end
 
@@ -28,7 +12,8 @@ class EventsHelperTest < ActionView::TestCase
       setup { @events_links = next_five_special_event_links }
 
       should "find next five special events" do
-        assert_received(Event, :next_five_special)
+        assert_received(Event, :next)
+        assert_received(Event, :special)
       end
 
       should "link to each" do

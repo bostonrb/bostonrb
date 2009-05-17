@@ -3,6 +3,21 @@ Feature: Event Schedule
   I want to see the upcoming events schedule
   So that I can attend if I am available
 
+  Scenario: A signed in user creates a recurring event
+    Given I am signed up and confirmed as "email@person.com/password"
+    When I sign in as "email@person.com/password"
+    And I go to the homepage
+    And I follow "New Event"
+    And I select a date 10 days in the future for "Date"
+    And I fill in "Title" with "Hackfest"
+    And I fill in "Location" with "41 Winter Street, Boston, MA, 02018"
+    And I check "Recurring"
+    And I fill in "Description" with "Hack away"
+    And I press "Create"
+    Then I should see "Events"
+    And I should see "Hackfest"
+    And I should see "Hack away"
+
   Scenario: Recurring events on the homepage
     Given a future special event exists with a title of "Barcamp Boston"
     Given a future recurring event exists with a title of "Hackfest"
@@ -30,7 +45,6 @@ Feature: Event Schedule
    Then I should see "Hackfest"
    And I should see "41 Winter Street, Boston, MA, 02108"
    And I should see a map
-    
 
   Scenario: Viewing number of events
     Given a future special event exists with a title of "Barcamp Boston"

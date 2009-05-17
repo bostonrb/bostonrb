@@ -75,11 +75,11 @@ When /^I select "([^\"]*)" as the "([^\"]*)" date$/ do |date, date_label|
 end
 
 When /^I check "([^\"]*)"$/ do |field|
-  check(field) 
+  check(field)
 end
 
 When /^I uncheck "([^\"]*)"$/ do |field|
-  uncheck(field) 
+  uncheck(field)
 end
 
 When /^I choose "([^\"]*)"$/ do |field|

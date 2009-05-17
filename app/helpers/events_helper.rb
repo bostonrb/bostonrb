@@ -16,15 +16,10 @@ module EventsHelper
       html
     end
   end
-  
 
   def next_five_special_event_links
-    events = Event.next_five_special
+    events = Event.next(5).special
     events.collect { |event| link_to event.title, event_path(event) }
-  end
-
-  def next_four_recurring_events
-    Event.next_four_recurring
   end
 
 end

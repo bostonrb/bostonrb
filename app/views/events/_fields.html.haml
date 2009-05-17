@@ -12,6 +12,10 @@
   %p.instruct ex: 41 Winter Street, Boston, MA, 02018
 
 %div
+  = form.label :recurring
+  %div= form.check_box :recurring
+
+%div
   = form.label :description
   %div= form.text_area :description
   %p.instruct

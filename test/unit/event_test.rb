@@ -23,19 +23,6 @@ class EventTest < ActiveSupport::TestCase
         assert @events.all? { |event| event.date > Time.now }
       end
     end
-
-    context "Event#future" do
-      setup { @events = Event.future }
-
-      should "find Events" do
-        assert @events.any?
-        assert @events.all? { |event| event.is_a?(Event) }
-      end
-
-      should "only find Events in the future" do
-        assert @events.all? { |event| event.date > Time.now }
-      end
-    end
   end
 
   context "next without any future events" do
@@ -86,45 +73,6 @@ class EventTest < ActiveSupport::TestCase
         assert_contains @events, @special_event
       end
     end
-  end
-
-  context "next five special" do
-    setup do
-      @next_scope = stub('next_scope')
-      @special_scope = stub('special_scope')
-      @next_scope.stubs(:special).returns(@special_scope)
-
-      Event.stubs(:next).returns(@next_scope)
-      Event.next_five_special
-    end
-
-    should "get next 5 events" do
-      assert_received(Event, :next) {|expect| expect.with(5)}
-    end
-
-    should "get special events" do
-      assert_received(@next_scope, :special)
-    end
-  end
-
-  context "next four recurring" do
-    setup do
-      @next_scope = stub('next_scope')
-      @recurring_scope = stub('recurring_scope')
-      @next_scope.stubs(:recurring).returns(@recurring_scope)
-
-      Event.stubs(:next).returns(@next_scope)
-      Event.next_four_recurring
-    end
-
-    should "get next 4 events" do
-      assert_received(Event, :next) {|expect| expect.with(4)}
-    end
-
-    should "get recurring events" do
-      assert_received(@next_scope, :recurring)
-    end
-
   end
 
   context "In order to geocode, Event" do

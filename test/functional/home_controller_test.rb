@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
-
   context 'GET to index' do
     setup { get :index }
 
@@ -32,6 +31,5 @@ class HomeControllerTest < ActionController::TestCase
       end
     end
   end
-
 end
 

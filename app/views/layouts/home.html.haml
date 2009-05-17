@@ -15,7 +15,7 @@
             .crud
               %p= link_to 'New event', new_event_path
             %h2 Recurring Events
-            - next_four_recurring_events.each do |event|
+            - Event.next(4).recurring.each do |event|
               .quarter>
                 %h3= link_to event.title, event
                 %p= event.description
