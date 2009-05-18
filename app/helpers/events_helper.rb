@@ -18,7 +18,10 @@ module EventsHelper
   end
 
   def next_five_special_event_links
-    events = Event.next(5).special
+    event_links Event.next(5).special
+  end
+
+  def event_links(events)
     events.collect { |event| link_to event.title, event_path(event) }
   end
 

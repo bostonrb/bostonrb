@@ -12,7 +12,7 @@
 #other_events.row
   %h3.center Special events
   %p.center
-    = sentence_of(@special_events.collect {|event| link_to event.title, event})
+    = sentence_of event_links(@special_events)
 
 #people
   .row
