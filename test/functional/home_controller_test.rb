@@ -7,8 +7,11 @@ class HomeControllerTest < ActionController::TestCase
       @users = [@user]
       User.stubs(:all).returns(@users)
 
-      @recurring_events = [Factory.build(:recurring_event)]
+      @recurring_events = [Factory.build(:recurring_event, :id => 1)]
       Event.stub_chain(:next, :recurring).returns(@recurring_events)
+
+      @special_events = [Factory.build(:special_event, :id => 2)]
+      Event.stub_chain(:next, :special).returns(@special_events)
 
       get :index
     end
@@ -25,8 +28,14 @@ class HomeControllerTest < ActionController::TestCase
       assert_received(Event, :recurring)
     end
 
+    should "fetch 5 special events" do
+      assert_received(Event, :next) {|expect| expect.with(5) }
+      assert_received(Event, :special)
+    end
+
     should_assign_to(:users) { @users }
     should_assign_to(:recurring_events) { @recurring_events }
+    should_assign_to(:special_events) { @special_events }
   end
 
   context "given a future recurring event on GET to index" do
