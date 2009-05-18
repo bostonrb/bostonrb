@@ -29,6 +29,8 @@
         .row
           %h2 Users
           .collage
+            - User.all.each do |user|
+              = image_tag(user.gravatar_url)
 
       #twitter_blogs
         .row
