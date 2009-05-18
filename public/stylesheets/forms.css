@@ -26,18 +26,18 @@ label {
   text-shadow: 0 0 4px #000000;
 }
 
-#new_user .text_field,
-#new_user .password_field {
+#people .text_field,
+#people .password_field {
   margin: 0 0 2em 0;
 }
 
-#new_user label {
+#people label {
   display: block;	
   font-size: 1.6em;
 }
 
-#new_user .text_field input,
-#new_user .password_field input{
+#people .text_field input,
+#people .password_field input{
   color: #BDF;
   width: 100%;
   border: none;
@@ -48,6 +48,15 @@ label {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-#new_user .password_field input{
+#people .password_field input{
   font-weight: bold;
+}
+
+#people .checkbox_field label {
+  display: inline;
+  vertical-align: middle;
+}
+
+#people .checkbox_field {
+  margin-bottom: 2em;
 }
