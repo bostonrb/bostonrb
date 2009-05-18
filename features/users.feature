@@ -14,6 +14,7 @@ Feature: Users
       Then I should be signed in
       When I follow "Account"
       And I fill in "Email" with "email@person.com"
+      And I fill in "Twitter" with "Croaky"
       And I press "Update"
       Then I should see "Account updated"
 

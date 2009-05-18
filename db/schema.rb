@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090518042333) do
+ActiveRecord::Schema.define(:version => 20090518055807) do
 
   create_table "events", :force => true do |t|
     t.datetime "date"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20090518042333) do
     t.string   "token",              :limit => 128
     t.datetime "token_expires_at"
     t.boolean  "email_confirmed",                   :default => false, :null => false
+    t.string   "twitter"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
