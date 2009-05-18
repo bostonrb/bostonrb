@@ -1,0 +1,7 @@
+h2. 0.5.3 (May 15, 2009)
+
+* Added Twitter trends. (Matt Sanford)
+* Added overdue attribution for Luke Francl, Matt Sanford, Alejandro Crosa,
+Danny Burkes, Don Brown, & HotFusionMan.
+* Added CHANGELOG. (Dan Croak)
+

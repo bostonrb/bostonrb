@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090518055807) do
+ActiveRecord::Schema.define(:version => 20090518063607) do
 
   create_table "events", :force => true do |t|
     t.datetime "date"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(:version => 20090518055807) do
     t.datetime "deleted_at"
     t.string   "cached_description_html"
   end
+
+  create_table "tweets", :force => true do |t|
+    t.string   "text"
+    t.integer  "twitter_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tweets", ["user_id"], :name => "index_tweets_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

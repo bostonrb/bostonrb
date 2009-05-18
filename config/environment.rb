@@ -17,31 +17,41 @@ Rails::Initializer.run do |config|
     :secret      => 'a406a09e903c61fa55fadce763e5df7cae1320592290a64e0665412cd9aff9b18116daeab3309fe69bfb3ffc6da224671f5ea5ab96ad7245b276a06a448f2c0a'
   }
 
-  config.gem 'dancroak-validates_email_format_of',
-             :source  => 'http://gems.github.com',
-             :lib     => 'validates_email_format_of'
   config.gem 'BlueCloth',
-             :lib     => 'bluecloth'
+    :lib     => 'bluecloth'
   config.gem 'builder',
-             :version => '2.1.2'
+    :version => '2.1.2'
+  config.gem 'dancroak-validates_email_format_of',
+    :source  => 'http://gems.github.com',
+    :lib     => 'validates_email_format_of'
+  config.gem 'dancroak-twitter-search',
+    :version => "0.5.3",
+    :source  => 'http://gems.github.com',
+    :lib     => 'twitter_search'
   config.gem 'feed-normalizer',
-             :version => '1.4.0'
+    :version => '1.4.0'
+  config.gem 'gravtastic',
+    :version => '>= 2.1.0'
   config.gem 'haml',
-             :version => '2.1.0'
+    :version => '2.1.0'
   config.gem 'hpricot',
-             :version => '0.8.1'
+    :version => '0.8.1'
+  config.gem "json",
+    :version => '1.1.6'
   config.gem 'simple-rss',
-             :version => '1.1'
+    :version => '1.1'
   config.gem 'technicalpickles-has_markup',
-             :lib     => 'has_markup',
-             :source  => 'http://gems.github.com',
-             :version => '0.1.4'
+    :lib     => 'has_markup',
+    :source  => 'http://gems.github.com',
+    :version => '0.1.4'
   config.gem "thoughtbot-clearance", 
     :lib     => 'clearance', 
     :source  => 'http://gems.github.com', 
     :version => '0.6.5'
-  config.gem 'gravtastic', :version => '>= 2.1.0'
-  
+  config.gem 'thoughtbot-pacecar',
+    :lib     => "pacecar",
+    :source  => 'http://gems.github.com', 
+    :version =>'1.1.5'
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"

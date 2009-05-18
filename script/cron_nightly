@@ -1,0 +1,15 @@
+#!/bin/bash
+
+. ~/.bash_profile
+
+cd ~/current
+
+echo "==================================="       >> log/cron-nighty 2>&1
+echo "Starting Nightly Tasks at $(date)"         >> log/cron-nighty 2>&1
+if [ -f ~/primary ]; then
+  echo "Running primary tasks"                   >> log/cron-nightly 2>&1
+
+  echo "Getting Tweets"                          >> log/cron-nighty 2>&1
+  ./script/runner 'Cron.get_tweets'              >> log/cron-nighty 2>&1
+fi
+

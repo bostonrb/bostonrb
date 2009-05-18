@@ -5,4 +5,6 @@ class UserTest < ActiveSupport::TestCase
     user = Factory(:user, :email => 'john@doe.com')
     assert_respond_to user, :gravatar_url
   end
+
+  should_have_many :tweets
 end
