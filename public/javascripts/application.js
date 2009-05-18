@@ -7,4 +7,8 @@ jQuery(document).ready(function($) {
       $(this).find('.crud').hide('blind');
     }
   );
+
+  $(document).bind('keydown', 'd', toggleDisplayOfPendingElements);
+  $(document).bind('keydown', 'o', toggleOverlayOfPendingElements);
+  
 });

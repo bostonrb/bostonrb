@@ -21,7 +21,7 @@
       - @users.each do |user|
         = image_tag(user.gravatar_url)
 
-#twitter_blogs
+#twitter_blogs.pending
   .row
     .half>
       %h3 Twitter
@@ -40,7 +40,7 @@
         %li= post_title_and_blog_name
         %li= post_title_and_blog_name
 
-#projects
+#projects.pending
   .row
     %h2 Open Source Projects
     .half>
@@ -54,7 +54,7 @@
         %li= project_link
         %li= project_link
 
-#apps.row
+#apps.row.pending
   %h3.center Apps
   %p.center
     = sentence_of(app_links)
@@ -72,12 +72,12 @@
         - Job.recent.each do |job|
           %li= link_to job.title, job
 
-#companies.row
+#companies.row.pending
   %h3.center Companies
   %p.center
     = sentence_of(company_links)
 
-#presentations
+#presentations.pending
   .row
     %h2 Presentations
     .half>
