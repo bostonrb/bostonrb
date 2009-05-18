@@ -8,11 +8,12 @@ module ClearanceHelper
   end
 
   def signed_out_links
-    links = { "Sign up" => sign_up_path, "Sign in" => sign_in_path }
-    links.collect { |key, value| link_to(key, value) }
+    [link_to("Sign up", sign_up_path),
+     link_to("Sign in", sign_in_path)]
   end
 
   def signed_in_links
-    [link_to("Sign out", sign_out_path)]
+    [link_to("Account",  edit_user_path(current_user)),
+     link_to("Sign out", sign_out_path)]
   end
 end
