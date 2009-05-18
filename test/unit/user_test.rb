@@ -7,4 +7,5 @@ class UserTest < ActiveSupport::TestCase
   end
 
   should_have_many :tweets
+  should_allow_mass_assignment_of :twitter
 end
