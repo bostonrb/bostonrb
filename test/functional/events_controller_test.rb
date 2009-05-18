@@ -52,9 +52,9 @@ class EventsControllerTest < ActionController::TestCase
       get :new
     end
 
-    should_assign_to :event
-    should_respond_with :success
+    should_assign_to       :event
     should_render_template :new
+    should_respond_with    :success
 
     should 'have new_event form' do
       assert_select 'form[id=new_event]' do
@@ -121,9 +121,9 @@ class EventsControllerTest < ActionController::TestCase
       get :edit, :id => @event.to_param
     end
 
-    should_assign_to :event
-    should_respond_with :success
+    should_assign_to       :event
     should_render_template :edit
+    should_respond_with    :success
 
     should 'have event form' do
       assert_select "form[id=edit_event_#{@event.to_param}]" do

@@ -1,0 +1,14 @@
+#edit
+  .ribbon
+    .row
+      %h2 Account
+      = error_messages_for :user
+
+      - form_for(@user) do |form|
+        .fieldset
+          %div
+            = form.label :email
+            %div= form.text_field :email
+          .buttons
+            = form.submit 'Update', :disable_with => 'Please wait...'
+
