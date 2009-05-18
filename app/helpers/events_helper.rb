@@ -1,9 +1,5 @@
 module EventsHelper
 
-  def event_type_and_date(event)
-    link_to "#{event.event_type}: #{event.date.to_s(:long)}", edit_event_path(event)
-  end
-
   def event_map(event)
     unless event.nil? || !event.geocoded?
       map = GMap.new 'map'
