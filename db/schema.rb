@@ -9,16 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090516231501) do
-
-  create_table "commits", :force => true do |t|
-    t.string   "title"
-    t.string   "url"
-    t.datetime "published_at"
-    t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20090518042333) do
 
   create_table "events", :force => true do |t|
     t.datetime "date"
