@@ -69,7 +69,7 @@
       %p We are looking for someone with expert knowledge of Ruby on Rails to join our team of Ruby on Rails developers full-time in either our Boston, MA or New York City office. The ideal individual will have been using Ruby on Rails extensively (probably since before 1.0), have an excellent knowledge of Javascript, HTML, and CSS, and experience in TDD.
     .half>
       %ul
-        - Job.recent.each do |job|
+        - @recent_jobs.each do |job|
           %li= link_to job.title, job
 
 #companies.row.pending

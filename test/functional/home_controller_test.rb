@@ -13,6 +13,9 @@ class HomeControllerTest < ActionController::TestCase
       @special_events = [Factory.build(:special_event, :id => 2)]
       Event.stub_chain(:next, :special).returns(@special_events)
 
+      @recent_jobs = [Factory.build(:job, :id => 3)]
+      Job.stubs(:recent).returns(@recent_jobs)
+
       get :index
     end
 
@@ -33,9 +36,14 @@ class HomeControllerTest < ActionController::TestCase
       assert_received(Event, :special)
     end
 
+    should "fetch jobs" do
+      assert_received(Job, :recent)
+    end
+
     should_assign_to(:users) { @users }
     should_assign_to(:recurring_events) { @recurring_events }
     should_assign_to(:special_events) { @special_events }
+    should_assign_to(:recent_jobs) { @recent_jobs }
   end
 
   context "given a future recurring event on GET to index" do
