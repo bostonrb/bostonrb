@@ -6,6 +6,10 @@ class HomeControllerTest < ActionController::TestCase
       @user = Factory.build(:user)
       @users = [@user]
       User.stubs(:all).returns(@users)
+
+      @recurring_events = [Factory.build(:recurring_event)]
+      Event.stub_chain(:next, :recurring).returns(@recurring_events)
+
       get :index
     end
 
@@ -16,7 +20,13 @@ class HomeControllerTest < ActionController::TestCase
       assert_received(User, :all)
     end
 
+    should "fetch 4 recurring events" do
+      assert_received(Event, :next) {|expect| expect.with(4) }
+      assert_received(Event, :recurring)
+    end
+
     should_assign_to(:users) { @users }
+    should_assign_to(:recurring_events) { @recurring_events }
   end
 
   context "given a future recurring event on GET to index" do
