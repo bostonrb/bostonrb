@@ -22,7 +22,32 @@ p.instruct {
 
 label {
   font-family: Gotham,Century Gothic,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-weight: lighter;
+  font-weight: 100;
   text-shadow: 0 0 4px #000000;
 }
 
+#new_user .text_field,
+#new_user .password_field {
+  margin: 0 0 2em 0;
+}
+
+#new_user label {
+  display: block;	
+  font-size: 1.6em;
+}
+
+#new_user .text_field input,
+#new_user .password_field input{
+  color: #BDF;
+  width: 100%;
+  border: none;
+  padding: .3em;
+  font-size: 5em;
+  background: #035;
+  border-bottom: .1em solid #046;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#new_user .password_field input{
+  font-weight: bold;
+}
