@@ -1,3 +1,13 @@
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+* html .clearfix { height: 1%; }
+*:first-child+html .clearfix { min-height: 1px; }
+
 .half,
 .quarter,
 .three_quarters {
@@ -172,4 +182,33 @@ body {
 #map {
   width: 500px;
   height: 500px;
+}
+
+#show ul.details {
+	margin: 0;
+	padding: 0;
+}
+
+#show ul.details li {
+  clear: both;
+  padding: .75em;
+  background: #00090f;
+  list-style-type: none;
+  border-bottom: 1px solid #024;
+}
+
+#show ul.details li.last {
+  border-bottom: none;
+}
+
+#show ul.details .detail {
+	float: left;
+}
+
+#show ul.details .label {
+  color: #369;
+	float: right;
+  font-weight: bold;
+  text-transform: lowercase;
+  font-variant: small-caps;
 }
