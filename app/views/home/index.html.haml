@@ -22,14 +22,14 @@
         - @users.each do |user|
           = image_tag(user.gravatar_url)
 
-#twitter_blogs.pending
+#twitter_blogs
   .row
     .half>
       %h3 Twitter
       %ul
         - @recent_tweets.each do |tweet|
           %li= link_to_tweet(tweet)
-    .half>
+    .half.pending>
       %h3 Blogs
       %ul
         %li= post_title_and_blog_name
