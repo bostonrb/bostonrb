@@ -14,5 +14,5 @@ h2. Production
 
 This must be added to cron:
 
-    PATH_TO_APP/script/runner Project.download_entries
+    PATH_TO_APP/script/runner Cron.get_tweets
 
