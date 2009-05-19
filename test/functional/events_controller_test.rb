@@ -99,11 +99,14 @@ class EventsControllerTest < ActionController::TestCase
     setup do
       sign_in
       @old_count = Event.count
-      post :create, :event => Factory.attributes_for(:event)
+      post :create,
+        :event => Factory.attributes_for(:event, :title => "new event")
     end
 
-    should_change "Event.count", :by => 1
     should_redirect_to("events index") { events_path }
+    should "create Event" do
+      assert Event.find_by_title("new event")
+    end
   end
 
   should_route :get, "/events/1/edit",
