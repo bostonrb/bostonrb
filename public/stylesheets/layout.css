@@ -213,3 +213,15 @@ body {
   text-transform: lowercase;
   font-variant: small-caps;
 }
+
+#boston_rb p.navigation {
+	float: left;
+}
+
+#boston_rb p.authentication {
+	float: right;
+}
+
+#boston_rb p.authentication a {
+	padding: .75em;
+}
