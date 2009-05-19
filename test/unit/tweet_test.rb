@@ -15,7 +15,7 @@ class TweetTest < ActiveSupport::TestCase
     end
 
     should "only find five tweets" do
-      assert_equal 5, @tweets.size
+      assert_equal 5, @tweets.to_a.size
     end
 
     should "order tweets by tweeted at" do
