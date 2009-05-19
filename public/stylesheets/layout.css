@@ -200,10 +200,16 @@ body {
 
 #show ul.details li.last {
   border-bottom: none;
+  padding-bottom: 0;
+}
+
+#show ul.details li.last p {
+	font-size: 1em;
 }
 
 #show ul.details .detail {
 	float: left;
+  width: 95%;
 }
 
 #show ul.details .label {
