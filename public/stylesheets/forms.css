@@ -60,3 +60,11 @@ label {
 #people .checkbox_field {
   margin-bottom: 2em;
 }
+
+/* new event */
+
+#new .checkbox_field label,
+#new .checkbox_field input {
+  display: inline;
+  vertical-align: middle;  	
+}
