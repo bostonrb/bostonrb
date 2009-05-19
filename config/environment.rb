@@ -51,7 +51,11 @@ Rails::Initializer.run do |config|
   config.gem 'thoughtbot-pacecar',
     :lib     => "pacecar",
     :source  => 'http://gems.github.com', 
-    :version =>'1.1.5'
+    :version => '1.1.5'
+  config.gem "yfactorial-utility_scopes",
+    :lib     => "utility_scopes",
+    :source  => 'http://gems.github.com', 
+    :version => '0.2.2'
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"

@@ -27,11 +27,8 @@
     .half>
       %h3 Twitter
       %ul
-        %li= user_name_and_tweet
-        %li= user_name_and_tweet
-        %li= user_name_and_tweet
-        %li= user_name_and_tweet
-        %li= user_name_and_tweet
+        - @recent_tweets.each do |tweet|
+          %li= link_to_tweet(tweet)
     .half>
       %h3 Blogs
       %ul

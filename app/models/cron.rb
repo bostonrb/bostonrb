@@ -3,10 +3,10 @@ class Cron
     client = TwitterSearch::Client.new
     users  = User.twitter_present
     users.each do |user|
-      tweets = client.query "from: #{user.twitter}"
+      tweets = client.query "from:#{user.twitter}"
       tweets.each do |tweet|
         unless Tweet.find_by_twitter_id(tweet.id)
-          user.tweets.create(:text       => tweet.text,
+          user.tweets.create(:text       => CGI::unescapeHTML(tweet.text),
                              :twitter_id => tweet.id,
                              :tweeted_at => tweet.created_at)
         end
