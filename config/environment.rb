@@ -24,6 +24,6 @@ Rails::Initializer.run do |config|
   config.gem 'feed-normalizer', :version => '1.4.0'
   config.gem 'haml', :version => '2.0.1'
   config.gem 'has_finder', :version => '0.1.5'
-  config.gem 'hpricot', :version => '0.6'
+  config.gem 'hpricot', :version => '0.8.1'
   config.gem 'simple-rss', :version => '1.1'
 end
