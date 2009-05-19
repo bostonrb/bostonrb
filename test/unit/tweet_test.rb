@@ -6,5 +6,5 @@ class TweetTest < ActiveSupport::TestCase
   end
   should_belong_to  :user
   should_have_index :user_id
-  should_validate_presence_of :text, :id, :tweeted_at, :user_id
+  should_validate_presence_of :text, :twitter_id, :tweeted_at, :user_id
 end
