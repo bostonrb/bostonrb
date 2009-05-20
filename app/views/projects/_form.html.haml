@@ -1,12 +1,14 @@
-%dl
-  %dt Name
-  %dd= form.text_field :name, :size => 50
+%div
+  = form.label :name
+  %div= form.text_field :name
 
-  %dt Homepage URL
-  %dd= form.text_field :homepage_url, :size => 50
+%div
+  = form.label :homepage_url
+  %div= form.text_field :homepage_url
 
-  %dt Feed URL
-  %dd= form.text_field :feed_url, :size => 50
+%div
+  = form.label :description
+  %div= form.text_area :description
+  %p.instruct
+    == Format description using #{link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax'}.
 
-  %dt Description
-  %dd= form.text_area :description

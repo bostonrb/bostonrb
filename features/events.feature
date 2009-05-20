@@ -1,4 +1,4 @@
-Feature: Event Schedule
+Feature: Events
   As a member of the group
   I want to see the upcoming events schedule
   So that I can attend if I am available

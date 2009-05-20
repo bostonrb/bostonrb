@@ -1,4 +1,4 @@
-#projects
+#new
   .ribbon
     .row
       %h2 New project
@@ -6,5 +6,4 @@
 
       - form_for(@project) do |form|
         = partial 'projects/form', :form => form
-          
         = form.submit 'Create', :disable_with => 'Please wait...'

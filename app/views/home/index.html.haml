@@ -45,8 +45,10 @@
         %li= post_title_and_blog_name
         %li= post_title_and_blog_name
 
-#projects.pending
+#projects
   .row
+    .crud
+      %p= link_to 'New project', new_project_path
     %h2 Open Source Projects
     .half>
       %h3 Paperclip
