@@ -7,6 +7,8 @@ class HomeController < ApplicationController
     @recent_jobs      = Job.recent
     @recent_tweets    = Tweet.recent(5)
     @featured_project = Project.featured
+    @projects         = Project.all
+    @projects         = @projects.select { |p| p != @featured_project } if @featured_project
   end
 
 end
