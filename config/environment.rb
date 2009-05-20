@@ -57,6 +57,10 @@ Rails::Initializer.run do |config|
     :lib     => "utility_scopes",
     :source  => 'http://gems.github.com', 
     :version => '0.2.2'
+  config.gem "giraffesoft-resource_controller",
+    :lib     => "resource_controller",
+    :version => "0.6.1"
+
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"

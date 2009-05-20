@@ -1,0 +1,6 @@
+%h2 New Company
+= error_messages_for :company
+- form_for(@company) do |form|
+  = partial 'companies/form', :form => form
+
+  = form.submit 'Create', :disable_with => 'Please wait...'

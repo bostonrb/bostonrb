@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pages
   map.resources :places
   map.resources :passwords
+  map.resources :companies
 
   map.resources :users do |users|
     users.resource :password,     :controller => 'passwords'

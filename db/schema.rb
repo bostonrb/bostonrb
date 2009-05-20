@@ -9,7 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090518234616) do
+ActiveRecord::Schema.define(:version => 20090520010446) do
+
+  create_table "companies", :force => true do |t|
+    t.string   "name",        :default => "", :null => false
+    t.string   "website_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
 
   create_table "events", :force => true do |t|
     t.datetime "date"
