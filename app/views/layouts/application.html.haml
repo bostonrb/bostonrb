@@ -6,7 +6,7 @@
     = auto_discovery_link_tag :rss, '/jobs.rss', :title => 'Jobs feed'
   %body
     .grid_960.middle
-      = render :partial => 'shared/header'
+      = render :partial => '/shared/header'
       = partial 'shared/flashes'
       = yield
     = render :partial => '/shared/javascripts'
