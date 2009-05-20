@@ -119,7 +119,7 @@ body {
   background: #000919;
 }
 
-#events, #new, #show, #edit {
+#events, #new, #show, #edit, #projects{
   background: #000919 url(../images/ribbon.gif) 50% 100% repeat-x;
 }
 .ribbon {
@@ -127,7 +127,6 @@ body {
   padding: 2.1em 0 2em 0;
 }
 #projects {
-  padding: 2.1em 0 0 0;
   margin-bottom: 2.1em;
 }
 

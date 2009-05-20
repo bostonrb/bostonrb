@@ -1,10 +1,12 @@
-.row
-  %h2 Projects
-  %p Here are some of the projects that Boston Rubyists have created
-  %p= link_to 'Add a new project', new_project_path
+#projects
+  .ribbon
+    .row
+      %h2 Projects
+      %p Here are some of the projects that Boston Rubyists have created
+      %p= link_to 'Add a new project', new_project_path
 
-- @left_projects.each do |project|
-  = partial 'projects/show', :project => project
+    - @left_projects.each do |project|
+      = partial 'projects/show', :project => project
 
-- @right_projects.each do |project|
-  = partial 'projects/show', :project => project
+    - @right_projects.each do |project|
+      = partial 'projects/show', :project => project
