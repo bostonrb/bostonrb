@@ -3,7 +3,7 @@ module TwitterSearch
     VARS = [ :query, :name ]
     attr_reader *VARS
     attr_reader :exclude_hashtags
-    
+
     def initialize(opts)
       @exclude_hashtags = !!opts['exclude_hashtags']
       VARS.each { |each| instance_variable_set "@#{each}", opts[each.to_s] }
@@ -17,7 +17,7 @@ module TwitterSearch
     include Enumerable
 
     def initialize(opts)
-      @trends = opts['trends'].first.collect { |each| Trend.new(each) }
+      @trends = opts['trends'].values.first.collect { |each| Trend.new(each) }
       VARS.each { |each| instance_variable_set "@#{each}", opts[each.to_s] }
     end
 
@@ -28,7 +28,7 @@ module TwitterSearch
     def size
       @trends.size
     end
-    
+
     def [](index)
       @trends[index]
     end

@@ -1,0 +1,16 @@
+h2. 0.5.5 (May 18, 2009)
+
+* raise error when query contains :near or :within:. (Dan Croak)
+
+h2. 0.5.4 (May 16, 2009)
+
+* Fixed bug in Twitter trends. (Dan Croak)
+* Refactored test suite. Now organized by function, uses redgreen, began moving toward using JSON instead of YAML for fixtures. (Dan Croak)
+* Exposed Shoulda Macros to apps that want to use them. (Dan Croak)
+
+h2. 0.5.3 (May 15, 2009)
+
+* Added Twitter trends. (Matt Sanford)
+* Added overdue attribution for Luke Francl, Matt Sanford, Alejandro Crosa, Danny Burkes, Don Brown, & HotFusionMan.
+* Added CHANGELOG. (Dan Croak)
+

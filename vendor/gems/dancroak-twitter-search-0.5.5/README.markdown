@@ -84,7 +84,7 @@ Dustin Sallings, Dan Croak, Luke Francl, Matt Sanford, Alejandro Crosa, Danny Bu
 
 ## Resources
 
-* [Official Twitter Search API](http://search.twitter.com/api)
+* [Official Twitter Search API](http://apiwiki.twitter.com/Twitter-API-Documentation)
 
 ## License
 

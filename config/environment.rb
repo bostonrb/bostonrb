@@ -25,7 +25,7 @@ Rails::Initializer.run do |config|
     :source  => 'http://gems.github.com',
     :lib     => 'validates_email_format_of'
   config.gem 'dancroak-twitter-search',
-    :version => "0.5.3",
+    :version => "0.5.5",
     :source  => 'http://gems.github.com',
     :lib     => 'twitter_search'
   config.gem 'feed-normalizer',

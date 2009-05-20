@@ -1,7 +1,7 @@
 --- !ruby/object:Gem::Specification 
 name: dancroak-twitter-search
 version: !ruby/object:Gem::Version 
-  version: 0.5.3
+  version: 0.5.5
 platform: ruby
 authors: 
 - Dustin Sallings
@@ -16,7 +16,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2009-05-15 00:00:00 -04:00
+date: 2009-05-18 00:00:00 -04:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
@@ -45,6 +45,7 @@ files:
 - lib/trends.rb
 - lib/tweets.rb
 - lib/twitter_search.rb
+- shoulda_macros/twitter_search.rb
 has_rdoc: true
 homepage: http://github.com/dancroak/twitter-search
 licenses: []
@@ -72,6 +73,6 @@ rubyforge_project:
 rubygems_version: 1.3.3
 signing_key: 
 specification_version: 3
-summary: Ruby client for Twitter Search.
+summary: Ruby client for Twitter Search. Includes trends.
 test_files: []
 
