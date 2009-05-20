@@ -16,7 +16,7 @@ class HomeControllerTest < ActionController::TestCase
       @recent_jobs = [Factory.build(:job, :id => 3)]
       Job.stubs(:recent).returns(@recent_jobs)
 
-      @featured_project = [Factory.build(:project)]
+      @featured_project = Factory.build(:project)
       Project.stubs(:featured).returns(@featured_project)
 
       get :index
