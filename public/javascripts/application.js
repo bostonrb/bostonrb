@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-  $('#events, #jobs, #show').hover(
+  $('#events, #jobs, #projects, #presentations, #show').hover(
     function() {
       $(this).find('.crud').show();
     },

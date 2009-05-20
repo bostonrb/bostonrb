@@ -139,12 +139,12 @@ p, li {
   color: #09C;
 }
 
-a, #jobs .crud a {
+a, #jobs .crud a, #projects .crud a {
   color: #F90;
   text-decoration: none;
 }
 
-a:hover, #jobs .crud a:hover {
+a:hover, #jobs .crud a:hover, #projects .crud a:hover {
   text-decoration: underline;
 }
 
