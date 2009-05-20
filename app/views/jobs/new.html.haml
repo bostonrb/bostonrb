@@ -1,7 +1,11 @@
-%h2 Add a job
-= error_messages_for :job
+#new
+  .ribbon
+    .row
+      %h2 New job
+      = error_messages_for :job
 
-- form_for(@job) do |form|
-  = partial 'jobs/form', :form => form
-    
-  = form.submit 'Create', :disable_with => 'Please wait...'
+      - form_for(@job) do |form|
+        .fieldset
+          = partial 'jobs/form', :form => form
+        .buttons
+          = form.submit 'Create', :disable_with => 'Please wait...'

@@ -1,20 +1,22 @@
-%dl
-  %dt Job title
-  %dd= form.text_field :title, :size => 35
+%div
+  = form.label :title, "Job title"
+  %div= form.text_field :title
 
-  %dt Location
-  %dd= form.text_field :location, :size => 35
+%div
+  = form.label :location
+  %div= form.text_field :location
 
-  %dt Organization
-  %dd= form.text_field :organization, :size => 35
+%div
+  = form.label :organization
+  %div= form.text_field :organization
 
-%dl
-  %dt Contact email
-  %dd= form.text_field :email, :size => 25
+%div
+  = form.label :email, "Contact email"
+  %div= form.text_field :email
 
-  %dt Description
-  %dd
-    ~ form.text_area :description, { :class => 'job_description' }
-    %br/
-    = link_to 'The description is Markdown-enabled', 'http://daringfireball.net/projects/markdown/syntax'
+%div
+  = form.label :description
+  %div= form.text_area :description
+  %p.instruct
+    == Format description using #{link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax'}.
 
