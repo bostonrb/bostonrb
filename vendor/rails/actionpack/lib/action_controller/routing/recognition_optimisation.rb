@@ -51,13 +51,12 @@ module ActionController
     #  3) segm test for /users/:id
     #     (jump to list index = 5)
     #  4) full test for /users/:id => here we are!
-
     class RouteSet
       def recognize_path(path, environment={})
         result = recognize_optimized(path, environment) and return result
 
         # Route was not recognized. Try to find out why (maybe wrong verb).
-        allows = HTTP_METHODS.select { |verb| routes.find { |r| r.recognize(path, :method => verb) } }
+        allows = HTTP_METHODS.select { |verb| routes.find { |r| r.recognize(path, environment.merge(:method => verb)) } }
 
         if environment[:method] && !HTTP_METHODS.include?(environment[:method])
           raise NotImplemented.new(*allows)
@@ -66,28 +65,6 @@ module ActionController
         else
           raise RoutingError, "No route matches #{path.inspect} with #{environment.inspect}"
         end
-      end
-
-      def recognize_optimized(path, env)
-        write_recognize_optimized
-        recognize_optimized(path, env)
-      end
-
-      def write_recognize_optimized
-        tree = segment_tree(routes)
-        body = generate_code(tree)
-        instance_eval %{
-          def recognize_optimized(path, env)
-            segments = to_plain_segments(path)
-            index = #{body}
-            return nil unless index
-            while index < routes.size
-              result = routes[index].recognize(path, env) and return result
-              index += 1
-            end
-            nil
-          end
-        }, __FILE__, __LINE__
       end
 
       def segment_tree(routes)
@@ -121,7 +98,6 @@ module ActionController
           if Array === item
             i += 1
             start = (i == 1)
-            final = (i == list.size)
             tag, sub = item
             if tag == :dynamic
               body += padding + "#{start ? 'if' : 'elsif'} true\n"
@@ -153,6 +129,39 @@ module ActionController
         segments
       end
 
+      private
+        def write_recognize_optimized!
+          tree = segment_tree(routes)
+          body = generate_code(tree)
+
+          remove_recognize_optimized!
+
+          instance_eval %{
+            def recognize_optimized(path, env)
+              segments = to_plain_segments(path)
+              index = #{body}
+              return nil unless index
+              while index < routes.size
+                result = routes[index].recognize(path, env) and return result
+                index += 1
+              end
+              nil
+            end
+          }, '(recognize_optimized)', 1
+        end
+
+        def clear_recognize_optimized!
+          remove_recognize_optimized!
+          write_recognize_optimized!
+        end
+
+        def remove_recognize_optimized!
+          if respond_to?(:recognize_optimized)
+            class << self
+              remove_method :recognize_optimized
+            end
+          end
+        end
     end
   end
 end

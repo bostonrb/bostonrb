@@ -1,6 +1,11 @@
-%h2 New event
-= error_messages_for :event
+#new
+  .ribbon
+    .row
+      %h2 New event
+      = error_messages_for :event
 
-- form_for(@event) do |form|
-  = partial '/events/form', :form => form
-  = form.submit 'Create', :disable_with => 'Please wait...'
+      - form_for(@event) do |form|
+        .fieldset
+          = partial '/events/fields', :form => form
+          .buttons
+            = form.submit 'Create', :disable_with => 'Please wait...'

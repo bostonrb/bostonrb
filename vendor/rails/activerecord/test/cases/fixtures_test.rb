@@ -15,6 +15,7 @@ require 'models/pirate'
 require 'models/treasure'
 require 'models/matey'
 require 'models/ship'
+require 'models/book'
 
 class FixturesTest < ActiveRecord::TestCase
   self.use_instantiated_fixtures = true
@@ -150,7 +151,7 @@ class FixturesTest < ActiveRecord::TestCase
   end
 
   def test_dirty_dirty_yaml_file
-    assert_raises(Fixture::FormatError) do
+    assert_raise(Fixture::FormatError) do
       Fixtures.new( Account.connection, "courses", 'Course', FIXTURES_ROOT + "/naked/yml/courses")
     end
   end
@@ -264,12 +265,10 @@ class FixturesWithoutInstantiationTest < ActiveRecord::TestCase
     assert_raise(StandardError) { topics([:first, :second]) }
   end
 
-  uses_mocha 'reloading_fixtures_through_accessor_methods' do
-    def test_reloading_fixtures_through_accessor_methods
-      assert_equal "The First Topic", topics(:first).title
-      @loaded_fixtures['topics']['first'].expects(:find).returns(stub(:title => "Fresh Topic!"))
-      assert_equal "Fresh Topic!", topics(:first, true).title
-    end
+  def test_reloading_fixtures_through_accessor_methods
+    assert_equal "The First Topic", topics(:first).title
+    @loaded_fixtures['topics']['first'].expects(:find).returns(stub(:title => "Fresh Topic!"))
+    assert_equal "Fresh Topic!", topics(:first, true).title
   end
 end
 
@@ -373,6 +372,34 @@ class CheckSetTableNameFixturesTest < ActiveRecord::TestCase
   end
 end
 
+class FixtureNameIsNotTableNameFixturesTest < ActiveRecord::TestCase
+  set_fixture_class :items => Book
+  fixtures :items
+  # Set to false to blow away fixtures cache and ensure our fixtures are loaded 
+  # and thus takes into account our set_fixture_class
+  self.use_transactional_fixtures = false
+
+  def test_named_accessor
+    assert_kind_of Book, items(:dvd)
+  end
+end
+
+class FixtureNameIsNotTableNameMultipleFixturesTest < ActiveRecord::TestCase
+  set_fixture_class :items => Book, :funny_jokes => Joke
+  fixtures :items, :funny_jokes
+  # Set to false to blow away fixtures cache and ensure our fixtures are loaded 
+  # and thus takes into account our set_fixture_class
+  self.use_transactional_fixtures = false
+
+  def test_named_accessor_of_differently_named_fixture
+    assert_kind_of Book, items(:dvd)
+  end
+
+  def test_named_accessor_of_same_named_fixture
+    assert_kind_of Joke, funny_jokes(:a_joke)
+  end
+end
+
 class CustomConnectionFixturesTest < ActiveRecord::TestCase
   set_fixture_class :courses => Course
   fixtures :courses
@@ -393,7 +420,7 @@ class InvalidTableNameFixturesTest < ActiveRecord::TestCase
   self.use_transactional_fixtures = false
 
   def test_raises_error
-    assert_raises FixtureClassNotFound do
+    assert_raise FixtureClassNotFound do
       funny_jokes(:a_joke)
     end
   end
@@ -432,11 +459,11 @@ class FixturesBrokenRollbackTest < ActiveRecord::TestCase
   alias_method :teardown, :blank_teardown
 
   def test_no_rollback_in_teardown_unless_transaction_active
-    assert_equal 0, Thread.current['open_transactions']
+    assert_equal 0, ActiveRecord::Base.connection.open_transactions
     assert_raise(RuntimeError) { ar_setup_fixtures }
-    assert_equal 0, Thread.current['open_transactions']
+    assert_equal 0, ActiveRecord::Base.connection.open_transactions
     assert_nothing_raised { ar_teardown_fixtures }
-    assert_equal 0, Thread.current['open_transactions']
+    assert_equal 0, ActiveRecord::Base.connection.open_transactions
   end
 
   private
@@ -610,17 +637,15 @@ class ActiveSupportSubclassWithFixturesTest < ActiveRecord::TestCase
 end
 
 class FixtureLoadingTest < ActiveRecord::TestCase
-  uses_mocha 'reloading_fixtures_through_accessor_methods' do
-    def test_logs_message_for_failed_dependency_load
-      Test::Unit::TestCase.expects(:require_dependency).with(:does_not_exist).raises(LoadError)
-      ActiveRecord::Base.logger.expects(:warn)
-      Test::Unit::TestCase.try_to_load_dependency(:does_not_exist)
-    end
+  def test_logs_message_for_failed_dependency_load
+    ActiveRecord::TestCase.expects(:require_dependency).with(:does_not_exist).raises(LoadError)
+    ActiveRecord::Base.logger.expects(:warn)
+    ActiveRecord::TestCase.try_to_load_dependency(:does_not_exist)
+  end
 
-    def test_does_not_logs_message_for_successful_dependency_load
-      Test::Unit::TestCase.expects(:require_dependency).with(:works_out_fine)
-      ActiveRecord::Base.logger.expects(:warn).never
-      Test::Unit::TestCase.try_to_load_dependency(:works_out_fine)
-    end
+  def test_does_not_logs_message_for_successful_dependency_load
+    ActiveRecord::TestCase.expects(:require_dependency).with(:works_out_fine)
+    ActiveRecord::Base.logger.expects(:warn).never
+    ActiveRecord::TestCase.try_to_load_dependency(:works_out_fine)
   end
 end

@@ -1,0 +1,22 @@
+%div
+  = form.label :title
+  %div= form.text_field :title
+
+%div
+  = form.label :location
+  %div= form.text_field :location
+  %p.instruct ex: 41 Winter Street, Boston, MA, 02018
+
+%div
+  = form.label :description
+  %div= form.text_area :description
+  %p.instruct
+    == Format description using #{link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax'}.
+
+%div
+  = form.label :date
+  %div= form.datetime_select :date
+
+.checkbox_field
+  = form.label :recurring
+  = form.check_box :recurring

@@ -1,0 +1,158 @@
+/*
+  These values are sensible defaults. You are encouraged to define your own values.
+
+  Formula:
+  base line-height / font-size = element line-height
+
+  Example:
+  base line-height: 1.8 (18px)
+
+  1.8 / 7.2em = .25
+
+  2.1 lineheight
+
+*/
+
+body {
+  background: #FFF url(../images/grid/21.png) top left repeat;
+  font-size: .625em; /* 62.5% of browser default (16px) is 10px */
+  font-family: "Times New Roman", Times, Georgia, serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+p {
+  font-size: 1.4em;
+  line-height: 1.5;
+  margin: 0 1.5em 1.5em 0;
+}
+
+h1 {
+  font-size: 4.2em;
+  line-height: 1;
+  margin: 0 .5em .5em 0;
+}
+
+h2 {
+  font-size: 3.5em;
+  line-height: 1.2;
+  margin: 0 .6em .6em 0;
+}
+
+h3 {
+  font-size: 2.8em;
+  line-height: .75em;
+  margin: 0 .75em .75em 0
+}
+
+ul {
+  list-style-type: square;
+  margin: 0 1.5em 1.5em 1em;
+}
+
+ul,
+dl,
+th,
+td,
+legend {
+  font-size: 1.4em;
+  line-height: 1.5;
+}
+
+input {
+  vertical-align: middle;
+}
+
+/* custom typography */
+
+h1 {
+  color: #C30;
+  font-family: "Garamond", "Times New Roman", Times, serif;
+  text-shadow: 0 0 4px #000;
+}
+
+h2 {
+  background: url(../images/header.png) 0 0 no-repeat;
+  font-family: "Baskerville", "Garamond", "Times New Roman", Times, serif;
+  text-shadow: 0 0 4px #000;
+  color: #9CF; /* blue */
+  color: #99CCFF;
+}
+
+h3 {
+  font-family: "Baskerville", "Garamond", "Times New Roman", Times, serif;
+  text-shadow: 0 0 3px #036;
+  font-style: italic;
+}
+
+#flash_notice, #flash_success, #flash_failure {
+	font-family: Georgia;
+  letter-spacing: .15em;
+	font-variant: small-caps;
+	text-transform: lowercase;
+}
+
+h3, h3 a {
+  color: #09C;
+}
+
+#flash_success {
+  color: #09C;
+  padding: .5em 0;
+  background: #024;
+  border-top: 1px dashed #046;
+  border-bottom: 1px dashed #046;	
+}
+
+#flash_notice {
+  color: #EEE;
+  padding: .5em 0;
+  background: #222;
+  border-top: 1px dashed #444;
+  border-bottom: 1px dashed #444;
+}
+
+#flash_failure {
+  color: #F33;
+  padding: .5em 0;
+  background: #200;
+  border-top: 1px dashed #400;
+  border-bottom: 1px dashed #400;
+}
+
+#flash {
+  font-size: 2.4em;
+  width: 100%;
+}
+
+p, li {
+  font-weight: lighter;
+  text-shadow: 0 0 4px #000;
+  font-family: Gotham, Century Gothic, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#projects a,
+#jobs a,
+#presentations a {
+  color: #09C;
+}
+
+a, #jobs .crud a {
+  color: #F90;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#boston_rb p {
+  margin: 0;
+}
+
+#about ul, #about li {
+  list-style-type: none;
+  display: inline;
+}

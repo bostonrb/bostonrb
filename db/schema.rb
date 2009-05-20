@@ -9,16 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080924045039) do
-
-  create_table "commits", :force => true do |t|
-    t.string   "title"
-    t.string   "url"
-    t.datetime "published_at"
-    t.integer  "project_id",   :limit => 11
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20090518234616) do
 
   create_table "events", :force => true do |t|
     t.datetime "date"
@@ -30,8 +21,9 @@ ActiveRecord::Schema.define(:version => 20080924045039) do
     t.float    "lat"
     t.string   "title"
     t.datetime "deleted_at"
-    t.integer  "place_id",                :limit => 11
+    t.integer  "place_id"
     t.text     "cached_description_html"
+    t.boolean  "recurring",               :default => true, :null => false
   end
 
   create_table "jobs", :force => true do |t|
@@ -46,12 +38,15 @@ ActiveRecord::Schema.define(:version => 20080924045039) do
     t.text     "cached_description_html"
   end
 
-  create_table "places", :force => true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.text     "description"
+  create_table "presentations", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "embed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "presenter"
+    t.string   "source"
+    t.datetime "deleted_at"
   end
 
   create_table "projects", :force => true do |t|
@@ -65,15 +60,29 @@ ActiveRecord::Schema.define(:version => 20080924045039) do
     t.string   "cached_description_html"
   end
 
-  create_table "videos", :force => true do |t|
-    t.string   "title"
-    t.string   "url"
-    t.text     "embed"
+  create_table "tweets", :force => true do |t|
+    t.string   "text"
+    t.integer  "twitter_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "presenter"
-    t.string   "source"
-    t.datetime "deleted_at"
+    t.datetime "tweeted_at"
   end
+
+  add_index "tweets", ["user_id"], :name => "index_tweets_on_user_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "encrypted_password", :limit => 128
+    t.string   "salt",               :limit => 128
+    t.string   "token",              :limit => 128
+    t.datetime "token_expires_at"
+    t.boolean  "email_confirmed",                   :default => false, :null => false
+    t.string   "twitter"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["id", "token"], :name => "index_users_on_id_and_token"
+  add_index "users", ["token"], :name => "index_users_on_token"
 
 end

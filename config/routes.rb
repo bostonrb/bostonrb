@@ -1,17 +1,27 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :places
-
   map.resources :jobs, :collection => {:old => :get}
-  map.resources :videos
+
+  map.resources :presentations
   map.resources :projects
   map.resources :events
+  map.resources :pages
+  map.resources :places
+  map.resources :passwords
 
-  map.site 'site/:name', :controller => 'pages', :action => 'show'
+  map.resources :users do |users|
+    users.resource :password,     :controller => 'passwords'
+    users.resource :confirmation, :controller => 'confirmations'
+  end
 
-  map.home '/', :controller => 'events', :action => 'index'
+  map.resource :session
 
-  # Install the default routes as the lowest priority.
-  # map.connect ':controller/:action/:id'
-  # map.connect ':controller/:action/:id.:format'
+  map.root :controller => 'home', :action => 'index'
+
+  map.sign_up  'sign_up', :controller => 'users',    :action => 'new'
+  map.sign_in  'sign_in', :controller => 'sessions', :action => 'new'
+  map.sign_out 'sign_out',
+    :controller => 'sessions',
+    :action     => 'destroy',
+    :method     => :delete
 end
 

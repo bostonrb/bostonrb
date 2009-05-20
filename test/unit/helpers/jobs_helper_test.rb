@@ -1,13 +1,5 @@
-require File.dirname(__FILE__) + '/../../test_helper'
+require 'test_helper'
 
-class JobsHelperTest < HelperTestCase
-
-  include JobsHelper
-
-  #fixtures :users, :articles
-
-  def setup
-    super
-  end
-  
+class JobsHelperTest < ActionView::TestCase
 end
+

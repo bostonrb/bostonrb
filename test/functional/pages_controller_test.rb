@@ -1,26 +1,24 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class PagesControllerTest < ActionController::TestCase
-  context 'pages routing' do
-    should 'route /site/about to :controller => :pages, :action => :show, :name => :about' do
-      assert_routing '/site/about', :controller => 'pages', :action => 'show', :name => 'about'
+
+  %w(sponsors).each do |page|
+    context "on GET to /pages/#{page}" do
+      setup { get :show, :id => page }
+
+      should_respond_with :success
+      should_render_template page
     end
   end
-  
-  context 'A GET to show the about page' do
-    setup do
-      get :show, :name => 'about'
-    end
-    
-    should_respond_with :success
-    should_render_template :about
+
+  context "on GET to /pages/invalid" do
+    setup { get :show, :id => "invalid" }
+    should_respond_with :missing
   end
-  
-  context 'A GET to a nonexistant page' do
-    setup do
-      get :show, :name => 'something-fake'
-    end
-    
-    should_respond_with 404
+
+  context "on GET to /pages" do
+    setup { get :index }
+    should_respond_with :missing
   end
+
 end

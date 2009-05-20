@@ -36,23 +36,25 @@ module ActionController
   #
   # * <tt>edit_polymorphic_url</tt>, <tt>edit_polymorphic_path</tt>
   # * <tt>new_polymorphic_url</tt>, <tt>new_polymorphic_path</tt>
-  # * <tt>formatted_polymorphic_url</tt>, <tt>formatted_polymorphic_path</tt>
   #
   # Example usage:
   #
   #   edit_polymorphic_path(@post)              # => "/posts/1/edit"
-  #   formatted_polymorphic_path([@post, :pdf]) # => "/posts/1.pdf"
+  #   polymorphic_path(@post, :format => :pdf)  # => "/posts/1.pdf"
   module PolymorphicRoutes
     # Constructs a call to a named RESTful route for the given record and returns the
     # resulting URL string. For example:
     #
     #   # calls post_url(post)
     #   polymorphic_url(post) # => "http://example.com/posts/1"
+    #   polymorphic_url([blog, post]) # => "http://example.com/blogs/1/posts/1"
+    #   polymorphic_url([:admin, blog, post]) # => "http://example.com/admin/blogs/1/posts/1"
+    #   polymorphic_url([user, :blog, post]) # => "http://example.com/users/1/blog/posts/1"
     #
     # ==== Options
     #
     # * <tt>:action</tt> - Specifies the action prefix for the named route:
-    #   <tt>:new</tt>, <tt>:edit</tt>, or <tt>:formatted</tt>. Default is no prefix.
+    #   <tt>:new</tt> or <tt>:edit</tt>. Default is no prefix.
     # * <tt>:routing_type</tt> - Allowed values are <tt>:path</tt> or <tt>:url</tt>.
     #   Default is <tt>:url</tt>.
     #
@@ -70,20 +72,18 @@ module ActionController
     #
     def polymorphic_url(record_or_hash_or_array, options = {})
       if record_or_hash_or_array.kind_of?(Array)
-        record_or_hash_or_array = record_or_hash_or_array.dup
+        record_or_hash_or_array = record_or_hash_or_array.compact
+        record_or_hash_or_array = record_or_hash_or_array[0] if record_or_hash_or_array.size == 1
       end
 
       record    = extract_record(record_or_hash_or_array)
-      format    = extract_format(record_or_hash_or_array, options)
       namespace = extract_namespace(record_or_hash_or_array)
-      
+
       args = case record_or_hash_or_array
         when Hash;  [ record_or_hash_or_array ]
         when Array; record_or_hash_or_array.dup
         else        [ record_or_hash_or_array ]
       end
-
-      args << format if format
 
       inflection =
         case
@@ -96,9 +96,17 @@ module ActionController
         else
           :singular
         end
-      
+
+      args.delete_if {|arg| arg.is_a?(Symbol) || arg.is_a?(String)}
+
       named_route = build_named_route_call(record_or_hash_or_array, namespace, inflection, options)
-      send!(named_route, *args)
+
+      url_options = options.except(:action, :routing_type)
+      unless url_options.empty?
+        args.last.kind_of?(Hash) ? args.last.merge!(url_options) : args << url_options
+      end
+
+      __send__(named_route, *args)
     end
 
     # Returns the path component of a URL for the given record. It uses
@@ -108,21 +116,37 @@ module ActionController
       polymorphic_url(record_or_hash_or_array, options)
     end
 
-    %w(edit new formatted).each do |action|
+    %w(edit new).each do |action|
       module_eval <<-EOT, __FILE__, __LINE__
-        def #{action}_polymorphic_url(record_or_hash)
-          polymorphic_url(record_or_hash, :action => "#{action}")
-        end
-
-        def #{action}_polymorphic_path(record_or_hash)
-          polymorphic_url(record_or_hash, :action => "#{action}", :routing_type => :path)
-        end
+        def #{action}_polymorphic_url(record_or_hash, options = {})         # def edit_polymorphic_url(record_or_hash, options = {})
+          polymorphic_url(                                                  #   polymorphic_url(
+            record_or_hash,                                                 #     record_or_hash,
+            options.merge(:action => "#{action}"))                          #     options.merge(:action => "edit"))
+        end                                                                 # end
+                                                                            #
+        def #{action}_polymorphic_path(record_or_hash, options = {})        # def edit_polymorphic_path(record_or_hash, options = {})
+          polymorphic_url(                                                  #   polymorphic_url(
+            record_or_hash,                                                 #     record_or_hash,
+            options.merge(:action => "#{action}", :routing_type => :path))  #     options.merge(:action => "edit", :routing_type => :path))
+        end                                                                 # end
       EOT
+    end
+
+    def formatted_polymorphic_url(record_or_hash, options = {})
+      ActiveSupport::Deprecation.warn("formatted_polymorphic_url has been deprecated. Please pass :format to the polymorphic_url method instead", caller)
+      options[:format] = record_or_hash.pop if Array === record_or_hash
+      polymorphic_url(record_or_hash, options)
+    end
+
+    def formatted_polymorphic_path(record_or_hash, options = {})
+      ActiveSupport::Deprecation.warn("formatted_polymorphic_path has been deprecated. Please pass :format to the polymorphic_path method instead", caller)
+      options[:format] = record_or_hash.pop if record_or_hash === Array
+      polymorphic_url(record_or_hash, options.merge(:routing_type => :path))
     end
 
     private
       def action_prefix(options)
-        options[:action] ? "#{options[:action]}_" : ""
+        options[:action] ? "#{options[:action]}_" : ''
       end
 
       def routing_type(options)
@@ -136,11 +160,22 @@ module ActionController
         else
           record = records.pop
           route = records.inject("") do |string, parent|
-            string << "#{RecordIdentifier.send!("singular_class_name", parent)}_"
+            if parent.is_a?(Symbol) || parent.is_a?(String)
+              string << "#{parent}_"
+            else
+              string << "#{RecordIdentifier.__send__("plural_class_name", parent)}".singularize
+              string << "_"
+            end
           end
         end
 
-        route << "#{RecordIdentifier.send!("#{inflection}_class_name", record)}_"
+        if record.is_a?(Symbol) || record.is_a?(String)
+          route << "#{record}_"
+        else
+          route << "#{RecordIdentifier.__send__("plural_class_name", record)}"
+          route = route.singularize if inflection == :singular
+          route << "_"
+        end
 
         action_prefix(options) + namespace + route + routing_type(options).to_s
       end
@@ -152,27 +187,18 @@ module ActionController
           else        record_or_hash_or_array
         end
       end
-      
-      def extract_format(record_or_hash_or_array, options)
-        if options[:action].to_s == "formatted" && record_or_hash_or_array.is_a?(Array)
-          record_or_hash_or_array.pop
-        elsif options[:format]
-          options[:format]
-        else
-          nil
-        end
-      end
-      
+
+      # Remove the first symbols from the array and return the url prefix
+      # implied by those symbols.
       def extract_namespace(record_or_hash_or_array)
-        returning "" do |namespace|
-          if record_or_hash_or_array.is_a?(Array)
-            record_or_hash_or_array.delete_if do |record_or_namespace|
-              if record_or_namespace.is_a?(String) || record_or_namespace.is_a?(Symbol)
-                namespace << "#{record_or_namespace}_"
-              end
-            end
-          end  
+        return "" unless record_or_hash_or_array.is_a?(Array)
+
+        namespace_keys = []
+        while (key = record_or_hash_or_array.first) && key.is_a?(String) || key.is_a?(Symbol)
+          namespace_keys << record_or_hash_or_array.shift
         end
+
+        namespace_keys.map {|k| "#{k}_"}.join
       end
   end
 end

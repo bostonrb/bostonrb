@@ -1,36 +1,66 @@
 require "active_support/test_case"
 
-module ActiveRecord 
+module ActiveRecord
   class TestCase < ActiveSupport::TestCase #:nodoc:
-    self.fixture_path               = FIXTURES_ROOT
-    self.use_instantiated_fixtures  = false
-    self.use_transactional_fixtures = true
-
-    def create_fixtures(*table_names, &block)
-      Fixtures.create_fixtures(FIXTURES_ROOT, table_names, {}, &block)
-    end
-
     def assert_date_from_db(expected, actual, message = nil)
-      # SQL Server doesn't have a separate column type just for dates,
+      # SybaseAdapter doesn't have a separate column type just for dates,
       # so the time is in the string and incorrectly formatted
-      if current_adapter?(:SQLServerAdapter)
-        assert_equal expected.strftime("%Y/%m/%d 00:00:00"), actual.strftime("%Y/%m/%d 00:00:00")
-      elsif current_adapter?(:SybaseAdapter)
+      if current_adapter?(:SybaseAdapter)
         assert_equal expected.to_s, actual.to_date.to_s, message
       else
         assert_equal expected.to_s, actual.to_s, message
       end
     end
 
-    def assert_queries(num = 1)
-      $query_count = 0
+    def assert_sql(*patterns_to_match)
+      $queries_executed = []
       yield
     ensure
-      assert_equal num, $query_count, "#{$query_count} instead of #{num} queries were executed."
+      failed_patterns = []
+      patterns_to_match.each do |pattern|
+        failed_patterns << pattern unless $queries_executed.any?{ |sql| pattern === sql }
+      end
+      assert failed_patterns.empty?, "Query pattern(s) #{failed_patterns.map(&:inspect).join(', ')} not found."
+    end
+
+    def assert_queries(num = 1)
+      $queries_executed = []
+      yield
+    ensure
+      %w{ BEGIN COMMIT }.each { |x| $queries_executed.delete(x) }
+      assert_equal num, $queries_executed.size, "#{$queries_executed.size} instead of #{num} queries were executed.#{$queries_executed.size == 0 ? '' : "\nQueries:\n#{$queries_executed.join("\n")}"}"
     end
 
     def assert_no_queries(&block)
       assert_queries(0, &block)
+    end
+
+    def self.use_concurrent_connections
+      setup :connection_allow_concurrency_setup
+      teardown :connection_allow_concurrency_teardown
+    end
+
+    def connection_allow_concurrency_setup
+      @connection = ActiveRecord::Base.remove_connection
+      ActiveRecord::Base.establish_connection(@connection.merge({:allow_concurrency => true}))
+    end
+
+    def connection_allow_concurrency_teardown
+      ActiveRecord::Base.clear_all_connections!
+      ActiveRecord::Base.establish_connection(@connection)
+    end
+
+    def with_kcode(kcode)
+      if RUBY_VERSION < '1.9'
+        orig_kcode, $KCODE = $KCODE, kcode
+        begin
+          yield
+        ensure
+          $KCODE = orig_kcode
+        end
+      else
+        yield
+      end
     end
   end
 end

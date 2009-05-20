@@ -1,0 +1,42 @@
+= HasMarkup
+
+I don't know about you, but I'm not too much of a fan of writing out raw HTML when I'm trying to belt out some blog posts. Keeping track of those pesky closing tags, escaping entities, and so on, can really get in the way of your creativity.
+
+As a result, most blogs provide a simplified markup or some sort of editor. For technicalpickles.com[http://technicalpickles.com], I went with markdown[http://daringfireball.net/projects/markdown/].
+
+I extracted this markup magic out of my blog, and this plugin is the result. It lets you:
+
+ * Specify a column contains markup
+ * Specify the syntax (markdown and textile, with markdown being the default)
+ * Specify if the markup column is required
+ * Generate a helper for generating the HTML
+ * Specify if the HTML should be cached in the database
+ * ... all using only one line
+
+== Example
+
+In your model:
+
+  class Post
+    has_markup :content, :syntax => :markdown, :required => true, :cache_html => true
+  end
+  
+Now post will have a 'content_html' method for generating the
+
+So, you can use it in your view:
+
+  <h2><%= h @post.title %></h2>
+  <div>
+    <%= @post.cached_content_html %>
+  </div>
+
+And you can test it easily using Shoulda:
+
+  require 'has_markup/shoulda'
+  class PostTest < Test::Unit::TestCase
+    should_have_markup :content, :syntax => :markdown, :required => true, :cache_html => true
+  end
+
+== License
+
+Copyright (c) 2008 Josh Nichols, released under the MIT license

@@ -1,0 +1,15 @@
+.not_visible {
+  display: none !important;
+}
+
+.not_visible.whiteout {
+  visibility: hidden !important;
+  display: block !important;
+}
+
+.overlay_for_pending {
+  opacity: 0.7;
+  background-color: #000;
+  background-image: none;
+  position: absolute;
+}

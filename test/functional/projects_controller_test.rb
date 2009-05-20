@@ -1,7 +1,7 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
-  
+
   context 'A GET to index' do
     setup do
       get :index
@@ -11,22 +11,23 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_recognizes({ :controller => 'projects', :action => 'index' },
                           :path       => '/projects',        :method => :get)
     end
-    
+
     should_respond_with :success
     should_assign_to :projects
     should_assign_to :left_projects
     should_assign_to :right_projects
   end
 
-  context 'on GET to :new' do
+  context 'on GET to #new when signed in' do
     setup do
+      sign_in
       get :new
     end
-    
+
     should_assign_to :project
     should_respond_with :success
     should_render_template :new
-    
+
     should 'have a form to create a new Project' do
       assert_select 'form[id=new_project][action=/projects]' do
         should_have_project_form_fields
@@ -34,8 +35,9 @@ class ProjectsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'A POST to /projects' do
+  context 'on POST to #create when signed in' do
     setup do
+      sign_in
       @old_count = Project.count
       post :create, :project => Factory.attributes_for(:project)
     end
@@ -49,11 +51,12 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_equal @old_count + 1, Project.count
     end
 
-    should_redirect_to 'projects_path'
+    should_redirect_to("projects index") { projects_path }
   end
 
-  context 'A GET to /projects/:id/edit' do
+  context 'on GET to /projects/:id/edit when signed in' do
     setup do
+      sign_in
       @project = Factory(:project)
       get :edit, :id => @project.to_param
     end
@@ -65,7 +68,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
     should_respond_with :success
     should_render_template :edit
-    
+
     should 'have a form to create a new Project' do
       assert_select "form[id=edit_project_#{@project.to_param}][action=/projects/#{@project.to_param}]" do
         should_have_project_form_fields
@@ -73,8 +76,9 @@ class ProjectsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'A PUT to /projects/:id' do
+  context 'on PUT to #update when signed in' do
     setup do
+      sign_in
       @project = Factory(:project)
       put :update, :id => @project.to_param, :project => { :name => 'updated_recommendable' }
     end
@@ -88,11 +92,12 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_not_equal @project.name, Project.find_by_id(@project.to_param).name
     end
 
-    should_redirect_to 'projects_url'
+    should_redirect_to("projects index") { projects_path }
   end
 
-  context 'A DELETE to /projects/:id' do
+  context 'on DELETE to #destroy when signed in' do
     setup do
+      sign_in
       @project   = Factory(:project)
       @old_count = Project.count
       delete :destroy, :id => @project.to_param
@@ -111,17 +116,17 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_equal 'Project was successfully deleted.', flash[:notice]
     end
 
-    should_redirect_to 'projects_path'
+    should_redirect_to("projects index") { projects_path }
   end
 
   protected
-  
-    def should_have_project_form_fields
-      assert_select 'input[id=project_name][type=text]'
-      assert_select 'input[id=project_homepage_url][type=text]'
-      assert_select 'input[id=project_feed_url][type=text]'
-      assert_select 'textarea[id=project_description]'
-      assert_select 'input[id=project_submit][type=submit]'
-    end
+
+  def should_have_project_form_fields
+    assert_select 'input[id=project_name][type=text]'
+    assert_select 'input[id=project_homepage_url][type=text]'
+    assert_select 'input[id=project_feed_url][type=text]'
+    assert_select 'textarea[id=project_description]'
+    assert_select 'input[id=project_submit][type=submit]'
+  end
 
 end

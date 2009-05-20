@@ -13,6 +13,8 @@ module ActiveSupport
 
     MAX_BUFFER_SIZE = 1000
 
+    ##
+    # :singleton-method:
     # Set to false to disable the silencer
     cattr_accessor :silencer
     self.silencer = true
@@ -33,13 +35,12 @@ module ActiveSupport
 
     attr_accessor :level
     attr_reader :auto_flushing
-    attr_reader :buffer
 
     def initialize(log, level = DEBUG)
       @level         = level
-      @buffer        = []
+      @buffer        = {}
       @auto_flushing = 1
-      @no_block = false
+      @guard = Mutex.new
 
       if log.respond_to?(:write)
         @log = log
@@ -51,12 +52,6 @@ module ActiveSupport
         @log = open(log, (File::WRONLY | File::APPEND | File::CREAT))
         @log.sync = true
         @log.write("# Logfile created on %s" % [Time.now.to_s])
-      end
-    end
-
-    def set_non_blocking_io
-      if !RUBY_PLATFORM.match(/java|mswin/) && !(@log == STDOUT) && @log.respond_to?(:write_nonblock)
-        @no_block = true
       end
     end
 
@@ -73,13 +68,13 @@ module ActiveSupport
 
     for severity in Severity.constants
       class_eval <<-EOT, __FILE__, __LINE__
-        def #{severity.downcase}(message = nil, progname = nil, &block)
-          add(#{severity}, message, progname, &block)
-        end
-
-        def #{severity.downcase}?
-          #{severity} >= @level
-        end
+        def #{severity.downcase}(message = nil, progname = nil, &block)  # def debug(message = nil, progname = nil, &block)
+          add(#{severity}, message, progname, &block)                    #   add(DEBUG, message, progname, &block)
+        end                                                              # end
+                                                                         #
+        def #{severity.downcase}?                                        # def debug?
+          #{severity} >= @level                                          #   DEBUG >= @level
+        end                                                              # end
       EOT
     end
 
@@ -98,12 +93,15 @@ module ActiveSupport
     end
 
     def flush
-      unless buffer.empty?
-        if @no_block
-          @log.write_nonblock(buffer.slice!(0..-1).join)
-        else
-          @log.write(buffer.slice!(0..-1).join)
+      @guard.synchronize do
+        unless buffer.empty?
+          old_buffer = buffer
+          @log.write(old_buffer.join)
         end
+
+        # Important to do this even if buffer was empty or else @buffer will
+        # accumulate empty arrays for each request where nothing was logged.
+        clear_buffer
       end
     end
 
@@ -116,6 +114,14 @@ module ActiveSupport
     protected
       def auto_flush
         flush if buffer.size >= @auto_flushing
+      end
+
+      def buffer
+        @buffer[Thread.current] ||= []
+      end
+
+      def clear_buffer
+        @buffer.delete(Thread.current)
       end
   end
 end

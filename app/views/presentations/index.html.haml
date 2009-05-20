@@ -1,0 +1,8 @@
+%h2 presentations
+%p We often record the talks from our monthly meetings. In case you missed one, you might be able to find it here.
+%p= link_to 'Add a new presentation', new_presentation_path
+
+%dl
+  - @presentations.each do |presentation|
+    %dt= link_to presentation.title, presentation
+    %dd= "Presented by #{presentation.presenter} at #{presentation.source}"

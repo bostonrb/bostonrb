@@ -1,28 +1,12 @@
-!!! Transitional
+!!! Strict
 %html
   %head
     %title Boston.rb
-    = stylesheet_link_tag 'blueprint/screen', :media => 'screen'
-    = blueprint_ie
-    = stylesheet_link_tag 'screen', :media => 'screen'
+    = stylesheet_link_tag 'screen', 'under_construction', :media => 'screen'
     = auto_discovery_link_tag :rss, '/jobs.rss', :title => 'Jobs feed'
-  %body{ :id => "#{controller.controller_name}_body" }
-    .container
-      #header{ :class => 'column span-24' }
-        %h1= link_to 'Boston.rb', home_path
-        %ul
-          = tab_for 'events'
-          /%li= link_to 'People', '#'
-          /= tab_for 'places'
-          = tab_for 'projects'
-          = tab_for 'jobs'
-          %li= link_to 'Mailing List', 'http://groups.google.com/group/boston-rubygroup'
-          %li= link_to 'Chat', 'https://thoughtbot.campfirenow.com/fd31a'
-          %li= link_to 'About', site_path('about')
-          %li= link_to "#{image_tag 'rss.png'}", '/jobs.rss'
-      #content{ :class => 'column span-24' }
-        = partial 'layouts/flashy'
-        = partial 'events/banner'
-        = yield
-
-    = yield :google_maps_js
+  %body
+    .grid_960.middle
+      = render :partial => 'shared/header'
+      = partial 'shared/flashes'
+      = yield
+    = render :partial => '/shared/javascripts'

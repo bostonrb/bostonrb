@@ -3,11 +3,6 @@ module ActionController #:nodoc:
     def self.included(base)
       base.extend(ClassMethods)
       base.class_eval do
-        # NOTE: Can't use alias_method_chain here because +render_without_layout+ is already
-        # defined as a publicly exposed method
-        alias_method :render_with_no_layout, :render
-        alias_method :render, :render_with_a_layout
-
         class << self
           alias_method_chain :inherited, :layout
         end
@@ -169,24 +164,16 @@ module ActionController #:nodoc:
       # performance and have access to them as any normal template would.
       def layout(template_name, conditions = {}, auto = false)
         add_layout_conditions(conditions)
-        write_inheritable_attribute "layout", template_name
-        write_inheritable_attribute "auto_layout", auto
+        write_inheritable_attribute(:layout, template_name)
+        write_inheritable_attribute(:auto_layout, auto)
       end
 
       def layout_conditions #:nodoc:
-        @layout_conditions ||= read_inheritable_attribute("layout_conditions")
-      end
-
-      def default_layout(format) #:nodoc:
-        layout = read_inheritable_attribute("layout")
-        return layout unless read_inheritable_attribute("auto_layout")
-        @default_layout ||= {}
-        @default_layout[format] ||= default_layout_with_format(format, layout)
-        @default_layout[format]
+        @layout_conditions ||= read_inheritable_attribute(:layout_conditions)
       end
 
       def layout_list #:nodoc:
-        Array(view_paths).sum([]) { |path| Dir["#{path}/layouts/**/*"] }
+        Array(view_paths).sum([]) { |path| Dir["#{path.to_str}/layouts/**/*"] }
       end
 
       private
@@ -199,20 +186,11 @@ module ActionController #:nodoc:
         end
 
         def add_layout_conditions(conditions)
-          write_inheritable_hash "layout_conditions", normalize_conditions(conditions)
+          write_inheritable_hash(:layout_conditions, normalize_conditions(conditions))
         end
 
         def normalize_conditions(conditions)
           conditions.inject({}) {|hash, (key, value)| hash.merge(key => [value].flatten.map {|action| action.to_s})}
-        end
-
-        def default_layout_with_format(format, layout)
-          list = layout_list
-          if list.grep(%r{layouts/#{layout}\.#{format}(\.[a-z][0-9a-z]*)+$}).empty?
-            (!list.grep(%r{layouts/#{layout}\.([a-z][0-9a-z]*)+$}).empty? && format == :html) ? layout : nil
-          else
-            layout
-          end
         end
     end
 
@@ -220,71 +198,46 @@ module ActionController #:nodoc:
     # is called and the return value is used. Likewise if the layout was specified as an inline method (through a proc or method
     # object). If the layout was defined without a directory, layouts is assumed. So <tt>layout "weblog/standard"</tt> will return
     # weblog/standard, but <tt>layout "standard"</tt> will return layouts/standard.
-    def active_layout(passed_layout = nil)
-      layout = passed_layout || self.class.default_layout(response.template.template_format)
+    def active_layout(passed_layout = nil, options = {})
+      layout = passed_layout || default_layout
+      return layout if layout.respond_to?(:render)
+
       active_layout = case layout
-        when String then layout
-        when Symbol then send!(layout)
+        when Symbol then __send__(layout)
         when Proc   then layout.call(self)
+        else layout
       end
 
-      # Explicitly passed layout names with slashes are looked up relative to the template root,
-      # but auto-discovered layouts derived from a nested controller will contain a slash, though be relative
-      # to the 'layouts' directory so we have to check the file system to infer which case the layout name came from.
-      if active_layout
-        if active_layout.include?('/') && ! layout_directory?(active_layout)
-          active_layout
-        else
-          "layouts/#{active_layout}"
-        end
-      end
+      find_layout(active_layout, default_template_format, options[:html_fallback]) if active_layout
     end
 
-    protected
-      def render_with_a_layout(options = nil, extra_options = {}, &block) #:nodoc:
-        template_with_options = options.is_a?(Hash)
-
-        if (layout = pick_layout(template_with_options, options)) && apply_layout?(template_with_options, options)
-          options = options.merge :layout => false if template_with_options
-          logger.info("Rendering template within #{layout}") if logger
-
-          content_for_layout = render_with_no_layout(options, extra_options, &block)
-          erase_render_results
-          add_variables_to_assigns
-          @template.instance_variable_set("@content_for_layout", content_for_layout)
-          response.layout = layout
-          status = template_with_options ? options[:status] : nil
-          render_for_text(@template.render_file(layout, true), status)
-        else
-          render_with_no_layout(options, extra_options, &block)
-        end
-      end
-
-
     private
-      def apply_layout?(template_with_options, options)
-        return false if options == :update
-        template_with_options ?  candidate_for_layout?(options) : !template_exempt_from_layout?
+      def default_layout #:nodoc:
+        layout = self.class.read_inheritable_attribute(:layout)
+        return layout unless self.class.read_inheritable_attribute(:auto_layout)
+        find_layout(layout, default_template_format)
+      rescue ActionView::MissingTemplate
+        nil
       end
 
-      def candidate_for_layout?(options)
-        (options.has_key?(:layout) && options[:layout] != false) ||
-          options.values_at(:text, :xml, :json, :file, :inline, :partial, :nothing).compact.empty? &&
-          !template_exempt_from_layout?(options[:template] || default_template_name(options[:action]))
+      def find_layout(layout, format, html_fallback=false) #:nodoc:
+        view_paths.find_template(layout.to_s =~ /layouts\// ? layout : "layouts/#{layout}", format, html_fallback)
+      rescue ActionView::MissingTemplate
+        raise if Mime::Type.lookup_by_extension(format.to_s).html?
       end
 
-      def pick_layout(template_with_options, options)
-        if template_with_options
-          case layout = options[:layout]
-            when FalseClass
-              nil
-            when NilClass, TrueClass
-              active_layout if action_has_layout?
-            else
-              active_layout(layout)
+      def pick_layout(options)
+        if options.has_key?(:layout)
+          case layout = options.delete(:layout)
+          when FalseClass
+            nil
+          when NilClass, TrueClass
+            active_layout if action_has_layout? && candidate_for_layout?(:template => default_template_name)
+          else
+            active_layout(layout, :html_fallback => true)
           end
         else
-          active_layout if action_has_layout?
+          active_layout if action_has_layout? && candidate_for_layout?(options)
         end
       end
 
@@ -303,8 +256,26 @@ module ActionController #:nodoc:
         end
       end
 
-      def layout_directory?(layout_name)
-        @template.finder.find_template_extension_from_handler(File.join('layouts', layout_name))
+      def candidate_for_layout?(options)
+        template = options[:template] || default_template(options[:action])
+        if options.values_at(:text, :xml, :json, :file, :inline, :partial, :nothing, :update).compact.empty?
+          begin
+            template_object = self.view_paths.find_template(template, default_template_format)
+            # this restores the behavior from 2.2.2, where response.template.template_format was reset
+            # to :html for :js requests with a matching html template.
+            # see v2.2.2, ActionView::Base, lines 328-330
+            @real_format = :html if response.template.template_format == :js && template_object.format == "html"
+            !template_object.exempt_from_layout?
+          rescue ActionView::MissingTemplate
+            true
+          end
+        end
+      rescue ActionView::MissingTemplate
+        false
+      end
+
+      def default_template_format
+        @real_format || response.template.template_format
       end
   end
 end

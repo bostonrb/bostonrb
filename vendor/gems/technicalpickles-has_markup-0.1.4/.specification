@@ -1,0 +1,67 @@
+--- !ruby/object:Gem::Specification 
+name: technicalpickles-has_markup
+version: !ruby/object:Gem::Version 
+  version: 0.1.4
+platform: ruby
+authors: 
+- Josh Nichols
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-05-03 00:00:00 -04:00
+default_executable: 
+dependencies: []
+
+description: Manage markup close to home... right in the model! Caching, validation, etc
+email: josh@technicalpickles.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- README
+files: 
+- VERSION.yml
+- lib/has_markup.rb
+- lib/has_markup/active_record.rb
+- lib/has_markup/markdown.rb
+- lib/has_markup/textile.rb
+- lib/has_markup/version.rb
+- shoulda_macros/has_markup.rb
+- README
+- test/post.rb
+- test/post_test.rb
+- test/schema.rb
+- test/test_helper.rb
+has_rdoc: true
+homepage: http://github.com/technicalpickles/has_markup
+post_install_message: 
+rdoc_options: 
+- --charset=UTF-8
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.1
+signing_key: 
+specification_version: 2
+summary: Manage markup close to home... right in the model! Caching, validation, etc
+test_files: 
+- test/post.rb
+- test/post_test.rb
+- test/schema.rb
+- test/test_helper.rb

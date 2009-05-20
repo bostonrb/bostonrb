@@ -21,9 +21,35 @@ config.action_controller.allow_forgery_protection    = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
+config.gem 'jferris-mocha',
+           :lib     => 'mocha',
+           :source  => 'http://gems.github.com', 
+           :version => '= 0.9.5.0.1241126838'
+config.gem 'thoughtbot-factory_girl', 
+           :lib     => 'factory_girl', 
+           :source  => 'http://gems.github.com', 
+           :version => '= 1.2.1'
+config.gem 'thoughtbot-shoulda', 
+           :lib     => 'shoulda', 
+           :source  => 'http://gems.github.com', 
+           :version => '= 2.10.1'
+config.gem 'webrat',
+           :version => '= 0.4.4'
+config.gem 'nokogiri',
+           :version => '= 1.2.3'
+config.gem 'cucumber',
+           :version => '= 0.3.5'
+config.gem 'fakeweb',
+           :version => '= 1.2.0'
+
+HOST = 'localhost'
+
+require 'factory_girl'
+require 'mocha'
+begin require 'redgreen'; rescue LoadError; end
+
+require 'fakeweb'
+FakeWeb.allow_net_connect = false
+
 GOOGLE_MAP_API_KEY = 'ABQIAAAAzMUFFnT9uH0xq39J0Y4kbhTJQa0g3IQ9GZqIMmInSLzwtGDKaBR6j135zrztfTGVOm2QlWnkaidDIQ'
 
-config.gem 'mocha', :version => '0.5.6'
-config.gem 'quietbacktrace'
-config.gem 'thoughtbot-factory_girl', :version => '1.1', :lib => 'factory_girl', :source => 'http://gems.github.com'
-config.gem 'ruby-debug'

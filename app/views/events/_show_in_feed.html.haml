@@ -1,12 +1,12 @@
-%dl
-  %dt.hidden id:
-  %dd.hidden.uid= "#{event.id}.bostonrb.org"
-
-  %dt When:
-  %dd.dtstart{:title=>event.date.iso8601}= event.date.to_s(:long_date)
-
-  %dt Where:
-  %dd.location= event.location
-
-  %dt What:
-  %dd.description~event.cached_description_html
+%ul.details
+  %li.clearfix
+    .detail= event.date.to_s(:long_date)
+    .label When
+  
+  %li.clearfix
+    .detail= event.location
+    .label Where
+  
+  %li.clearfix.last
+    .detail= event.cached_description_html
+    .label What

@@ -2,7 +2,22 @@ require "cases/helper"
 
 class MysqlConnectionTest < ActiveRecord::TestCase
   def setup
+    super
     @connection = ActiveRecord::Base.connection
+  end
+
+  def test_mysql_reconnect_attribute_after_connection_with_reconnect_true
+    run_without_connection do |orig_connection|
+      ActiveRecord::Base.establish_connection(orig_connection.merge({:reconnect => true}))
+      assert ActiveRecord::Base.connection.raw_connection.reconnect
+    end
+  end
+
+  def test_mysql_reconnect_attribute_after_connection_with_reconnect_false
+    run_without_connection do |orig_connection|
+      ActiveRecord::Base.establish_connection(orig_connection.merge({:reconnect => false}))
+      assert !ActiveRecord::Base.connection.raw_connection.reconnect
+    end
   end
 
   def test_no_automatic_reconnection_after_timeout
@@ -24,7 +39,18 @@ class MysqlConnectionTest < ActiveRecord::TestCase
     assert @connection.active?
     @connection.update('set @@wait_timeout=1')
     sleep 2
-    @connection.verify!(0)
+    @connection.verify!
     assert @connection.active?
+  end
+
+  private
+
+  def run_without_connection
+    original_connection = ActiveRecord::Base.remove_connection
+    begin
+      yield original_connection
+    ensure
+      ActiveRecord::Base.establish_connection(original_connection)
+    end
   end
 end

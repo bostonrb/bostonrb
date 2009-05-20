@@ -1,13 +1,16 @@
-require File.dirname(__FILE__) + '/../../test_helper'
+require 'test_helper'
 
-class EventsHelperTest < HelperTestCase
+class EventsHelperTest < ActionView::TestCase
+  context "event_links" do
+    setup do
+      @event = stub('event', :title => 'some title')
+      self.stubs(:link_to)
 
-  include EventsHelper
+      event_links [@event]
+    end
 
-  #fixtures :users, :articles
-
-  def setup
-    super
+    should "link to each" do
+      assert_received(self, :link_to) {|expect| expect.with(@event.title, event_path(@event))}
+    end
   end
-  
 end

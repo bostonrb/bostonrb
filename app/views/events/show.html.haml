@@ -1,13 +1,12 @@
-- content_for :google_maps_js do
+- content_for :javascripts do
   = event_map @event
-  
-= partial 'layouts/full' do
-  %div.vevent
-    %h2
-      %a.url.summary{:href=>event_url(@event)}= @event.title
 
-    = partial 'events/show_in_feed', :event => @event
-  
-    %p= link_to 'Edit', edit_event_path(@event)
-  
-    #map
+#show
+  .ribbon
+    .row
+      .crud
+        %p= link_to 'Edit', edit_event_path(@event)
+      %h2= @event.title
+      = partial 'events/show_in_feed', :event => @event
+
+      #map

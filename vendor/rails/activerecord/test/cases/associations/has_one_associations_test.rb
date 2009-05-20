@@ -29,6 +29,13 @@ class HasOneAssociationsTest < ActiveRecord::TestCase
     assert_equal Firm.find(1, :include => :account_with_select).account_with_select.attributes.size, 2
   end
 
+  def test_finding_using_primary_key
+    firm = companies(:first_firm)
+    assert_equal Account.find_by_firm_id(firm.id), firm.account
+    firm.firm_id = companies(:rails_core).id
+    assert_equal accounts(:rails_core_account), firm.account_using_primary_key
+  end
+
   def test_can_marshal_has_one_association_with_nil_target
     firm = Firm.new
     assert_nothing_raised do
@@ -52,8 +59,8 @@ class HasOneAssociationsTest < ActiveRecord::TestCase
   end
 
   def test_type_mismatch
-    assert_raises(ActiveRecord::AssociationTypeMismatch) { companies(:first_firm).account = 1 }
-    assert_raises(ActiveRecord::AssociationTypeMismatch) { companies(:first_firm).account = Project.find(1) }
+    assert_raise(ActiveRecord::AssociationTypeMismatch) { companies(:first_firm).account = 1 }
+    assert_raise(ActiveRecord::AssociationTypeMismatch) { companies(:first_firm).account = Project.find(1) }
   end
 
   def test_natural_assignment
@@ -69,7 +76,35 @@ class HasOneAssociationsTest < ActiveRecord::TestCase
     companies(:first_firm).save
     assert_nil companies(:first_firm).account
     # account is dependent, therefore is destroyed when reference to owner is lost
-    assert_raises(ActiveRecord::RecordNotFound) { Account.find(old_account_id) }
+    assert_raise(ActiveRecord::RecordNotFound) { Account.find(old_account_id) }
+  end
+
+  def test_nullification_on_association_change
+    firm = companies(:rails_core)
+    old_account_id = firm.account.id
+    firm.account = Account.new
+    # account is dependent with nullify, therefore its firm_id should be nil
+    assert_nil Account.find(old_account_id).firm_id
+  end
+
+  def test_association_changecalls_delete
+    companies(:first_firm).deletable_account = Account.new
+    assert_equal [], Account.destroyed_account_ids[companies(:first_firm).id]
+  end
+
+  def test_association_change_calls_destroy
+    companies(:first_firm).account = Account.new
+    assert_equal [companies(:first_firm).id], Account.destroyed_account_ids[companies(:first_firm).id]
+  end
+
+  def test_natural_assignment_to_already_associated_record
+    company = companies(:first_firm)
+    account = accounts(:signals37)
+    assert_equal company.account, account
+    company.account = account
+    company.reload
+    account.reload
+    assert_equal company.account, account
   end
 
   def test_assignment_without_replacement
@@ -176,28 +211,6 @@ class HasOneAssociationsTest < ActiveRecord::TestCase
     assert_equal account, firm.account
   end
 
-  def test_build_before_child_saved
-    firm = Firm.find(1)
-
-    account = firm.account.build("credit_limit" => 1000)
-    assert_equal account, firm.account
-    assert account.new_record?
-    assert firm.save
-    assert_equal account, firm.account
-    assert !account.new_record?
-  end
-
-  def test_build_before_either_saved
-    firm = Firm.new("name" => "GlobalMegaCorp")
-
-    firm.account = account = Account.new("credit_limit" => 1000)
-    assert_equal account, firm.account
-    assert account.new_record?
-    assert firm.save
-    assert_equal account, firm.account
-    assert !account.new_record?
-  end
-
   def test_failing_build_association
     firm = Firm.new("name" => "GlobalMegaCorp")
     firm.save
@@ -236,16 +249,6 @@ class HasOneAssociationsTest < ActiveRecord::TestCase
     firm.destroy
   end
 
-  def test_assignment_before_parent_saved
-    firm = Firm.new("name" => "GlobalMegaCorp")
-    firm.account = a = Account.find(1)
-    assert firm.new_record?
-    assert_equal a, firm.account
-    assert firm.save
-    assert_equal a, firm.account
-    assert_equal a, firm.account(true)
-  end
-
   def test_finding_with_interpolated_condition
     firm = Firm.find(:first)
     superior = firm.clients.create(:name => 'SuperiorCo')
@@ -262,49 +265,6 @@ class HasOneAssociationsTest < ActiveRecord::TestCase
     assert_equal a, firm.account
     assert_equal a, firm.account(true)
   end
-  
-  def test_save_fails_for_invalid_has_one
-    firm = Firm.find(:first)
-    assert firm.valid?
-    
-    firm.account = Account.new
-    
-    assert !firm.account.valid?
-    assert !firm.valid?
-    assert !firm.save
-    assert_equal "is invalid", firm.errors.on("account")
-  end
-
-  def test_assignment_before_either_saved
-    firm = Firm.new("name" => "GlobalMegaCorp")
-    firm.account = a = Account.new("credit_limit" => 1000)
-    assert firm.new_record?
-    assert a.new_record?
-    assert_equal a, firm.account
-    assert firm.save
-    assert !firm.new_record?
-    assert !a.new_record?
-    assert_equal a, firm.account
-    assert_equal a, firm.account(true)
-  end
-
-  def test_not_resaved_when_unchanged
-    firm = Firm.find(:first, :include => :account)
-    firm.name += '-changed'
-    assert_queries(1) { firm.save! }
-
-    firm = Firm.find(:first)
-    firm.account = Account.find(:first)
-    assert_queries(Firm.partial_updates? ? 0 : 1) { firm.save! }
-
-    firm = Firm.find(:first).clone
-    firm.account = Account.find(:first)
-    assert_queries(2) { firm.save! }
-
-    firm = Firm.find(:first).clone
-    firm.account = Account.find(:first).clone
-    assert_queries(2) { firm.save! }
-  end
 
   def test_save_still_works_after_accessing_nil_has_one
     jp = Company.new :name => 'Jaded Pixel'
@@ -320,4 +280,30 @@ class HasOneAssociationsTest < ActiveRecord::TestCase
     assert companies(:first_firm).readonly_account.readonly?
   end
 
+  def test_has_one_proxy_should_not_respond_to_private_methods
+    assert_raise(NoMethodError) { accounts(:signals37).private_method }
+    assert_raise(NoMethodError) { companies(:first_firm).account.private_method }
+  end
+
+  def test_has_one_proxy_should_respond_to_private_methods_via_send
+    accounts(:signals37).send(:private_method)
+    companies(:first_firm).account.send(:private_method)
+  end
+
+  def test_save_of_record_with_loaded_has_one
+    @firm = companies(:first_firm)
+    assert_not_nil @firm.account
+
+    assert_nothing_raised do
+      Firm.find(@firm.id).save!
+      Firm.find(@firm.id, :include => :account).save!
+    end
+
+    @firm.account.destroy
+
+    assert_nothing_raised do
+      Firm.find(@firm.id).save!
+      Firm.find(@firm.id, :include => :account).save!
+    end
+  end
 end

@@ -4,3 +4,12 @@ Factory.define :event do |u|
   u.description 'Whoops!'
   u.location    '41 Winter St, Boston, MA'
 end
+
+Factory.define :recurring_event, :parent => :event do |factory|
+  factory.recurring true 
+end
+
+Factory.define :special_event, :parent => :event do |factory|
+  factory.recurring false
+end
+

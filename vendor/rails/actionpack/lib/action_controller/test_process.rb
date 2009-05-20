@@ -1,60 +1,44 @@
-require 'action_controller/assertions'
-require 'action_controller/test_case'
-
 module ActionController #:nodoc:
-  class Base
-    # Process a test request called with a TestRequest object.
-    def self.process_test(request)
-      new.process_test(request)
-    end
-
-    def process_test(request) #:nodoc:
-      process(request, TestResponse.new)
-    end
-
-    def process_with_test(*args)
-      returning process_without_test(*args) do
-        add_variables_to_assigns
-      end
-    end
-
-    alias_method_chain :process, :test
-  end
-
-  class TestRequest < AbstractRequest #:nodoc:
+  class TestRequest < Request #:nodoc:
     attr_accessor :cookies, :session_options
-    attr_accessor :query_parameters, :request_parameters, :path, :session, :env
-    attr_accessor :host, :user_agent
+    attr_accessor :query_parameters, :path, :session
+    attr_accessor :host
 
-    def initialize(query_parameters = nil, request_parameters = nil, session = nil)
-      @query_parameters   = query_parameters || {}
-      @request_parameters = request_parameters || {}
-      @session            = session || TestSession.new
+    def self.new(env = {})
+      super
+    end
 
-      initialize_containers
+    def initialize(env = {})
+      super(Rack::MockRequest.env_for("/").merge(env))
+
+      @query_parameters   = {}
+      @session            = TestSession.new
+
       initialize_default_values
-
-      super()
+      initialize_containers
     end
 
     def reset_session
-      @session = TestSession.new
+      @session.reset
     end
 
     # Wraps raw_post in a StringIO.
-    def body
+    def body_stream #:nodoc:
       StringIO.new(raw_post)
     end
 
     # Either the RAW_POST_DATA environment variable or the URL-encoded request
     # parameters.
     def raw_post
-      env['RAW_POST_DATA'] ||= returning(url_encoded_request_parameters) { |b| b.force_encoding(Encoding::BINARY) if b.respond_to?(:force_encoding) }
+      @env['RAW_POST_DATA'] ||= begin
+        data = url_encoded_request_parameters
+        data.force_encoding(Encoding::BINARY) if data.respond_to?(:force_encoding)
+        data
+      end
     end
 
     def port=(number)
       @env["SERVER_PORT"] = number.to_i
-      @port_as_int = nil
     end
 
     def action=(action_name)
@@ -75,24 +59,33 @@ module ActionController #:nodoc:
       @path = uri.split("?").first
     end
 
+    def request_method=(method)
+      @request_method = method
+    end
+
     def accept=(mime_types)
       @env["HTTP_ACCEPT"] = Array(mime_types).collect { |mime_types| mime_types.to_s }.join(",")
+      @accepts = nil
+    end
+
+    def if_modified_since=(last_modified)
+      @env["HTTP_IF_MODIFIED_SINCE"] = last_modified
+    end
+
+    def if_none_match=(etag)
+      @env["HTTP_IF_NONE_MATCH"] = etag
     end
 
     def remote_addr=(addr)
       @env['REMOTE_ADDR'] = addr
     end
 
-    def remote_addr
-      @env['REMOTE_ADDR']
+    def request_uri(*args)
+      @request_uri || super()
     end
 
-    def request_uri
-      @request_uri || super
-    end
-
-    def path
-      @path || super
+    def path(*args)
+      @path || super()
     end
 
     def assign_parameters(controller_path, action, parameters)
@@ -112,30 +105,30 @@ module ActionController #:nodoc:
           path_parameters[key.to_s] = value
         end
       end
+      raw_post # populate env['RAW_POST_DATA']
       @parameters = nil # reset TestRequest#parameters to use the new path_parameters
-    end                        
-    
+    end
+
     def recycle!
-      self.request_parameters = {}
       self.query_parameters   = {}
       self.path_parameters    = {}
-      @request_method, @accepts, @content_type = nil, nil, nil
-    end    
+      @headers, @request_method, @accepts, @content_type = nil, nil, nil, nil
+    end
 
-    def referer
-      @env["HTTP_REFERER"]
+    def user_agent=(user_agent)
+      @env['HTTP_USER_AGENT'] = user_agent
     end
 
     private
       def initialize_containers
-        @env, @cookies = {}, {}
+        @cookies = {}
       end
 
       def initialize_default_values
         @host                    = "test.host"
         @request_uri             = "/"
-        @user_agent              = "Rails Testing"
-        self.remote_addr         = "0.0.0.0"        
+        @env['HTTP_USER_AGENT']  = "Rails Testing"
+        @env['REMOTE_ADDR']      = "0.0.0.0"
         @env["SERVER_PORT"]      = 80
         @env['REQUEST_METHOD']   = "GET"
       end
@@ -157,21 +150,21 @@ module ActionController #:nodoc:
   module TestResponseBehavior #:nodoc:
     # The response code of the request
     def response_code
-      headers['Status'][0,3].to_i rescue 0
+      status.to_s[0,3].to_i rescue 0
     end
-    
+
     # Returns a String to ensure compatibility with Net::HTTPResponse
     def code
-      headers['Status'].to_s.split(' ')[0]
+      status.to_s.split(' ')[0]
     end
 
     def message
-      headers['Status'].to_s.split(' ',2)[1]
+      status.to_s.split(' ',2)[1]
     end
 
     # Was the response successful?
     def success?
-      response_code == 200
+      (200..299).include?(response_code)
     end
 
     # Was the URL not found?
@@ -191,6 +184,11 @@ module ActionController #:nodoc:
 
     alias_method :server_error?, :error?
 
+    # Was there a client client?
+    def client_error?
+      (400..499).include?(response_code)
+    end
+
     # Returns the redirection location or nil
     def redirect_url
       headers['Location']
@@ -205,31 +203,20 @@ module ActionController #:nodoc:
       p.match(redirect_url) != nil
     end
 
-    # Returns the template path of the file which was used to
-    # render this response (or nil) 
-    def rendered_file(with_controller=false)
-      unless template.first_render.nil?
-        unless with_controller
-          template.first_render
-        else
-          template.first_render.split('/').last || template.first_render
-        end
-      end
+    # Returns the template of the file which was used to
+    # render this response (or nil)
+    def rendered
+      template.instance_variable_get(:@_rendered)
     end
 
-    # Was this template rendered by a file?
-    def rendered_with_file?
-      !rendered_file.nil?
-    end
-
-    # A shortcut to the flash. Returns an empyt hash if no session flash exists.
+    # A shortcut to the flash. Returns an empty hash if no session flash exists.
     def flash
       session['flash'] || {}
     end
 
     # Do we have a flash?
     def has_flash?
-      !session['flash'].empty?
+      !flash.empty?
     end
 
     # Do we have a flash that has contents?
@@ -254,14 +241,19 @@ module ActionController #:nodoc:
 
     # Does the specified template object exist?
     def has_template_object?(name=nil)
-      !template_objects[name].nil?      
+      !template_objects[name].nil?
     end
 
-    # Returns the response cookies, converted to a Hash of (name => CGI::Cookie) pairs
-    # 
-    #   assert_equal ['AuthorOfNewPage'], r.cookies['author'].value
+    # Returns the response cookies, converted to a Hash of (name => value) pairs
+    #
+    #   assert_equal 'AuthorOfNewPage', r.cookies['author']
     def cookies
-      headers['cookie'].inject({}) { |hash, cookie| hash[cookie.name] = cookie; hash }
+      cookies = {}
+      Array(headers['Set-Cookie']).each do |cookie|
+        key, value = cookie.split(";").first.split("=")
+        cookies[key] = value
+      end
+      cookies
     end
 
     # Returns binary content (downloadable file), converted to a String
@@ -277,42 +269,77 @@ module ActionController #:nodoc:
     end
   end
 
-  class TestResponse < AbstractResponse #:nodoc:
+  # Integration test methods such as ActionController::Integration::Session#get
+  # and ActionController::Integration::Session#post return objects of class
+  # TestResponse, which represent the HTTP response results of the requested
+  # controller actions.
+  #
+  # See Response for more information on controller response objects.
+  class TestResponse < Response
     include TestResponseBehavior
+
+    def recycle!
+      headers.delete('ETag')
+      headers.delete('Last-Modified')
+    end
   end
 
-  class TestSession #:nodoc:
+  class TestSession < Hash #:nodoc:
     attr_accessor :session_id
 
     def initialize(attributes = nil)
-      @session_id = ''
-      @attributes = attributes.nil? ? nil : attributes.stringify_keys
-      @saved_attributes = nil
+      reset_session_id
+      replace_attributes(attributes)
+    end
+
+    def reset
+      reset_session_id
+      replace_attributes({ })
     end
 
     def data
-      @attributes ||= @saved_attributes || {}
+      to_hash
     end
 
     def [](key)
-      data[key.to_s]
+      super(key.to_s)
     end
 
     def []=(key, value)
-      data[key.to_s] = value
+      super(key.to_s, value)
     end
 
-    def update
-      @saved_attributes = @attributes
+    def update(hash = nil)
+      if hash.nil?
+        ActiveSupport::Deprecation.warn('use replace instead', caller)
+        replace({})
+      else
+        super(hash)
+      end
     end
 
-    def delete
-      @attributes = nil
+    def delete(key = nil)
+      if key.nil?
+        ActiveSupport::Deprecation.warn('use clear instead', caller)
+        clear
+      else
+        super(key.to_s)
+      end
     end
 
     def close
-      update
-      delete
+      ActiveSupport::Deprecation.warn('sessions should no longer be closed', caller)
+    end
+
+  private
+
+    def reset_session_id
+      @session_id = ''
+    end
+
+    def replace_attributes(attributes = nil)
+      attributes ||= {}
+      replace(attributes.stringify_keys)
     end
   end
 
@@ -323,17 +350,17 @@ module ActionController #:nodoc:
   # a file upload.
   #
   # Usage example, within a functional test:
-  #   post :change_avatar, :avatar => ActionController::TestUploadedFile.new(Test::Unit::TestCase.fixture_path + '/files/spongebob.png', 'image/png')
-  # 
+  #   post :change_avatar, :avatar => ActionController::TestUploadedFile.new(ActionController::TestCase.fixture_path + '/files/spongebob.png', 'image/png')
+  #
   # Pass a true third parameter to ensure the uploaded file is opened in binary mode (only required for Windows):
-  #   post :change_avatar, :avatar => ActionController::TestUploadedFile.new(Test::Unit::TestCase.fixture_path + '/files/spongebob.png', 'image/png', :binary)
+  #   post :change_avatar, :avatar => ActionController::TestUploadedFile.new(ActionController::TestCase.fixture_path + '/files/spongebob.png', 'image/png', :binary)
   require 'tempfile'
   class TestUploadedFile
     # The filename, *not* including the path, of the "uploaded" file
     attr_reader :original_filename
 
     # The content type of the "uploaded" file
-    attr_reader :content_type
+    attr_accessor :content_type
 
     def initialize(path, content_type = Mime::TEXT, binary = false)
       raise "#{path} file does not exist" unless File.exist?(path)
@@ -352,25 +379,39 @@ module ActionController #:nodoc:
     alias local_path path
 
     def method_missing(method_name, *args, &block) #:nodoc:
-      @tempfile.send!(method_name, *args, &block)
+      @tempfile.__send__(method_name, *args, &block)
     end
   end
 
   module TestProcess
     def self.included(base)
-      # execute the request simulating a specific HTTP method and set/volley the response
-      %w( get post put delete head ).each do |method|
-        base.class_eval <<-EOV, __FILE__, __LINE__
-          def #{method}(action, parameters = nil, session = nil, flash = nil)
-            @request.env['REQUEST_METHOD'] = "#{method.upcase}" if defined?(@request)
-            process(action, parameters, session, flash)
-          end
-        EOV
+      # Executes a request simulating GET HTTP method and set/volley the response
+      def get(action, parameters = nil, session = nil, flash = nil)
+        process(action, parameters, session, flash, "GET")
+      end
+
+      # Executes a request simulating POST HTTP method and set/volley the response
+      def post(action, parameters = nil, session = nil, flash = nil)
+        process(action, parameters, session, flash, "POST")
+      end
+
+      # Executes a request simulating PUT HTTP method and set/volley the response
+      def put(action, parameters = nil, session = nil, flash = nil)
+        process(action, parameters, session, flash, "PUT")
+      end
+
+      # Executes a request simulating DELETE HTTP method and set/volley the response
+      def delete(action, parameters = nil, session = nil, flash = nil)
+        process(action, parameters, session, flash, "DELETE")
+      end
+
+      # Executes a request simulating HEAD HTTP method and set/volley the response
+      def head(action, parameters = nil, session = nil, flash = nil)
+        process(action, parameters, session, flash, "HEAD")
       end
     end
 
-    # execute the request and set/volley the response
-    def process(action, parameters = nil, session = nil, flash = nil)
+    def process(action, parameters = nil, session = nil, flash = nil, http_method = 'GET')
       # Sanity check for required instance variables so we can give an
       # understandable error message.
       %w(@controller @request @response).each do |iv_name|
@@ -380,9 +421,11 @@ module ActionController #:nodoc:
       end
 
       @request.recycle!
+      @response.recycle!
 
       @html_document = nil
-      @request.env['REQUEST_METHOD'] ||= "GET"
+      @request.env['REQUEST_METHOD'] = http_method
+
       @request.action = action.to_s
 
       parameters ||= {}
@@ -391,38 +434,31 @@ module ActionController #:nodoc:
       @request.session = ActionController::TestSession.new(session) unless session.nil?
       @request.session["flash"] = ActionController::Flash::FlashHash.new.update(flash) if flash
       build_request_uri(action, parameters)
-      @controller.process(@request, @response)
+
+      Base.class_eval { include ProcessWithTest } unless Base < ProcessWithTest
+      @controller.process_with_test(@request, @response)
     end
 
     def xml_http_request(request_method, action, parameters = nil, session = nil, flash = nil)
       @request.env['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest'
-      @request.env['HTTP_ACCEPT'] = 'text/javascript, text/html, application/xml, text/xml, */*'
-      returning send!(request_method, action, parameters, session, flash) do
+      @request.env['HTTP_ACCEPT'] =  [Mime::JS, Mime::HTML, Mime::XML, 'text/xml', Mime::ALL].join(', ')
+      returning __send__(request_method, action, parameters, session, flash) do
         @request.env.delete 'HTTP_X_REQUESTED_WITH'
         @request.env.delete 'HTTP_ACCEPT'
       end
     end
     alias xhr :xml_http_request
 
-    def follow_redirect
-      redirected_controller = @response.redirected_to[:controller]
-      if redirected_controller && redirected_controller != @controller.controller_name
-        raise "Can't follow redirects outside of current controller (from #{@controller.controller_name} to #{redirected_controller})"
+    def assigns(key = nil)
+      if key.nil?
+        @response.template.assigns
+      else
+        @response.template.assigns[key.to_s]
       end
-
-      get(@response.redirected_to.delete(:action), @response.redirected_to.stringify_keys)
     end
 
-    def assigns(key = nil) 
-      if key.nil? 
-        @response.template.assigns 
-      else 
-        @response.template.assigns[key.to_s] 
-      end 
-    end 
-
     def session
-      @response.session
+      @request.session
     end
 
     def flash
@@ -439,7 +475,7 @@ module ActionController #:nodoc:
 
     def build_request_uri(action, parameters)
       unless @request.env['REQUEST_URI']
-        options = @controller.send!(:rewrite_options, parameters)
+        options = @controller.__send__(:rewrite_options, parameters)
         options.update(:only_path => true, :action => action)
 
         url = ActionController::UrlRewriter.new(@request, parameters)
@@ -460,12 +496,15 @@ module ActionController #:nodoc:
       html_document.find_all(conditions)
     end
 
-    def method_missing(selector, *args)
-      return @controller.send!(selector, *args) if ActionController::Routing::Routes.named_routes.helpers.include?(selector)
-      return super
+    def method_missing(selector, *args, &block)
+      if @controller && ActionController::Routing::Routes.named_routes.helpers.include?(selector)
+        @controller.send(selector, *args, &block)
+      else
+        super
+      end
     end
-    
-    # Shortcut for <tt>ActionController::TestUploadedFile.new(Test::Unit::TestCase.fixture_path + path, type)</tt>:
+
+    # Shortcut for <tt>ActionController::TestUploadedFile.new(ActionController::TestCase.fixture_path + path, type)</tt>:
     #
     #   post :change_avatar, :avatar => fixture_file_upload('/files/spongebob.png', 'image/png')
     #
@@ -474,16 +513,13 @@ module ActionController #:nodoc:
     #
     #   post :change_avatar, :avatar => fixture_file_upload('/files/spongebob.png', 'image/png', :binary)
     def fixture_file_upload(path, mime_type = nil, binary = false)
-      ActionController::TestUploadedFile.new(
-        Test::Unit::TestCase.respond_to?(:fixture_path) ? Test::Unit::TestCase.fixture_path + path : path, 
-        mime_type,
-        binary
-      )
+      fixture_path = ActionController::TestCase.send(:fixture_path) if ActionController::TestCase.respond_to?(:fixture_path)
+      ActionController::TestUploadedFile.new("#{fixture_path}#{path}", mime_type, binary)
     end
 
     # A helper to make it easier to test different route configurations.
     # This method temporarily replaces ActionController::Routing::Routes
-    # with a new RouteSet instance. 
+    # with a new RouteSet instance.
     #
     # The new instance is yielded to the passed block. Typically the block
     # will create some routes using <tt>map.draw { map.connect ... }</tt>:
@@ -513,12 +549,24 @@ module ActionController #:nodoc:
       ActionController::Routing.const_set(:Routes, real_routes) if real_routes
     end
   end
-end
 
-module Test
-  module Unit
-    class TestCase #:nodoc:
-      include ActionController::TestProcess
+  module ProcessWithTest #:nodoc:
+    def self.included(base)
+      base.class_eval { attr_reader :assigns }
     end
+
+    def process_with_test(*args)
+      process(*args).tap { set_test_assigns }
+    end
+
+    private
+      def set_test_assigns
+        @assigns = {}
+        (instance_variable_names - self.class.protected_instance_variables).each do |var|
+          name, value = var[1..-1], instance_variable_get(var)
+          @assigns[name] = value
+          response.template.assigns[name] = value if response
+        end
+      end
   end
 end

@@ -1,12 +1,18 @@
 task :default => :test
 task :environment do
+  $rails_rake_task = true
   require(File.join(RAILS_ROOT, 'config', 'environment'))
 end
 
-require 'rails_generator/secret_key_generator'
-desc 'Generate a crytographically secure secret key. This is typically used to generate a secret for cookie sessions. Pass a unique identifier to the generator using ID="some unique identifier" for greater security.'
+task :rails_env do
+  unless defined? RAILS_ENV
+    RAILS_ENV = ENV['RAILS_ENV'] ||= 'development'
+  end
+end
+
+desc 'Generate a crytographically secure secret key. This is typically used to generate a secret for cookie sessions.'
 task :secret do
-  puts Rails::SecretKeyGenerator.new(ENV['ID']).generate_secret
+  puts ActiveSupport::SecureRandom.hex(64)
 end
 
 require 'active_support'
@@ -44,7 +50,7 @@ namespace :time do
         end
       end
       previous_offset = nil
-      TimeZone.__send__(method).each do |zone|
+      ActiveSupport::TimeZone.__send__(method).each do |zone|
         if offset.nil? || offset == zone.utc_offset
           puts "\n* UTC #{zone.formatted_offset} *" unless zone.utc_offset == previous_offset
           puts zone.name

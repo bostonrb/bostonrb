@@ -1,0 +1,27 @@
+h1. To-do
+
+h2. Structure
+
+* add companies
+* add apps
+
+h2. Presentation
+
+* add user avatars (gravatar cascade to paperclip)
+* add a .quarter section for images in projects, jobs, presentations sections
+* put company logo next to job title, no company name
+
+h2. Behavior
+
+* when I mouse over the events section, I should see a "New event" link appear in the upper right. Regular text, yellow.
+
+h2. Refactoring
+
+* link_to_each helper
+* refactor Presentation#populate_embed to Youtube class
+
+h2. Confidence
+
+* get to 100% test coverage on helpers
+* do a database index audit
+

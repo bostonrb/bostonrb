@@ -1,6 +1,5 @@
 require 'cgi'
 require 'uri'
-require 'action_controller/polymorphic_routes'
 require 'action_controller/routing/optimisations'
 require 'action_controller/routing/routing_ext'
 require 'action_controller/routing/route'
@@ -84,9 +83,15 @@ module ActionController
   # This sets up +blog+ as the default controller if no other is specified.
   # This means visiting '/' would invoke the blog controller.
   #
-  # More formally, you can define defaults in a route with the <tt>:defaults</tt> key.
+  # More formally, you can include arbitrary parameters in the route, thus:
   #
-  #   map.connect ':controller/:action/:id', :action => 'show', :defaults => { :page => 'Dashboard' }
+  #   map.connect ':controller/:action/:id', :action => 'show', :page => 'Dashboard'
+  #
+  # This will pass the :page parameter to all incoming requests that match this route.
+  #
+  # Note: The default routes, as provided by the Rails generator, make all actions in every
+  # controller accessible via GET requests. You should consider removing them or commenting
+  # them out if you're using named routes and resources.
   #
   # == Named routes
   #
@@ -188,16 +193,15 @@ module ActionController
   #
   #   map.connect '*path' , :controller => 'blog' , :action => 'unrecognized?'
   #
-  # will glob all remaining parts of the route that were not recognized earlier. This idiom
-  # must appear at the end of the path. The globbed values are in <tt>params[:path]</tt> in
-  # this case.
+  # will glob all remaining parts of the route that were not recognized earlier. 
+  # The globbed values are in <tt>params[:path]</tt> as an array of path segments.
   #
   # == Route conditions
   #
   # With conditions you can define restrictions on routes. Currently the only valid condition is <tt>:method</tt>.
   #
   # * <tt>:method</tt> - Allows you to specify which method can access the route. Possible values are <tt>:post</tt>,
-  #   <tt>:get</tt>, <tt>:put</tt>, <tt>:delete</tt> and <tt>:any</tt>. The default value is <tt>:any</tt>, 
+  #   <tt>:get</tt>, <tt>:put</tt>, <tt>:delete</tt> and <tt>:any</tt>. The default value is <tt>:any</tt>,
   #   <tt>:any</tt> means that any method can access the route.
   #
   # Example:
@@ -209,7 +213,7 @@ module ActionController
   #
   # Now, if you POST to <tt>/posts/:id</tt>, it will route to the <tt>create_comment</tt> action. A GET on the same
   # URL will route to the <tt>show</tt> action.
-  # 
+  #
   # == Reloading routes
   #
   # You can reload routes if you feel you must:
@@ -263,7 +267,7 @@ module ActionController
   module Routing
     SEPARATORS = %w( / . ? )
 
-    HTTP_METHODS = [:get, :head, :post, :put, :delete]
+    HTTP_METHODS = [:get, :head, :post, :put, :delete, :options]
 
     ALLOWED_REQUIREMENTS_FOR_OPTIMISATION = [:controller, :action].to_set
 
@@ -277,9 +281,9 @@ module ActionController
     end
 
     class << self
-	  # Expects an array of controller names as the first argument.  
-	  # Executes the passed block with only the named controllers named available.
-	  # This method is used in internal Rails testing.
+      # Expects an array of controller names as the first argument.
+      # Executes the passed block with only the named controllers named available.
+      # This method is used in internal Rails testing.
       def with_controllers(names)
         prior_controllers = @possible_controllers
         use_controllers! names
@@ -288,10 +292,10 @@ module ActionController
         use_controllers! prior_controllers
       end
 
-	  # Returns an array of paths, cleaned of double-slashes and relative path references.
-	  # * "\\\" and "//"  become "\\" or "/". 
-	  # * "/foo/bar/../config" becomes "/foo/config".
-	  # The returned array is sorted by length, descending.
+      # Returns an array of paths, cleaned of double-slashes and relative path references.
+      # * "\\\" and "//"  become "\\" or "/".
+      # * "/foo/bar/../config" becomes "/foo/config".
+      # The returned array is sorted by length, descending.
       def normalize_paths(paths)
         # do the hokey-pokey of path normalization...
         paths = paths.collect do |path|
@@ -310,7 +314,7 @@ module ActionController
         paths = paths.uniq.sort_by { |path| - path.length }
       end
 
-	  # Returns the array of controller names currently available to ActionController::Routing.
+      # Returns the array of controller names currently available to ActionController::Routing.
       def possible_controllers
         unless @possible_controllers
           @possible_controllers = []
@@ -335,28 +339,27 @@ module ActionController
         @possible_controllers
       end
 
-	  # Replaces the internal list of controllers available to ActionController::Routing with the passed argument.
-	  #   ActionController::Routing.use_controllers!([ "posts", "comments", "admin/comments" ])
+      # Replaces the internal list of controllers available to ActionController::Routing with the passed argument.
+      #   ActionController::Routing.use_controllers!([ "posts", "comments", "admin/comments" ])
       def use_controllers!(controller_names)
         @possible_controllers = controller_names
       end
 
-	  # Returns a controller path for a new +controller+ based on a +previous+ controller path.
-	  # Handles 4 scenarios:
-	  #
-	  # * stay in the previous controller:
-	  #     controller_relative_to( nil, "groups/discussion" ) # => "groups/discussion"
-	  #
-	  # * stay in the previous namespace:
-	  #     controller_relative_to( "posts", "groups/discussion" ) # => "groups/posts"
-	  #
-	  # * forced move to the root namespace:
-	  #     controller_relative_to( "/posts", "groups/discussion" ) # => "posts"
-	  #
-	  # * previous namespace is root:
-	  #     controller_relative_to( "posts", "anything_with_no_slashes" ) # =>"posts"
-	  #
-	  
+      # Returns a controller path for a new +controller+ based on a +previous+ controller path.
+      # Handles 4 scenarios:
+      #
+      # * stay in the previous controller:
+      #     controller_relative_to( nil, "groups/discussion" ) # => "groups/discussion"
+      #
+      # * stay in the previous namespace:
+      #     controller_relative_to( "posts", "groups/discussion" ) # => "groups/posts"
+      #
+      # * forced move to the root namespace:
+      #     controller_relative_to( "/posts", "groups/discussion" ) # => "posts"
+      #
+      # * previous namespace is root:
+      #     controller_relative_to( "posts", "anything_with_no_slashes" ) # =>"posts"
+      #
       def controller_relative_to(controller, previous)
         if controller.nil?           then previous
         elsif controller[0] == ?/    then controller[1..-1]
@@ -365,12 +368,11 @@ module ActionController
         end
       end
     end
-    
 
     Routes = RouteSet.new
 
-    ::Inflector.module_eval do
-	  # Ensures that routes are reloaded when Rails inflections are updated.
+    ActiveSupport::Inflector.module_eval do
+      # Ensures that routes are reloaded when Rails inflections are updated.
       def inflections_with_route_reloading(&block)
         returning(inflections_without_route_reloading(&block)) {
           ActionController::Routing::Routes.reload! if block_given?

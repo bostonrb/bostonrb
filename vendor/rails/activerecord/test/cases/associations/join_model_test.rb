@@ -510,13 +510,11 @@ class AssociationsJoinModelTest < ActiveRecord::TestCase
     assert !author.comments.loaded?
   end
 
-  uses_mocha('has_many_through_collection_size_uses_counter_cache_if_it_exists') do
-    def test_has_many_through_collection_size_uses_counter_cache_if_it_exists
-      author = authors(:david)
-      author.stubs(:read_attribute).with('comments_count').returns(100)
-      assert_equal 100, author.comments.size
-      assert !author.comments.loaded?
-    end
+  def test_has_many_through_collection_size_uses_counter_cache_if_it_exists
+    author = authors(:david)
+    author.stubs(:read_attribute).with('comments_count').returns(100)
+    assert_equal 100, author.comments.size
+    assert !author.comments.loaded?
   end
 
   def test_adding_junk_to_has_many_through_should_raise_type_mismatch
@@ -692,6 +690,13 @@ class AssociationsJoinModelTest < ActiveRecord::TestCase
 
     assert ! david.categories.loaded?
     assert ! david.categories.include?(category)
+  end
+
+  def test_has_many_through_goes_through_all_sti_classes
+    sub_sti_post = SubStiPost.create!(:title => 'test', :body => 'test', :author_id => 1)
+    new_comment = sub_sti_post.comments.create(:body => 'test')
+
+    assert_equal [9, 10, new_comment.id], authors(:david).sti_post_comments.map(&:id).sort
   end
 
   private

@@ -17,9 +17,9 @@ module ActiveRecord
 
           # "Downgrade" deprecated sqlite API
           if SQLite.const_defined?(:Version)
-            ConnectionAdapters::SQLite2Adapter.new(db, logger)
+            ConnectionAdapters::SQLite2Adapter.new(db, logger, config)
           else
-            ConnectionAdapters::DeprecatedSQLiteAdapter.new(db, logger)
+            ConnectionAdapters::DeprecatedSQLiteAdapter.new(db, logger, config)
           end
         end
       end
@@ -72,8 +72,29 @@ module ActiveRecord
     #
     # * <tt>:database</tt> - Path to the database file.
     class SQLiteAdapter < AbstractAdapter
+      class Version
+        include Comparable
+
+        def initialize(version_string)
+          @version = version_string.split('.').map(&:to_i)
+        end
+
+        def <=>(version_string)
+          @version <=> version_string.split('.').map(&:to_i)
+        end
+      end
+
+      def initialize(connection, logger, config)
+        super(connection, logger)
+        @config = config
+      end
+
       def adapter_name #:nodoc:
         'SQLite'
+      end
+
+      def supports_ddl_transactions?
+        sqlite_version >= '2.0.0'
       end
 
       def supports_migrations? #:nodoc:
@@ -82,6 +103,10 @@ module ActiveRecord
 
       def requires_reloading?
         true
+      end
+
+      def supports_add_column?
+        sqlite_version >= '3.1.6'
       end
  
       def disconnect!
@@ -164,7 +189,6 @@ module ActiveRecord
         catch_schema_changes { @connection.rollback }
       end
 
-
       # SELECT ... FOR UPDATE is redundant since the table is locked.
       def add_lock!(sql, options) #:nodoc:
         sql
@@ -213,14 +237,20 @@ module ActiveRecord
         execute "ALTER TABLE #{name} RENAME TO #{new_name}"
       end
 
+      # See: http://www.sqlite.org/lang_altertable.html
+      # SQLite has an additional restriction on the ALTER TABLE statement
+      def valid_alter_table_options( type, options)
+        type.to_sym != :primary_key
+      end
+
       def add_column(table_name, column_name, type, options = {}) #:nodoc:
-        if @connection.respond_to?(:transaction_active?) && @connection.transaction_active?
-          raise StatementInvalid, 'Cannot add columns to a SQLite database while inside a transaction'
+        if supports_add_column? && valid_alter_table_options( type, options )
+          super(table_name, column_name, type, options)
+        else
+          alter_table(table_name) do |definition|
+            definition.column(column_name, type, options)
+          end
         end
-        
-        super(table_name, column_name, type, options)
-        # See last paragraph on http://www.sqlite.org/lang_altertable.html
-        execute "VACUUM"
       end
 
       def remove_column(table_name, *column_names) #:nodoc:
@@ -238,6 +268,15 @@ module ActiveRecord
         end
       end
 
+      def change_column_null(table_name, column_name, null, default = nil)
+        unless null || default.nil?
+          execute("UPDATE #{quote_table_name(table_name)} SET #{quote_column_name(column_name)}=#{quote(default)} WHERE #{quote_column_name(column_name)} IS NULL")
+        end
+        alter_table(table_name) do |definition|
+          definition[column_name].null = null
+        end
+      end
+
       def change_column(table_name, column_name, type, options = {}) #:nodoc:
         alter_table(table_name) do |definition|
           include_default = options_include_default?(options)
@@ -251,6 +290,9 @@ module ActiveRecord
       end
 
       def rename_column(table_name, column_name, new_column_name) #:nodoc:
+        unless columns(table_name).detect{|c| c.name == column_name.to_s }
+          raise ActiveRecord::ActiveRecordError, "Missing column #{table_name}.#{column_name}"
+        end
         alter_table(table_name, :rename => {column_name.to_s => new_column_name.to_s})
       end
 
@@ -294,7 +336,7 @@ module ActiveRecord
         end
 
         def copy_table(from, to, options = {}) #:nodoc:
-          options = options.merge(:id => !columns(from).detect{|c| c.name == 'id'}.nil?)
+          options = options.merge(:id => (!columns(from).detect{|c| c.name == 'id'}.nil? && 'id' == primary_key(from).to_s))
           create_table(to, options) do |definition|
             @definition = definition
             columns(from).each do |column|
@@ -368,7 +410,7 @@ module ActiveRecord
         end
 
         def sqlite_version
-          @sqlite_version ||= select_value('select sqlite_version(*)')
+          @sqlite_version ||= SQLiteAdapter::Version.new(select_value('select sqlite_version(*)'))
         end
 
         def default_primary_key_type
@@ -381,18 +423,8 @@ module ActiveRecord
     end
 
     class SQLite2Adapter < SQLiteAdapter # :nodoc:
-      def supports_count_distinct? #:nodoc:
-        false
-      end
-
       def rename_table(name, new_name)
         move_table(name, new_name)
-      end
-
-      def add_column(table_name, column_name, type, options = {}) #:nodoc:
-        alter_table(table_name) do |definition|
-          definition.column(column_name, type, options)
-        end
       end
     end
 

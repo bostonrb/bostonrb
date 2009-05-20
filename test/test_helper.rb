@@ -1,19 +1,11 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
-require File.expand_path(File.dirname(__FILE__) + '/helper_testcase')
 
-begin require 'redgreen'; rescue LoadError; end
-
-require 'has_markup/shoulda'
-
-class Test::Unit::TestCase
+class ActiveSupport::TestCase
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
 
-  self.backtrace_silencers << :rails_vendor
-  self.backtrace_filters   << :rails_root
-  
   def file_fixture(name)
     File.read(File.join(File.dirname(__FILE__), "file_fixtures", name))
   end
@@ -47,3 +39,17 @@ class Test::Unit::TestCase
     ActionView::Base.stubs(:new).returns(view)
   end
 end
+
+module StubChainMocha
+  module Object
+    def stub_chain(*methods)
+      while methods.length > 1 do
+        stubs(methods.shift).returns(self)
+      end
+      stubs(methods.shift)
+    end
+  end
+end
+
+Object.send(:include, StubChainMocha::Object)
+

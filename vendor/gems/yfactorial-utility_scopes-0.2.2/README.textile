@@ -1,0 +1,140 @@
+h1. Utility Scopes
+
+h2. Summary
+
+Utility scopes provides a collection of utilitarian "named scopes":http://api.rubyonrails.com/classes/ActiveRecord/NamedScope/ClassMethods.html#M001246 for use with your
+ActiveRecord models.
+
+
+Utility scopes was originally announced "here":http://ryandaigle.com/articles/2008/8/20/named-scope-it-s-not-just-for-conditions-ya-know and has expanded in scope and functionality since then thanks to user contributions.  See the
+"CHANGELOG":http://github.com/yfactorial/utility_scopes/tree/master/CHANGELOG for contribution details. 
+
+Utility scopes has the following dependencies:
+
+* activerecord >= 2.1.0
+* rspec >= 1.1.4 (for specs only, not runtime)
+
+h2. Installation
+
+To install the utility_scopes gem run the following:
+
+  sudo gem install yfactorial-utility_scopes
+  
+And to enable the scopes in your project just require @utility_scopes@:
+
+  require 'utility_scopes'
+
+h3. Rails
+
+You can also specify the gem dependency if you're running Rails 2.1 in your @config/environment.rb@ file:
+
+  Rails::Initializer.run do |config|
+    # ...
+    config.gem "yfactorial-utility_scopes", :lib => 'utility_scopes', 
+      :source => 'http://gems.github.com/'
+  end
+
+You don't need to @require 'utility_scopes'@ in this case as Rails will automatically require it.
+  
+h2. Scopes
+
+Most examples assume the following @Article@ class:
+
+  class Article < ActiveRecord::Base
+    has_many :comments  # (assume each comment also has a :user)
+    has_many :contributors
+    belongs_to :author, :class_name => 'User'
+  end
+
+Named scopes are chainable by nature, meaning that the following is possible:
+
+  Article.with(:comments).except(1, 2, 3).ordered.limited(5)
+  
+Any exceptions to chainable scopes will be specified in their section below.
+  
+h3. With (eager-loading)
+
+The @with@ scope let's you eager load your model associations.  So instead of having to invoke @find(:all, :include => [:association1, :association2])@ just pass these association names into
+the @with@ named scope:
+
+  <pre><code>
+  # Get all articles and eager-load their comments, each comments' user, article contributors
+  # and the article author.
+  Article.with({ :comments => :user }, :contributors, :author)
+  
+  # Get all articles and eager-load their comments
+  Article.with(:comments)
+  </code></pre>
+
+Again, just pass in the same arguments into @eager@ that you would pass in as the @:include@ value to "ActiveRecord::Base#find":http://api.rubyonrails.com/classes/ActiveRecord/Base.html#M001298
+
+h3. Except
+
+_contributed by danielmorrison_
+
+@except@ excludes the given records from the result set:
+
+  Article.except(1, 2, 3)           # Get all articles whose id is NOT 1, 2 or 3
+  Article.except(@article)          # Get all articles except the given one
+  Article.except(@new_articles)     # Get all non-new articles
+  
+h3. Limited
+
+@limited@ lets you place a limit on the number of results returned.  By default
+the scope will limit the result set to 10 results if no argument is passed in:
+
+  Article.limited                # Get the first 10 articles
+  Article.except(1).limited(5)   # Get the first 5 articles where id != 1
+
+If you're using "will_paginate":http://github.com/mislav/will_paginate/tree/master and don't
+pass an argument to the scope then the @per_page@ value that is used by will_paginate
+will be used:
+
+  Article.per_page   #=> 20
+  Article.limited    # Get the first 20 articles   
+
+If you would like to specify a different default value you can do so on a per class basis
+using @default_limit@:
+
+  <pre><code>
+  # Set the default limit to be 15  
+  class Article < ActiveRecord::Base
+    default_limit 15
+  end
+  
+  Article.limited  # Get the first 15 articles
+  </code></pre>
+  
+h3. Ordered
+
+_Note: the @ordered@ scope cannot be chained with any other @order@ clauses_
+
+@ordered@ lets you dynamically specify the ordering of your result set.  If no
+arguments are given it will default to @created_at DESC@.  (@ordered@ is also
+available as @order_by@ and @sort_by@)
+
+  Article.ordered                 # Get all articles ordered by "created_at DESC"
+  Article.ordered(:id)            # Get all articles ordered by "id"
+  Article.ordered("rank ASC")     # Get all articles ordered by "rank ASC"
+  Article.order_by(:id)           # order_by and sort_by are alias to ordered
+  Article.order_by([:id, :desc], :popularity)           # can take a two-element array as parameter
+  Article.sort_by(:id => :desc, :popularity => :asc)   # can take a hash as parameter
+                                                        # only available for jruby/ruby 1.9
+  Article.order_by_id             # can be set as a sentence
+
+If you would like to specify a different default sort order you can do so on a per class basis
+using @ordered_by@:
+
+  <pre><code>
+  # Set the default order to be "published_at DESC"
+  class Article < ActiveRecord::Base
+    ordered_by 'published_at DESC'
+  end
+ 
+  Article.ordered              # Get all articles ordered by "published_at DESC"
+  Article.ordered("rank ASC")  # Get all articles ordered by "rank ASC"
+  </code></pre>
+
+The current default ordering for a class can always be accessed via @default_ordering@:
+
+  Article.default_ordering #=> "published_at DESC"

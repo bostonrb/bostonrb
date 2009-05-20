@@ -43,6 +43,8 @@ class Developer < ActiveRecord::Base
 
   has_many :audit_logs
 
+  named_scope :jamises, :conditions => {:name => 'Jamis'}
+
   validates_inclusion_of :salary, :in => 50000..200000
   validates_length_of    :name, :within => 3..20
 
@@ -56,7 +58,8 @@ class Developer < ActiveRecord::Base
 end
 
 class AuditLog < ActiveRecord::Base
-  belongs_to :developer
+  belongs_to :developer, :validate => true
+  belongs_to :unvalidated_developer, :class_name => 'Developer'
 end
 
 DeveloperSalary = Struct.new(:amount)
@@ -72,5 +75,17 @@ class DeveloperWithBeforeDestroyRaise < ActiveRecord::Base
 
   def raise_if_projects_empty!
     raise if projects.empty?
+  end
+end
+
+class DeveloperOrderedBySalary < ActiveRecord::Base
+  self.table_name = 'developers'
+  default_scope :order => 'salary DESC'
+  named_scope :by_name, :order => 'name DESC'
+
+  def self.all_ordered_by_name
+    with_scope(:find => { :order => 'name DESC' }) do
+      find(:all)
+    end
   end
 end

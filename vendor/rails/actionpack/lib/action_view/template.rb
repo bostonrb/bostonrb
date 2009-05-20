@@ -1,127 +1,257 @@
 module ActionView #:nodoc:
-  class Template #:nodoc:
+  class Template
+    class Path
+      attr_reader :path, :paths
+      delegate :hash, :inspect, :to => :path
 
-    attr_accessor :locals
-    attr_reader :handler, :path, :extension, :filename, :path_without_extension, :method
-
-    def initialize(view, path, use_full_path, locals = {})
-      @view = view
-      @finder = @view.finder
-
-      # Clear the forward slash at the beginning if exists
-      @path = use_full_path ? path.sub(/^\//, '') : path
-      @view.first_render ||= @path
-      @source = nil # Don't read the source until we know that it is required
-      set_extension_and_file_name(use_full_path)
-      
-      @locals = locals || {}
-      @handler = self.class.handler_class_for_extension(@extension).new(@view)
-    end
-
-    def render_template
-      render
-    rescue Exception => e
-      raise e unless filename
-      if TemplateError === e
-        e.sub_template_of(filename)
-        raise e
-      else
-        raise TemplateError.new(self, @view.assigns, e)
+      def initialize(path)
+        raise ArgumentError, "path already is a Path class" if path.is_a?(Path)
+        @path = (path.ends_with?(File::SEPARATOR) ? path.to(-2) : path).freeze
       end
+
+      def to_s
+        if defined?(RAILS_ROOT)
+          path.to_s.sub(/^#{Regexp.escape(File.expand_path(RAILS_ROOT))}\//, '')
+        else
+          path.to_s
+        end
+      end
+
+      def to_str
+        path.to_str
+      end
+
+      def ==(path)
+        to_str == path.to_str
+      end
+
+      def eql?(path)
+        to_str == path.to_str
+      end
+
+      # Returns a ActionView::Template object for the given path string. The
+      # input path should be relative to the view path directory,
+      # +hello/index.html.erb+. This method also has a special exception to
+      # match partial file names without a handler extension. So
+      # +hello/index.html+ will match the first template it finds with a
+      # known template extension, +hello/index.html.erb+. Template extensions
+      # should not be confused with format extensions +html+, +js+, +xml+,
+      # etc. A format must be supplied to match a formated file. +hello/index+
+      # will never match +hello/index.html.erb+.
+      def [](path)
+      end
+
+      def load!
+      end
+
+      def self.new_and_loaded(path)
+        returning new(path) do |path|
+          path.load!
+        end
+      end
+
+      private
+        def relative_path_for_template_file(full_file_path)
+          full_file_path.split("#{@path}/").last
+        end
     end
-    
-    def render
-      prepare!
-      @handler.render(self)
+
+    class EagerPath < Path
+      def load!
+        return if @loaded
+        
+        @paths = {}
+        templates_in_path do |template|
+          template.load!
+          template.accessible_paths.each do |path|
+            @paths[path] = template
+          end
+        end
+        @paths.freeze
+        @loaded = true
+      end
+
+      def [](path)
+        load! unless @loaded
+        @paths[path]
+      end
+
+      private
+        def templates_in_path
+          (Dir.glob("#{@path}/**/*/**") | Dir.glob("#{@path}/**")).each do |file|
+            yield create_template(file) unless File.directory?(file)
+          end
+        end
+
+        def create_template(file)
+          Template.new(relative_path_for_template_file(file), self)
+        end
+    end
+
+    extend TemplateHandlers
+    extend ActiveSupport::Memoizable
+    include Renderable
+
+    # Templates that are exempt from layouts
+    @@exempt_from_layout = Set.new([/\.rjs$/])
+
+    # Don't render layouts for templates with the given extensions.
+    def self.exempt_from_layout(*extensions)
+      regexps = extensions.collect do |extension|
+        extension.is_a?(Regexp) ? extension : /\.#{Regexp.escape(extension.to_s)}$/
+      end
+      @@exempt_from_layout.merge(regexps)
+    end
+
+    attr_accessor :template_path, :filename, :load_path, :base_path
+    attr_accessor :locale, :name, :format, :extension
+    delegate :to_s, :to => :path
+
+    def initialize(template_path, load_path)
+      @template_path = template_path.dup
+      @load_path, @filename = load_path, File.join(load_path, template_path)
+      @base_path, @name, @locale, @format, @extension = split(template_path)
+      @base_path.to_s.gsub!(/\/$/, '') # Push to split method
+
+      # Extend with partial super powers
+      extend RenderablePartial if @name =~ /^_/
+    end
+
+    def accessible_paths
+      paths = []
+
+      if valid_extension?(extension)
+        paths << path
+        paths << path_without_extension
+        if multipart?
+          formats = format.split(".")
+          paths << "#{path_without_format_and_extension}.#{formats.first}"
+          paths << "#{path_without_format_and_extension}.#{formats.second}"
+        end
+      else
+        # template without explicit template handler should only be reachable through its exact path
+        paths << template_path
+      end
+
+      paths
+    end
+
+    def format_and_extension
+      (extensions = [format, extension].compact.join(".")).blank? ? nil : extensions
+    end
+    memoize :format_and_extension
+
+    def multipart?
+      format && format.include?('.')
+    end
+
+    def content_type
+      format.gsub('.', '/')
+    end
+
+    def mime_type
+      Mime::Type.lookup_by_extension(format) if format && defined?(::Mime)
+    end
+    memoize :mime_type
+
+    def path
+      [base_path, [name, locale, format, extension].compact.join('.')].compact.join('/')
+    end
+    memoize :path
+
+    def path_without_extension
+      [base_path, [name, locale, format].compact.join('.')].compact.join('/')
+    end
+    memoize :path_without_extension
+
+    def path_without_format_and_extension
+      [base_path, [name, locale].compact.join('.')].compact.join('/')
+    end
+    memoize :path_without_format_and_extension
+
+    def relative_path
+      path = File.expand_path(filename)
+      path.sub!(/^#{Regexp.escape(File.expand_path(RAILS_ROOT))}\//, '') if defined?(RAILS_ROOT)
+      path
+    end
+    memoize :relative_path
+
+    def exempt_from_layout?
+      @@exempt_from_layout.any? { |exempted| path =~ exempted }
     end
 
     def source
-      @source ||= File.read(self.filename)
+      File.read(filename)
     end
+    memoize :source
 
-    def method_key
-      @filename
+    def method_segment
+      relative_path.to_s.gsub(/([^a-zA-Z0-9_])/) { $1.ord }
     end
+    memoize :method_segment
 
-    def base_path_for_exception
-      @finder.find_base_path_for("#{@path_without_extension}.#{@extension}") || @finder.view_paths.first
-    end
-    
-    def prepare!
-      @view.send :evaluate_assigns
-      @view.current_render_extension = @extension
-      
-      if @handler.compilable?
-        @handler.compile_template(self) # compile the given template, if necessary
-        @method = @view.method_names[method_key] # Set the method name for this template and run it
+    def render_template(view, local_assigns = {})
+      render(view, local_assigns)
+    rescue Exception => e
+      raise e unless filename
+      if TemplateError === e
+        e.sub_template_of(self)
+        raise e
+      else
+        raise TemplateError.new(self, view.assigns, e)
       end
+    end
+
+    def load!
+      freeze
     end
 
     private
-
-    def set_extension_and_file_name(use_full_path)
-      @path_without_extension, @extension = @finder.path_and_extension(@path)
-      if use_full_path
-        if @extension
-          @filename = @finder.pick_template(@path_without_extension, @extension)
-        else
-          @extension = @finder.pick_template_extension(@path).to_s
-          raise_missing_template_exception unless @extension
-          
-          @filename = @finder.pick_template(@path, @extension)
-          @extension = @extension.gsub(/^.+\./, '') # strip off any formats
-        end
-      else
-        @filename = @path
+      def valid_extension?(extension)
+        !Template.registered_template_handler(extension).nil?
       end
 
-      raise_missing_template_exception if @filename.blank?
-    end
-    
-    def raise_missing_template_exception
-      full_template_path = @path.include?('.') ? @path : "#{@path}.#{@view.template_format}.erb"
-      display_paths = @finder.view_paths.join(':')
-      template_type = (@path =~ /layouts/i) ? 'layout' : 'template'
-      raise(MissingTemplate, "Missing #{template_type} #{full_template_path} in view path #{display_paths}")
-    end
+      def valid_locale?(locale)
+        I18n.available_locales.include?(locale.to_sym)
+      end
 
-    # Template Handlers
-    
-    @@template_handlers = HashWithIndifferentAccess.new
-    @@default_template_handlers = nil
-    
-    # Register a class that knows how to handle template files with the given
-    # extension. This can be used to implement new template types.
-    # The constructor for the class must take the ActiveView::Base instance
-    # as a parameter, and the class must implement a +render+ method that
-    # takes the contents of the template to render as well as the Hash of
-    # local assigns available to the template. The +render+ method ought to
-    # return the rendered template as a string.
-    def self.register_template_handler(extension, klass)
-      @@template_handlers[extension.to_sym] = klass
-      TemplateFinder.update_extension_cache_for(extension.to_s)
-    end
+      # Returns file split into an array
+      #   [base_path, name, locale, format, extension]
+      def split(file)
+        if m = file.to_s.match(/^(.*\/)?([^\.]+)\.(.*)$/)
+          base_path = m[1]
+          name = m[2]
+          extensions = m[3]
+        else
+          return
+        end
 
-    def self.template_handler_extensions
-      @@template_handlers.keys.map(&:to_s).sort
-    end
+        locale = nil
+        format = nil
+        extension = nil
 
-    def self.register_default_template_handler(extension, klass)
-      register_template_handler(extension, klass)
-      @@default_template_handlers = klass
-    end
+        if m = extensions.split(".")
+          if valid_locale?(m[0]) && m[1] && valid_extension?(m[2]) # All three
+            locale = m[0]
+            format = m[1]
+            extension = m[2]
+          elsif m[0] && m[1] && valid_extension?(m[2]) # Multipart formats
+            format = "#{m[0]}.#{m[1]}"
+            extension = m[2]
+          elsif valid_locale?(m[0]) && valid_extension?(m[1]) # locale and extension
+            locale = m[0]
+            extension = m[1]
+          elsif valid_extension?(m[1]) # format and extension
+            format = m[0]
+            extension = m[1]
+          elsif valid_extension?(m[0]) # Just extension
+            extension = m[0]
+          else # No extension
+            format = m[0]
+          end
+        end
 
-    def self.handler_class_for_extension(extension)
-      (extension && @@template_handlers[extension.to_sym]) || @@default_template_handlers
-    end
-
-    register_default_template_handler :erb, TemplateHandlers::ERB
-    register_template_handler :rjs, TemplateHandlers::RJS
-    register_template_handler :builder, TemplateHandlers::Builder
-
-    # TODO: Depreciate old template extensions
-    register_template_handler :rhtml, TemplateHandlers::ERB
-    register_template_handler :rxml, TemplateHandlers::Builder
-    
+        [base_path, name, locale, format, extension]
+      end
   end
 end

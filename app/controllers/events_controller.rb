@@ -1,14 +1,6 @@
 class EventsController < ApplicationController
   def index
-    respond_to do |format|
-      format.html do
-        @upcoming_events = Event.upcoming
-        @past_events     = Event.past
-      end
-      format.rss do
-        @events = Event.find :all
-      end
-    end
+    @events = Event.next(4)
   end
 
   def new
@@ -18,7 +10,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find params[:id]
   end
-  
+
   def show
     @event = Event.find params[:id]
   end
@@ -26,7 +18,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new params[:event]
 
-    if verify_recaptcha(@event) && @event.save
+    if @event.save
       flash[:notice] = 'Event was successfully created.'
       redirect_to events_url
     else
@@ -37,7 +29,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    if verify_recaptcha(@event) && @event.update_attributes(params[:event])
+    if @event.update_attributes(params[:event])
       flash[:notice] = 'Event was successfully updated.'
       redirect_to events_url
     else

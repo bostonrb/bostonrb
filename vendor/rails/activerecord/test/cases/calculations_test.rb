@@ -1,6 +1,7 @@
 require "cases/helper"
 require 'models/company'
 require 'models/topic'
+require 'models/edge'
 
 Company.has_many :accounts
 
@@ -17,12 +18,17 @@ class CalculationsTest < ActiveRecord::TestCase
 
   def test_should_average_field
     value = Account.average(:credit_limit)
-    assert_kind_of Float, value
-    assert_in_delta 53.0, value, 0.001
+    assert_kind_of BigDecimal, value
+    assert_equal BigDecimal.new('53.0'), value
   end
 
   def test_should_return_nil_as_average
     assert_nil NumericData.average(:bank_balance)
+  end
+  
+  def test_type_cast_calculated_value_should_convert_db_averages_of_fixnum_class_to_decimal
+    assert_equal 0, NumericData.send(:type_cast_calculated_value, 0, nil, 'avg')
+    assert_equal 53.0, NumericData.send(:type_cast_calculated_value, 53, nil, 'avg')
   end
 
   def test_should_get_maximum_of_field
@@ -86,6 +92,14 @@ class CalculationsTest < ActiveRecord::TestCase
     assert_equal 60,  c[2]
   end
 
+  def test_should_group_by_summed_field_having_sanitized_condition
+    c = Account.sum(:credit_limit, :group => :firm_id,
+                                   :having => ['sum(credit_limit) > ?', 50])
+    assert_nil        c[1]
+    assert_equal 105, c[6]
+    assert_equal 60,  c[2]
+  end
+
   def test_should_group_by_summed_association
     c = Account.sum(:credit_limit, :group => :firm)
     assert_equal 50,   c[companies(:first_firm)]
@@ -99,6 +113,12 @@ class CalculationsTest < ActiveRecord::TestCase
 
   def test_should_return_zero_if_sum_conditions_return_nothing
     assert_equal 0, Account.sum(:credit_limit, :conditions => '1 = 2')
+    assert_equal 0, companies(:rails_core).companies.sum(:id, :conditions => '1 = 2')
+  end
+
+  def test_sum_should_return_valid_values_for_decimals
+    NumericData.create(:bank_balance => 19.83)
+    assert_equal 19.83, NumericData.sum(:bank_balance)
   end
 
   def test_should_group_by_summed_field_with_conditions
@@ -144,24 +164,23 @@ class CalculationsTest < ActiveRecord::TestCase
     assert_equal 1, c[companies(:first_client)]
   end
 
-  uses_mocha 'group_by_non_numeric_foreign_key_association' do
-    def test_should_group_by_association_with_non_numeric_foreign_key
-      ActiveRecord::Base.connection.expects(:select_all).returns([{"count_all" => 1, "firm_id" => "ABC"}])
+  def test_should_group_by_association_with_non_numeric_foreign_key
+    ActiveRecord::Base.connection.expects(:select_all).returns([{"count_all" => 1, "firm_id" => "ABC"}])
 
-      firm = mock()
-      firm.expects(:id).returns("ABC")
-      firm.expects(:class).returns(Firm)
-      Company.expects(:find).with(["ABC"]).returns([firm])
+    firm = mock()
+    firm.expects(:id).returns("ABC")
+    firm.expects(:class).returns(Firm)
+    Company.expects(:find).with(["ABC"]).returns([firm])
 
-      column = mock()
-      column.expects(:name).at_least_once.returns(:firm_id)
-      column.expects(:type_cast).with("ABC").returns("ABC")
-      Account.expects(:columns).at_least_once.returns([column])
+    column = mock()
+    column.expects(:name).at_least_once.returns(:firm_id)
+    column.expects(:type_cast).with("ABC").returns("ABC")
+    Account.expects(:columns).at_least_once.returns([column])
 
-      c = Account.count(:all, :group => :firm)
-      assert_equal Firm, c.first.first.class
-      assert_equal 1, c.first.last
-    end
+    c = Account.count(:all, :group => :firm)
+    first_key = c.keys.first
+    assert_equal Firm, first_key.class
+    assert_equal 1, c[first_key]
   end
 
   def test_should_calculate_grouped_association_with_foreign_key_option
@@ -236,13 +255,26 @@ class CalculationsTest < ActiveRecord::TestCase
       Company.send(:validate_calculation_options, :count, :include => true)
     end
 
-    assert_raises(ArgumentError) { Company.send(:validate_calculation_options, :sum,   :foo => :bar) }
-    assert_raises(ArgumentError) { Company.send(:validate_calculation_options, :count, :foo => :bar) }
+    assert_raise(ArgumentError) { Company.send(:validate_calculation_options, :sum,   :foo => :bar) }
+    assert_raise(ArgumentError) { Company.send(:validate_calculation_options, :count, :foo => :bar) }
   end
 
   def test_should_count_selected_field_with_include
     assert_equal 6, Account.count(:distinct => true, :include => :firm)
     assert_equal 4, Account.count(:distinct => true, :include => :firm, :select => :credit_limit)
+  end
+
+  def test_should_count_scoped_select
+    Account.update_all("credit_limit = NULL")
+    assert_equal 0, Account.scoped(:select => "credit_limit").count
+  end
+
+  def test_should_count_scoped_select_with_options
+    Account.update_all("credit_limit = NULL")
+    Account.last.update_attribute('credit_limit', 49)
+    Account.first.update_attribute('credit_limit', 51)
+
+    assert_equal 1, Account.scoped(:select => "credit_limit").count(:conditions => ['credit_limit >= 50'])
   end
 
   def test_should_count_manual_select_with_include
@@ -266,6 +298,51 @@ class CalculationsTest < ActiveRecord::TestCase
   end
 
   def test_should_sum_expression
-    assert_equal "636", Account.sum("2 * credit_limit")
+    assert_equal '636', Account.sum("2 * credit_limit")
   end
+
+  def test_count_with_from_option
+    assert_equal Company.count(:all), Company.count(:all, :from => 'companies')
+    assert_equal Account.count(:all, :conditions => "credit_limit = 50"),
+        Account.count(:all, :from => 'accounts', :conditions => "credit_limit = 50")
+    assert_equal Company.count(:type, :conditions => {:type => "Firm"}),
+        Company.count(:type, :conditions => {:type => "Firm"}, :from => 'companies')
+  end
+
+  def test_sum_with_from_option
+    assert_equal Account.sum(:credit_limit), Account.sum(:credit_limit, :from => 'accounts')
+    assert_equal Account.sum(:credit_limit, :conditions => "credit_limit > 50"),
+        Account.sum(:credit_limit, :from => 'accounts', :conditions => "credit_limit > 50")
+  end
+
+  def test_average_with_from_option
+    assert_equal Account.average(:credit_limit), Account.average(:credit_limit, :from => 'accounts')
+    assert_equal Account.average(:credit_limit, :conditions => "credit_limit > 50"),
+        Account.average(:credit_limit, :from => 'accounts', :conditions => "credit_limit > 50")
+  end
+
+  def test_minimum_with_from_option
+    assert_equal Account.minimum(:credit_limit), Account.minimum(:credit_limit, :from => 'accounts')
+    assert_equal Account.minimum(:credit_limit, :conditions => "credit_limit > 50"),
+        Account.minimum(:credit_limit, :from => 'accounts', :conditions => "credit_limit > 50")
+  end
+
+  def test_maximum_with_from_option
+    assert_equal Account.maximum(:credit_limit), Account.maximum(:credit_limit, :from => 'accounts')
+    assert_equal Account.maximum(:credit_limit, :conditions => "credit_limit > 50"),
+        Account.maximum(:credit_limit, :from => 'accounts', :conditions => "credit_limit > 50")
+  end
+
+  def test_from_option_with_specified_index
+    if Edge.connection.adapter_name == 'MySQL'
+      assert_equal Edge.count(:all), Edge.count(:all, :from => 'edges USE INDEX(unique_edge_index)')
+      assert_equal Edge.count(:all, :conditions => 'sink_id < 5'),
+          Edge.count(:all, :from => 'edges USE INDEX(unique_edge_index)', :conditions => 'sink_id < 5')
+    end
+  end
+
+  def test_from_option_with_table_different_than_class
+    assert_equal Account.count(:all), Company.count(:all, :from => 'accounts')
+  end
+
 end

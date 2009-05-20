@@ -11,16 +11,8 @@ class CaptureController < ActionController::Base
   def content_for_with_parameter
     render :layout => "talk_from_action"
   end
-  
+
   def content_for_concatenated
-    render :layout => "talk_from_action"
-  end
-
-  def erb_content_for
-    render :layout => "talk_from_action"
-  end
-
-  def block_content_for
     render :layout => "talk_from_action"
   end
 
@@ -31,18 +23,13 @@ class CaptureController < ActionController::Base
   def rescue_action(e) raise end
 end
 
-CaptureController.view_paths = [ File.dirname(__FILE__) + "/../fixtures/" ]
+class CaptureTest < ActionController::TestCase
+  tests CaptureController
 
-class CaptureTest < Test::Unit::TestCase
   def setup
-    @controller = CaptureController.new
-
     # enable a logger so that (e.g.) the benchmarking stuff runs, so we can get
     # a more accurate simulation of what happens in "real life".
     @controller.logger = Logger.new(nil)
-
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
 
     @request.host = "www.nextangle.com"
   end
@@ -62,18 +49,8 @@ class CaptureTest < Test::Unit::TestCase
     assert_equal expected_content_for_output, @response.body
   end
 
-  def test_erb_content_for
-    get :erb_content_for
-    assert_equal expected_content_for_output, @response.body
-  end
-
   def test_should_set_content_for_with_parameter
     get :content_for_with_parameter
-    assert_equal expected_content_for_output, @response.body
-  end
-
-  def test_block_content_for
-    get :block_content_for
     assert_equal expected_content_for_output, @response.body
   end
 
