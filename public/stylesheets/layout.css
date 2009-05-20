@@ -119,15 +119,18 @@ body {
   background: #000919;
 }
 
-#events, #new, #show, #edit, #projects{
+#events, #new, #show, #edit {
   background: #000919 url(../images/ribbon.gif) 50% 100% repeat-x;
 }
+
 .ribbon {
   background: url(../images/ribbon_i.gif) 50% 0% repeat-x;
   padding: 2.1em 0 2em 0;
 }
+
 #projects {
   margin-bottom: 2.1em;
+  padding: 2.1em 0 0.6em 0;
 }
 
 #people {
