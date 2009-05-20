@@ -34,8 +34,6 @@ Rails::Initializer.run do |config|
     :version => '>= 2.1.0'
   config.gem 'haml',
     :version => '2.1.0'
-  config.gem 'hpricot',
-    :version => '0.8.1'
   config.gem "json",
     :version => '1.1.6'
   config.gem 'simple-rss',

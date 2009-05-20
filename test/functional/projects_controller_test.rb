@@ -124,7 +124,6 @@ class ProjectsControllerTest < ActionController::TestCase
   def should_have_project_form_fields
     assert_select 'input[id=project_name][type=text]'
     assert_select 'input[id=project_homepage_url][type=text]'
-    assert_select 'input[id=project_feed_url][type=text]'
     assert_select 'textarea[id=project_description]'
     assert_select 'input[id=project_submit][type=submit]'
   end
