@@ -1,8 +1,8 @@
 module ProjectsHelper
 
-  def project_link
-    name = html_escape("Jeweler")
-    link = html_escape("http://github.com/techpickles/jeweler")
+  def project_link(project)
+    name = html_escape(project.name)
+    link = html_escape(project.homepage_url)
     link_to name, link
   end
 
