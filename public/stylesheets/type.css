@@ -144,7 +144,7 @@ a, #jobs .crud a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover, #jobs .crud a:hover {
   text-decoration: underline;
 }
 
