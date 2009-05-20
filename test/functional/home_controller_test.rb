@@ -16,6 +16,9 @@ class HomeControllerTest < ActionController::TestCase
       @recent_jobs = [Factory.build(:job, :id => 3)]
       Job.stubs(:recent).returns(@recent_jobs)
 
+      @featured_project = [Factory.build(:project)]
+      Project.stubs(:featured).returns(@featured_project)
+
       get :index
     end
 
@@ -40,10 +43,15 @@ class HomeControllerTest < ActionController::TestCase
       assert_received(Job, :recent)
     end
 
+    should "fetch featured project" do
+      assert_received(Project, :featured)
+    end
+
     should_assign_to(:users) { @users }
     should_assign_to(:recurring_events) { @recurring_events }
     should_assign_to(:special_events) { @special_events }
     should_assign_to(:recent_jobs) { @recent_jobs }
+    should_assign_to(:featured_project) { @featured_project }
   end
 
   context "given a future recurring event on GET to index" do

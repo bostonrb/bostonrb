@@ -15,7 +15,7 @@
       - @recurring_events.each do |event|
         .quarter>
           %h3= link_to event.title, event
-          %p= event.description
+          %p= event.cached_description_html
 
 #other_events.row
   %h3.center Special events
@@ -50,16 +50,17 @@
     .crud
       %p= link_to 'New project', new_project_path
     %h2 Open Source Projects
-    .half.pending>
-      %h3 Paperclip
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    .half.pending>
-      %ul
-        %li= project_link
-        %li= project_link
-        %li= project_link
-        %li= project_link
-        %li= project_link
+    - if @featured_project
+      .half.pending>
+        %h3= link_to @featured_project.name, @featured_project.homepage_url
+        %p= @featured_project.cached_description_html
+      .half.pending>
+        %ul
+          %li= project_link
+          %li= project_link
+          %li= project_link
+          %li= project_link
+          %li= project_link
 
 #apps.row.pending
   %h3.center Apps

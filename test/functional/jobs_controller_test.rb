@@ -163,7 +163,7 @@ class JobsControllerTest < ActionController::TestCase
     end
 
     should 'show flash notice' do
-      assert flash[:notice] == 'Job was successfully deleted.'
+      assert_match /deleted/i, flash[:notice]
     end
 
     should_redirect_to("jobs index") { jobs_url }

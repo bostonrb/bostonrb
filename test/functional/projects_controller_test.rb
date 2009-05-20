@@ -51,7 +51,7 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_equal @old_count + 1, Project.count
     end
 
-    should_redirect_to("projects index") { projects_path }
+    should_redirect_to("home") { root_path }
   end
 
   context 'on GET to /projects/:id/edit when signed in' do
@@ -92,7 +92,7 @@ class ProjectsControllerTest < ActionController::TestCase
       assert_not_equal @project.name, Project.find_by_id(@project.to_param).name
     end
 
-    should_redirect_to("projects index") { projects_path }
+    should_redirect_to("project page") { project_path(@project) }
   end
 
   context 'on DELETE to #destroy when signed in' do
@@ -113,10 +113,10 @@ class ProjectsControllerTest < ActionController::TestCase
     end
 
     should 'show flash notice' do
-      assert_equal 'Project was successfully deleted.', flash[:notice]
+      assert_equal 'Project deleted.', flash[:notice]
     end
 
-    should_redirect_to("projects index") { projects_path }
+    should_redirect_to("home") { root_path }
   end
 
   protected

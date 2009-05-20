@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     @special_events   = Event.next(5).special
     @recent_jobs      = Job.recent
     @recent_tweets    = Tweet.recent(5)
+    @featured_project = Project.featured
   end
 
 end
