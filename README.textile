@@ -4,11 +4,18 @@ This is the source code to "Boston.rb":http://bostonrb.org, a Rails app which he
 
 It is open source under the MIT license. Fork away, modify to your own user group's needs, & send us pull requests!
 
+h2. Dependencies
+
+All gems are vendored except for Nokogiri & JSON, which have native extensions, & Cucumber, which doesn't respect vendoring.
+
+Install:
+
+    Cucumber 0.3.5
+    JSON     1.1.6
+
 h2. Tests
 
 We use Cucumber & Webrat for acceptance testing and Shoulda, Factory Girl, & Mocha for unit testing. We use Fakeweb to stop the test suite from hitting external services. We use Nokogiri for parsing markup, especially in acceptance tests.
-
-All testing gems are vendored except for Nokogiri, which has native extensions.
 
 h2. Production
 
