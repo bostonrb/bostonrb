@@ -1,2 +1,1 @@
 require 'rubygems'
-require 'hpricot'
