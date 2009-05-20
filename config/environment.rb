@@ -19,6 +19,9 @@ Rails::Initializer.run do |config|
 
   config.gem 'BlueCloth',
     :lib     => 'bluecloth'
+  config.gem 'RedCloth',
+    :lib     => 'redcloth',
+    :version => '> 3.0.4'
   config.gem 'builder',
     :version => '2.1.2'
   config.gem 'dancroak-validates_email_format_of',
