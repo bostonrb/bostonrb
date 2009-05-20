@@ -103,7 +103,7 @@ class EventsControllerTest < ActionController::TestCase
         :event => Factory.attributes_for(:event, :title => "new event")
     end
 
-    should_redirect_to("events index") { events_path }
+    should_redirect_to("home") { root_path }
     should "create Event" do
       assert Event.find_by_title("new event")
     end
@@ -155,7 +155,7 @@ class EventsControllerTest < ActionController::TestCase
       assert_not_equal @event.description, Event.find_by_id(@event.id).description
     end
 
-    should_redirect_to("events index") { events_path }
+    should_redirect_to("event page") { event_path(@event) }
   end
 
   context 'A PUT to :update with bad parameters when signed in' do
