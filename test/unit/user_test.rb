@@ -6,6 +6,16 @@ class UserTest < ActiveSupport::TestCase
     assert_respond_to user, :gravatar_url
   end
 
-  should_have_many :tweets
-  should_allow_mass_assignment_of :twitter
+  context "an user" do
+    setup do
+      @user = Factory(:user, :twitter => "Croaky")
+    end
+
+    should_have_many :tweets
+    should_allow_mass_assignment_of :twitter
+
+    should "display twitter name as string representation" do
+      assert_equal "Croaky", @user.to_s
+    end
+  end
 end

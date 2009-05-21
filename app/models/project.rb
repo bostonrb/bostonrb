@@ -18,5 +18,5 @@ class Project < ActiveRecord::Base
     { :conditions => ['id <> ?', project],
       :order => 'name asc' }
   }
-  
+
 end
