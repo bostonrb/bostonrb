@@ -1,8 +1,8 @@
 module AppsHelper
 
   def app_links
-    apps = ["Hoptoad", "Umbrella Today", "Widgetfinger"]
-    apps.collect { |app| link_to(app, "#") }
+    apps = App.all
+    apps.collect { |app| link_to(app.name, app.homepage_url) }
   end
 
 end
