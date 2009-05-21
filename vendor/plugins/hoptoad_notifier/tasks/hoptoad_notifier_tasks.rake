@@ -1,18 +1,34 @@
 namespace :hoptoad do
+  desc "Notify Hoptoad of a new deploy."
+  task :deploy => :environment do
+    require 'hoptoad_tasks'
+    HoptoadTasks.deploy(:rails_env      => ENV['TO'], 
+                        :scm_revision   => ENV['REVISION'],
+                        :scm_repository => ENV['REPO'],
+                        :local_username => ENV['USER'])
+  end
+
   desc "Verify your plugin installation by sending a test exception to the hoptoad service"
   task :test => :environment do
     require 'action_controller/test_process'
-    require 'application'
 
-    request = ActionController::TestRequest.new({
-      'action'     => 'verify',
-      'controller' => 'hoptoad_verification',
-      '_method'    => 'GET'
-    })
+    request = ActionController::TestRequest.new
 
     response = ActionController::TestResponse.new
 
     class HoptoadTestingException < RuntimeError; end
+
+    unless HoptoadNotifier.api_key
+      puts "Hoptoad needs an API key configured! Check the README to see how to add it."
+      exit
+    end
+
+    in_controller = ApplicationController.included_modules.include? HoptoadNotifier::Catcher
+    in_base = ActionController::Base.included_modules.include? HoptoadNotifier::Catcher
+    if !in_controller || !in_base
+      puts "HoptoadNotifier::Catcher must be included inside your ApplicationController class."
+      exit
+    end
 
     puts 'Setting up the Controller.'
     class ApplicationController
