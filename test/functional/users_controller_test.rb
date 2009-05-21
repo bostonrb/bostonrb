@@ -12,8 +12,8 @@ class UsersControllerTest < ActionController::TestCase
 
   context 'on GET to :edit when signed in' do
     setup do
-      sign_in
       @user = Factory(:user)
+      sign_in_as @user
       get :edit, :id => @user.to_param
     end
 
@@ -29,6 +29,22 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
+  context "given two users and user one signs in" do
+    setup do
+      @user_one = Factory(:email_confirmed_user)
+      @user_two = Factory(:email_confirmed_user)
+      sign_in_as @user_one
+    end
+
+    should_forbid "when user one tries to edit user two" do
+      get :edit, :id => @user_two.to_param
+    end
+
+    should_forbid "when user one tries to update user two" do
+      put :update, :id => @user_two.to_param
+    end
+  end
+
   should_route :put, "/users/1",
     :controller => 'users', :action => 'update', :id => '1'
 
@@ -40,7 +56,7 @@ class UsersControllerTest < ActionController::TestCase
   context 'a PUT to :update when signed in' do
     setup do
       @user = Factory(:user)
-      sign_in_as(@user)
+      sign_in_as @user
       put :update, :id   => @user.to_param,
                    :user => { :email => "new@example.com" }
     end

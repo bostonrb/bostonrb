@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-  $('#events, #jobs, #projects, #presentations, #show').hover(
+  $('#events, #jobs, #projects, #presentations, #show, #edit').hover(
     function() {
       $(this).find('.crud').show();
     },
@@ -10,5 +10,8 @@ jQuery(document).ready(function($) {
 
   $(document).bind('keydown', 'd', toggleDisplayOfPendingElements);
   $(document).bind('keydown', 'o', toggleOverlayOfPendingElements);
+
+  $('#people .collage').cycle({ fx: 'scrollDown',
+                                timeout: 8000});
   
 });

@@ -2,16 +2,6 @@ class JobsController < ApplicationController
 
   before_filter :authorize, :only => [:edit]
 
-  def index
-    @jobs = Job.recent
-    @old_job_count = Job.old.count
-
-    respond_to do |format|
-      format.html
-      format.rss  { render :template => '/jobs/index' }
-    end
-  end
-
   def show
     @job = Job.find params[:id]
   end
@@ -29,7 +19,7 @@ class JobsController < ApplicationController
 
     if @job.save
       flash[:notice] = 'Job created.'
-      redirect_to jobs_url
+      redirect_to root_path
     else
       render :action => "new"
     end
@@ -40,7 +30,7 @@ class JobsController < ApplicationController
 
     if @job.update_attributes(params[:job])
       flash[:notice] = 'Job updated.'
-      redirect_to jobs_url
+      redirect_to job_path(@job)
     else
       render :action => "edit"
     end
@@ -51,7 +41,7 @@ class JobsController < ApplicationController
     @job.destroy
 
     flash[:notice] = 'Job deleted.'
-    redirect_to jobs_url
+    redirect_to root_path
   end
 
   private
@@ -59,7 +49,7 @@ class JobsController < ApplicationController
   def authorize
     unless user_session.edit_job? Job.find(params[:id])
       flash[:notice] = 'Editing time expired.'
-      redirect_to jobs_url
+      redirect_to root_path
     end
   end
 

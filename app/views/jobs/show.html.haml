@@ -1,15 +1,22 @@
-%h2= "#{@job.title} at #{@job.organization}"
+#show
+  .ribbon
+    .row
+      .crud
+        - if user_session.edit_job?(@job)
+          %p== #{link_to 'Edit', edit_job_path(@job)} for another #{user_session.editing_time_remaining(@job)} minutes
+      %h2== #{@job.title} at #{@job.organization}
 
-#jobbed{ :class => 'column span-12 prepend-6 append-6' }
-  %dl
-    %dt Location
-    %dd= @job.location
+      - unless @job.email.blank?
+        %ul.details
+          %li.clearfix
+            .detail= @job.email
+            .label Apply
 
-    - unless @job.email.blank?
-      %dt To apply, contact:
-      %dd= @job.email
+        %li.clearfix
+          .detail= @job.location
+          .label Where
 
-  ~ @job.cached_description_html
+        %li.clearfix.last
+          .detail= @job.cached_description_html
+          .label What
 
-  - if user_session.edit_job? @job
-    %p= "#{link_to 'Edit', edit_job_path(@job)} for another #{user_session.editing_time_remaining(@job)} minutes"

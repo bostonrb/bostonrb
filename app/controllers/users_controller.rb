@@ -1,4 +1,7 @@
 class UsersController < Clearance::UsersController
+
+  before_filter :forbid_editing_user_other_than_current_user,
+    :only => [:edit, :update]
   skip_before_filter :authenticate, :only => [:new, :create]
 
   def edit
@@ -14,5 +17,12 @@ class UsersController < Clearance::UsersController
       render :action => :edit
     end
   end
+
+  def forbid_editing_user_other_than_current_user
+    unless User.find(params[:id]) == current_user
+      raise ActionController::Forbidden, "not current user"
+    end
+  end
+
 end
 

@@ -9,6 +9,10 @@ class Event < ActiveRecord::Base
   before_save      :geocode_location
   acts_as_mappable :default_units => :miles
 
+  def to_s
+    title
+  end
+
   def lat_lng_pair
     [lat, lng]
   end

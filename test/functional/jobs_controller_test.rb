@@ -2,24 +2,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class JobsControllerTest < ActionController::TestCase
 
-  %w(html rss).each do |format|
-    context "A GET to index #{format}" do
-      setup do
-        Factory(:job)
-        get :index, :format => format
-      end
-
-      should "recognize route" do
-        assert_recognizes({ :controller => 'jobs', :action => 'index' },
-                            :path => '/jobs', :method => :get)
-      end
-      
-      should_respond_with :success
-      should_assign_to :jobs
-      should_assign_to :old_job_count
-    end
-  end
-
   context 'on GET to /jobs/new when signed in' do
     setup do
       sign_in
@@ -31,9 +13,9 @@ class JobsControllerTest < ActionController::TestCase
                           :path => '/jobs/new', :method => :get)
     end
 
-    should_assign_to :job
-    should_respond_with :success
+    should_assign_to       :job
     should_render_template :new
+    should_respond_with    :success
 
     should 'have new_event form' do
       assert_select 'form[id=new_job]' do
@@ -58,7 +40,7 @@ class JobsControllerTest < ActionController::TestCase
       assert_equal @old_count + 1, Job.count
     end
 
-    should_redirect_to("jobs index") { jobs_url }
+    should_redirect_to("home") { root_path }
   end
 
   context 'on PUT to /jobs/:id when signed in' do
@@ -77,7 +59,7 @@ class JobsControllerTest < ActionController::TestCase
       assert @job.title != Job.find_by_id(@job.id).title
     end
 
-    should_redirect_to("jobs index") { jobs_url }
+    should_redirect_to("job page") { job_path(@job) }
   end
 
   context 'A GET to /jobs/:id without editing privileges' do
@@ -105,7 +87,7 @@ class JobsControllerTest < ActionController::TestCase
     should_respond_with :success
     should_render_template :show
 
-    should 'show Edit link' do  
+    should 'show Edit link' do
       assert_select "a[href=?]", edit_job_path(@job), "Edit"
     end
   end
@@ -142,7 +124,7 @@ class JobsControllerTest < ActionController::TestCase
     end
 
     should_set_the_flash_to 'Editing time expired.'
-    should_redirect_to("jobs index") { jobs_url }
+    should_redirect_to("home") { root_path }
   end
 
   context 'A DELETE to /jobs/:id when signed in' do
@@ -166,7 +148,7 @@ class JobsControllerTest < ActionController::TestCase
       assert_match /deleted/i, flash[:notice]
     end
 
-    should_redirect_to("jobs index") { jobs_url }
+    should_redirect_to("home") { root_path }
   end
 
   protected

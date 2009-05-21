@@ -3,10 +3,10 @@
   %head
     %title Boston.rb
     = stylesheet_link_tag 'screen', 'under_construction', :media => 'screen'
-    = auto_discovery_link_tag :rss, '/jobs.rss', :title => 'Jobs feed'
   %body
     .grid_960.middle
       = render :partial => '/shared/header'
       = partial 'shared/flashes'
       = yield
+      = partial 'shared/footer'
     = render :partial => '/shared/javascripts'

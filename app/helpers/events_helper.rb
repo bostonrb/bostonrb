@@ -13,8 +13,4 @@ module EventsHelper
     end
   end
 
-  def event_links(events)
-    events.collect { |event| link_to event.title, event_path(event) }
-  end
-
 end

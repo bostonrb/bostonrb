@@ -1,6 +1,11 @@
-%h2 New presentation
-= error_messages_for :presentation
+#new
+  .ribbon
+    .row
+      %h2 New presentation
+      = error_messages_for :presentation
 
-- form_for @presentation do |form|
-  = partial 'presentations/form', :form => form
-  = form.submit 'Create', :disable_with => 'Please wait...'
+      - form_for @presentation do |form|
+        .fieldset
+          = partial 'presentations/form', :form => form
+        .buttons
+          = form.submit 'Create', :disable_with => 'Please wait...'

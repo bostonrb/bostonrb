@@ -13,6 +13,10 @@ class ProjectsController < ApplicationController
     @project = Project.find params[:id]
   end
 
+  def show
+    @project = Project.find params[:id]
+  end
+
   def create
     @project = Project.new params[:project]
 

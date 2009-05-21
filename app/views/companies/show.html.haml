@@ -1,4 +1,8 @@
-%h2= @company.name
-
-%p= link_to @company.website_url, @company.website_url
+#show
+  .ribbon
+    .row
+      .crud
+        %p= link_to 'Edit', edit_company_path(@company)
+      %h2= @company.name
+      %p= link_to @company.website_url, @company.website_url
 
