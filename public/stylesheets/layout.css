@@ -89,7 +89,6 @@ body {
 #other_events h3, #apps h3, #companies h3, #twitter_blogs h3, #about h3 {
   color: #C30;
 }
-
 #other_events p, #apps p, #companies p {
   margin: 0;
 }
@@ -120,12 +119,15 @@ body {
 #projects,
 #people,
 #presentations,
-#jobs,
-#new, #show, #edit {
+#jobs {
   background: #000919;
 }
 
-#events, #new, #show, #edit {
+#new,
+#edit
+#show,
+#events,
+#sponsors {
   background: #000919 url(../images/ribbon.gif) 50% 100% repeat-x;
 }
 
