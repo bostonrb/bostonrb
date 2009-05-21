@@ -1,5 +1,6 @@
 class Presentation < ActiveRecord::Base
 
+  has_markup :description, :cache_html => true
   belongs_to :user
 
   def to_s
@@ -17,6 +18,9 @@ class Presentation < ActiveRecord::Base
   def self.latest
     first :order => 'updated_at desc'
   end
-  named_scope :all_except_latest, { :order => 'updated_at desc', :offset => 1 }
+
+  def presenter
+    user.twitter || other_speakers
+  end
 
 end

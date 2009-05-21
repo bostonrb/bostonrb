@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090521075701) do
+ActiveRecord::Schema.define(:version => 20090521222809) do
 
   create_table "companies", :force => true do |t|
     t.string   "name",        :null => false
@@ -54,10 +54,11 @@ ActiveRecord::Schema.define(:version => 20090521075701) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
-    t.string   "description"
+    t.text     "description"
     t.integer  "user_id"
-    t.string   "other_speakers", :default => ""
+    t.string   "other_speakers",          :default => ""
     t.string   "location"
+    t.text     "cached_description_html"
   end
 
   add_index "presentations", ["user_id"], :name => "index_presentations_on_user_id"
