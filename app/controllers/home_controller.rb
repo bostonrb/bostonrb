@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @users            = User.all
+    @users            = User.ordered("updated_at desc")
     @recurring_events = Event.next(4).recurring
     @special_events   = Event.next(5).special
     @recent_jobs      = Job.ordered.limited(5)
