@@ -89,13 +89,19 @@ body {
 #other_events h3, #apps h3, #companies h3, #twitter_blogs h3, #about h3 {
   color: #C30;
 }
+
 #other_events p, #apps p, #companies p {
   margin: 0;
 }
 
 .collage {
+  height: 16em;
   background: #123;
-  height: 16.8em;
+}
+
+.collage img {
+  float: left;
+  display: block;
 }
 
 #boston_rb {
