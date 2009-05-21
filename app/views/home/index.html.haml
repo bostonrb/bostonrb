@@ -44,22 +44,19 @@
         %li= post_title_and_blog_name
         %li= post_title_and_blog_name
 
-#projects
+#projects.pending
   .row
     .crud
       %p= link_to 'New project', new_project_path
     %h2 Open Source Projects
     - if @featured_project
-      .half.pending>
+      .half>
         %h3= link_to @featured_project.name, @featured_project.homepage_url
         %p= @featured_project.cached_description_html
-      .half.pending>
-        %ul
-          %li= project_link
-          %li= project_link
-          %li= project_link
-          %li= project_link
-          %li= project_link
+    .half>
+      %ul
+        - @recent_projects.each do |project|
+          %li= project_link(project)
 
 #apps.row.pending
   %h3.center Apps

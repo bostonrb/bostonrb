@@ -2,24 +2,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class JobsControllerTest < ActionController::TestCase
 
-  %w(html rss).each do |format|
-    context "A GET to index #{format}" do
-      setup do
-        Factory(:job)
-        get :index, :format => format
-      end
-
-      should "recognize route" do
-        assert_recognizes({ :controller => 'jobs', :action => 'index' },
-                            :path => '/jobs', :method => :get)
-      end
-      
-      should_respond_with :success
-      should_assign_to :jobs
-      should_assign_to :old_job_count
-    end
-  end
-
   context 'on GET to /jobs/new when signed in' do
     setup do
       sign_in
