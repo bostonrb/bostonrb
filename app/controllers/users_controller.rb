@@ -4,7 +4,6 @@ class UsersController < Clearance::UsersController
     :only => [:edit, :update]
   skip_before_filter :authenticate, :only => [:new, :create]
 
-
   def edit
     @user = User.find(params[:id])
   end
