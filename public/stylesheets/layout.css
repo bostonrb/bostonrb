@@ -124,16 +124,17 @@ body {
 }
 
 #new,
-#edit
+#edit,
 #show,
 #events,
 #sponsors {
   background: #000919 url(../images/ribbon.gif) 50% 100% repeat-x;
+  padding: 0 0 2.1em 0;
 }
 
 .ribbon {
   background: #000919 url(../images/ribbon_i.gif) 50% 0% repeat-x;
-  padding: 2.1em 0;
+  padding: 2.1em 0 0 0;
 }
 
 #projects {
@@ -242,6 +243,9 @@ body {
 	padding: .75em;
 }
 
+#footer {
+  padding-top: 2em;
+}
 
 #footer ul {
 	text-align: center;
