@@ -241,3 +241,18 @@ body {
 #boston_rb p.authentication a {
 	padding: .75em;
 }
+
+
+#footer ul {
+	text-align: center;
+  list-style-type: none;
+}
+
+#footer ul li.engineyard a {
+  width: 82px;
+  height: 38px;
+  text-indent: -9999px;
+  display: inline-block;
+  text-decoration: none;
+  background: url(/images/engineyard.png) 0 0 no-repeat;
+}
