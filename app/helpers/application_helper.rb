@@ -1,9 +1,9 @@
 module ApplicationHelper
 
   def tab_link_attributes(name)
-    attributes = {}
-    attributes[:class] = 'current' if controller.controller_name == name
-    attributes
+    returning({}) do |attrs|
+      attrs.merge!({:class => 'current'}) if controller.controller_name == name
+    end
   end
 
   def sentence_of(things, opts = {})
