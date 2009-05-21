@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090521070534) do
+ActiveRecord::Schema.define(:version => 20090521075701) do
 
   create_table "companies", :force => true do |t|
     t.string   "name",        :null => false
@@ -53,10 +53,14 @@ ActiveRecord::Schema.define(:version => 20090521070534) do
     t.text     "embed"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "presenter"
-    t.string   "source"
     t.datetime "deleted_at"
+    t.string   "description"
+    t.integer  "user_id"
+    t.string   "other_speakers", :default => ""
+    t.string   "location"
   end
+
+  add_index "presentations", ["user_id"], :name => "index_presentations_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"

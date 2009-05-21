@@ -1,5 +1,17 @@
 class Presentation < ActiveRecord::Base
 
-  named_scope :all, :order => 'updated_at desc'
+  belongs_to :user
+
+  def to_s
+    title
+  end
+
+  def self.featured
+    first :order => "rand()"
+  end
+
+  def presenter
+    user || other_speakers
+  end
 
 end

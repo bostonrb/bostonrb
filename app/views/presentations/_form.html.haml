@@ -1,12 +1,12 @@
-%dl
-  %dt Title
-  %dd= form.text_field :title, :size => 100
+%div
+  = form.label :title
+  %div= form.text_field :title
 
-  %dt Presenter
-  %dd= form.text_field :presenter, :size => 100
+%div
+  = form.label :other_speakers
+  %div= form.text_field :other_speakers
 
-  %dt Source (like a meeting with date)
-  %dd= form.text_field :source, :title => 100
+%div
+  = form.label :url
+  %div= form.text_field :url
 
-  %dt URL (currently only works with Google Video)
-  %dd= form.text_field :url, :size => 100

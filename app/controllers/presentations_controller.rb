@@ -1,8 +1,4 @@
 class PresentationsController < ApplicationController
-  def index
-    @presentations = Presentation.all
-  end
-
   def show
     @presentation = Presentation.find params[:id]
   end
@@ -19,8 +15,8 @@ class PresentationsController < ApplicationController
     @presentation = Presentation.new params[:presentation]
 
     if @presentation.save
-      flash[:notice] = 'Presentation was successfully created.'
-      redirect_to presentations_url
+      flash[:success] = 'Presentation created.'
+      redirect_to root_path
     else
       render :action => "new"
     end
@@ -30,8 +26,8 @@ class PresentationsController < ApplicationController
     @presentation = Presentation.find params[:id]
 
     if @presentation.update_attributes(params[:presentation])
-      flash[:notice] = 'Presentation was successfully updated.'
-      redirect_to presentations_url
+      flash[:success] = 'Presentation updated.'
+      redirect_to presentation_path(@presentation)
     else
       render :action => "edit"
     end
@@ -41,7 +37,7 @@ class PresentationsController < ApplicationController
     @presentation = Presentation.find params[:id]
     @presentation.destroy
 
-    flash[:notice] = 'Presentation was successfully deleted.'
-    redirect_to presentations_url
+    flash[:success] = 'Presentation deleted.'
+    redirect_to root_path
   end
 end

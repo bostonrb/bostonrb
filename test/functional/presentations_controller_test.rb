@@ -17,22 +17,15 @@ class PresentationsControllerTest < ActionController::TestCase
   should_route :delete, '/presentations/1',
     :controller => 'presentations', :action => 'destroy', :id => '1'
 
-  context 'on GET to index' do
-    setup { get :index }
-
-    should_respond_with :success
-    should_assign_to :presentations
-  end
-
   context 'on GET to new when signed in' do
     setup do
       sign_in
       get :new
     end
 
-    should_assign_to :presentation
-    should_respond_with :success
+    should_assign_to       :presentation
     should_render_template :new
+    should_respond_with    :success
 
     should 'have a form to create a new Presentation' do
       assert_select 'form[id=new_presentation][action=/presentations]' do
@@ -52,7 +45,7 @@ class PresentationsControllerTest < ActionController::TestCase
       assert_equal @old_count + 1, Presentation.count
     end
 
-    should_redirect_to("presentations index") { presentations_path }
+    should_redirect_to("home page") { root_path }
   end
 
   context 'on GET to #edit when signed in' do
@@ -62,8 +55,9 @@ class PresentationsControllerTest < ActionController::TestCase
       get :edit, :id => @presentation.to_param
     end
 
-    should_respond_with :success
+    should_assign_to       :presentation
     should_render_template :edit
+    should_respond_with    :success
 
     should 'have a form to create a new Presentation' do
       assert_select "form[id=edit_presentation_#{@presentation.to_param}][action=/presentations/#{@presentation.to_param}]" do
@@ -83,7 +77,7 @@ class PresentationsControllerTest < ActionController::TestCase
       assert_not_equal @presentation.title, Presentation.find_by_id(@presentation.id).title
     end
 
-    should_redirect_to("presentations index") { presentations_path }
+    should_redirect_to("presentation page") { presentation_path(@presentation) }
   end
 
   context 'on DELETE to /presentations/:id when signed in' do
@@ -98,11 +92,8 @@ class PresentationsControllerTest < ActionController::TestCase
       assert_equal @old_count - 1, Presentation.count
     end
 
-    should 'show flash notice' do
-      assert_equal 'Presentation was successfully deleted.', flash[:notice]
-    end
-
-    should_redirect_to("presentations index") { presentations_path }
+    should_set_the_flash_to /deleted/
+    should_redirect_to("home page") { root_path }
   end
 
   protected
