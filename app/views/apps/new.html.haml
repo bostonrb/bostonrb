@@ -1,0 +1,10 @@
+#apps
+  .ribbon
+    .row
+      %h2 New App
+      = error_messages_for :app
+
+      - form_for(@app) do |form|
+        = partial 'apps/form', :form => form
+          
+        = form.submit 'Create', :disable_with => 'Please wait...'

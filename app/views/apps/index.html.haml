@@ -1,0 +1,10 @@
+#apps
+  .ribbon
+    .row
+      %h2 Apps
+      %p Here are some of the apps that Boston Rubyists have created
+      %p= link_to 'Add a new app', new_app_path
+
+    - @apps.each do |app|
+      = partial 'apps/show', :app => app
+
