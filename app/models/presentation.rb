@@ -20,7 +20,7 @@ class Presentation < ActiveRecord::Base
   end
 
   def presenter
-    user.twitter || other_speakers
+    user || other_speakers
   end
 
 end
