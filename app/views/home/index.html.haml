@@ -84,6 +84,8 @@
 
 #presentations.pending
   .row
+    .crud
+      %p= link_to 'New Presentation', new_presentation_path
     %h2 Presentations
     .half>
       %h3= link_to @latest_presentation.title, @latest_presentation.url
