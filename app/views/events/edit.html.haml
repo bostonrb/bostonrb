@@ -1,10 +1,13 @@
 #edit
   .ribbon
     .row
+      .crud
+        %p= link_to 'Delete', event_path(@event), :method => :delete, :confirm => 'Are you sure?'
       %h2 Edit event
       = error_messages_for :event
-      
+
       - form_for(@event) do |form|
-        = partial '/events/fields', :form => form
-        %p= "#{form.submit 'Update', :disable_with => 'Please wait...'}"
-        %p= link_to 'Delete', event_path(@event), :method => :delete, :confirm => 'Are you sure?'
+        .fieldset
+          = partial '/events/fields', :form => form
+          .buttons
+            = form.submit 'Update', :disable_with => 'Please wait...'
