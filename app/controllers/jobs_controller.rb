@@ -2,16 +2,6 @@ class JobsController < ApplicationController
 
   before_filter :authorize, :only => [:edit]
 
-  def index
-    @jobs = Job.recent
-    @old_job_count = Job.old.count
-
-    respond_to do |format|
-      format.html
-      format.rss  { render :template => '/jobs/index' }
-    end
-  end
-
   def show
     @job = Job.find params[:id]
   end

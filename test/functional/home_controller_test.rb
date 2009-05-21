@@ -5,7 +5,7 @@ class HomeControllerTest < ActionController::TestCase
     setup do
       @user = Factory.build(:user)
       @users = [@user]
-      User.stubs(:all).returns(@users)
+      User.stubs(:limited).returns(@users)
 
       @recurring_events = [Factory.build(:recurring_event, :id => 1)]
       Event.stub_chain(:next, :recurring).returns(@recurring_events)
@@ -14,10 +14,13 @@ class HomeControllerTest < ActionController::TestCase
       Event.stub_chain(:next, :special).returns(@special_events)
 
       @recent_jobs = [Factory.build(:job, :id => 3)]
-      Job.stubs(:recent).returns(@recent_jobs)
+      Job.stub_chain(:ordered, :limited).returns(@recent_jobs)
 
       @featured_project = Factory.build(:project)
       Project.stubs(:featured).returns(@featured_project)
+
+      @recent_projects = [Factory.build(:project)]
+      Project.stub_chain(:ordered, :limited).returns(@recent_projects)
 
       get :index
     end
@@ -26,7 +29,7 @@ class HomeControllerTest < ActionController::TestCase
     should_render_template :index
 
     should "fetch users" do
-      assert_received(User, :all)
+      assert_received(User, :limited) {|expect| expect.with(24) }
     end
 
     should "fetch 4 recurring events" do
@@ -39,19 +42,26 @@ class HomeControllerTest < ActionController::TestCase
       assert_received(Event, :special)
     end
 
-    should "fetch jobs" do
-      assert_received(Job, :recent)
+    should "fetch 5 recent jobs" do
+      assert_received(Job, :limited) {|expect| expect.with(5) }
+      assert_received(Job, :ordered)
     end
 
     should "fetch featured project" do
       assert_received(Project, :featured)
     end
 
+    should "fetch 5 recent projects" do
+      assert_received(Project, :limited) {|expect| expect.with(5) }
+      assert_received(Project, :ordered)
+    end
+
     should_assign_to(:users) { @users }
     should_assign_to(:recurring_events) { @recurring_events }
-    should_assign_to(:special_events) { @special_events }
-    should_assign_to(:recent_jobs) { @recent_jobs }
+    should_assign_to(:special_events)   { @special_events }
+    should_assign_to(:recent_jobs)      { @recent_jobs }
     should_assign_to(:featured_project) { @featured_project }
+    should_assign_to(:recent_projects)  { @recent_projects }
   end
 
   context "given a future recurring event on GET to index" do

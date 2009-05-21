@@ -53,11 +53,10 @@
       .half>
         %h3= link_to @featured_project.name, @featured_project.homepage_url
         %p= @featured_project.cached_description_html
-    - unless @projects.empty?
-      .half>
-        %ul
-          - @projects.each do |project|
-            %li= project_link(project)
+    .half>
+      %ul
+        - @recent_projects.each do |project|
+          %li= project_link(project)
 
 #apps.row.pending
   %h3.center Apps
