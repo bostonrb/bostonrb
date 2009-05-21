@@ -5,8 +5,6 @@
       %p Here are some of the apps that Boston Rubyists have created
       %p= link_to 'Add a new app', new_app_path
 
-    - @left_apps.each do |app|
+    - @apps.each do |app|
       = partial 'apps/show', :app => app
 
-    - @right_apps.each do |app|
-      = partial 'apps/show', :app => app
