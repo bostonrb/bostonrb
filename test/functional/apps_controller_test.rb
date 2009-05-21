@@ -2,31 +2,15 @@ require 'test_helper'
 
 class AppsControllerTest < ActionController::TestCase
 
-  context 'A GET to index' do
-    setup do
-      get :index
-    end
-
-    should 'recognize route' do
-      assert_recognizes({ :controller => 'apps', :action => 'index' },
-                          :path       => '/apps',        :method => :get)
-    end
-
-    should_respond_with :success
-    should_assign_to :apps
-    should_assign_to :left_apps
-    should_assign_to :right_apps
-  end
-
   context 'on GET to #new when signed in' do
     setup do
       sign_in
       get :new
     end
 
-    should_assign_to :app
-    should_respond_with :success
+    should_assign_to       :app
     should_render_template :new
+    should_respond_with    :success
 
     should 'have a form to create a new App' do
       assert_select 'form[id=new_app][action=/apps]' do
@@ -51,7 +35,8 @@ class AppsControllerTest < ActionController::TestCase
       assert_equal @old_count + 1, App.count
     end
 
-    should_redirect_to("apps index") { apps_path }
+    should_set_the_flash_to /created/i
+    should_redirect_to("home") { root_path }
   end
 
   context 'on GET to /apps/:id/edit when signed in' do
@@ -92,7 +77,7 @@ class AppsControllerTest < ActionController::TestCase
       assert_not_equal @app.name, App.find_by_id(@app.to_param).name
     end
 
-    should_redirect_to("apps index") { apps_path }
+    should_redirect_to("app") { app_path(@app) }
   end
 
   context 'on DELETE to #destroy when signed in' do
@@ -112,11 +97,8 @@ class AppsControllerTest < ActionController::TestCase
       assert_equal @old_count - 1, App.count
     end
 
-    should 'show flash notice' do
-      assert_equal 'App was successfully deleted.', flash[:notice]
-    end
-
-    should_redirect_to("apps index") { apps_path }
+    should_set_the_flash_to /deleted/i
+    should_redirect_to("home") { root_path }
   end
 
   protected

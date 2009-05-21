@@ -17,8 +17,8 @@ class AppsController < ApplicationController
     @app = App.new params[:app]
 
     if @app.save
-      flash[:notice] = 'App was successfully created.'
-      redirect_to apps_url
+      flash[:success] = 'App created.'
+      redirect_to root_path
     else
       render :action => 'new'
     end
@@ -28,8 +28,8 @@ class AppsController < ApplicationController
     @app = App.find params[:id]
 
     if @app.update_attributes(params[:app])
-      flash[:notice] = 'App was successfully updated.'
-      redirect_to apps_url
+      flash[:sucess] = 'App updated.'
+      redirect_to app_path(@app)
     else
       render :action => 'edit'
     end
@@ -39,8 +39,8 @@ class AppsController < ApplicationController
     @app = App.find(params[:id])
     @app.destroy
 
-    flash[:notice] = 'App was successfully deleted.'
-    redirect_to apps_url
+    flash[:success] = 'App deleted.'
+    redirect_to root_path
   end
 
 end

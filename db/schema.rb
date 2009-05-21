@@ -11,6 +11,13 @@
 
 ActiveRecord::Schema.define(:version => 20090521222809) do
 
+  create_table "apps", :force => true do |t|
+    t.string   "name"
+    t.string   "homepage_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "companies", :force => true do |t|
     t.string   "name",        :null => false
     t.string   "website_url"
