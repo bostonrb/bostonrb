@@ -1,9 +1,19 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  should_validate_presence_of :date, :title, :location
 
-  should_have_markup :description, :required => true, :cache_html => true
+  context "an event" do
+    setup do
+      @event = Factory(:event, :title => "Hackfest")
+    end
+
+    should_validate_presence_of :date, :title, :location
+    should_have_markup :description, :required => true, :cache_html => true
+
+    should "display title as string representation" do
+      assert_equal "Hackfest", @event.to_s
+    end
+  end
 
   context 'with events in the past and future' do
     setup do
