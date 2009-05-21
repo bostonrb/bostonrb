@@ -1,10 +1,5 @@
 class AppsController < ApplicationController
 
-  def index
-    @apps = App.all
-    @left_apps, @right_apps = @apps.halve
-  end
-
   def new
     @app = App.new
   end
