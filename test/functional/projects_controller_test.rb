@@ -125,7 +125,7 @@ class ProjectsControllerTest < ActionController::TestCase
       get :show, :id => @event.to_param
     end
 
-    should_assign_to       :event
+    should_assign_to       :project
     should_render_template :show
     should_respond_with    :success
   end
