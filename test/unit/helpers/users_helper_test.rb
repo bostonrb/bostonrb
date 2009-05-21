@@ -12,5 +12,19 @@ class UsersHelperTest < ActionView::TestCase
       assert_equal expected, @collage
     end
   end
+
+  context "collage_div_attributes" do
+    should "include the an id based on the index" do
+      assert_equal "collage_group_1", collage_div_attributes(1)[:id]
+    end
+
+    should "not specify a class for the first index" do
+      assert_nil collage_div_attributes(0)[:class]
+    end
+
+    should "include a hidden class for other indexes" do
+      assert_equal "hidden", collage_div_attributes(1)[:class]
+    end
+  end
 end
 

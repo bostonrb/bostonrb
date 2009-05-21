@@ -10,5 +10,7 @@ jQuery(document).ready(function($) {
 
   $(document).bind('keydown', 'd', toggleDisplayOfPendingElements);
   $(document).bind('keydown', 'o', toggleOverlayOfPendingElements);
+
+  $('#people .collage').cycle('scrollDown');
   
 });

@@ -5,7 +5,7 @@ class HomeControllerTest < ActionController::TestCase
     setup do
       @user = Factory.build(:user)
       @users = [@user]
-      User.stubs(:limited).returns(@users)
+      User.stubs(:all).returns(@users)
 
       @recurring_events = [Factory.build(:recurring_event, :id => 1)]
       Event.stub_chain(:next, :recurring).returns(@recurring_events)
@@ -32,7 +32,7 @@ class HomeControllerTest < ActionController::TestCase
     should_render_template :index
 
     should "fetch users" do
-      assert_received(User, :limited) {|expect| expect.with(24) }
+      assert_received(User, :all)
     end
 
     should "fetch 4 recurring events" do
