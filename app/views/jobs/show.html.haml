@@ -6,17 +6,17 @@
           %p== #{link_to 'Edit', edit_job_path(@job)} for another #{user_session.editing_time_remaining(@job)} minutes
       %h2== #{@job.title} at #{@job.organization}
 
-- unless @job.email.blank?
-  %ul.details
-    %li.clearfix
-      .detail= @job.email
-      .label Apply
+      - unless @job.email.blank?
+        %ul.details
+          %li.clearfix
+            .detail= @job.email
+            .label Apply
 
-  %li.clearfix
-    .detail= @job.location
-    .label Where
+        %li.clearfix
+          .detail= @job.location
+          .label Where
 
-  %li.clearfix.last
-    .detail= @job.cached_description_html
-    .label What
+        %li.clearfix.last
+          .detail= @job.cached_description_html
+          .label What
 
