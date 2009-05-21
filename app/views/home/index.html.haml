@@ -55,8 +55,8 @@
         %p= @featured_project.cached_description_html
     .half>
       %ul
-        - @recent_projects.each do |project|
-          %li= project_link(project)
+        - link_to_each(@recent_projects).each do |link|
+          %li= link
 
 #apps.row.pending
   %h3.center Apps
@@ -79,7 +79,7 @@
 #companies.row.pending
   %h3.center Companies
   %p.center
-    = sentence_of(company_links)
+    = sentence_of link_to_each(@recent_companies)
 
 #presentations.pending
   .row

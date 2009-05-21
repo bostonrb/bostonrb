@@ -22,6 +22,9 @@ class HomeControllerTest < ActionController::TestCase
       @recent_projects = [Factory.build(:project)]
       Project.stub_chain(:ordered, :limited).returns(@recent_projects)
 
+      @recent_companies = [Factory.build(:company)]
+      Company.stub_chain(:ordered, :limited).returns(@recent_companies)
+
       get :index
     end
 
@@ -56,12 +59,18 @@ class HomeControllerTest < ActionController::TestCase
       assert_received(Project, :ordered)
     end
 
+    should "fetch 5 recent companies" do
+      assert_received(Company, :limited) {|expect| expect.with(5) }
+      assert_received(Company, :ordered)
+    end
+
     should_assign_to(:users) { @users }
     should_assign_to(:recurring_events) { @recurring_events }
     should_assign_to(:special_events)   { @special_events }
     should_assign_to(:recent_jobs)      { @recent_jobs }
     should_assign_to(:featured_project) { @featured_project }
     should_assign_to(:recent_projects)  { @recent_projects }
+    should_assign_to(:recent_companies) { @recent_companies }
   end
 
   context "given a future recurring event on GET to index" do

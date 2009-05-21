@@ -8,6 +8,7 @@ class HomeController < ApplicationController
     @recent_tweets    = Tweet.recent(5)
     @featured_project = Project.featured
     @recent_projects  = Project.ordered.limited(5)
+    @recent_companies = Company.ordered.limited(5)
   end
 
 end
