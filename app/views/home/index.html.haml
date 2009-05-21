@@ -14,7 +14,7 @@
       %h2 Recurring Events
       - @recurring_events.each do |event|
         .quarter>
-          %h3= link_to event.title, event
+          %h3= link_to h(event.title), event
           %p= event.cached_description_html
 
 #other_events.row
