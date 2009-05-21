@@ -119,6 +119,17 @@ class ProjectsControllerTest < ActionController::TestCase
     should_redirect_to("home") { root_path }
   end
 
+  context 'on GET to :show' do
+    setup do
+      @event = Factory(:project)
+      get :show, :id => @event.to_param
+    end
+
+    should_assign_to       :event
+    should_render_template :show
+    should_respond_with    :success
+  end
+
   protected
 
   def should_have_project_form_fields
