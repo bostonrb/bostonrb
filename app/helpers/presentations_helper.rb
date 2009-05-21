@@ -1,9 +1,7 @@
 module PresentationsHelper
 
-  def presentation_links
-    presentations = ["Agile Design", "Advanced Active Record",
-                     "Git", "Rails/Merb Merge"]
-    presentations.collect { |presentation| link_to(presentation, "#") }
+  def presentation_links(presentations)
+    presentations.collect { |p| link_to(p.title, p.url) }
   end
 
 end

@@ -86,11 +86,12 @@
   .row
     %h2 Presentations
     .half>
-      %h3 Agile Design
-      %p Dan Pickett talks about lorem ipsum dolor sit amet.
+      %h3= link_to @latest_presentation.title, @latest_presentation.url
+      %p= 'By ' + @latest_presentation.presenter
+      %p= @latest_presentation.description
     .half>
       %ul
-        - presentation_links.each do |each|
+        - presentation_links(@presentations).each do |each|
           %li= each
 
 = render :partial => '/shared/about'
