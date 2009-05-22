@@ -6,12 +6,15 @@ It is open source under the MIT license. Fork away, modify to your own user grou
 
 h2. Dependencies
 
-All gems are vendored except for Nokogiri & JSON, which have native extensions, & Cucumber, which doesn't respect vendoring.
+All gems are vendored except for Nokogiri, JSON, RedCloth, and Feedzirra, which have native extensions, & Cucumber, which doesn't respect vendoring.
 
 Install:
 
-    Cucumber 0.3.5
-    JSON     1.1.6
+    cucumber 		0.3.5
+    json     		1.1.6
+    pauldix-feedzirra 	0.0.12
+    RedCloth 		4.1.0
+    
 
 h2. Tests
 
@@ -19,9 +22,37 @@ We use Cucumber & Webrat for acceptance testing and Shoulda, Factory Girl, & Moc
 
 h2. Production
 
+"EngineYard":http://engineyard.com is awesome enough to provide us with hosting.
+
+h3. Dependencies
+
+The gems with native dependencies as mentioned above need to be installed on the production machine. Typically you do:
+
+    sudo gem install whatever-gem --no-ri --no-rdoc
+
+Since we use some gems that are only on github (ie feedzirra), this needs to be run at least once:
+
+    gem sources -a http://gems.github.com
+
+h3. Cron
+
+The following rake tasks need to be configured to keep data fresh:
+
+    rake RAILS_ENV=production get_tweets
+    rake RAILS_ENV=production get_blogs
+
+For our EY deployment, there's a custom wrapper to handle logging output at  /engineyard/custom/cron_wrapper, which among other things, adds logging to /data/bostonrb/current/logs. It takes four arguments: the application to run for (always will be bostonrb), the name of the log file, the rails environment, and lastly the command to run
+
+The current crontab entries look like:
+
+    */5 * * * * /engineyard/custom/cron_wrapper bostonrb get_tweets production 'rake get_tweets'
+    */5 * * * * /engineyard/custom/cron_wrapper bostonrb get_blogs production 'rake get_blogs'
+
+h3. Deployers
+
+Josh Nichols and Dan Croak have access to the production slice.
 This must be added to cron:
 
-    PATH_TO_APP/script/runner Cron.get_tweets
 
 h2. Contributors
 
