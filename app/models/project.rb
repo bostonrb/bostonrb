@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.featured
-    first :order => "rand()"
+    self.random
   end
 
   named_scope :all_except, lambda { |project|

@@ -5,6 +5,6 @@ class App < ActiveRecord::Base
   validates_url_format_of :homepage_url, :message => "is invalid"
 
   def self.featured
-    first :order => "rand()"
+    self.random
   end
 end

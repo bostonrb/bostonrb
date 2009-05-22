@@ -8,7 +8,7 @@ class Presentation < ActiveRecord::Base
   end
 
   def self.featured
-    first :order => "rand()"
+    self.random
   end
 
   def presenter
