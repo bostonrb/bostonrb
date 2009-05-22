@@ -37,7 +37,13 @@ class User < ActiveRecord::Base
   private
 
     def cleanout_twitter
-      twitter.gsub!(/^@/, '') if twitter
+      if self.twitter
+        twitter.gsub!(/^@/, '')
+        if twitter =~ /^(https?:\/\/)?(www\.)?twitter\.com\/(\w+)$/
+          self.twitter = $3
+        end
+        #twitter.gsub!(/^(https?:\/\/)?(www\.)?twitter\.com\/(\w+)$/, $3)
+      end
     end
 
 end
