@@ -1,44 +1,42 @@
 --- !ruby/object:Gem::Specification 
-name: feed-normalizer
+name: gravtastic
 version: !ruby/object:Gem::Version 
-  version: 1.4.0
+  version: 2.1.0
 platform: ruby
-authors: []
-
+authors: 
+- Chris Lloyd
 autorequire: 
 bindir: bin
 cert_chain: []
 
-date: 2009-05-02 00:00:00 -04:00
+date: 2008-08-29 00:00:00 -04:00
 default_executable: 
 dependencies: []
 
-description: 
-email: 
+description: Easily add Gravatars to your Ruby objects.
+email: christopher.lloyd@gmail.com
 executables: []
 
 extensions: []
 
-extra_rdoc_files: []
-
+extra_rdoc_files: 
+- README.textile
+- LICENSE
 files: 
-- lib
-- lib/feed-normalizer.rb
-- lib/html-cleaner.rb
-- lib/parsers
-- lib/structures.rb
-has_rdoc: false
-homepage: 
+- LICENSE
+- README.textile
+- Rakefile
+- lib/gravtastic.rb
+- spec/gravtastic_integration_spec.rb
+- spec/gravtastic_spec.rb
+- spec/spec.opts
+- spec/spec_helper.rb
+has_rdoc: true
+homepage: http://github.com/chrislloyd/gravtastic
 post_install_message: 
 rdoc_options: []
 
 require_paths: 
-- bin
-- bin
-- bin
-- bin
-- bin
-- bin
 - lib
 required_ruby_version: !ruby/object:Gem::Requirement 
   requirements: 
@@ -54,10 +52,10 @@ required_rubygems_version: !ruby/object:Gem::Requirement
   version: 
 requirements: []
 
-rubyforge_project: 
+rubyforge_project: gravtastic
 rubygems_version: 1.3.1
 signing_key: 
 specification_version: 2
-summary: 
+summary: Easily add Gravatars to your Ruby objects.
 test_files: []
 

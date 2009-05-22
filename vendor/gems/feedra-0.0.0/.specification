@@ -1,67 +1,60 @@
 --- !ruby/object:Gem::Specification 
-name: yfactorial-utility_scopes
+name: feedra
 version: !ruby/object:Gem::Version 
-  version: 0.2.2
+  version: 0.0.0
 platform: ruby
 authors: 
-- Ryan Daigle
+- Josh Nichols
 autorequire: 
 bindir: bin
 cert_chain: []
 
-date: 2008-10-28 00:00:00 -04:00
+date: 2009-05-22 00:00:00 -04:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
-  name: activerecord
+  name: pauldix-feedzirra
   type: :runtime
   version_requirement: 
   version_requirements: !ruby/object:Gem::Requirement 
     requirements: 
     - - ">="
       - !ruby/object:Gem::Version 
-        version: 2.1.0
+        version: "0"
     version: 
-description: A collection of utilitarian named scopes providing common functionality for ActiveRecord models.
-email: ryan@yfactorial.com
+description: 
+email: josh@technicalpickles.com
 executables: []
 
 extensions: []
 
 extra_rdoc_files: 
-- README.textile
-- Rakefile
 - LICENSE
-- CHANGELOG
+- README.rdoc
 files: 
-- README.textile
-- Rakefile
+- .document
+- .gitignore
 - LICENSE
-- CHANGELOG
-- init.rb
-- lib
-- lib/utility_scopes
-- lib/utility_scopes.rb
-- lib/utility_scopes/eager.rb
-- lib/utility_scopes/except.rb
-- lib/utility_scopes/limited.rb
-- lib/utility_scopes/ordered.rb
-- spec
-- spec/abstract_spec.rb
-- spec/eager_spec.rb
-- spec/except_spec.rb
-- spec/limit_spec.rb
-- spec/ordered_spec.rb
+- README.rdoc
+- Rakefile
+- VERSION
+- feedra.gemspec
+- generators/feedra/feedra_generator.rb
+- generators/feedra/templates/entry.rb
+- generators/feedra/templates/feed.rb
+- generators/feedra/templates/feed_error.rb
+- generators/feedra/templates/migration.rb
+- lib/feedra.rb
+- lib/feedra/entry.rb
+- lib/feedra/extensions/feedzirra.rb
+- lib/feedra/feed.rb
+- spec/feedra_spec.rb
 - spec/spec_helper.rb
-- spec/fixtures
-- spec/fixtures/article.rb
+- spec/summifire_spec.rb
 has_rdoc: true
-homepage: http://github.com/yfactorial/utility_scopes
+homepage: http://github.com/technicalpickles/feedra
 post_install_message: 
 rdoc_options: 
-- --main
-- README.textile
-- --inline-source
 - --charset=UTF-8
 require_paths: 
 - lib
@@ -79,10 +72,12 @@ required_rubygems_version: !ruby/object:Gem::Requirement
   version: 
 requirements: []
 
-rubyforge_project: 
+rubyforge_project: pickles
 rubygems_version: 1.3.1
 signing_key: 
 specification_version: 2
-summary: A collection of utilitarian named scopes providing common functionality for ActiveRecord models
-test_files: []
-
+summary: Simple feed aggregation for Rails.
+test_files: 
+- spec/feedra_spec.rb
+- spec/spec_helper.rb
+- spec/summifire_spec.rb
