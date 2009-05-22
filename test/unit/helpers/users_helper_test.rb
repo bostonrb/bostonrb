@@ -2,14 +2,49 @@ require 'test_helper'
 
 class UsersHelperTest < ActionView::TestCase
   context "collage of users" do
-    setup do
-      @users   = [Factory.stub(:user, :gravatar_url => "http://p.ng")]
-      @collage = collage_of(@users)
-    end
+    context "when the user's to_s returns nil" do
+      setup do
+        @users   = [Factory.stub(:user, :gravatar_url => "http://p.ng")]
+        @users.first.stubs(:main_url).returns('http://foo.bar')
+        @users.first.stubs(:has_link?).returns(true)
+        @users.first.stubs(:to_s).returns(nil)
+        @collage = collage_of(@users)
+      end
 
-    should "be images based on gravatar URLs of users" do
-      expected = [image_tag("http://p.ng")]
-      assert_equal expected, @collage
+      should "be images, without title, based on gravatar URLs of users" do
+        expected = [link_to( image_tag("http://p.ng"), 'http://foo.bar' )]
+        assert_equal expected, @collage
+      end
+
+    end
+    context "when the user doesn't have a main_url" do
+      setup do
+        @users   = [Factory.stub(:user, :gravatar_url => "http://p.ng")]
+        @users.first.stubs(:main_url).returns(nil)
+        @users.first.stubs(:has_link?).returns(false)
+        @users.first.stubs(:to_s).returns(nil)
+        @collage = collage_of(@users)
+      end
+
+      should "be images, without links, based on gravatar URLs of users" do
+        expected = [image_tag("http://p.ng")]
+        assert_equal expected, @collage
+      end
+    end
+    context 'when the user has a main_url' do
+      setup do
+        @users   = [Factory.stub(:user, :gravatar_url => "http://p.ng")]
+        @users.first.stubs(:main_url).returns('http://foo.bar')
+        @users.first.stubs(:has_link?).returns(true)
+        @users.first.stubs(:to_s).returns('foo')
+        @collage = collage_of(@users)
+      end
+
+      should "be images, without links, based on gravatar URLs of users" do
+        expected = [link_to( image_tag("http://p.ng", :title => 'foo'), 'http://foo.bar' )]
+        assert_equal expected, @collage
+      end
+
     end
   end
 

@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
     assert_respond_to user, :gravatar_url
   end
 
-  context "an user" do
+  context "a user" do
     setup do
       @user = Factory(:user, :twitter => "Croaky")
     end
@@ -17,5 +17,10 @@ class UserTest < ActiveSupport::TestCase
     should "display twitter name as string representation" do
       assert_equal "Croaky", @user.to_s
     end
+
+    should 'display twitter url as main_url' do
+      assert_equal 'http://twitter.com/croaky', @user.main_url
+    end
+
   end
 end
