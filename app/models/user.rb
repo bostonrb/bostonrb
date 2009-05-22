@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :twitter
   attr_accessible :feed_attributes
 
-  validates_format_of :twitter, :with => /^[a-zA-Z][a-z0-9A-Z]{1,15}$/, :allow_nil => true
+  validates_format_of :twitter, :with => /^\w{1,15}$/, :allow_nil => true
   before_validation :cleanout_twitter
 
 

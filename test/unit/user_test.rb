@@ -16,6 +16,7 @@ class UserTest < ActiveSupport::TestCase
     should_allow_mass_assignment_of :twitter
     should_allow_mass_assignment_of :feed_attributes
 
+    should_allow_values_for :twitter, '1zomg'
     should_allow_values_for :twitter, 'zomg'
     should_allow_values_for :twitter, 'http://twitter.com/zomg'
     should_allow_values_for :twitter, 'http://www.twitter.com/zomg'
