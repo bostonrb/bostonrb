@@ -82,9 +82,9 @@
     %h2 Presentations
     - if @featured_presentation
       .half>
-        %h3= link_to @featured_presentation.title, @featured_presentation.url
-        - unless @featured_presentation.presenter.nil? || @featured_presentation.presenter.empty?
-          %p== by #{@featured_presentation.presenter}
+        %h3= link_to @featured_presentation.title, presentation_path(@featured_presentation)
+        - unless parse_presenter(@featured_presentation).nil? || parse_presenter(@featured_presentation).empty?
+          %p== by #{parse_presenter(@featured_presentation)}
         - unless @featured_presentation.location.nil? || @featured_presentation.location.empty?
           %p= truncate(@featured_presentation.description, 150)
     .half>
