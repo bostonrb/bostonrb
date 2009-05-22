@@ -1,0 +1,6 @@
+postgresql:
+  :adapter: postgresql
+  :username: webapp
+  :password: Pr0vent1veM0nk3y
+  :database: fast_random_plugin_test
+  :min_messages: ERROR

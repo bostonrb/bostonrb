@@ -1,0 +1,16 @@
+fast_random
+==========
+
+This plugin extends active record by adding a class level random method which returns a random record from the database.
+
+The approach taken performs better than 'order by rand() limit 1' for large datasets. It uses offset instead of an order by to retrieve the random record in a database agnostic way.
+
+Example
+=======
+
+class Foo < ActiveRecord::Base; end
+
+Foo.random
+
+
+Copyright (c) 2009 Harold A. Gimenez, released under the MIT license
