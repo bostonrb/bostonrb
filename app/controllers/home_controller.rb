@@ -14,7 +14,7 @@ class HomeController < ApplicationController
 
     # @recent_apps
 
-    # @featured_job
+    @featured_job          = Job.featured
     @recent_jobs           = Job.ordered.limited(5)
 
     @recent_companies      = Company.ordered.limited(5)

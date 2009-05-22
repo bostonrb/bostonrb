@@ -62,9 +62,10 @@
     .crud
       %p= link_to 'New job', new_job_path
     %h2 Jobs
-    .half.pending>
-      %h3 Rails developer, thoughtbot
-      %p We are looking for someone with expert knowledge of Ruby on Rails to join our team of Ruby on Rails developers full-time in either our Boston, MA or New York City office. The ideal individual will have been using Ruby on Rails extensively (probably since before 1.0), have an excellent knowledge of Javascript, HTML, and CSS, and experience in TDD.
+    - if @featured_job
+      .half
+        %h3= link_to @featured_job.title, @featured_job
+        %p= @featured_job.description
     .half>
       %ul
         - @recent_jobs.each do |job|
