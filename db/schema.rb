@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20090521222809) do
   end
 
   create_table "companies", :force => true do |t|
-    t.string   "name",        :null => false
+    t.string   "name",        :default => "", :null => false
     t.string   "website_url"
     t.datetime "created_at"
     t.datetime "updated_at"

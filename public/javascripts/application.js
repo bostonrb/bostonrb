@@ -8,8 +8,14 @@ jQuery(document).ready(function($) {
     }
   );
 
-  $(document).bind('keydown', 'd', toggleDisplayOfPendingElements);
-  $(document).bind('keydown', 'o', toggleOverlayOfPendingElements);
+  $(document).bind('keydown', 'd', function(){ 
+    $.under_construction.hideOverlayOfPendingElements();
+    $.under_construction.toggleDisplayOfPendingElements();
+  });
+  $(document).bind('keydown', 'o', function(){ 
+    $.under_construction.showPendingElements();
+    $.under_construction.toggleOverlayOfPendingElements();
+  });
 
   $('#people .collage').cycle({ fx: 'scrollDown',
                                 timeout: 8000});
