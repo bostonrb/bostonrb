@@ -3,7 +3,7 @@ xml.rss :version => "2.0" do
   xml.channel do
     xml.title "Boston.rb upcoming Events"
     xml.description "Events coming up for Boston Rubyists"
-    xml.link formatted_events_url(:rss)
+    xml.link events_url(:rss), :format => 'rss'
     
     @events.each do |event|
       xml.item do

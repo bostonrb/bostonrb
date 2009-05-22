@@ -1,6 +1,9 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.next(4)
+    respond_to do |wants|
+      wants.html { @events = Event.next(4) }
+      wants.rss { @events = Event.next(10) }
+    end
   end
 
   def new

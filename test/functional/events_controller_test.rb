@@ -39,6 +39,18 @@ class EventsControllerTest < ActionController::TestCase
     should_respond_with    :success
   end
 
+  context "GET to :index :format => 'rss' with events in the future" do
+    setup do
+      @next = Factory(:event, :date => 2.days.from_now)
+      Event.stubs(:next).returns([@next])
+      get :index, :format => 'rss'
+    end
+
+    should_assign_to       :events
+    should_render_template 'index.rss'
+    should_respond_with    :success
+  end
+
   should_route :get, '/events/new', :controller => 'events', :action => 'new'
 
   context "on GET to #new when signed out" do
