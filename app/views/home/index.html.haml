@@ -32,11 +32,8 @@
     .half.pending>
       %h3 Blogs
       %ul
-        %li= post_title_and_blog_name
-        %li= post_title_and_blog_name
-        %li= post_title_and_blog_name
-        %li= post_title_and_blog_name
-        %li= post_title_and_blog_name
+        - @recent_blogs.each do |blog|
+          %li= link_to blog.title, blog.normalized_url
 
 #projects
   .row

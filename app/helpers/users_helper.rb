@@ -18,4 +18,10 @@ module UsersHelper
       options[:class] = 'hidden' if index != 0
     end
   end
+
+  def setup_user(user)
+    returning user do
+      user.build_feed unless user.feed
+    end
+  end
 end

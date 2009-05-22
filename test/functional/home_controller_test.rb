@@ -3,27 +3,29 @@ require 'test_helper'
 class HomeControllerTest < ActionController::TestCase
   context 'GET to index' do
     setup do
-      @user = Factory.build(:user)
-      @users = [@user]
-      User.stubs(:ordered).returns(@users)
-
       @recurring_events = [Factory.build(:recurring_event, :id => 1)]
       Event.stub_chain(:next, :recurring).returns(@recurring_events)
 
       @special_events = [Factory.build(:special_event, :id => 2)]
       Event.stub_chain(:next, :special).returns(@special_events)
 
-      @featured_job = Factory.build(:job)
-      Job.stubs(:featured).returns(@featured_job)
+      @users = [Factory.build(:user)]
+      User.stubs(:ordered).returns(@users)
 
-      @recent_jobs = [Factory.build(:job, :id => 3)]
-      Job.stub_chain(:ordered, :limited).returns(@recent_jobs)
+      @recent_blogs = [Factory.build(:entry)]
+      Entry.stubs(:recent).returns(@recent_blogs)
 
       @featured_project = Factory.build(:project)
       Project.stubs(:featured).returns(@featured_project)
 
       @recent_projects = [Factory.build(:project)]
       Project.stub_chain(:ordered, :limited).returns(@recent_projects)
+
+      @featured_job = Factory.build(:job)
+      Job.stubs(:featured).returns(@featured_job)
+
+      @recent_jobs = [Factory.build(:job, :id => 3)]
+      Job.stub_chain(:ordered, :limited).returns(@recent_jobs)
 
       @recent_companies = [Factory.build(:company)]
       Company.stub_chain(:ordered, :limited).returns(@recent_companies)
@@ -36,6 +38,10 @@ class HomeControllerTest < ActionController::TestCase
 
     should "fetch users" do
       assert_received(User, :ordered) {|expect| expect.with("updated_at desc") }
+    end
+
+    should "fetch 5 blog posts" do
+      assert_received(Entry, :recent) {|expect| expect.with(5) }
     end
 
     should "fetch 4 recurring events" do
@@ -71,11 +77,12 @@ class HomeControllerTest < ActionController::TestCase
       assert_received(Company, :ordered)
     end
 
-    should_assign_to(:users) { @users }
     should_assign_to(:recurring_events) { @recurring_events }
     should_assign_to(:special_events)   { @special_events }
-    should_assign_to(:recent_jobs)      { @recent_jobs }
+    should_assign_to(:users) { @users }
+    should_assign_to(:recent_blogs) { @recent_blogs }
     should_assign_to(:featured_project) { @featured_project }
+    should_assign_to(:recent_jobs)      { @recent_jobs }
     should_assign_to(:recent_projects)  { @recent_projects }
     should_assign_to(:recent_companies) { @recent_companies }
   end

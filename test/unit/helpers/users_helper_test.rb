@@ -61,5 +61,32 @@ class UsersHelperTest < ActionView::TestCase
       assert_equal "hidden", collage_div_attributes(1)[:class]
     end
   end
+
+  context "setup_user" do
+    should "return the user" do
+      user = Factory.build(:user)
+
+      assert_same user, setup_user(user)
+    end
+
+    should "build feed if it doesn't exist" do
+      user = Factory.build(:user)
+
+      setup_user(user)
+
+      assert_not_nil user.feed
+    end
+
+    should "keep original feed if it is present" do
+      feed = Factory.build(:feed)
+      user = Factory.build(:user, :feed => feed)
+
+      setup_user(user)
+
+      assert_same feed, user.feed
+    end
+
+
+  end
 end
 

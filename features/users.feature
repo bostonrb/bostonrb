@@ -13,8 +13,12 @@ Feature: Users
       When I sign in as "email@person.com/password"
       Then I should be signed in
       When I follow "Account"
-      And I fill in "Email" with "email@person.com"
+      And I fill in "Email" with "new-email@person.com"
       And I fill in "Twitter" with "Croaky"
+      And I fill in "Blog Feed URL" with "http://dancroak.tumblr.com/rss"
       And I press "Update"
       Then I should see "Account updated"
-
+      When I follow "Account"
+      Then the "Email" field should contain "new-email@person.com"
+      And the "Twitter" field should contain "Croaky"
+      And the "Blog Feed URL" field should contain "http://dancroak.tumblr.com/rss"

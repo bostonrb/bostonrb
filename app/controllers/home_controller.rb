@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     @users                 = User.ordered("updated_at desc")
 
     @recent_tweets         = Tweet.recent(5)
-    # @recent_blogs
+    @recent_blogs          = Entry.recent(5)
 
     @featured_project      = Project.featured
     @recent_projects       = Project.ordered.limited(5)
