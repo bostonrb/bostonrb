@@ -18,10 +18,13 @@ class UserTest < ActiveSupport::TestCase
 
     should_allow_values_for :twitter, 'zomg'
     should_allow_values_for :twitter, 'http://twitter.com/zomg'
-    should_allow_values_for :twitter, 'http://www.twitter.com/foo'
+    should_allow_values_for :twitter, 'http://www.twitter.com/zomg'
+    should_allow_values_for :twitter, 'https://twitter.com/zomg'
+    should_allow_values_for :twitter, 'https://www.twitter.com/zomg'
     should_allow_values_for :twitter, '@aieeeee' 
     should_not_allow_values_for :twitter, 'foo@fail'
     should_not_allow_values_for :twitter, 'http://non-twitter.com/foo'
+    should_not_allow_values_for :twitter, 'https://non-twitter.com/foo'
 
     should "display twitter name as string representation" do
       assert_equal "Croaky", @user.to_s
