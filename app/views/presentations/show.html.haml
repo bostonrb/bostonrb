@@ -5,9 +5,9 @@
         %p= link_to 'Edit', edit_presentation_url(@presentation)
       %h2= link_to @presentation.title, @presentation.url
       %ul.details
-        - unless @presentation.presenter.nil? || @presentation.presenter.empty?
+        - unless parse_presenter(@presentation).nil? || parse_presenter(@presentation).empty?
           %li.clearfix
-            .detail= @presentation.presenter
+            .detail= parse_presenter(@presentation)
             .label Who
         - unless @presentation.location.nil? || @presentation.location.empty?
           %li.clearfix
