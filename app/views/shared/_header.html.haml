@@ -2,6 +2,12 @@
   %h1= link_to 'boston.rb', root_path
 #boston_rb
   .row.clearfix
-    = yield :navigation
+    %p.navigation
+      = link_to "<strong>#{Event.count}</strong> Events", "#events"
+      = link_to "<strong>#{User.count}</strong> Users", "#people"
+      = link_to "<strong>#{Project.count}</strong> Projects", "#projects"
+      = link_to "<strong>#{Job.count}</strong> Jobs", "#jobs"
+      = link_to "<strong>#{Presentation.count}</strong> Presentations", "#presentations", :class => 'pending'
+
     %p.authentication
       = authentication_links

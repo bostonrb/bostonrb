@@ -1,11 +1,3 @@
-- content_for :navigation do
-  %p.navigation
-    = link_to "<strong>#{Event.count}</strong> Events", "#events"
-    = link_to "<strong>#{User.count}</strong> Users", "#people"
-    = link_to "<strong>#{Project.count}</strong> Projects", "#projects"
-    = link_to "<strong>#{Job.count}</strong> Jobs", "#jobs"
-    = link_to "<strong>#{Presentation.count}</strong> Presentations", "#presentations", :class => 'pending'
-
 #events
   .ribbon
     .row
