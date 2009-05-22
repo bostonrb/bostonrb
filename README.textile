@@ -23,3 +23,9 @@ This must be added to cron:
 
     PATH_TO_APP/script/runner Cron.get_tweets
 
+h2. Contributors
+
+Dan Croak, Josh Nichols, Harold Gimenez, Dan Pickett, Rebecca Frankel, Joe Ferris.
+
+Design by Angelo Simeoni.
+
