@@ -46,7 +46,7 @@
     - if @featured_project
       .half>
         %h3= link_to @featured_project.name, @featured_project.homepage_url
-        %p= @featured_project.cached_description_html
+        %p= truncate(@featured_project.cached_description_html, 250)
     .half>
       %ul
         - link_to_each(@recent_projects).each do |link|
