@@ -52,10 +52,12 @@
         - link_to_each(@recent_projects).each do |link|
           %li= link
 
-#apps.row.pending
+#apps.row
   %h3.center Apps
   %p.center
     = sentence_of(app_links)
+  .crud
+    %p= link_to 'New app', new_app_path
 
 #jobs
   .row
@@ -75,11 +77,13 @@
   %h3.center Companies
   %p.center
     = sentence_of link_to_each(@recent_companies)
+  .crud
+    %p= link_to 'New company', new_company_path
 
 #presentations
   .row
     .crud
-      %p= link_to 'New Presentation', new_presentation_path
+      %p= link_to 'New presentation', new_presentation_path
     %h2 Presentations
     - if @featured_presentation
       .half>
