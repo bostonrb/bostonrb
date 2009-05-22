@@ -106,6 +106,7 @@ rdoc_options: []
 
 require_paths: 
 - bin
+- bin
 - lib
 required_ruby_version: !ruby/object:Gem::Requirement 
   requirements: 
