@@ -46,7 +46,7 @@
     - if @featured_project
       .half>
         %h3= link_to @featured_project.name, @featured_project.homepage_url
-        %p= truncate(@featured_project.cached_description_html, 250)
+        %p= truncate(@featured_project.cached_description_html, :length => 250)
     .half>
       %ul
         - link_to_each(@recent_projects).each do |link|
@@ -67,7 +67,7 @@
     - if @featured_job
       .half
         %h3= link_to @featured_job.title, @featured_job
-        %p= @featured_job.description
+        %p= truncate(@featured_job.cached_description_html, :length => 250)
     .half>
       %ul
         - @recent_jobs.each do |job|
@@ -91,7 +91,7 @@
         - unless parse_presenter(@featured_presentation).nil? || parse_presenter(@featured_presentation).empty?
           %p== by #{parse_presenter(@featured_presentation)}
         - unless @featured_presentation.location.nil? || @featured_presentation.location.empty?
-          %p= truncate(@featured_presentation.description, 150)
+          %p= truncate(@featured_presentation.description, :length => 250)
     .half>
       %ul
         - link_to_each(@recent_presentations).each do |link|
