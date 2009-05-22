@@ -4,14 +4,22 @@
       %h2 Account
       = error_messages_for :user
 
-      - form_for(@user) do |form|
+      - form_for setup_user(@user) do |user_form|
         .fieldset
           %div
-            = form.label :email
-            %div= form.text_field :email
+            = user_form.label :email
+            %div= user_form.text_field :email
+
           %div
-            = form.label :twitter
-            %div= form.text_field :twitter
+            = user_form.label :twitter
+            %div= user_form.text_field :twitter
+
+          - user_form.fields_for :feed do |feed_form|
+            %div
+              = feed_form.label :feed_url, "Blog Feed URL"
+              %div= feed_form.text_field :feed_url
+
+
           .buttons
-            = form.submit 'Update', :disable_with => 'Please wait...'
+            = user_form.submit 'Update', :disable_with => 'Please wait...'
 

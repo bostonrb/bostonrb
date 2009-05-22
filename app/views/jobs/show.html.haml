@@ -11,12 +11,10 @@
           %li.clearfix
             .detail= @job.email
             .label Apply
-
-        %li.clearfix
-          .detail= @job.location
-          .label Where
-
-        %li.clearfix.last
-          .detail= @job.cached_description_html
-          .label What
+          %li.clearfix
+            .detail= @job.location
+            .label Where
+          %li.clearfix.last
+            .detail= @job.cached_description_html
+            .label What
 

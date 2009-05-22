@@ -6,8 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :presentations
   has_many :tweets
+  has_one  :feed
+
+  accepts_nested_attributes_for :feed, :reject_if => proc { |attrs| attrs.nil? || attrs.all? { |key, value| value.blank? } }
 
   attr_accessible :twitter
+  attr_accessible :feed_attributes
 
   def to_s
     twitter
@@ -24,4 +28,5 @@ class User < ActiveRecord::Base
   def has_link?
     !!main_url
   end
+
 end

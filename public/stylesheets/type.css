@@ -139,12 +139,22 @@ p, li {
   color: #09C;
 }
 
-a, #jobs .crud a, #projects .crud a, #presentations .crud a {
+a,
+#jobs .crud a,
+#projects .crud a,
+#presentations .crud a,
+#companies .crud a,
+#apps .crud a {
   color: #F90;
   text-decoration: none;
 }
 
-a:hover, #jobs .crud a:hover, #projects .crud a:hover, #presentations .crud a:hover {
+a:hover,
+#jobs .crud a:hover,
+#projects .crud a:hover,
+#presentations .crud a:hover,
+#companies .crud a:hover,
+#apps .crud a {
   text-decoration: underline;
 }
 

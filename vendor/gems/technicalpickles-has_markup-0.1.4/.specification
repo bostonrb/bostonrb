@@ -40,6 +40,8 @@ post_install_message:
 rdoc_options: 
 - --charset=UTF-8
 require_paths: 
+- bin
+- bin
 - lib
 required_ruby_version: !ruby/object:Gem::Requirement 
   requirements: 

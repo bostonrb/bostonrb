@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090521222809) do
+ActiveRecord::Schema.define(:version => 20090522041237) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(:version => 20090521222809) do
 
   add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
 
+  create_table "entries", :force => true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "url"
+    t.text     "summary"
+    t.text     "content"
+    t.datetime "published_at"
+    t.text     "categories"
+    t.string   "checksum"
+    t.integer  "feed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.datetime "date"
     t.text     "description"
@@ -40,6 +54,27 @@ ActiveRecord::Schema.define(:version => 20090521222809) do
     t.integer  "place_id"
     t.text     "cached_description_html"
     t.boolean  "recurring",               :default => true, :null => false
+  end
+
+  create_table "feed_errors", :force => true do |t|
+    t.string   "error_type"
+    t.string   "message"
+    t.text     "trace"
+    t.integer  "feed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feeds", :force => true do |t|
+    t.string   "url"
+    t.string   "title"
+    t.string   "etag"
+    t.time     "last_modified_at"
+    t.string   "feed_url"
+    t.time     "stale_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "jobs", :force => true do |t|

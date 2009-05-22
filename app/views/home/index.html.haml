@@ -29,14 +29,11 @@
       %ul
         - @recent_tweets.each do |tweet|
           %li= link_to_tweet(tweet)
-    .half.pending>
+    .half>
       %h3 Blogs
       %ul
-        %li= post_title_and_blog_name
-        %li= post_title_and_blog_name
-        %li= post_title_and_blog_name
-        %li= post_title_and_blog_name
-        %li= post_title_and_blog_name
+        - @recent_blogs.each do |blog|
+          %li= link_to blog.title, blog.normalized_url
 
 #projects
   .row
@@ -46,25 +43,28 @@
     - if @featured_project
       .half>
         %h3= link_to @featured_project.name, @featured_project.homepage_url
-        %p= @featured_project.cached_description_html
+        %p= truncate(@featured_project.cached_description_html, :length => 250)
     .half>
       %ul
         - link_to_each(@recent_projects).each do |link|
           %li= link
 
-#apps.row.pending
+#apps.row
   %h3.center Apps
   %p.center
     = sentence_of(app_links)
+  .crud
+    %p= link_to 'New app', new_app_path
 
 #jobs
   .row
     .crud
       %p= link_to 'New job', new_job_path
     %h2 Jobs
-    .half.pending>
-      %h3 Rails developer, thoughtbot
-      %p We are looking for someone with expert knowledge of Ruby on Rails to join our team of Ruby on Rails developers full-time in either our Boston, MA or New York City office. The ideal individual will have been using Ruby on Rails extensively (probably since before 1.0), have an excellent knowledge of Javascript, HTML, and CSS, and experience in TDD.
+    - if @featured_job
+      .half
+        %h3= link_to @featured_job.title, @featured_job
+        %p= truncate(@featured_job.cached_description_html, :length => 250)
     .half>
       %ul
         - @recent_jobs.each do |job|
@@ -74,11 +74,13 @@
   %h3.center Companies
   %p.center
     = sentence_of link_to_each(@recent_companies)
+  .crud
+    %p= link_to 'New company', new_company_path
 
 #presentations
   .row
     .crud
-      %p= link_to 'New Presentation', new_presentation_path
+      %p= link_to 'New presentation', new_presentation_path
     %h2 Presentations
     - if @featured_presentation
       .half>
@@ -86,7 +88,7 @@
         - unless parse_presenter(@featured_presentation).nil? || parse_presenter(@featured_presentation).empty?
           %p== by #{parse_presenter(@featured_presentation)}
         - unless @featured_presentation.location.nil? || @featured_presentation.location.empty?
-          %p= truncate(@featured_presentation.description, 150)
+          %p= truncate(@featured_presentation.description, :length => 250)
     .half>
       %ul
         - link_to_each(@recent_presentations).each do |link|

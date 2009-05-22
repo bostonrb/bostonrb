@@ -12,7 +12,9 @@ class UserTest < ActiveSupport::TestCase
     end
 
     should_have_many :tweets
+    should_have_one :feed
     should_allow_mass_assignment_of :twitter
+    should_allow_mass_assignment_of :feed_attributes
 
     should "display twitter name as string representation" do
       assert_equal "Croaky", @user.to_s
