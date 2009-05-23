@@ -4,4 +4,12 @@
       .crud
         %p= link_to 'Edit', edit_project_path(@project)
       %h2= @project.name
+      %ul.details
+        - unless @project.homepage_url
+          %li.clearfix
+            .detail= link_to @project.homepage_url
+            .label Where
+        %li.clearfix.last
+          .detail= @project.description
+          .label What
 
