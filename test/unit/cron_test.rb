@@ -35,4 +35,34 @@ class CronTest < Test::Unit::TestCase
       User.destroy_all
     end
   end
+
+  context "Cron.get_projects" do
+    setup do
+      @user   = Factory(:user, :github => "dancroak")
+      User.stubs(:github_present).returns([@user])
+
+      @github_user = stub('github_user')
+      Github::User.stubs(:find).with(@user.github).returns(@github_user)
+
+      repos_path = File.join(File.dirname(__FILE__), '..', 'fixtures', 'user_repositories.xml')
+      @repos  = Github::Repository.parse(IO.read(repos_path))
+      @github_user.stubs(:repositories).returns(@repos)
+
+      Cron.get_projects
+    end
+
+    should "create the no_cache project for user" do
+      assert project = Project.find_by_name("no_cache")
+      assert_equal @user,         project.user
+      assert_equal 10,            project.watchers
+      assert_equal "no_cache",    project.name
+      assert_equal "http://github.com/dancroak/no_cache", project.github_url
+      assert_equal "Rails plugin. Force major browsers (IE, Firefox, Safari) to reload a page, even when triggered by 'back' button.", project.description
+    end
+
+    teardown do
+      Project.destroy_all
+      User.destroy_all
+    end
+  end
 end

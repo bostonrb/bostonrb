@@ -1,0 +1,30 @@
+HTTP/1.1 200 OK
+Server: nginx/0.6.26
+Date: Tue, 26 May 2009 01:11:48 GMT
+Content-Type: application/xml; charset=utf-8
+Connection: keep-alive
+Set-Cookie: _github_ses=BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoKQHVzZWR7AA%3D%3D--884981fc5aa85daf318eeff084d98e2cff92578f; path=/; expires=Wed, 01 Jan 2020 08:00:00 GMT; HttpOnly
+Status: 200 OK
+X-Runtime: 48ms
+ETag: "d5dd5ae94c3a305435538867f782b8d5"
+Cache-Control: private, max-age=0, must-revalidate
+Content-Length: 544
+
+<?xml version="1.0" encoding="UTF-8"?>
+<users type="array">
+  <user>
+    <score type="float">3.8653853</score>
+    <name>dancroak</name>
+    <actions type="integer">35</actions>
+    <language>Ruby</language>
+    <followers type="integer">50</followers>
+    <username>dancroak</username>
+    <type>user</type>
+    <fullname>Dan Croak</fullname>
+    <repos type="integer">18</repos>
+    <id>user-198</id>
+    <pushed>2009-05-22T17:15:11.534Z</pushed>
+    <created>2008-02-13T02:48:35Z</created>
+    <location>Boston</location>
+  </user>
+</users>

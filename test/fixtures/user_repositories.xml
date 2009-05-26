@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repositories type="array">
+  <repository>
+    <description>Rails plugin. Force major browsers (IE, Firefox, Safari) to reload a page, even when triggered by 'back' button.</description>
+    <name>no_cache</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/no_cache</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">10</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage>http://giantrobots.thoughtbot.com</homepage>
+  </repository>
+  <repository>
+    <description>A craps simulator to help you plan your next trip to the casino by minimizing the house advantage and setting basic constraints on your play.</description>
+    <name>craps</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/craps</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">3</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>port of Alex Dunae's validates_email_format_of Rails plugin to a gem</description>
+    <name>validates_email_format_of</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/validates_email_format_of</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">23</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Ruby wrapper for the Twitter Search API.</description>
+    <name>twitter-search</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/twitter-search</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">74</watchers>
+    <forks type="integer">8</forks>
+    <owner>dancroak</owner>
+    <homepage>http://search.twitter.com/api</homepage>
+  </repository>
+  <repository>
+    <description>Subdomain validation for ActiveRecord. Light wrapper around the excellent Addressable library (required). Includes a Shoulda macro.</description>
+    <name>validates_subdomain_format_of</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/validates_subdomain_format_of</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">9</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Unit tests I wrote way back when I started learning Ruby.</description>
+    <name>ruby-learning-tests</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/ruby-learning-tests</url>
+    <fork type="boolean">true</fork>
+    <watchers type="integer">2</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage>http://clarkware.com/cgi/blosxom/2005/03/18</homepage>
+  </repository>
+  <repository>
+    <description>URL shortening app in the fewest readable lines of Ruby possible.</description>
+    <name>shorty</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/shorty</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">2</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Generate random short, non-offensive words. Good for human-readable confirmation codes.</description>
+    <name>webster</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/webster</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">21</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Nurse cares for invalid ActiveRecord objects.</description>
+    <name>nurse</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/nurse</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">2</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Makes tests easy on the fingers and the eyes</description>
+    <name>shoulda</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/shoulda</url>
+    <fork type="boolean">true</fork>
+    <watchers type="integer">6</watchers>
+    <forks type="integer">1</forks>
+    <owner>dancroak</owner>
+    <homepage>http://www.thoughtbot.com/projects/shoulda</homepage>
+  </repository>
+  <repository>
+    <description>Experimental.</description>
+    <name>rails-templates</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/rails-templates</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">2</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Most awesome pagination solution for Ruby</description>
+    <name>will_paginate</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/will_paginate</url>
+    <fork type="boolean">true</fork>
+    <watchers type="integer">1</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage>http://github.com/mislav/will_paginate/wikis</homepage>
+  </repository>
+  <repository>
+    <description>My config files (aka dotfiles)</description>
+    <name>config_files</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/config_files</url>
+    <fork type="boolean">true</fork>
+    <watchers type="integer">1</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Rails generators for developers who do TDD.</description>
+    <name>coulda</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/coulda</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">11</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Generated scopes for ActiveRecord classes</description>
+    <name>pacecar</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/pacecar</url>
+    <fork type="boolean">true</fork>
+    <watchers type="integer">1</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Tweet from the command line.</description>
+    <name>tweet</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/tweet</url>
+    <fork type="boolean">true</fork>
+    <watchers type="integer">3</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Hello is a Ruby interface to a collection of the word &#8220;hello&#8221; in many languages and dialects.</description>
+    <name>hello</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/hello</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">4</watchers>
+    <forks type="integer">1</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+  <repository>
+    <description>Reading lists</description>
+    <name>reading</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/reading</url>
+    <fork type="boolean">false</fork>
+    <watchers type="integer">2</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage>http://dancroak.com</homepage>
+  </repository>
+  <repository>
+    <description>Ruby wrapper for the GitHub API v2.</description>
+    <name>le-git</name>
+    <private type="boolean">false</private>
+    <url>http://github.com/dancroak/le-git</url>
+    <fork type="boolean">true</fork>
+    <watchers type="integer">1</watchers>
+    <forks type="integer">0</forks>
+    <owner>dancroak</owner>
+    <homepage></homepage>
+  </repository>
+</repositories>

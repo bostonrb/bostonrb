@@ -61,6 +61,9 @@ Rails::Initializer.run do |config|
     :lib     => "resource_controller",
     :version => "0.6.1"
   config.gem "feedra"
+  config.gem "dancroak-le-git",
+    :lib     => "le_git",
+    :version => "0.0.5"
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"

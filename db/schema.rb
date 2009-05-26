@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090522041237) do
+ActiveRecord::Schema.define(:version => 20090526040939) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20090522041237) do
     t.string   "website_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "github"
   end
 
   add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
@@ -107,14 +108,15 @@ ActiveRecord::Schema.define(:version => 20090522041237) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
-    t.string   "homepage_url"
-    t.string   "feed_url"
+    t.string   "github_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
-    t.datetime "deleted_at"
-    t.string   "cached_description_html"
+    t.integer  "watchers",    :default => 0, :null => false
+    t.integer  "user_id"
   end
+
+  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "tweets", :force => true do |t|
     t.string   "text"
@@ -137,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20090522041237) do
     t.string   "twitter"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "github"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

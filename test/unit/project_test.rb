@@ -6,8 +6,8 @@ class ProjectTest < ActiveSupport::TestCase
       @project = Factory(:project, :name => "Paperclip")
     end
 
-    should_have_markup :description, :cache_html => true
-    should_validate_url_format_of :homepage_url
+    should_validate_presence_of :name, :user_id
+    should_validate_url_format_of :github_url
 
     should "display name as string representation" do
       assert_equal "Paperclip", @project.to_s

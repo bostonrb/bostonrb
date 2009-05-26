@@ -12,6 +12,7 @@ class UserTest < ActiveSupport::TestCase
     end
 
     should_have_many :tweets
+    should_have_many :projects
     should_have_one :feed
     should_allow_mass_assignment_of :twitter
     should_allow_mass_assignment_of :feed_attributes
@@ -111,5 +112,4 @@ class UserTest < ActiveSupport::TestCase
     end
 
   end
-
 end

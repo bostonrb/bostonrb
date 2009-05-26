@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commits type="array">
+  <commit>
+    <message>updating Repository model to use v2 API. associated User &amp; Repository models. filled out complete API for User.</message>
+    <parents type="array">
+      <parent>
+        <id>690c79a261ed5b078c08742b796cb3056f685698</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/1f0111c91344062052f65922171d220a06810d4a</url>
+    <author>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </author>
+    <id>1f0111c91344062052f65922171d220a06810d4a</id>
+    <committed-date>2009-05-25T19:11:27-07:00</committed-date>
+    <authored-date>2009-05-25T19:11:27-07:00</authored-date>
+    <tree>d27ed042222fe8a55681e1af260e3eb2847e9f33</tree>
+    <committer>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Version bump to 0.0.3</message>
+    <parents type="array">
+      <parent>
+        <id>d2e18e210dcf695318281edffacd5c08d0e7807a</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/690c79a261ed5b078c08742b796cb3056f685698</url>
+    <author>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </author>
+    <id>690c79a261ed5b078c08742b796cb3056f685698</id>
+    <committed-date>2009-05-25T19:10:38-07:00</committed-date>
+    <authored-date>2009-05-25T19:10:38-07:00</authored-date>
+    <tree>e4050ad8156d4008c0c467a7612603558c49eebf</tree>
+    <committer>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>user model now working with basic v2 API mapping</message>
+    <parents type="array">
+      <parent>
+        <id>f7dbf5a92d52a9032514a48aa8ae51cea7292546</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/d2e18e210dcf695318281edffacd5c08d0e7807a</url>
+    <author>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </author>
+    <id>d2e18e210dcf695318281edffacd5c08d0e7807a</id>
+    <committed-date>2009-05-25T18:24:55-07:00</committed-date>
+    <authored-date>2009-05-25T18:24:55-07:00</authored-date>
+    <tree>b66caf919e88a8c6f0eb10fb448c309d9252db19</tree>
+    <committer>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Version bump to 0.0.2</message>
+    <parents type="array">
+      <parent>
+        <id>5d8448609cf4c531bd27358c5251f0b5e8c841b1</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/f7dbf5a92d52a9032514a48aa8ae51cea7292546</url>
+    <author>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </author>
+    <id>f7dbf5a92d52a9032514a48aa8ae51cea7292546</id>
+    <committed-date>2009-05-25T18:24:17-07:00</committed-date>
+    <authored-date>2009-05-25T18:24:17-07:00</authored-date>
+    <tree>7383039c8722dbf3efdc621a1e1be5a9653feff0</tree>
+    <committer>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>generated gemspec</message>
+    <parents type="array">
+      <parent>
+        <id>b5a436606dde4de7ab250c8f130e2268b3ad7387</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/5d8448609cf4c531bd27358c5251f0b5e8c841b1</url>
+    <author>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </author>
+    <id>5d8448609cf4c531bd27358c5251f0b5e8c841b1</id>
+    <committed-date>2009-05-25T18:04:49-07:00</committed-date>
+    <authored-date>2009-05-25T18:04:49-07:00</authored-date>
+    <tree>c95c34ee48658ef527f556d8211987b3f958f2ec</tree>
+    <committer>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Version bump to 0.0.1</message>
+    <parents type="array">
+      <parent>
+        <id>edbfb1015e1a0227324d44c90261bfb055a80774</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/b5a436606dde4de7ab250c8f130e2268b3ad7387</url>
+    <author>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </author>
+    <id>b5a436606dde4de7ab250c8f130e2268b3ad7387</id>
+    <committed-date>2009-05-25T18:04:40-07:00</committed-date>
+    <authored-date>2009-05-25T18:04:40-07:00</authored-date>
+    <tree>50e08c69ab26ae6e40fce015e61834a62bdbed46</tree>
+    <committer>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>reviewed all files. updated name to le git. updated README to include laundry list of needed gems. got tests running (but failing).</message>
+    <parents type="array">
+      <parent>
+        <id>0f4ea3c42320e9abb4d1e492c578dcce0894e43a</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/edbfb1015e1a0227324d44c90261bfb055a80774</url>
+    <author>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </author>
+    <id>edbfb1015e1a0227324d44c90261bfb055a80774</id>
+    <committed-date>2009-05-25T18:04:07-07:00</committed-date>
+    <authored-date>2009-05-25T18:04:07-07:00</authored-date>
+    <tree>cf5c6d1eea52ea480d30deca0cce85b0a960bbdb</tree>
+    <committer>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Version bump to 0.0.0</message>
+    <parents type="array">
+      <parent>
+        <id>26f8a92b43d9b859532c99ced1bc02f49f6a6c70</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/0f4ea3c42320e9abb4d1e492c578dcce0894e43a</url>
+    <author>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </author>
+    <id>0f4ea3c42320e9abb4d1e492c578dcce0894e43a</id>
+    <committed-date>2009-05-25T17:41:17-07:00</committed-date>
+    <authored-date>2009-05-25T17:41:17-07:00</authored-date>
+    <tree>a7b10c420541b9b4d0b5d637b87f1b922e56595c</tree>
+    <committer>
+      <name>Dan Croak</name>
+      <email>dcroak@thoughtbot.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Regenerated gemspec for version 0.1.0</message>
+    <parents type="array">
+      <parent>
+        <id>37cacb579f482b4c074b25becd9093def591c5d6</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/26f8a92b43d9b859532c99ced1bc02f49f6a6c70</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>26f8a92b43d9b859532c99ced1bc02f49f6a6c70</id>
+    <committed-date>2009-01-19T22:18:34-08:00</committed-date>
+    <authored-date>2009-01-19T22:18:34-08:00</authored-date>
+    <tree>97fb66e66f3f7dab258b1345be70e90e3957a59f</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Updated README.</message>
+    <parents type="array">
+      <parent>
+        <id>f933f9e14f78f2ed93b3d94484ab3ad09a29ce1d</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/37cacb579f482b4c074b25becd9093def591c5d6</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>37cacb579f482b4c074b25becd9093def591c5d6</id>
+    <committed-date>2009-01-19T22:18:29-08:00</committed-date>
+    <authored-date>2009-01-19T22:18:29-08:00</authored-date>
+    <tree>bf9a7a4684bdae7ac753a59aa5215cdfd4fbcdf4</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Added README</message>
+    <parents type="array">
+      <parent>
+        <id>a7cf7813b40e7060c4681707e91f85f81444ef1d</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/f933f9e14f78f2ed93b3d94484ab3ad09a29ce1d</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>f933f9e14f78f2ed93b3d94484ab3ad09a29ce1d</id>
+    <committed-date>2009-01-19T22:17:03-08:00</committed-date>
+    <authored-date>2009-01-19T22:17:03-08:00</authored-date>
+    <tree>16b062f0a6cb8ba57b949b89c88d339b0343e76a</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Ignore pkg.</message>
+    <parents type="array">
+      <parent>
+        <id>2bc60898ec5f3634dcdc98167cfa1b25628de2fa</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/a7cf7813b40e7060c4681707e91f85f81444ef1d</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>a7cf7813b40e7060c4681707e91f85f81444ef1d</id>
+    <committed-date>2009-01-19T22:03:45-08:00</committed-date>
+    <authored-date>2009-01-19T22:03:45-08:00</authored-date>
+    <tree>bae183f1a8f6ac283283e1548562a47033a3557c</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Version bump to 0.1.0</message>
+    <parents type="array">
+      <parent>
+        <id>fa5e220706847f2534f7b69f73354839ba6ede49</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/2bc60898ec5f3634dcdc98167cfa1b25628de2fa</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>2bc60898ec5f3634dcdc98167cfa1b25628de2fa</id>
+    <committed-date>2009-01-19T22:03:26-08:00</committed-date>
+    <authored-date>2009-01-19T22:03:26-08:00</authored-date>
+    <tree>aff644ba74f4737dc70b41ea7191d2c8676b7e07</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Updated gemspec to add dependencies.</message>
+    <parents type="array">
+      <parent>
+        <id>241f33a0e934c39b94771c252cf028a59041d601</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/fa5e220706847f2534f7b69f73354839ba6ede49</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>fa5e220706847f2534f7b69f73354839ba6ede49</id>
+    <committed-date>2009-01-19T22:02:59-08:00</committed-date>
+    <authored-date>2009-01-19T22:02:59-08:00</authored-date>
+    <tree>073aa94d228391367a67eb5237a9744f4a0e5bb4</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Changed references from id to hash</message>
+    <parents type="array">
+      <parent>
+        <id>faaa5860160db8af2a0e5116e601ff5156f48650</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/241f33a0e934c39b94771c252cf028a59041d601</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>241f33a0e934c39b94771c252cf028a59041d601</id>
+    <committed-date>2009-01-19T21:58:15-08:00</committed-date>
+    <authored-date>2009-01-19T21:58:15-08:00</authored-date>
+    <tree>07ff4bc435444b2c892d53e384bf11cbc8be711e</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Unified interface for finding commits.</message>
+    <parents type="array">
+      <parent>
+        <id>444c8acc9036e1a42e6a04d11eecb55b9eae8ca1</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/faaa5860160db8af2a0e5116e601ff5156f48650</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>faaa5860160db8af2a0e5116e601ff5156f48650</id>
+    <committed-date>2009-01-19T21:51:25-08:00</committed-date>
+    <authored-date>2009-01-19T21:51:25-08:00</authored-date>
+    <tree>3730da8271799a4d15ec710002f03e9e4612ed49</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Implemented Commit#for_repository</message>
+    <parents type="array">
+      <parent>
+        <id>1f9a076c61dcd075f4ca4bb7414d43e555293f07</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/444c8acc9036e1a42e6a04d11eecb55b9eae8ca1</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>444c8acc9036e1a42e6a04d11eecb55b9eae8ca1</id>
+    <committed-date>2009-01-19T21:37:20-08:00</committed-date>
+    <authored-date>2009-01-19T21:37:20-08:00</authored-date>
+    <tree>4b398d8f0bef18f270c884be8f02ffbfa1fa0014</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Added some pending tests for commits.</message>
+    <parents type="array">
+      <parent>
+        <id>dd72271397a25de4416121fc112f8cf7fb135cd2</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/1f9a076c61dcd075f4ca4bb7414d43e555293f07</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>1f9a076c61dcd075f4ca4bb7414d43e555293f07</id>
+    <committed-date>2009-01-19T21:12:35-08:00</committed-date>
+    <authored-date>2009-01-19T21:12:35-08:00</authored-date>
+    <tree>90ead8716a2e430c52c4a5ca076822d17b1d0541</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Added tags to ignore.</message>
+    <parents type="array">
+      <parent>
+        <id>5cff563701435348832d084b77dfdf35282d97c5</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/dd72271397a25de4416121fc112f8cf7fb135cd2</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>dd72271397a25de4416121fc112f8cf7fb135cd2</id>
+    <committed-date>2009-01-19T20:11:45-08:00</committed-date>
+    <authored-date>2009-01-19T20:11:45-08:00</authored-date>
+    <tree>2de3e0963d5c5bbd077f9d5bfe7218db5eb892d5</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Started implementing commits</message>
+    <parents type="array">
+      <parent>
+        <id>d6701c9ba1ec55630b4446d36db0a44e57f7e6c1</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/5cff563701435348832d084b77dfdf35282d97c5</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>5cff563701435348832d084b77dfdf35282d97c5</id>
+    <committed-date>2009-01-19T20:11:19-08:00</committed-date>
+    <authored-date>2009-01-19T20:11:19-08:00</authored-date>
+    <tree>c44ab5987fefd35d25d9d206d569664bcf46d840</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Removed old require</message>
+    <parents type="array">
+      <parent>
+        <id>d9805ac9c43b24c7a1301a227961878d0aa075d8</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/d6701c9ba1ec55630b4446d36db0a44e57f7e6c1</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>d6701c9ba1ec55630b4446d36db0a44e57f7e6c1</id>
+    <committed-date>2009-01-19T19:39:41-08:00</committed-date>
+    <authored-date>2009-01-19T19:39:41-08:00</authored-date>
+    <tree>dc065751c2378d81f670a8ea03bf93174ef5fffe</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Removed old files.</message>
+    <parents type="array">
+      <parent>
+        <id>372ba35b5a7ced5d32cf9e1b5931ecef267a5332</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/d9805ac9c43b24c7a1301a227961878d0aa075d8</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>d9805ac9c43b24c7a1301a227961878d0aa075d8</id>
+    <committed-date>2009-01-19T19:39:09-08:00</committed-date>
+    <authored-date>2009-01-19T19:39:09-08:00</authored-date>
+    <tree>8986ff5908b7b49f9268a70adbe70a24bf166ecb</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Moved search_repositories to Repository#search and user to User#find</message>
+    <parents type="array">
+      <parent>
+        <id>528edec05a91df9a34635cdfc3dd71bbe8c974d6</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/372ba35b5a7ced5d32cf9e1b5931ecef267a5332</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>372ba35b5a7ced5d32cf9e1b5931ecef267a5332</id>
+    <committed-date>2009-01-19T19:36:19-08:00</committed-date>
+    <authored-date>2009-01-19T19:36:19-08:00</authored-date>
+    <tree>13d7b36d1efd49f21effcb58c8ac58c75f54f9a9</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Support repository search</message>
+    <parents type="array">
+      <parent>
+        <id>d2b99c9e5712598b1675464f954ee0b02084e393</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/528edec05a91df9a34635cdfc3dd71bbe8c974d6</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>528edec05a91df9a34635cdfc3dd71bbe8c974d6</id>
+    <committed-date>2009-01-19T19:21:01-08:00</committed-date>
+    <authored-date>2009-01-19T19:21:01-08:00</authored-date>
+    <tree>ec2f94ce73976ce1bfb3b34c46c26838d33990f1</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Added repository</message>
+    <parents type="array">
+      <parent>
+        <id>f4447ff966db02b3249a8310022a62e2814b7b5a</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/d2b99c9e5712598b1675464f954ee0b02084e393</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>d2b99c9e5712598b1675464f954ee0b02084e393</id>
+    <committed-date>2009-01-19T19:08:16-08:00</committed-date>
+    <authored-date>2009-01-19T19:08:16-08:00</authored-date>
+    <tree>7702eae1d66b37902dd937aeccb53cc687e40617</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Working using HappyMapper and RestClient.</message>
+    <parents type="array">
+      <parent>
+        <id>68bdb6e3451012f3c386f10dfec0e47dd6f3bf34</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/f4447ff966db02b3249a8310022a62e2814b7b5a</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>f4447ff966db02b3249a8310022a62e2814b7b5a</id>
+    <committed-date>2009-01-19T19:00:44-08:00</committed-date>
+    <authored-date>2009-01-19T19:00:44-08:00</authored-date>
+    <tree>4456264ab537b5ed47e9023c96342087bc0207b9</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Fresh beginnings.</message>
+    <parents type="array">
+      <parent>
+        <id>e518098b8a7ddbea8ad1e726277444a84c7570f6</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/68bdb6e3451012f3c386f10dfec0e47dd6f3bf34</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>68bdb6e3451012f3c386f10dfec0e47dd6f3bf34</id>
+    <committed-date>2009-01-19T17:47:25-08:00</committed-date>
+    <authored-date>2009-01-19T17:47:25-08:00</authored-date>
+    <tree>b1ab4ca5be92d34fc9e1572382ac355b795fbd93</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Now with commit fighting powers.</message>
+    <parents type="array">
+      <parent>
+        <id>5be931ebbd8d7c0e8792e105a01639c3cfba912b</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/e518098b8a7ddbea8ad1e726277444a84c7570f6</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>e518098b8a7ddbea8ad1e726277444a84c7570f6</id>
+    <committed-date>2008-10-24T15:52:55-07:00</committed-date>
+    <authored-date>2008-10-24T15:52:55-07:00</authored-date>
+    <tree>6723929bb590e6a0d2ca1ecf913700fa4e18965a</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>Added search.</message>
+    <parents type="array">
+      <parent>
+        <id>88eaa2bec8ea8b49bb2f57f683c66d0f0db1d6de</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/5be931ebbd8d7c0e8792e105a01639c3cfba912b</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>5be931ebbd8d7c0e8792e105a01639c3cfba912b</id>
+    <committed-date>2008-10-24T15:00:35-07:00</committed-date>
+    <authored-date>2008-10-24T15:00:35-07:00</authored-date>
+    <tree>a9a5fd017b6440eb52f82acca9aa343dbfef0013</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+  <commit>
+    <message>First real commit.</message>
+    <parents type="array">
+      <parent>
+        <id>07ff9aa2abf16e1d730a1238c54c48b7a012fd71</id>
+      </parent>
+    </parents>
+    <url>http://github.com/dancroak/le-git/commit/88eaa2bec8ea8b49bb2f57f683c66d0f0db1d6de</url>
+    <author>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </author>
+    <id>88eaa2bec8ea8b49bb2f57f683c66d0f0db1d6de</id>
+    <committed-date>2008-10-24T14:44:06-07:00</committed-date>
+    <authored-date>2008-10-24T14:44:06-07:00</authored-date>
+    <tree>02c370a1d8daa13d1831704a42460ce5b0578fd7</tree>
+    <committer>
+      <name>Josh Nichols</name>
+      <email>josh@technicalpickles.com</email>
+    </committer>
+  </commit>
+</commits>

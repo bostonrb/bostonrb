@@ -1,14 +1,14 @@
 #show
   .ribbon
     .row
-      .crud
-        %p= link_to 'Edit', edit_project_path(@project)
-      %h2= @project.name
+      %h2= link_to @project.name, @project.github_url
       %ul.details
-        - unless @project.homepage_url
-          %li.clearfix
-            .detail= link_to @project.homepage_url
-            .label Where
+        %li.clearfix
+          .detail= link_to @project.user.to_s, user_path(@project.user)
+          .label Who
+        %li.clearfix
+          .detail= @project.watchers
+          .label Watchers
         %li.clearfix.last
           .detail= @project.description
           .label What

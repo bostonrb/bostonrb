@@ -1,9 +1,0 @@
-%h2 Edit project
-
-= error_messages_for :project
-
-- form_for(@project) do |form|
-  = partial 'projects/form', :form => form
-    
-  %p= form.submit 'Update', :disable_with => 'Please wait...'
-  %p= link_to 'Delete', project_path(@project), :method => :delete, :confirm => 'Are you sure?'
