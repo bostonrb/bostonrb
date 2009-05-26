@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090526231624) do
+ActiveRecord::Schema.define(:version => 20090526040939) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20090526231624) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "github"
-    t.string   "twitter"
   end
 
   add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
@@ -118,18 +117,6 @@ ActiveRecord::Schema.define(:version => 20090526231624) do
   end
 
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
-
-  create_table "timeline_events", :force => true do |t|
-    t.string   "event_type"
-    t.string   "subject_type"
-    t.string   "actor_type"
-    t.string   "secondary_subject_type"
-    t.integer  "subject_id"
-    t.integer  "actor_id"
-    t.integer  "secondary_subject_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "tweets", :force => true do |t|
     t.string   "text"

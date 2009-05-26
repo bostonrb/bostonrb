@@ -60,13 +60,10 @@ Rails::Initializer.run do |config|
   config.gem "giraffesoft-resource_controller",
     :lib     => "resource_controller",
     :version => "0.6.1"
+  config.gem "feedra"
   config.gem "dancroak-le-git",
     :lib     => "le_git",
     :version => "0.0.5"
-  config.gem "happymapper"
-  config.gem "rest-client",
-    :lib     => 'rest_client'
-  config.gem "technicalpickles-feedra", :lib => "feedra", :version => "0.0.2"
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"
