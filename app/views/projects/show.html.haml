@@ -1,18 +1,15 @@
 #show
   .ribbon
     .row
-      %h2= @project.name
+      %h2= link_to @project.name, @project.github_url
       %ul.details
-        %li.clearfix
-          .detail= @project.description
-          .label What
         %li.clearfix
           .detail= link_to @project.user.to_s, user_path(@project.user)
           .label Who
         %li.clearfix
-          .detail= link_to "Github", @project.github_url
-          .label Where
-        %li.clearfix.last
           .detail= @project.watchers
           .label Watchers
- 
+        %li.clearfix.last
+          .detail= @project.description
+          .label What
+
