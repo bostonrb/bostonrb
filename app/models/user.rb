@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :feed, :reject_if => proc { |attrs| attrs.nil? || attrs.all? { |key, value| value.blank? } }
 
   attr_accessible :twitter
+  attr_accessible :github
   attr_accessible :feed_attributes
 
   validates_format_of :twitter, :with => /^\w{1,15}$/, :allow_nil => true
