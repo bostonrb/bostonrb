@@ -118,6 +118,18 @@ ActiveRecord::Schema.define(:version => 20090526040939) do
 
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
+  create_table "timeline_events", :force => true do |t|
+    t.string   "event_type"
+    t.string   "subject_type"
+    t.string   "actor_type"
+    t.string   "secondary_subject_type"
+    t.integer  "subject_id"
+    t.integer  "actor_id"
+    t.integer  "secondary_subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tweets", :force => true do |t|
     t.string   "text"
     t.integer  "twitter_id"
