@@ -40,7 +40,7 @@
     %h2 Open Source Projects
     - if @featured_project
       .half>
-        %h3= link_to @featured_project.name, @featured_project.github_url
+        %h3= link_to @featured_project.name, project_path(@featured_project)
         %p= truncate(@featured_project.description, :length => 250)
     .half>
       %ul
