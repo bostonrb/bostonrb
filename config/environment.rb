@@ -64,6 +64,8 @@ Rails::Initializer.run do |config|
   config.gem "dancroak-le-git",
     :lib     => "le_git",
     :version => "0.0.5"
+  config.gem "happymapper"
+  config.gem "rest-client"
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"
