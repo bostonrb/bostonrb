@@ -8,6 +8,9 @@ class ActiveSupport::TestCase
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
 
+  # Uncomment to not quiet backtrace
+  #Rails.backtrace_cleaner.remove_silencers! 
+
   def file_fixture(name)
     File.read(File.join(File.dirname(__FILE__), "file_fixtures", name))
   end
