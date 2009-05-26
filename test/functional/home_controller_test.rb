@@ -40,8 +40,8 @@ class HomeControllerTest < ActionController::TestCase
       assert_received(User, :ordered) {|expect| expect.with("updated_at desc") }
     end
 
-    should "fetch 5 blog posts" do
-      assert_received(Entry, :recent) {|expect| expect.with(5) }
+    should "fetch 10 blog posts" do
+      assert_received(Entry, :recent) {|expect| expect.with(10) }
     end
 
     should "fetch 4 recurring events" do
