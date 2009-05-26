@@ -2,20 +2,17 @@ require 'test_helper'
 
 class PresentationsControllerTest < ActionController::TestCase
 
-  should_route :get, '/presentations',
-    :controller => 'presentations', :action => 'index'
-
   should_route :post, '/presentations',
     :controller => 'presentations', :action => 'create'
-
-  should_route :get, '/presentations/1/edit',
-    :controller => 'presentations', :action => 'edit', :id => '1'
 
   should_route :put, '/presentations/1',
     :controller => 'presentations', :action => 'update', :id => '1'
 
   should_route :delete, '/presentations/1',
     :controller => 'presentations', :action => 'destroy', :id => '1'
+
+  should_route :get, '/presentations/new',
+    :controller => 'presentations', :action => 'new'
 
   context 'on GET to new when signed in' do
     setup do
@@ -47,6 +44,9 @@ class PresentationsControllerTest < ActionController::TestCase
 
     should_redirect_to("home page") { root_path }
   end
+
+  should_route :get, '/presentations/1/edit',
+    :controller => 'presentations', :action => 'edit', :id => '1'
 
   context 'on GET to #edit when signed in' do
     setup do
@@ -83,8 +83,8 @@ class PresentationsControllerTest < ActionController::TestCase
   context 'on DELETE to /presentations/:id when signed in' do
     setup do
       sign_in
-      @presentation   = Factory(:presentation)
-      @old_count = Presentation.count
+      @presentation = Factory(:presentation)
+      @old_count    = Presentation.count
       delete :destroy, :id => @presentation.id
     end
 
