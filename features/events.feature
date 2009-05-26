@@ -54,3 +54,11 @@ Feature: Events
     And a future recurring event exists with a title of "Theatre"
     When I go to the homepage
     Then I should see that there are 5 future events
+
+  Scenario: Viewing events atom feed
+    Given a future special event exists with a title of "Barcamp Boston"
+    Given a future recurring event exists with a title of "Hackfest"
+    When I go to the events atom feed
+    Then I should see an entry for "Barcamp Boston"
+    And I should see an entry for "Hackfest"
+    And I should not see an entry for "PHPConf"

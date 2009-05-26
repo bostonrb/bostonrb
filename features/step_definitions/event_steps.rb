@@ -35,3 +35,14 @@ Then /^I should see that there are (\d+) future events$/ do |count|
   end
 end
 
+Then /^I should see an entry for "([^\"]*)"$/ do |title|
+  assert_select 'feed > entry' do
+    assert_select 'title', title
+  end
+end
+
+Then /^I should not see an entry for "([^\"]*)"$/ do |title|
+  assert_select 'feed > entry' do
+    assert_select 'title', :text => title, :count => 0
+  end
+end

@@ -12,6 +12,8 @@ module NavigationHelpers
       new_password_path
     when /the events page/i
       events_path
+    when /the events atom feed/i
+      events_path :format => :atom
 
     # Add more page name => path mappings here
 
