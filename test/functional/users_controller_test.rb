@@ -96,6 +96,7 @@ class UsersControllerTest < ActionController::TestCase
   def should_have_user_form_fields()
     assert_select 'input[id=user_email][type=text]'
     assert_select 'input[id=user_twitter][type=text]'
+    assert_select 'input[id=user_github][type=text]'
   end
 
 end

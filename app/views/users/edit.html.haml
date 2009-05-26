@@ -14,11 +14,14 @@
             = user_form.label :twitter
             %div= user_form.text_field :twitter
 
+          %div
+            = user_form.label :github
+            %div= user_form.text_field :github
+
           - user_form.fields_for :feed do |feed_form|
             %div
               = feed_form.label :feed_url, "Blog Feed URL"
               %div= feed_form.text_field :feed_url
-
 
           .buttons
             = user_form.submit 'Update', :disable_with => 'Please wait...'
