@@ -44,7 +44,7 @@
         %p= truncate(@featured_project.description, :length => 250)
     .half>
       %ul
-        - link_to_each(@recent_projects).each do |link|
+        - link_to_each(@popular_projects).each do |link|
           %li= link
 
 #apps.row
