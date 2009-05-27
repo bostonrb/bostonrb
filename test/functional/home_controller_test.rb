@@ -33,7 +33,7 @@ class HomeControllerTest < ActionController::TestCase
       get :index
     end
 
-    should_respond_with :success
+    should_respond_with    :success
     should_render_template :index
 
     should "fetch users" do
@@ -47,6 +47,11 @@ class HomeControllerTest < ActionController::TestCase
     should "fetch 4 recurring events" do
       assert_received(Event, :next) {|expect| expect.with(4) }
       assert_received(Event, :recurring)
+    end
+
+    should "display date for recurring events" do
+      assert_select "p.date span",
+        :text => @recurring_events.first.date.to_s(:fancy_date)
     end
 
     should "fetch 5 special events" do
