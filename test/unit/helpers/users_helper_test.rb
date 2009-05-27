@@ -86,7 +86,6 @@ class UsersHelperTest < ActionView::TestCase
       assert_same feed, user.feed
     end
 
-
   end
 end
 

@@ -5,6 +5,6 @@ class FeedTest < ActiveSupport::TestCase
     assert Feed.included_modules.include?(Feedra::Feed)
   end
 
-  should_belong_to :user
+  should_belong_to :feed_owner
 end
 

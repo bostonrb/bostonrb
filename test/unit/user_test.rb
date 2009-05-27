@@ -13,7 +13,7 @@ class UserTest < ActiveSupport::TestCase
 
     should_have_many :tweets
     should_have_many :projects
-    should_have_one :feed
+    should_have_one :feed, :dependent => :destroy
     should_allow_mass_assignment_of :twitter
     should_allow_mass_assignment_of :github
     should_allow_mass_assignment_of :feed_attributes

@@ -6,7 +6,7 @@
       %h2 Edit company
       = error_messages_for :company
 
-      - form_for(@company) do |form|
+      - form_for setup_company(@company) do |form|
         .fieldset
           = partial '/companies/fields', :form => form
           .buttons

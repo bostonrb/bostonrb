@@ -6,6 +6,12 @@
   = form.label :website_url, "Website URL"
   %div= form.text_field :website_url
 
+- form.fields_for :feed do |feed_form|
+  %div
+    = feed_form.label :feed_url, "Blog Feed URL"
+    %div= feed_form.text_field :feed_url
+    %p.instruct URL to blog feed, ie http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots
+
 %div
   = form.label :twitter
   %div= form.text_field :twitter

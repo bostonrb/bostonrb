@@ -11,6 +11,7 @@ Feature: Companies
       And I fill in "Name" with "thoughtbot"
       And I fill in "Twitter" with "thoughtbot"
       And I fill in "Website URL" with "http://thoughtbot.com"
+      And I fill in "Blog Feed URL" with "http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots"
       And I press "Create"
       Then I should see "Company created"
       When I follow "thoughtbot"
@@ -19,4 +20,5 @@ Feature: Companies
       Then the "Name" field should contain "thoughtbot"
       And the "Twitter" field should contain "thoughtbot"
       And the "Website URL" field should contain "http://thoughtbot.com"
+      And the "Blog Feed URL" field should contain "http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots"
 

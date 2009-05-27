@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :presentations
   has_many :tweets
   has_many :projects
-  has_one  :feed
+  has_one  :feed, :as => :feed_owner, :dependent => :destroy
 
   accepts_nested_attributes_for :feed, :reject_if => proc { |attrs| attrs.nil? || attrs.all? { |key, value| value.blank? } }
 
