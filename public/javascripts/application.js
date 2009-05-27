@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
                                 timeout: 8000});
 
   $('#user_twitter').bind('keyup', function(){
-      this.value = this.value.replace(/\W/g,'');
-    });
+    this.value = this.value.replace(/\W/g,'');
+  });
   
 });
