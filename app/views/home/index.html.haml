@@ -6,6 +6,8 @@
       %h2 Recurring Events
       - @recurring_events.each do |event|
         .quarter>
+          %p.date
+            %span= event.date.to_s(:fancy_date)
           %h3= link_to h(event.title), event
           %p= event.cached_description_html
 
