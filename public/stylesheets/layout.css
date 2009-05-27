@@ -79,11 +79,13 @@ body {
 }
 
 #other_events, #companies, #authentication {
-  padding: 2.1em 0 2.1em 0;
+  padding: 2.1em 0;
+  position: relative;
 }
 
 #apps {
   padding: 0 0 2em 0;
+  position: relative;
 }
 
 #other_events h3, #apps h3, #companies h3, #twitter_blogs h3, #about h3 {
@@ -258,4 +260,18 @@ body {
   display: inline-block;
   text-decoration: none;
   background: url(/images/engineyard.png) 0 0 no-repeat;
+}
+
+#companies .crud {
+	float: none;
+  position: absolute;
+  top: 1.8em;
+  right:2em;
+}
+
+#apps .crud {
+	float: none;
+  position: absolute;
+  top: 0;
+  right:2em;	
 }

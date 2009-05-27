@@ -47,6 +47,10 @@ h3 {
   margin: 0 .75em .75em 0
 }
 
+h3.center {
+  margin-right: 0;
+}
+
 ul {
   list-style-type: square;
   margin: 0 1.5em 1.5em 1em;
