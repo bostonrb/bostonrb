@@ -6,14 +6,12 @@ xml.rss :version => "2.0" do
     xml.link events_url, :rel => 'alternate', :format => 'text/html'
     xml.link events_url(:format => :rss), :rel => 'self'
 
-    @events.each do |event|
-      xml.item do
-        xml.title event.title
-        xml.description event.description
-        xml.pubDate event.updated_at.xmlschema
-        xml.link event_url(event), :rel => 'alternate', :format => 'text/html'
-        xml.guid event_url(event)
-      end
+    xml.item do
+      xml.title "This RSS feed is gone"
+      xml.description @message
+      xml.link @new_feed_url
+      xml.pubDate "Thu, 26 May 2009 21:00:00 EST"
     end
+    
   end
 end
