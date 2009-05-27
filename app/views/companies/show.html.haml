@@ -4,5 +4,12 @@
       .crud
         %p= link_to 'Edit', edit_company_path(@company)
       %h2= @company.name
-      %p= link_to @company.website_url, @company.website_url
+      %ul.details
+        - unless @company.twitter.blank?
+          %li.clearfix
+            .detail= link_to @company.twitter, "http://twitter.com/#{@company.twitter}"
+            .label Twitter
+        %li.clearfix.last
+          .detail= link_to @company.website_url, @company.website_url
+          .label URL
 

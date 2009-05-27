@@ -5,7 +5,7 @@ xml.rss :version => "2.0" do
     xml.description "Events coming up for Boston Rubyists"
     xml.link events_url, :rel => 'alternate', :format => 'text/html'
     xml.link events_url(:format => :rss), :rel => 'self'
-    
+
     @events.each do |event|
       xml.item do
         xml.title event.title

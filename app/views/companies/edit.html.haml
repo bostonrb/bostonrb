@@ -1,0 +1,13 @@
+#edit
+  .ribbon
+    .row
+      .crud
+        %p= link_to 'Delete', company_path(@company), :method => :delete, :confirm => 'Are you sure?'
+      %h2 Edit company
+      = error_messages_for :company
+
+      - form_for(@company) do |form|
+        .fieldset
+          = partial '/companies/fields', :form => form
+          .buttons
+            = form.submit 'Update', :disable_with => 'Please wait...'

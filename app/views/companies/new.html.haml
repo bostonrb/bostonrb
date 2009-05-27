@@ -5,6 +5,6 @@
       = error_messages_for :company
       - form_for(@company) do |form|
         .fieldset
-          = partial 'companies/form', :form => form
+          = partial 'companies/fields', :form => form
         .buttons
           = form.submit 'Create', :disable_with => 'Please wait...'

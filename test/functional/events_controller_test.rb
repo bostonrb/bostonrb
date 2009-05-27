@@ -110,11 +110,11 @@ class EventsControllerTest < ActionController::TestCase
   context 'on POST to :create when signed in' do
     setup do
       sign_in
-      @old_count = Event.count
       post :create,
         :event => Factory.attributes_for(:event, :title => "new event")
     end
 
+    should_set_the_flash_to /event created/i
     should_redirect_to("home") { root_path }
     should "create Event" do
       assert Event.find_by_title("new event")

@@ -6,6 +6,7 @@ class CompanyTest < ActiveSupport::TestCase
       @company = Factory(:company, :name => "Nike")
     end
 
+    should_validate_presence_of   :name
     should_validate_uniqueness_of :name
     should_validate_url_format_of :website_url
 
