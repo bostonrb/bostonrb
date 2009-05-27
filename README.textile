@@ -10,15 +10,18 @@ All gems are vendored except for Nokogiri, JSON, RedCloth, and Feedzirra, which 
 
 Install:
 
-    cucumber 		0.3.5
-    json     		1.1.6
-    pauldix-feedzirra 	0.0.12
-    RedCloth 		4.1.0
-    
+    cucumber           0.3.5
+    json               1.1.6
+    pauldix-feedzirra  0.0.12
+    RedCloth           4.1.0
 
 h2. Tests
 
 We use Cucumber & Webrat for acceptance testing and Shoulda, Factory Girl, & Mocha for unit testing. We use Fakeweb to stop the test suite from hitting external services. We use Nokogiri for parsing markup, especially in acceptance tests.
+
+h2. Development & Test databases
+
+Boston.rb comes without a database.yml. It is also ignored from git. This is so we can deploy with the correct credentials. As a developer, that means you need to create one of your own. Developers are successfully using MySQL & Postgres. SQLite should be fine, too.
 
 h2. Production
 
@@ -52,7 +55,6 @@ h3. Deployers
 
 Josh Nichols and Dan Croak have access to the production slice.
 This must be added to cron:
-
 
 h2. Contributors
 
