@@ -166,3 +166,19 @@ a:hover,
   list-style-type: none;
   display: inline;
 }
+
+p.date {
+	color: #069;
+  text-align: center;
+  text-transform: lowercase;
+  letter-spacing: .2em;
+  font-variant: small-caps;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.4em;
+  background: url(/images/rule.png) 50% 50% repeat-x;
+}
+
+p.date span {
+	padding: 0 .5em;
+	background: #000919;
+}
