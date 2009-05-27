@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090526040939) do
+ActiveRecord::Schema.define(:version => 20090526231624) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20090526040939) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "github"
+    t.string   "twitter"
   end
 
   add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
