@@ -14,9 +14,12 @@ class UserTest < ActiveSupport::TestCase
     should_have_many :tweets
     should_have_many :projects
     should_have_one :feed, :dependent => :destroy
+    should_belong_to :company
+
     should_allow_mass_assignment_of :twitter
     should_allow_mass_assignment_of :github
     should_allow_mass_assignment_of :feed_attributes
+    should_allow_mass_assignment_of :company_id
 
     should_allow_values_for :twitter, '1zomg'
     should_allow_values_for :twitter, 'zomg'
@@ -36,7 +39,6 @@ class UserTest < ActiveSupport::TestCase
     should 'display twitter url as main_url' do
       assert_equal 'http://twitter.com/croaky', @user.main_url
     end
-
   end
 
   context "creating a user with a twitter" do
@@ -91,7 +93,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   context 'calling has_link?' do
-
     context 'when the user does not have a twitter' do
       setup do
         @user = Factory(:user, :twitter => nil)
@@ -111,6 +112,5 @@ class UserTest < ActiveSupport::TestCase
         assert_equal true, @user.has_link?
       end
     end
-
   end
 end

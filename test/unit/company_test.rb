@@ -15,4 +15,18 @@ class CompanyTest < ActiveSupport::TestCase
       assert_equal "Nike", @company.to_s
     end
   end
+
+  context "alphabetical" do
+    setup do
+      Factory(:company, :name => "B")
+      Factory(:company, :name => "A")
+      Factory(:company, :name => "C")
+      @companies = Company.alphabetical
+    end
+
+    should "be companies listed alphabetically" do
+      expected = Company.all.sort_by(&:name)
+      assert_equal expected, @companies
+    end
+  end
 end

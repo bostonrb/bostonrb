@@ -11,4 +11,6 @@ class Company < ActiveRecord::Base
   def to_s
     name
   end
+
+  named_scope :alphabetical, :order => "name asc"
 end

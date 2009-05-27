@@ -18,6 +18,10 @@
             = user_form.label :github
             %div= user_form.text_field :github
 
+          %div
+            = user_form.label :company_id, "Company"
+            %div= user_form.select :company_id, companies_select_options, :include_blank => true
+
           - user_form.fields_for :feed do |feed_form|
             %div
               = feed_form.label :feed_url, "Blog Feed URL"

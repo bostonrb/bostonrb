@@ -67,6 +67,9 @@ Rails::Initializer.run do |config|
   config.gem "happymapper"
   config.gem "rest-client",
     :lib     => 'rest_client'
+  config.gem "technicalpickles-feedra",
+    :lib     => "feedra",
+    :version => "0.0.2"
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"
