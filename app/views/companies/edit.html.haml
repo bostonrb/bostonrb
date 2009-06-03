@@ -5,9 +5,14 @@
         %p= link_to 'Delete', company_path(@company), :method => :delete, :confirm => 'Are you sure?'
       %h2 Edit company
       = error_messages_for :company
-
       - form_for setup_company(@company) do |form|
         .fieldset
           = partial '/companies/fields', :form => form
           .buttons
             = form.submit 'Update', :disable_with => 'Please wait...'
+      - form_for :user, :url => company_employees_path(@company) do |employee_form|
+        .fieldset
+          = employee_form.label :github, "Github Name"
+          = employee_form.text_field :github
+          .buttons
+            = employee_form.submit 'Add Employee'

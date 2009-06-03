@@ -10,9 +10,11 @@ class User < ActiveRecord::Base
   has_one  :feed, :as => :feed_owner, :dependent => :destroy
   belongs_to :company
 
-  accepts_nested_attributes_for :feed, :reject_if => proc { |attrs| attrs.nil? || attrs.all? { |key, value| value.blank? } }
+  accepts_nested_attributes_for :feed,
+    :reject_if => proc { |attrs| attrs.nil? ||
+                                 attrs.all? { |key, value| value.blank? } }
 
-  attr_accessible :twitter, :github, :feed_attributes, :company_id
+  attr_accessible :twitter, :github, :feed_attributes, :company_id, :company
 
   validates_format_of :twitter, :with => /^\w{1,15}$/, :allow_nil => true
   before_validation :cleanout_twitter

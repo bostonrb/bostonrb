@@ -5,6 +5,7 @@ Feature: Companies
 
     Scenario: I sign in and create a company
       Given I am signed up and confirmed as "email@person.com/password"
+      And a user exists with a github of "Beemore"
       When I sign in as "email@person.com/password"
       Then I should be signed in
       When I follow "New company"
@@ -21,4 +22,8 @@ Feature: Companies
       And the "Twitter" field should contain "thoughtbot"
       And the "Website URL" field should contain "http://thoughtbot.com"
       And the "Blog Feed URL" field should contain "http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots"
+      When I fill in "Github Name" with "Beemore"
+      And I press "Add Employee"
+      Then I should see "Employees"
+      And I should see "Beemore"
 

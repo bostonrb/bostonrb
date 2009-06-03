@@ -75,6 +75,28 @@ class CompaniesControllerTest < ActionController::TestCase
     end
   end
 
+  context "on GET to #show for a company with employees" do
+    setup do
+      @employee_a = Factory(:email_confirmed_user)
+      @employee_b = Factory(:email_confirmed_user)
+      @employees = [@employee_a, @employee_b]
+
+      @company = Factory(:company)
+      @company.employees << @employees
+      get :show, :id => @company.to_param
+    end
+
+    should "show Employees" do
+      assert_select "h3", :text => "Employees"
+      assert_select "ul.employees" do
+        assert_select "li a[href=?]", user_path(@employee_a),
+          :text => @employee_a.github
+        assert_select "li a[href=?]", user_path(@employee_b),
+          :text => @employee_b.github
+      end
+    end
+  end
+
   should_route :get, "/companies/1/edit",
     :controller => 'companies', :action => 'edit', :id => '1'
 
@@ -98,6 +120,13 @@ class CompaniesControllerTest < ActionController::TestCase
       assert_select "form[id=edit_company_#{@company.to_param}]" do
         should_have_company_form_fields
         assert_select 'input[type=submit][id=company_submit]'
+      end
+    end
+
+    should 'have add employee form' do
+      assert_select "form[action=?]", company_employees_path(@company) do
+        assert_select 'input[type=text][name=?]',    'user[github]'
+        assert_select 'input[type=submit][value=?]', 'Add Employee'
       end
     end
 

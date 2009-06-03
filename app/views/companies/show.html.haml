@@ -12,4 +12,9 @@
         %li.clearfix.last
           .detail= link_to @company.website_url, @company.website_url
           .label URL
+      - if @company.employees.present?
+        %h3 Employees
+        %ul.employees
+          - @company.employees.each do |employee|
+            %li= link_to employee.github, user_path(employee)
 

@@ -9,7 +9,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :events
   map.resources :pages
   map.resources :passwords
-  map.resources :companies
+  map.resources :companies do |companies|
+    companies.resources :employees
+  end
 
   map.resources :users do |users|
     users.resource :password,     :controller => 'passwords'

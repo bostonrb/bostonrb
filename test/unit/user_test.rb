@@ -13,13 +13,14 @@ class UserTest < ActiveSupport::TestCase
 
     should_have_many :tweets
     should_have_many :projects
-    should_have_one :feed, :dependent => :destroy
+    should_have_one  :feed, :dependent => :destroy
     should_belong_to :company
 
-    should_allow_mass_assignment_of :twitter
-    should_allow_mass_assignment_of :github
-    should_allow_mass_assignment_of :feed_attributes
-    should_allow_mass_assignment_of :company_id
+    should_allow_mass_assignment_of :twitter,
+                                    :github,
+                                    :feed_attributes,
+                                    :company_id,
+                                    :company
 
     should_allow_values_for :twitter, '1zomg'
     should_allow_values_for :twitter, 'zomg'
