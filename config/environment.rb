@@ -24,23 +24,16 @@ Rails::Initializer.run do |config|
     :version => '> 3.0.4'
   config.gem 'builder',
     :version => '2.1.2'
-  config.gem 'dancroak-validates_email_format_of',
-    :source  => 'http://gems.github.com',
-    :lib     => 'validates_email_format_of'
   config.gem 'dancroak-twitter-search',
     :version => "0.5.5",
     :source  => 'http://gems.github.com',
     :lib     => 'twitter_search'
-  config.gem 'feed-normalizer',
-    :version => '1.4.0'
   config.gem 'gravtastic',
     :version => '>= 2.1.0'
   config.gem 'haml',
     :version => '2.1.0'
   config.gem "json",
     :version => '1.1.6'
-  config.gem 'simple-rss',
-    :version => '1.1'
   config.gem 'technicalpickles-has_markup',
     :lib     => 'has_markup',
     :source  => 'http://gems.github.com',
@@ -60,7 +53,6 @@ Rails::Initializer.run do |config|
   config.gem "giraffesoft-resource_controller",
     :lib     => "resource_controller",
     :version => "0.6.1"
-  config.gem "feedra"
   config.gem "dancroak-le-git",
     :lib     => "le_git",
     :version => "0.0.5"
