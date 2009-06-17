@@ -1,30 +1,25 @@
+# encoding: utf-8
+
 require 'rubygems'
 require 'test/unit'
 require 'active_record'
 require "#{File.dirname(__FILE__)}/../init"
 
-class Model
-  # ActiveRecord validations without database
-  # Thanks to http://www.prestonlee.com/archives/182
-  def save() end
-  def save!() end
-  def update_attribute() end
-  def new_record?() false end
-  def self.self_and_descendents_from_active_record() [self] end
-  def self.human_name() end
-  def self.human_attribute_name(_) end
-  def initialize() @errors = ActiveRecord::Errors.new(self) end
-  include ActiveRecord::Validations
-  
-  extend ValidatesUrlFormatOf
+ActiveRecord::Base.establish_connection(
+  :adapter  => 'sqlite3',
+  :database => ':memory:')
 
-  attr_accessor :homepage
+ActiveRecord::Schema.define(:version => 0) do
+  create_table :models, :force => true do |t|
+    t.string :homepage
+    t.string :my_UrL_hooray
+    t.string :custom_url
+  end
+end
+
+class Model < ActiveRecord::Base
   validates_url_format_of :homepage
-  
-  attr_accessor :my_UrL_hooray
   validates_url_format_of :my_UrL_hooray
-  
-  attr_accessor :custom_url
   validates_url_format_of :custom_url, :message => 'custom message'
 end
 
