@@ -56,9 +56,6 @@ Rails::Initializer.run do |config|
   config.gem "dancroak-le-git",
     :lib     => "le_git",
     :version => "0.0.5"
-  config.gem "happymapper"
-  config.gem "rest-client",
-    :lib     => 'rest_client'
   config.gem "technicalpickles-feedra",
     :lib     => "feedra",
     :version => "0.0.2"

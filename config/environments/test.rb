@@ -35,10 +35,8 @@ config.gem 'thoughtbot-shoulda',
            :version => '= 2.10.1'
 config.gem 'webrat',
            :version => '= 0.4.4'
-config.gem 'nokogiri',
-           :version => '= 1.2.3'
 config.gem 'cucumber',
-           :version => '= 0.3.5'
+           :version => '= 0.3.11'
 config.gem 'fakeweb',
            :version => '= 1.2.0'
 
