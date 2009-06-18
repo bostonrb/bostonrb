@@ -13,6 +13,13 @@ Bootstrapper.for :development do |b|
   Factory(:recurring_event, :title => 'Theater Night', :date => 4.week.from_now)
 
   Factory(:special_event, :title => 'WebInno', :date => 1.week.from_now)
+
+  Factory(:user, :email => 'josh@technicalpickles.com')
+  30.times do
+    Factory(:user)
+  end
+  Factory(:user, :email => 'dcroak@thoughtbot.com')
+
 end
 
 Bootstrapper.for :test do |b|
