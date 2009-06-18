@@ -1,0 +1,5 @@
+<%- ActiveRecord::Base.configurations.keys.each do |env| -%>
+Bootstrapper.for :<%= env %> do |b|
+end
+
+<%- end -%>
