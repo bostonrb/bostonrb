@@ -17,8 +17,11 @@ jQuery(document).ready(function($) {
     $.under_construction.toggleOverlayOfPendingElements();
   });
 
-  $('#people .collage').cycle({ fx: 'scrollDown',
-                                timeout: 8000});
+  $('#people .collage').cycle({
+                                fx: 'scrollDown',
+                                timeout: 8000,
+                                pause: 1
+                              });
 
   $('#user_twitter').bind('keyup', function(){
     this.value = this.value.replace(/\W/g,'');
