@@ -4,9 +4,9 @@ module UsersHelper
       opts = {}
       opts[:title] = user.to_s if user.to_s
       if user.has_link?
-        link_to( image_tag(user.gravatar_url, opts), user.main_url ) 
+        link_to image_tag(user.gravatar_url, opts), user.main_url, :target => :_blank
       else
-        image_tag(user.gravatar_url, opts)
+        image_tag user.gravatar_url, opts
       end
     }
   end
