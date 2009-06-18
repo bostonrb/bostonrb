@@ -14,11 +14,11 @@ Bootstrapper.for :development do |b|
 
   Factory(:special_event, :title => 'WebInno', :date => 1.week.from_now)
 
-  Factory(:user, :email => 'josh@technicalpickles.com')
+  Factory(:user, :email => 'josh@technicalpickles.com', :twitter => 'techpickles')
   30.times do
     Factory(:user)
   end
-  Factory(:user, :email => 'dcroak@thoughtbot.com')
+  Factory(:user, :email => 'dcroak@thoughtbot.com', :twitter => 'croaky')
 
 end
 
