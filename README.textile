@@ -23,6 +23,8 @@ h2. Development & Test databases
 
 Boston.rb comes without a database.yml. It is also ignored from git. This is so we can deploy with the correct credentials. As a developer, that means you need to create one of your own. Developers are successfully using MySQL & Postgres. SQLite should be fine, too.
 
+Run @rake db:bootstrap@ to seed some example data.
+
 h2. Production
 
 "EngineYard":http://engineyard.com is awesome enough to provide us with hosting.
