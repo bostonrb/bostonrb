@@ -8,6 +8,7 @@
         .quarter>
           %p.date
             %span= event.date.to_s(:fancy_date)
+            %span= event.date.to_s(:time)
           %h3= link_to h(event.title), event
           %p= event.cached_description_html
 
