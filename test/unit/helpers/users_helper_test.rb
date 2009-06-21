@@ -12,7 +12,7 @@ class UsersHelperTest < ActionView::TestCase
       end
 
       should "be images, without title, based on gravatar URLs of users" do
-        expected = [link_to( image_tag("http://p.ng"), 'http://foo.bar' )]
+        expected = [link_to( image_tag("http://p.ng"), 'http://foo.bar', :target => '_blank')]
         assert_equal expected, @collage
       end
 
@@ -41,7 +41,7 @@ class UsersHelperTest < ActionView::TestCase
       end
 
       should "be images, without links, based on gravatar URLs of users" do
-        expected = [link_to( image_tag("http://p.ng", :title => 'foo'), 'http://foo.bar' )]
+        expected = [link_to( image_tag("http://p.ng", :title => 'foo'), 'http://foo.bar', :target => '_blank')]
         assert_equal expected, @collage
       end
 
