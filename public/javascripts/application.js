@@ -26,5 +26,12 @@ jQuery(document).ready(function($) {
   $('#user_twitter').bind('keyup', function(){
     this.value = this.value.replace(/\W/g,'');
   });
+
+  //animate anchor links on home page
+  $('.navigation a').click(function() {
+      $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000 );
+      return false;
+  });
+
   
 });
