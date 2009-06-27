@@ -29,8 +29,10 @@ jQuery(document).ready(function($) {
 
   //animate anchor links on home page
   $('.navigation a').click(function() {
-      $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000 );
-      return false;
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') ){
+        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000 );
+        return false;
+      }
   });
 
   
