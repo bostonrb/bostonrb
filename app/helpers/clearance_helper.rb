@@ -13,7 +13,7 @@ module ClearanceHelper
   end
 
   def signed_in_links
-    [link_to("My Account",  edit_user_path(current_user)),
-     link_to("Sign out", sign_out_path)]
+    [link_to("My Account", edit_user_path(current_user)),
+     link_to("Sign out",   sign_out_path)]
   end
 end
