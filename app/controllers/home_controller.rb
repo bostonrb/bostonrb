@@ -12,8 +12,6 @@ class HomeController < ApplicationController
     @featured_project      = Project.featured
     @popular_projects      = Project.ordered("watchers desc").limited(5)
 
-    # @recent_apps
-
     @featured_job          = Job.featured
     @recent_jobs           = Job.ordered.limited(5)
 
