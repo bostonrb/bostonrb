@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090603002159) do
+ActiveRecord::Schema.define(:version => 20090729063311) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(:version => 20090603002159) do
 
   create_table "tweets", :force => true do |t|
     t.string   "text"
-    t.integer  "twitter_id"
+    t.integer  "twitter_id", :limit => 8
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
