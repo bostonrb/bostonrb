@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include Clearance::User
   include Pacecar
 
-  is_gravtastic
+  is_gravtastic :email, :default => "monsterid"
 
   has_many :presentations
   has_many :tweets

@@ -4,7 +4,8 @@ class UsersHelperTest < ActionView::TestCase
   context "collage of users" do
     context "when the user's to_s returns nil" do
       setup do
-        @users   = [Factory.stub(:user, :gravatar_url => "http://p.ng")]
+        @users   = [Factory.stub(:user)]
+        @users.first.stubs(:gravatar_url).returns("http://p.ng")
         @users.first.stubs(:main_url).returns('http://foo.bar')
         @users.first.stubs(:has_link?).returns(true)
         @users.first.stubs(:to_s).returns(nil)
@@ -19,7 +20,8 @@ class UsersHelperTest < ActionView::TestCase
     end
     context "when the user doesn't have a main_url" do
       setup do
-        @users   = [Factory.stub(:user, :gravatar_url => "http://p.ng")]
+        @users   = [Factory.stub(:user)]
+        @users.first.stubs(:gravatar_url).returns("http://p.ng")
         @users.first.stubs(:main_url).returns(nil)
         @users.first.stubs(:has_link?).returns(false)
         @users.first.stubs(:to_s).returns(nil)
@@ -33,7 +35,8 @@ class UsersHelperTest < ActionView::TestCase
     end
     context 'when the user has a main_url' do
       setup do
-        @users   = [Factory.stub(:user, :gravatar_url => "http://p.ng")]
+        @users   = [Factory.stub(:user)]
+        @users.first.stubs(:gravatar_url).returns("http://p.ng")
         @users.first.stubs(:main_url).returns('http://foo.bar')
         @users.first.stubs(:has_link?).returns(true)
         @users.first.stubs(:to_s).returns('foo')

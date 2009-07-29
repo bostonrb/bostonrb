@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  should "respond to is_gravtastic" do
+  should "respond to gravatar_url" do
     user = Factory(:user, :email => 'john@doe.com')
+    puts user.gravatar_url
     assert_respond_to user, :gravatar_url
   end
 
