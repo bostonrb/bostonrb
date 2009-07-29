@@ -1,0 +1,93 @@
+--- !ruby/object:Gem::Specification 
+name: technicalpickles-feedra
+version: !ruby/object:Gem::Version 
+  version: 0.1.0
+platform: ruby
+authors: 
+- Josh Nichols
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-07-29 00:00:00 -04:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: pauldix-feedzirra
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: "0"
+    version: 
+description: 
+email: josh@technicalpickles.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- LICENSE
+- README.rdoc
+files: 
+- .document
+- .gitignore
+- LICENSE
+- README.rdoc
+- Rakefile
+- VERSION
+- feedra.gemspec
+- generators/feedra/feedra_generator.rb
+- generators/feedra/templates/entry.rb
+- generators/feedra/templates/feed.rb
+- generators/feedra/templates/feed_error.rb
+- generators/feedra/templates/migration.rb
+- lib/feedra.rb
+- lib/feedra/entry.rb
+- lib/feedra/extensions/feedzirra.rb
+- lib/feedra/feed.rb
+- lib/feedra/feed_error.rb
+- lib/summifire.rb
+- spec/entry_spec.rb
+- spec/feed_error_spec.rb
+- spec/feed_spec.rb
+- spec/spec_helper.rb
+- spec/summifire_spec.rb
+- spec/migrate/001_create_feed_and_events.rb
+has_rdoc: true
+homepage: http://github.com/technicalpickles/feedra
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --charset=UTF-8
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: pickles
+rubygems_version: 1.3.4
+signing_key: 
+specification_version: 3
+summary: Simple feed aggregation for Rails.
+test_files: 
+- spec/entry_spec.rb
+- spec/feed_error_spec.rb
+- spec/feed_spec.rb
+- spec/migrate/001_create_feed_and_events.rb
+- spec/spec_helper.rb
+- spec/summifire_spec.rb

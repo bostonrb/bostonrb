@@ -56,9 +56,10 @@ Rails::Initializer.run do |config|
   config.gem "dancroak-le-git",
     :lib     => "le_git",
     :version => "0.0.5"
+  config.gem 'taf2-curb', :lib => 'curb', :version => '0.2.8.0' # feezirra would normally depend on this, but doesn't depend a working it works with
   config.gem "technicalpickles-feedra",
     :lib     => "feedra",
-    :version => "0.0.2"
+    :version => "0.1.0"
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"
