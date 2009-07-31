@@ -7,3 +7,6 @@ en:
         notice: "{{resource_name}} updated."
       destroy:
         notice: "{{resource_name}} deleted."
+    users:
+      update:
+        notice: "Account updated."
