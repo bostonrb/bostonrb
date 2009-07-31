@@ -10,6 +10,10 @@ class ApplicationHelperTest < ActionView::TestCase
     should "default to %w{1 2 3 4 5}.to_sentence" do
       assert_equal %w{1 2 3 4 5}.to_sentence, sentence_of(%w{1 2 3 4 5})
     end
+
+    should "pass each item to the yield block, if given" do
+      assert_equal %w{A B C D E}.to_sentence, sentence_of(%w{a b c d e}) {|letter| letter.upcase }
+    end
   end
 
   def controller

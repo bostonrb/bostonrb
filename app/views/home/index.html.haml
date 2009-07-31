@@ -15,7 +15,9 @@
 #other_events.row
   %h3.center Special events
   %p.center
-    = sentence_of link_to_each(@special_events)
+    = sentence_of @special_events do |special_event|
+      = link_to special_event, special_event
+      == (#{special_event.date.to_s(:short_date)})
 
 #people
   .row
