@@ -8,3 +8,18 @@ metrics
 *~
 *.swo
 .DS_Store
+
+# ignore native bits
+# generated sort of by: git ls-files --others --exclude-standard vendor/gems
+vendor/gems/json-1.1.6/ext/json/ext/generator.bundle
+vendor/gems/json-1.1.6/ext/json/ext/generator/Makefile
+vendor/gems/json-1.1.6/ext/json/ext/generator/generator.bundle
+vendor/gems/json-1.1.6/ext/json/ext/generator/generator.o
+vendor/gems/json-1.1.6/ext/json/ext/generator/mkmf.log
+vendor/gems/json-1.1.6/ext/json/ext/generator/unicode.o
+vendor/gems/json-1.1.6/ext/json/ext/parser.bundle
+vendor/gems/json-1.1.6/ext/json/ext/parser/Makefile
+vendor/gems/json-1.1.6/ext/json/ext/parser/mkmf.log
+vendor/gems/json-1.1.6/ext/json/ext/parser/parser.bundle
+vendor/gems/json-1.1.6/ext/json/ext/parser/parser.o
+vendor/gems/json-1.1.6/ext/json/ext/parser/unicode.o
