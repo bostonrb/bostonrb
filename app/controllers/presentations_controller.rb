@@ -1,5 +1,11 @@
-class PresentationsController < ResourceController::Base
-  create.wants.html  { redirect_to root_url }
-  destroy.wants.html { redirect_to root_url }
-  destroy.flash "Presentation deleted."
+class PresentationsController < InheritedResources::Base
+  actions :new, :create, :edit, :update, :destroy
+
+  def create
+    create! { root_url }
+  end
+
+  def destroy
+    destroy! { root_url }
+  end
 end
