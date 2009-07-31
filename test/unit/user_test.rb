@@ -3,7 +3,6 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   should "respond to gravatar_url" do
     user = Factory(:user, :email => 'john@doe.com')
-    puts user.gravatar_url
     assert_respond_to user, :gravatar_url
   end
 
@@ -11,6 +10,8 @@ class UserTest < ActiveSupport::TestCase
     setup do
       @user = Factory(:user, :twitter => "Croaky")
     end
+
+    subject { @user }
 
     should_have_many :tweets
     should_have_many :projects

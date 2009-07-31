@@ -6,6 +6,8 @@ class PresentationTest < ActiveSupport::TestCase
       @presentation = Factory(:presentation, :title => "Agile Design")
     end
 
+    subject { @presentation }
+
     should_belong_to :user
 
     should "display name as string representation" do

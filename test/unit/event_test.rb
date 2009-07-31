@@ -7,6 +7,8 @@ class EventTest < ActiveSupport::TestCase
       @event = Factory(:event, :title => "Hackfest")
     end
 
+    subject { @event }
+
     should_validate_presence_of :date, :title, :location
     should_have_markup :description, :required => true, :cache_html => true
 
