@@ -33,6 +33,8 @@ files:
 - spec/spec_helper.rb
 has_rdoc: true
 homepage: http://github.com/chrislloyd/gravtastic
+licenses: []
+
 post_install_message: 
 rdoc_options: []
 
@@ -53,7 +55,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: gravtastic
-rubygems_version: 1.3.1
+rubygems_version: 1.3.5
 signing_key: 
 specification_version: 2
 summary: Easily add Gravatars to your Ruby objects.

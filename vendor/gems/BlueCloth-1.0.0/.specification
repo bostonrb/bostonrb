@@ -40,6 +40,8 @@ files:
 - bin/bluecloth
 has_rdoc: 
 homepage: http://bluecloth.rubyforge.org/
+licenses: []
+
 post_install_message: 
 rdoc_options: []
 
@@ -61,7 +63,7 @@ requirements:
 - strscan
 - logger
 rubyforge_project: bluecloth
-rubygems_version: 1.3.1
+rubygems_version: 1.3.5
 signing_key: 
 specification_version: -1
 summary: BlueCloth is a Ruby implementation of Markdown, a text-to-HTML conversion tool for web writers. Markdown allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML).

@@ -58,7 +58,7 @@ files:
 - test/github_repository_test.rb
 - test/github_user_test.rb
 - test/test_helper.rb
-has_rdoc: true
+has_rdoc: false
 homepage: http://github.com/dancroak/le-git
 licenses: []
 
@@ -82,7 +82,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: 
-rubygems_version: 1.3.3
+rubygems_version: 1.3.5
 signing_key: 
 specification_version: 3
 summary: TODO

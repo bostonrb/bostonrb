@@ -9,7 +9,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2009-04-06 00:00:00 -04:00
+date: 2009-05-17 00:00:00 -04:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
@@ -119,6 +119,8 @@ files:
 - vendor/selenium-server.jar
 has_rdoc: true
 homepage: http://github.com/brynary/webrat
+licenses: []
+
 post_install_message: 
 rdoc_options: []
 
@@ -139,7 +141,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: webrat
-rubygems_version: 1.3.1
+rubygems_version: 1.3.5
 signing_key: 
 specification_version: 2
 summary: Webrat. Ruby Acceptance Testing for Web applications
