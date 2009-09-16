@@ -1,5 +1,5 @@
 class PresentationsController < InheritedResources::Base
-  actions :new, :create, :edit, :update, :destroy
+  actions :new, :create, :edit, :update, :destroy, :show
 
   def create
     create! { root_url }
