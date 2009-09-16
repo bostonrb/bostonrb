@@ -1,50 +1,53 @@
-jQuery(document).ready(function($) {
-  $('#events, #jobs, #projects, #presentations, #companies, #apps, #show, #edit').hover(
-    function() {
+Bostonrb = {
+  showCrud: function() {
       $(this).find('.crud').show();
-    },
-    function() {
-      $(this).find('.crud').hide();
-    }
-  );
+  },
 
-  $(document).bind('keydown', 'd', function(){ 
-    $.under_construction.hideOverlayOfPendingElements();
-    $.under_construction.toggleDisplayOfPendingElements();
-  });
-  $(document).bind('keydown', 'o', function(){ 
-    $.under_construction.showPendingElements();
-    $.under_construction.toggleOverlayOfPendingElements();
-  });
+  hideCrud: function() {
+    $(this).find('.crud').hide();
+  },
 
-  $('#people .collage').cycle({
-                                fx: 'scrollDown',
-                                timeout: 8000,
-                                pause: 1
-                              });
-
-  $('#user_twitter').bind('keyup', function(){
+  normalizeTwitter: function(){
     this.value = this.value.replace(/\W/g,'');
-  });
+  },
 
-  //animate anchor links on home page
-  $('.navigation a').click(function() {
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') ){
-        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000 );
-        return false;
-      }
-  });
+  scrollToHash: function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') ){
+      $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000 );
+      return false;
+    }
+  },
 
-  $('#event_date').datepicker({
-      minDate: new Date(),
-      showOn: 'button',
-      buttonImage: '/images/calendar.png',
-      buttonImageOnly: true,
-      constrainInput: false,
-      onSelect: function(dateText, inst) {
-        $(this).focus();
-      },
-      dateFormat: 'DD, MM dd, yy '
-    });
-  
-});
+  focusThis: function() {
+    $(this).focus();
+  },
+
+  collageCycleOptions: {
+    fx: 'scrollDown',
+    timeout: 8000,
+    pause: 1
+  },
+
+  datepickerOptions: {
+    minDate: new Date(),
+    showOn: 'button',
+    buttonImage: '/images/calendar.png',
+    buttonImageOnly: true,
+    constrainInput: false,
+    dateFormat: 'DD, MM dd, yy '
+  }
+}
+
+Bostonrb.datepickerOptions.onSelect = Bostonrb.focusThis; // can't seem to assign focusThis in the middle of the object...
+
+jQuery(document).ready(function($) {
+    $('#events, #jobs, #projects, #presentations, #companies, #apps, #show, #edit').hover(Bostonrb.showCrud, Bostonrb.hideCrud);
+
+    $('#people .collage').cycle(Bostonrb.collageCycleOptions);
+
+    $('#user_twitter').bind('keyup', Bostonrb.normalizeTwitter);
+
+    $('.navigation a').click(Bostonrb.scrollToHash);
+
+    $('#event_date').datepicker(Bostonrb.datepickerOptions);
+  });
