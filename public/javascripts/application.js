@@ -43,7 +43,8 @@ jQuery(document).ready(function($) {
       constrainInput: false,
       onSelect: function(dateText, inst) {
         $(this).focus();
-      }
+      },
+      dateFormat: 'DD, MM dd, yy '
     });
   
 });
