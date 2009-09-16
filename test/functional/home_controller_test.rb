@@ -21,10 +21,10 @@ class HomeControllerTest < ActionController::TestCase
       @popular_projects = [Factory(:project)]
       Project.stub_chain(:ordered, :limited).returns(@popular_projects)
 
-      @featured_job = Factory.build(:job)
+      @featured_job = Factory(:job)
       Job.stubs(:featured).returns(@featured_job)
 
-      @recent_jobs = [Factory.build(:job, :id => 3)]
+      @recent_jobs = [Factory(:job)]
       Job.stub_chain(:ordered, :limited).returns(@recent_jobs)
 
       @recent_companies = [Factory.build(:company)]
