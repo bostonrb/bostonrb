@@ -1,0 +1,97 @@
+--- !ruby/object:Gem::Specification 
+name: taf2-curb
+version: !ruby/object:Gem::Version 
+  version: 0.2.8.0
+platform: ruby
+authors: 
+- Ross Bamford
+- Todd A. Fisher
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-03-13 00:00:00 -04:00
+default_executable: 
+dependencies: []
+
+description: Curb (probably CUrl-RuBy or something) provides Ruby-language bindings for the libcurl(3), a fully-featured client-side URL transfer library. cURL and libcurl live at http://curl.haxx.se/
+email: todd.fisher@gmail.com
+executables: []
+
+extensions: 
+- ext/extconf.rb
+extra_rdoc_files: 
+- LICENSE
+- README
+files: 
+- LICENSE
+- README
+- Rakefile
+- doc.rb
+- ext/extconf.rb
+- lib/curb.rb
+- lib/curl.rb
+- ext/curb.c
+- ext/curb_postfield.c
+- ext/curb_multi.c
+- ext/curb_errors.c
+- ext/curb_easy.c
+- ext/curb_easy.h
+- ext/curb_errors.h
+- ext/curb_macros.h
+- ext/curb.h
+- ext/curb_postfield.h
+- ext/curb_multi.h
+- tests/tc_curl_multi.rb
+- tests/tc_curl_postfield.rb
+- tests/bug_curb_easy_blocks_ruby_threads.rb
+- tests/unittests.rb
+- tests/bug_require_last_or_segfault.rb
+- tests/bug_instance_post_differs_from_class_post.rb
+- tests/tc_curl_download.rb
+- tests/alltests.rb
+- tests/helper.rb
+- tests/tc_curl_easy.rb
+- tests/require_last_or_segfault_script.rb
+has_rdoc: true
+homepage: http://curb.rubyforge.org/
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --main
+- README
+require_paths: 
+- lib
+- ext
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: curb
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 3
+summary: Ruby libcurl bindings
+test_files: 
+- tests/tc_curl_multi.rb
+- tests/tc_curl_postfield.rb
+- tests/bug_curb_easy_blocks_ruby_threads.rb
+- tests/unittests.rb
+- tests/bug_require_last_or_segfault.rb
+- tests/bug_instance_post_differs_from_class_post.rb
+- tests/tc_curl_download.rb
+- tests/alltests.rb
+- tests/helper.rb
+- tests/tc_curl_easy.rb
+- tests/require_last_or_segfault_script.rb
