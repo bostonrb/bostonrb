@@ -1,5 +1,4 @@
 class Event < ActiveRecord::Base
-
   has_markup :description,
     :required   => true,
     :cache_html => true
@@ -30,6 +29,8 @@ class Event < ActiveRecord::Base
 
   named_scope :recurring, :conditions => { :recurring => true }
   named_scope :special,   :conditions => { :recurring => false }
+
+
 
   protected
 

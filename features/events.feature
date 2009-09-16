@@ -8,7 +8,7 @@ Feature: Events
     When I sign in as "email@person.com/password"
     And I go to the homepage
     And I follow "New Event"
-    And I select a date 10 days in the future for "Date"
+    And I fill in "Date" with "tomorrow at 7PM"
     And I fill in "Title" with "Hackfest"
     And I fill in "Location" with "41 Winter Street, Boston, MA, 02018"
     And I check "Recurring"

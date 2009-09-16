@@ -15,7 +15,9 @@
 
 %div
   = form.label :date
-  %div= form.datetime_select :date
+  %div= form.text_field :date
+  %p.instruct
+    ie "9/15 7PM" or "tomorrow at 6:45pm" or "3rd tuesday this september at 7pm"
 
 .checkbox_field
   = form.label :recurring

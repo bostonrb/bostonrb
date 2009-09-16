@@ -1,0 +1,44 @@
+= Autochronic
+<b>Version 0.2.0 (7 Feb, 2008)</b>
+
+Author::    Yossef Mendelssohn (ymendel@pobox.com)
+Copyright:: Copyright (c) 2008, Flawed Logic, OG Consulting, Yossef Mendelssohn
+License::   MIT License.  See MIT-LICENSE file for more details.
+
+Autochronic is a Ruby on Rails that will automatically make any date or datetime attribute in any model automatically handle natural-language strings. There is no effort on your part, no creation of before_save callbacks or writing your own accessors to handle the special input.
+
+== Installation
+
+Unpack the autochronic directory into vendor/rails/ in your rails project.
+A definitive public revision control access point is forthcoming that will make it possible to install the plugin via script/plugin install.
+
+== Using Autochronic
+
+Just use your models normally. They'll do the work for you automatically. Automatic Chronic. Auto Chronic. Autochronic.
+
+== Version history:
+
+  0.2.0 - Initial release
+    Developed under Rails 2.0.2 using chronic 0.2.3. That worked for me, and I'm not making any guarantees for anything else.
+
+== Known issues:
+
+  Chronic's parsing of 'today' is time-dependent in a bad way. See the following irb dump.
+  
+    >> Chronic.parse('today')
+    => Fri Feb 08 00:00:00 -0600 2008
+    >> Date.today.to_s
+    => "2008-02-07"
+    >> Time.now
+    => Thu Feb 07 23:13:28 -0600 2008
+    More info:
+    >> Time.local(2008, 2, 7, 22, 59, 59)
+    => Thu Feb 07 22:59:59 -0600 2008
+    >> time1 = _
+    => Thu Feb 07 22:59:59 -0600 2008
+    >> time2 = Time.local(2008, 2, 7, 23, 0, 0)
+    => Thu Feb 07 23:00:00 -0600 2008
+    >> Chronic.parse('today', :now => time1)
+    => Thu Feb 07 23:30:00 -0600 2008
+    >> Chronic.parse('today', :now => time2)
+    => Fri Feb 08 00:00:00 -0600 2008

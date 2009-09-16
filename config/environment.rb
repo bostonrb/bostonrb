@@ -60,6 +60,8 @@ Rails::Initializer.run do |config|
   config.gem "technicalpickles-feedra",
     :lib     => "feedra",
     :version => "0.1.1"
+
+  config.gem 'chronic'
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"

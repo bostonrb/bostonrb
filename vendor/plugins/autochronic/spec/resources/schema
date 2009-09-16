@@ -1,0 +1,9 @@
+ActiveRecord::Schema.define(:version => 0) do
+  create_table :space_cowboys, :force => true do |t|
+    t.date :some_date
+    t.datetime :some_time
+    t.timestamp :other_time
+    t.string :name
+    t.integer :trees_shaken
+  end
+end
