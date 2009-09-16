@@ -50,9 +50,9 @@ Rails::Initializer.run do |config|
     :lib     => "utility_scopes",
     :source  => 'http://gems.github.com', 
     :version => '0.2.2'
-  config.gem "giraffesoft-resource_controller",
-    :lib     => "resource_controller",
-    :version => "0.6.1"
+  config.gem "josevalim-inherited_resources",
+    :lib     => "inherited_resources",
+    :version => "0.8.5"
   config.gem "dancroak-le-git",
     :lib     => "le_git",
     :version => "0.0.5"

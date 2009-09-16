@@ -1,0 +1,12 @@
+en:
+  flash:
+    actions:
+      create:
+        notice: "{{resource_name}} created."
+      update:
+        notice: "{{resource_name}} updated."
+      destroy:
+        notice: "{{resource_name}} deleted."
+    users:
+      update:
+        notice: "Account updated."
