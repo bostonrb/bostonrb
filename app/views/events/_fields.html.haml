@@ -14,10 +14,11 @@
     == Format description using #{link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax'}.
 
 %div
-  = form.label :date
+  = form.label :date, 'Date and Time'
   %div= form.text_field :date
   %p.instruct
     ie "9/15 7PM" or "tomorrow at 6:45pm" or "3rd tuesday this september at 7pm"
+  #calendar
 
 .checkbox_field
   = form.label :recurring

@@ -35,5 +35,15 @@ jQuery(document).ready(function($) {
       }
   });
 
+  $('#event_date').datepicker({
+      minDate: new Date(),
+      showOn: 'button',
+      buttonImage: '/images/calendar.png',
+      buttonImageOnly: true,
+      constrainInput: false,
+      onSelect: function(dateText, inst) {
+        $(this).focus();
+      }
+    });
   
 });

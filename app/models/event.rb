@@ -30,8 +30,6 @@ class Event < ActiveRecord::Base
   named_scope :recurring, :conditions => { :recurring => true }
   named_scope :special,   :conditions => { :recurring => false }
 
-
-
   protected
 
   def geocode_location
