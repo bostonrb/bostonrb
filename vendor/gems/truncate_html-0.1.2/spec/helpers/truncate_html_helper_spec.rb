@@ -4,18 +4,25 @@ include TruncateHtmlHelper
 
 describe TruncateHtmlHelper do
 
-  it 'should be included in ActionView::Base' do
+  it 'is included in ActionView::Base' do
     ActionView::Base.included_modules.should include(TruncateHtmlHelper)
   end
 
   describe '#truncate_html' do
 
+    context 'the input html is nil' do
+      it 'returns an empty string' do
+        truncate_html(nil).should be_empty
+        truncate_html(nil).should be_kind_of String
+      end
+    end
+
     context 'truncating in the middle of a link' do
       before(:each) do
-        @html = '<div><ul><li>Look at <a href="foo">this</a> link <li></ul></div>'
+        @html = '<div><ul><li>Look at <a href="foo">this</a> link </li></ul></div>'
       end
 
-      it 'should truncate, and close the <a>, and close any remaining open tags' do
+      it 'truncates, and closes the <a>, and closes any remaining open tags' do
         truncate_html(@html, :length => 10).should == '<div><ul><li>Look at <a href="foo">this...</a></li></ul></div>'
       end
     end
@@ -25,7 +32,7 @@ describe TruncateHtmlHelper do
         before(:each) do
           @html = "<p>Look at <strong>this</strong>#{char} More words here</p>"
         end
-        it 'should place the punctuation after the tag without any whitespace' do
+        it 'places the punctuation after the tag without any whitespace' do
           truncate_html(@html, :length => 16).should == "<p>Look at <strong>this</strong>#{char} More...</p>"
         end
       end
@@ -35,7 +42,7 @@ describe TruncateHtmlHelper do
       before(:each) do
         @html = '<p>Look at <a href="awesomeful.net">this</a> link for randomness</p>'
       end
-      it 'should leave a whitespace between the closing tag and the following word character' do
+      it 'leaves a whitespace between the closing tag and the following word character' do
         truncate_html(@html, :length => 17).should == '<p>Look at <a href="awesomeful.net">this</a> link...</p>'
       end
     end
@@ -51,7 +58,7 @@ describe TruncateHtmlHelper do
         END_HTML
       end
 
-      it 'should recognize the multiline html properly' do
+      it 'recognizes the multiline html properly' do
         truncate_html(@html, :length => 8).should == ' <div id="foo" class="bar"> This is...</div>'
       end
     end
@@ -64,7 +71,7 @@ describe TruncateHtmlHelper do
             @html = "<div>Some before. <#{unpaired_tag}>and some after</div>"
             @html_caps = "<div>Some before. <#{unpaired_tag.capitalize}>and some after</div>"
           end
-          it "should not close the #{unpaired_tag} tag" do
+          it "does not close the #{unpaired_tag} tag" do
             truncate_html(@html, :length => 15).should == "<div>Some before. <#{unpaired_tag}>and...</div>"
             truncate_html(@html_caps, :length => 15).should == "<div>Some before. <#{unpaired_tag.capitalize}>and...</div>"
           end
@@ -75,7 +82,7 @@ describe TruncateHtmlHelper do
             @html = "<div>Some before. <#{unpaired_tag} />and some after</div>"
             @html_caps = "<div>Some before. <#{unpaired_tag.capitalize} />and some after</div>"
           end
-          it "should not close the #{unpaired_tag} tag" do
+          it "does not close the #{unpaired_tag} tag" do
             truncate_html(@html, :length => 15).should == "<div>Some before. <#{unpaired_tag} />and...</div>"
             truncate_html(@html_caps, :length => 15).should == "<div>Some before. <#{unpaired_tag.capitalize} />and...</div>"
           end

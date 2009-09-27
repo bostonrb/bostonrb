@@ -62,6 +62,9 @@ Rails::Initializer.run do |config|
     :version => "0.1.1"
 
   config.gem 'chronic'
+
+  config.gem 'truncate_html',
+    :source => 'http://gemcutter.org'
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"

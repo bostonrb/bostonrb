@@ -8,6 +8,7 @@ module TruncateHtml
     end
 
     def truncate(options = {})
+      return '' if @original_html.nil?
       options[:length] ||= 100
       options[:omission] ||= '...'
       @chars_remaining = options[:length]
@@ -27,7 +28,7 @@ module TruncateHtml
           result << str
         else
           result[-1] += options[:omission] unless options[:omission].nil?
-          @open_tags.reverse.each do |open_tag|
+          @open_tags.reverse_each do |open_tag|
             result << matching_close_tag(open_tag)
           end
           break
@@ -35,9 +36,6 @@ module TruncateHtml
       end
       result.join('')
     end
-
-
-    private #############################
 
     def html_tokens
       @original_html.scan(/<\/?[^>]+>|[\w\|`~!@#\$%^&*\(\)\-_\+=\[\]{}:;'",\.\/?]+|\s+/).map do
@@ -52,11 +50,11 @@ module TruncateHtml
     end
 
     def html_tag?(string)
-      if string =~ /<\/?[^>]+>/ then true else false end
+      string =~ /<\/?[^>]+>/ ? true : false
     end
 
     def open_tag?(html_tag)
-      if html_tag =~ /<(?!(?:#{UNPAIRED_TAGS.join('|')}|\/))[^\/>]+>/i then true else false end
+      html_tag =~ /<(?!(?:#{UNPAIRED_TAGS.join('|')}|\/))[^>]+>/i ? true : false
     end
 
     def remove_latest_open_tag(close_tag)
