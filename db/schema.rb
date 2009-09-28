@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090729063311) do
+ActiveRecord::Schema.define(:version => 20090730184621) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(:version => 20090729063311) do
     t.string   "title"
     t.datetime "deleted_at"
     t.integer  "place_id"
-    t.text     "cached_description_html"
-    t.boolean  "recurring",               :default => true, :null => false
+    t.text     "cached_description_html", :limit => 255
+    t.boolean  "recurring",                              :default => true, :null => false
   end
 
   create_table "feed_errors", :force => true do |t|
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20090729063311) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
-    t.text     "cached_description_html"
+    t.text     "cached_description_html", :limit => 255
   end
 
   create_table "presentations", :force => true do |t|
@@ -99,11 +99,12 @@ ActiveRecord::Schema.define(:version => 20090729063311) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
-    t.text     "description"
+    t.text     "description",             :limit => 255
     t.integer  "user_id"
-    t.string   "other_speakers",          :default => ""
+    t.string   "other_speakers",                         :default => ""
     t.string   "location"
     t.text     "cached_description_html"
+    t.datetime "date_of"
   end
 
   add_index "presentations", ["user_id"], :name => "index_presentations_on_user_id"

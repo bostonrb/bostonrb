@@ -3,7 +3,7 @@
   %div= form.text_field :title
 
 %div
-  = form.label :user
+  = form.label :user_id, "User"
   %div= form.collection_select :user_id, User.all, :id, :twitter
 
 %div
@@ -17,6 +17,10 @@
 %div
   = form.label :location
   %div= form.text_field :location
+
+%div
+  = form.label :date_of
+  %div= form.date_select :date_of
 
 %div
   = form.label :description

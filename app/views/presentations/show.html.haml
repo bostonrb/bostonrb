@@ -13,6 +13,10 @@
           %li.clearfix
             .detail= @presentation.location
             .label Where
+        - unless @presentation.date_of.nil?
+          %li.clearfix
+            .detail=@presentation.date_of.to_s(:fancy_date)
+            .label When
         %li.clearfix.last
           .detail= @presentation.description_html
           .label What
