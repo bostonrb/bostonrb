@@ -33,7 +33,7 @@ Rails::Initializer.run do |config|
   config.gem 'haml',
     :version => '2.1.0'
   config.gem "json",
-    :version => '1.1.7'
+    :version => '>=1.1.7'
   config.gem 'technicalpickles-has_markup',
     :lib     => 'has_markup',
     :source  => 'http://gems.github.com',
