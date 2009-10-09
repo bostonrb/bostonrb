@@ -8,4 +8,11 @@ class PresentationsController < InheritedResources::Base
   def destroy
     destroy! { root_url }
   end
+  
+  protected
+  
+  def collection
+    @presentations ||= end_of_association_chain.paginate(:page => params[:page])
+  end
+
 end

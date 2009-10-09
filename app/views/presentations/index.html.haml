@@ -2,6 +2,7 @@
   .ribbon
     .row
       %h2 Presentations
-      - @presentations.each do |presentation|
+      - collection.each do |presentation|
         %p
           %h3= link_to presentation.title, presentation
+      = will_paginate collection

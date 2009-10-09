@@ -19,5 +19,11 @@ class JobsController < InheritedResources::Base
       redirect_to root_path
     end
   end
+  
+  protected
+  
+  def collection
+    @jobs ||= end_of_association_chain.paginate(:page => params[:page])
+  end
 
 end

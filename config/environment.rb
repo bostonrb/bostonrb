@@ -60,6 +60,8 @@ Rails::Initializer.run do |config|
   config.gem "technicalpickles-feedra",
     :lib     => "feedra",
     :version => "0.1.1"
+  config.gem "will_paginate",
+    :version => "2.3.11"
 
   config.gem 'chronic'
 

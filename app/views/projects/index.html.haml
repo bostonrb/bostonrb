@@ -1,11 +1,9 @@
-#projects
-  .row
-    %h2 Projects
-    %p Here are some of the projects that Boston Rubyists have created
-    %p= link_to 'Add a new project', new_project_path
-
-    - @left_projects.each do |project|
-      = partial 'projects/show', :project => project
-  
-    - @right_projects.each do |project|
-      = partial 'projects/show', :project => project
+#index
+  .ribbon
+    .row
+      %h2 Jobs
+      - collection.each do |project|
+        %p
+          %h3= link_to project.name, project.github_url
+          ~ project.description
+      = will_paginate collection

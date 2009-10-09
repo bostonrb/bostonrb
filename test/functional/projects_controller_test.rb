@@ -14,8 +14,6 @@ class ProjectsControllerTest < ActionController::TestCase
 
     should_respond_with :success
     should_assign_to :projects
-    should_assign_to :left_projects
-    should_assign_to :right_projects
   end
 
   context 'on GET to :show' do
