@@ -84,7 +84,7 @@
   .row
     .crud
       %p= link_to 'New presentation', new_presentation_path
-    %h2 Presentations
+    %h2= link_to 'Presentations', presentations_path
     - if @featured_presentation
       .half>
         %h3= link_to @featured_presentation.title, presentation_path(@featured_presentation)

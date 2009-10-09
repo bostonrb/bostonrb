@@ -48,3 +48,24 @@ Feature: Presentations
     And I fill in "Description" with "Test Presentation Description"
     And I press "Create"
     Then I should see "Presentation created."
+    
+    Scenario: Viewing all presentations
+      Given I am signed up and confirmed as "email@person.com/password"
+      And a presentation exists with a title of "This is a presentation"
+      And a presentation exists with a title of "Here is another cool presentation"
+      When I sign in as "email@person.com/password"
+      And I go to the homepage
+      And I follow "Presentations" within "#presentations"
+      Then I should see "Presentations"
+      And I should see "This is a presentation"
+      And I should see "Here is another cool presentation"
+
+    Scenario: Viewing all presentations
+      Given I am signed up and confirmed as "email@person.com/password"
+      And a presentation exists with a title of "This is a presentation"
+      And a presentation exists with a title of "Here is another cool presentation"
+      When I sign in as "email@person.com/password"
+      And I go to the homepage
+      And I follow "Presentations" within "#presentations"
+      And I follow "This is a presentation"
+      Then I should see "This is a presentation"

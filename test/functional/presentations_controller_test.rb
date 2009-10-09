@@ -13,6 +13,21 @@ class PresentationsControllerTest < ActionController::TestCase
 
   should_route :get, '/presentations/new',
     :controller => 'presentations', :action => 'new'
+    
+  should_route :get, '/presentations',
+    :controller => 'presentations', :action => 'index'
+    
+  context 'on GET to /presentations when signed in' do
+    setup do
+      sign_in
+      get :index
+    end
+
+    should_assign_to :presentations
+    should_render_template :index
+    should_respond_with :success
+  end
+
 
   context 'on GET to new when signed in' do
     setup do

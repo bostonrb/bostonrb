@@ -1,9 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :jobs, :collection => {:old => :get}
 
-  map.resources :presentations, :only => [:new,  :create,
-                                          :edit, :update,
-                                          :show, :destroy]
+  map.resources :presentations
   map.resources :projects
   map.resources :apps
   map.resources :events
