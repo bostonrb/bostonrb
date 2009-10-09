@@ -20,3 +20,7 @@ Then /^I should( not)? see an image named "(.*)"$/ do |invisible, image|
   assert_select "img[src*=?]", image, :count => (invisible.nil? ? 1 : 0)
 end
 
+When /^I follow "([^\"]*)" within "([^\"]*)"$/ do |link_text, selector|
+  click_link_within(selector, link_text)
+end
+

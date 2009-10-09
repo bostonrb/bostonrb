@@ -2,6 +2,17 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class JobsControllerTest < ActionController::TestCase
 
+  context 'on GET to /jobs when signed in' do
+    setup do
+      sign_in
+      get :index
+    end
+    
+    should_assign_to :jobs
+    should_render_template :index
+    should_respond_with :success
+  end
+
   context 'on GET to /jobs/new when signed in' do
     setup do
       sign_in

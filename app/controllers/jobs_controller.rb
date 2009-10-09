@@ -1,5 +1,5 @@
 class JobsController < InheritedResources::Base
-  actions :show, :new, :create, :edit, :update, :destroy
+  actions :show, :new, :create, :edit, :update, :destroy, :index
 
   before_filter :authorize, :only => [:edit]
 

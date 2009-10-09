@@ -1,0 +1,9 @@
+#index
+  .ribbon
+    .row
+      %h2 Jobs
+      - @jobs.each do |job|
+        %p
+          %h3
+            = link_to job.title, job
+            %span= job.location

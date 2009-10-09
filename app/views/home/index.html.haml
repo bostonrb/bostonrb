@@ -63,7 +63,7 @@
   .row
     .crud
       %p= link_to 'New job', new_job_path
-    %h2 Jobs
+    %h2= link_to 'Jobs', jobs_path
     - if @featured_job
       .half
         %h3= link_to @featured_job.title, @featured_job
