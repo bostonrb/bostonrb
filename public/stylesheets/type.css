@@ -145,8 +145,11 @@ p, li {
 
 a,
 #jobs .crud a,
+#jobs .more a,
 #projects .crud a,
+#projects .more a,
 #presentations .crud a,
+#presentations .more a,
 #companies .crud a,
 #apps .crud a {
   color: #F90;

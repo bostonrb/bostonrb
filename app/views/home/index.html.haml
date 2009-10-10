@@ -51,6 +51,7 @@
       %ul
         - link_to_each(@popular_projects).each do |link|
           %li= link
+      %p.more= link_to 'View more...', projects_path
 
 #apps.row
   %h3.center Apps
@@ -72,6 +73,8 @@
       %ul
         - @recent_jobs.each do |job|
           %li= link_to job.title, job
+
+      %p.more= link_to 'View more...', jobs_path
 
 #companies.row
   %h3.center Companies
@@ -96,5 +99,6 @@
       %ul
         - link_to_each(@recent_presentations).each do |link|
           %li= link
+      %p.more= link_to 'View more...', presentations_path
 
 = render :partial => '/shared/about'
