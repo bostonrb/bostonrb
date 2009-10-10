@@ -23,7 +23,7 @@ class JobsController < InheritedResources::Base
   protected
   
   def collection
-    @jobs ||= end_of_association_chain.paginate(:page => params[:page])
+    @jobs ||= end_of_association_chain.by_created_at(:desc).paginate(:page => params[:page])
   end
 
 end

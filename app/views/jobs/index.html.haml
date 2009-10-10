@@ -2,9 +2,10 @@
   .ribbon
     .row
       %h2 Jobs
-      - collection.each do |job|
-        %p
+      - @jobs.each do |job|
+        %div[job]
           %h3
             = link_to job.title, job
-            %span= job.location
+          %p= truncate strip_tags(job.cached_description_html), :length => 250
+          %p== #{job.location}, #{job.created_at.to_s(:fancy_date)}
       = will_paginate collection
