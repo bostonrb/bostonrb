@@ -42,7 +42,7 @@
 
 #projects
   .row
-    %h2 Open Source Projects
+    %h2= link_to 'Open Source Projects', projects_path
     - if @featured_project
       .half>
         %h3= link_to @featured_project.name, project_path(@featured_project)
