@@ -136,7 +136,7 @@ body {
 
 .ribbon {
   background: #000919 url(../images/ribbon_i.gif) 50% 0% repeat-x;
-  padding: 2.1em 0 0 0;
+  padding: 2.1em 0;
 }
 
 #projects {

@@ -1,9 +1,16 @@
 #index
   .ribbon
     .row
-      %h2 Jobs
+      %h2 Projects
       - collection.each do |project|
-        %p
-          %h3= link_to project.name, project.github_url
-          ~ project.description
+        %div[project]
+          %h3
+            = link_to project, project.github_url
+            by
+            = link_to project.user.github, project.user
+          %p
+            - if project.description.present?
+              ~ project.description
+            - else
+              No description
       = will_paginate collection
