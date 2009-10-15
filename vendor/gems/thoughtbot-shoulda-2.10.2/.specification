@@ -232,7 +232,7 @@ files:
 - test/unit/tag_test.rb
 - test/unit/tagging_test.rb
 - test/unit/user_test.rb
-has_rdoc: false
+has_rdoc: true
 homepage: http://thoughtbot.com/projects/shoulda
 licenses: []
 
