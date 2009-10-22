@@ -4,13 +4,21 @@
       .crud
         %p= link_to 'New event', new_event_path
       %h2 Recurring Events
-      - @recurring_events.each do |event|
-        .quarter>
-          %p.date
-            %span= event.date.to_s(:fancy_date)
-            %span= event.date.to_s(:time)
-          %h3= link_to h(event.title), event
-          %p= event.cached_description_html
+      - if @recurring_events.present?
+        - @recurring_events.each do |event|
+          .quarter>
+            %p.date
+              %span= event.date.to_s(:fancy_date)
+              %span= event.date.to_s(:time)
+            %h3= link_to h(event.title), event
+            %p= event.cached_description_html
+      - else
+        %p None right now...
+
+      - if Entry.count > 0
+        .crud
+          %p= link_to 'View all', events_path
+
 
 #other_events.row
   %h3.center Special events

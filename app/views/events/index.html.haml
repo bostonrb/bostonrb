@@ -4,12 +4,19 @@
 #events
   .ribbon
     .row
+      .crud
+        %p= link_to 'New event', new_event_path
+
       %h2 Events
-      %p= link_to 'New event', new_event_path
       - unless @events.empty?
         - @events.each do |event|
           .quarter>
-            %h3= link_to event.title, event
-            %p= event.description
+            %p.date
+              %span= event.date.to_s(:fancy_date)
+              %span= event.date.to_s(:time)
+            %h3= link_to h(event.title), event
+            %p= truncate_html event.cached_description_html, :omission => "... #{link_to 'Read more...', event}"
+
+        = will_paginate @events
       - else
         %p Nothing coming up! Check again later.

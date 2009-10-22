@@ -4,45 +4,27 @@ class EventsControllerTest < ActionController::TestCase
 
   should_route :get, '/events', :controller => 'events', :action => 'index'
 
-  context 'GET to :index with no events' do
+  context 'GET to :index' do
     setup do
-      Event.stubs(:next).returns([])
-      get :index
+      @events = paginate(Factory.stub(:event))
+      Event.stubs(:paginate_by_date).returns(@events)
+
+      get :index, :page => nil
     end
 
-    should_assign_to       :events
+    should_assign_to       (:events) { @events }
     should_render_template :index
     should_respond_with    :success
-  end
-
-  context 'GET to :index with events in the future' do
-    setup do
-      @next = Factory(:event, :date => 2.days.from_now)
-      Event.stubs(:next).returns([@next])
-      get :index
+    should 'paginate by date' do
+      assert_received(Event, :paginate_by_date) {|called| called.with(nil) } 
     end
-
-    should_assign_to       :events
-    should_render_template :index
-    should_respond_with    :success
-  end
-
-  context 'GET to :index with events in the past' do
-    setup do
-      @last = Factory(:event, :date => 2.days.ago)
-      Event.stubs(:past).returns([@last])
-      get :index
-    end
-
-    should_assign_to       :events
-    should_render_template :index
-    should_respond_with    :success
   end
 
   context "GET to :index :format => 'rss' with events in the future" do
     setup do
       @next = Factory(:event, :date => 2.days.from_now)
       Event.stubs(:next).returns([@next])
+
       get :index, :format => 'rss'
     end
 

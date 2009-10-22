@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  include Pacecar
+
   has_markup :description,
     :required   => true,
     :cache_html => true
@@ -29,6 +31,14 @@ class Event < ActiveRecord::Base
 
   named_scope :recurring, :conditions => { :recurring => true }
   named_scope :special,   :conditions => { :recurring => false }
+
+  def self.per_page
+    8
+  end
+
+  def self.paginate_by_date(page)
+    by_date(:desc).paginate(:page => page)
+  end
 
   protected
 

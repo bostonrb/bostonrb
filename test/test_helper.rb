@@ -18,6 +18,10 @@ class ActiveSupport::TestCase
     yield view
     ActionView::Base.stubs(:new).returns(view)
   end
+
+  def paginate(*array)
+    array.paginate
+  end
 end
 
 module StubChainMocha
