@@ -62,3 +62,9 @@ Feature: Events
     Then I should see an entry for "Barcamp Boston"
     And I should see an entry for "Hackfest"
     And I should not see an entry for "PHPConf"
+
+  Scenario: Viewing events rss feed
+    Given a future special event exists with a title of "Barcamp Boston"
+    Given a future recurring event exists with a title of "Hackfest"
+    When I go to the events rss feed
+    Then I should be redirected to "the events atom feed"

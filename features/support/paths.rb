@@ -14,6 +14,8 @@ module NavigationHelpers
       events_path
     when /the events atom feed/i
       events_path :format => :atom
+    when /the events rss feed/i
+      events_path :format => :rss
     when /the presentation's page/i
       presentation_path(@presentation)
     when /new presentation page/i

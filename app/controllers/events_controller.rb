@@ -5,11 +5,7 @@ class EventsController < InheritedResources::Base
     respond_to do |wants|
       wants.html { @events = Event.paginate_by_date params[:page] }
       wants.atom { @events = Event.next(10) }
-      wants.rss { 
-        @new_feed_url = request.url.gsub!("rss", "atom")
-        @message = "Please use our Atom feed instead:<br />" +
-        "<a href='#{@new_feed_url}'>#{@new_feed_url}</a>" 
-      }
+      wants.rss  { redirect_to :format => :atom }
     end
   end
 

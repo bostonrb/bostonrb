@@ -46,3 +46,10 @@ Then /^I should not see an entry for "([^\"]*)"$/ do |title|
     assert_select 'title', :text => title, :count => 0
   end
 end
+
+Then /^I should be redirected to "([^\"]*)"$/ do |page_name|
+  #puts request.headers.inspect
+  request.headers['HTTP_REFERER'].should_not be_nil
+  request.headers['HTTP_REFERER'].should_not == request.request_uri
+  Then "I should be on the #{page_name} page"
+end
