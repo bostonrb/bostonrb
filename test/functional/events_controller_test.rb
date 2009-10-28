@@ -27,9 +27,8 @@ class EventsControllerTest < ActionController::TestCase
 
       get :index, :format => 'rss'
     end
+    should_redirect_to("events_path :format => :atom") { events_path(:atom) }
 
-    should_render_template 'index.rss'
-    should_respond_with    :success
   end
 
   context "GET to :index :format => 'atom' with events in the future" do
