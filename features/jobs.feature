@@ -25,4 +25,10 @@ Feature: Jobs
     And I follow "This is a job"
     Then I should see "This is a job at thoughtbot"
     And I should see "user interface to the metal - you should love doing it all."
-  
+
+  Scenario: Viewing jobs atom feed
+    Given a job exists with a title of "This is a job"
+    And a job exists with a title of "Here is another cool job"
+    When I go to the jobs atom feed
+    Then I should see "This is a job at thoughtbot"
+    And I should see an entry for "Here is another cool job at thoughtbot"

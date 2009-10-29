@@ -54,6 +54,27 @@ class JobsControllerTest < ActionController::TestCase
     should_redirect_to("home") { root_path }
   end
 
+  context "on GET to /jobs :format => 'atom' with jobs" do
+    setup do
+      Factory(:job)
+      get :index, :format => 'atom'
+    end
+
+    should_assign_to       :jobs
+    should_render_template 'index.atom'
+    should_respond_with    :success
+  end
+
+  context "on GET to /jobs :format => 'atom' without jobs" do
+    setup do
+      get :index, :format => 'atom'
+    end
+
+    should_assign_to       :jobs
+    should_render_template 'index.atom'
+    should_respond_with    :success
+  end
+  
   context 'on PUT to /jobs/:id when signed in' do
     setup do
       sign_in

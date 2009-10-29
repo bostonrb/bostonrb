@@ -20,7 +20,8 @@ module NavigationHelpers
       presentation_path(@presentation)
     when /new presentation page/i
       new_presentation_path
-
+    when /the jobs atom feed/i
+      jobs_path :format => :atom
     # Add more page name => path mappings here
 
     else

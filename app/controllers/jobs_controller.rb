@@ -3,6 +3,8 @@ class JobsController < InheritedResources::Base
 
   before_filter :authorize, :only => [:edit]
 
+  respond_to :atom, :only => :index
+  
   def create
     create! { root_url }
   end
