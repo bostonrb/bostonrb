@@ -1,0 +1,73 @@
+Sleeper-Rails
+======
+This is the Rails plugin for Sleeper - (http://sleeperapp.com). It's currently undergoing *heavy* development. It's safe for most production sites.
+You will notice it's got a bit of an identity crisis, what with being called scaler some places, and sleeper others, and sleeper-rails in still more. Mea culpa. The official name moving forward is sleeper-rails.
+
+Quickstart
+=====
+- Sign up for a Sleeper account at http://sleeperapp.com
+
+- Install the Rails plugin. 
+	
+	script/plugin install git://github.com/adrianpike/sleeper-rails 
+			-or- 
+	git submodule add git://github.com/adrianpike/sleeper-rails vendor/plugins/sleeper-rails
+	
+- Run rake sleeper:install. It will prompt you for your client key from your Sleeper account, as well as some basic default functionality to use in the event that sleeper-rails cannot pull down a real config from your Sleeper account. It will also check for a sane environment.
+
+- You're done!
+
+Requirements
+=====
+- MySQL or PostgreSQL for explaining. Other backends work fine, but won't generate explanations.
+- Passenger, Mongrel, or Heroku for server stack.
+
+Known Issues
+=====
+- Heroku does not support git submodules.
+- Sleeper-Rails & other patches onto ActiveRecord connections can collide.
+- Lots of room for refactoring & optimization.
+
+TODO
+=====
+- Authenticate & encrypt updates.
+- Better stack trace collection.
+- Unicorn support.
+- Better handling of internal exceptions, rather than barfing all over the poor user's app.
+
+Basic Sleeper-Rails Architecture
+=====
+Scaler::Configurator
+- Configurator handles all the configuration for Sleeper-Rails.
+
+Scaler::Statistics
+- Store data, aggregate it, and JSON it upstream to Sleeper with some sort of hash authentication.
+
+Scaler::Explainer
+- Hack into all the AR queries, and run a WHERE for that query.
+	- Store both the original query and the WHERE, as well as the line number & filename of the original query.
+
+Scaler::Tracer
+- Time all my ActionController requests - bust into the default benchmarking.
+	- Send upstream total time, DB time, and view time, as well as the controller, action, and URL.
+- Run a Ruby trace graph on every ActionController request, show me where I'm spending the most time.
+
+Scaler::Walker
+- Wander around a site and poke at things.
+
+Scaler::AttributePeeker
+- Fancy magic to let us know what attributes got SELECT'ed but weren't read. It doesn't work yet.
+
+Non-automated Tools
+=======
+
+Walker:
+
+* rake sleeper:walk host=http://localhost:3000 depth=10
+
+Credits!
+=======
+Adrian Pike - (http://github.com/adrianpike)
+Amiel Martin - (http://github.com/amiel)
+
+Copyright (c) 2009 Pike Engineering, released under the MIT license
