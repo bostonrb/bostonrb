@@ -1,14 +1,24 @@
 class Event < ActiveRecord::Base
   include Pacecar
 
+  validates_presence_of :date, :title, :location
+
   has_markup :description,
     :required   => true,
     :cache_html => true
 
-  validates_presence_of :date, :title, :location
-
   before_save      :geocode_location
   acts_as_mappable :default_units => :miles
+
+  named_scope :next, lambda {|*args|
+    limit = args.first || 1
+    { :conditions => ['date > ?', DateTime.now],
+      :order      => 'date asc',
+      :limit      => limit }
+  }
+
+  named_scope :recurring, :conditions => { :recurring => true }
+  named_scope :special,   :conditions => { :recurring => false }
 
   def to_s
     title
@@ -21,16 +31,6 @@ class Event < ActiveRecord::Base
   def geocoded?
     lat && lng
   end
-
-  named_scope :next, lambda {|*args|
-    limit = args.first || 1
-    { :conditions => ['date > ?', DateTime.now],
-      :order      => 'date asc',
-      :limit      => limit }
-  }
-
-  named_scope :recurring, :conditions => { :recurring => true }
-  named_scope :special,   :conditions => { :recurring => false }
 
   def self.per_page
     8
