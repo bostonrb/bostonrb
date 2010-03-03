@@ -25,12 +25,12 @@ Feature: Events
     And I go to the homepage
     And I follow "Hackfest"
     And I follow "Copy"
-    Then I fill in "Date" with "tomorrow at 7PM"
+    Then I should see "Copy of Hackfest"
+    And I fill in "Date" with "tomorrow at 7PM"
     And I fill in "Title" with "Hackfest squared"
     And I press "Create"
     Then I should see "Events"
     And I should see "Hackfest squared"
-    And I should see "Hack away"
 
 
   Scenario: Recurring events on the homepage

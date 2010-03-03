@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include Clearance::Authentication
 
   before_filter :authenticate,
-    :only => [:new, :create, :edit, :update, :destroy]
+    :only => [:new, :create, :edit, :copy, :update, :destroy]
 
   protected
 

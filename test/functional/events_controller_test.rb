@@ -68,6 +68,33 @@ class EventsControllerTest < ActionController::TestCase
     end
   end
 
+  context "on GET to #copy when signed out" do
+    setup do
+      @event = Factory(:event)
+      get :copy, :id => @event.to_param
+    end
+    should_deny_access
+  end
+
+  context 'on GET to :copy when signed in' do
+    setup do
+      sign_in
+      @event = Factory(:event)
+      get :copy, :id => @event.to_param
+    end
+
+    should_assign_to       :event
+    should_render_template :new
+    should_respond_with    :success
+
+    should 'have new_event form' do
+      assert_select "form[id=new_event]" do
+        should_have_event_form_fields
+        assert_select "input[type=submit][id=event_submit]"
+      end
+    end
+  end
+
   should_route :get, '/events/1',
     :controller => 'events', :action => 'show', :id => '1'
 

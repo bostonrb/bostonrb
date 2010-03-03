@@ -16,4 +16,10 @@ class EventsController < InheritedResources::Base
   def destroy
     create! { root_path }
   end
+
+  def copy
+    @template_event = resource
+    @event = @template_event.clone
+    render :action => :new
+  end
 end

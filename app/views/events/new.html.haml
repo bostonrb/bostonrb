@@ -1,7 +1,11 @@
 #new
   .ribbon
     .row
-      %h2 New event
+      %h2
+        - if @template_event
+          Copy of #{@template_event}
+        - else
+          New event
       = error_messages_for :event
 
       - form_for(@event) do |form|
