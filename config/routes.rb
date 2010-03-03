@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :presentations
   map.resources :projects
   map.resources :apps
-  map.resources :events
+  map.resources :events, :member => [:copy]
   map.resources :pages
   map.resources :passwords
   map.resources :companies do |companies|
