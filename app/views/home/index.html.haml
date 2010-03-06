@@ -11,9 +11,9 @@
               %span= event.date.to_s(:fancy_date)
               %span= event.date.to_s(:time)
             %h3= link_to h(event.title), event
-            %p= event.front_page_copy
-            - if event.front_page_copy_is_short_and_sweet?
-              %p= link_to "Read more...", event
+            .description
+              = event.front_page_copy
+            %p= link_to "Read more...", event
       - else
         %p None right now...
 

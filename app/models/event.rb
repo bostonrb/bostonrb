@@ -44,10 +44,6 @@ class Event < ActiveRecord::Base
      @truncated_cached_description_html ||= TruncateHtml::HtmlTruncator.new(self.cached_description_html).truncate(:length => 400)
   end
 
-  def front_page_copy_is_short_and_sweet?
-    front_page_copy == cached_summary_html || (front_page_copy == truncated_cached_description_html && truncated_cached_description_html != cached_description_html)
-  end
-
   def self.per_page
     8
   end
