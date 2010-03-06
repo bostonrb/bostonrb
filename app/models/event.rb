@@ -7,6 +7,10 @@ class Event < ActiveRecord::Base
     :required   => true,
     :cache_html => true
 
+  has_markup :summary,
+    :required   => false,
+    :cache_html => true
+
   before_save      :geocode_location
   acts_as_mappable :default_units => :miles
 
@@ -30,6 +34,18 @@ class Event < ActiveRecord::Base
 
   def geocoded?
     lat && lng
+  end
+
+  def front_page_copy
+    @front_page_copy ||= cached_summary_html || truncated_cached_description_html
+  end
+
+  def truncated_cached_description_html
+     @truncated_cached_description_html ||= TruncateHtml::HtmlTruncator.new(self.cached_description_html).truncate(:length => 400)
+  end
+
+  def front_page_copy_is_short_and_sweet?
+    front_page_copy == cached_summary_html || (front_page_copy == truncated_cached_description_html && truncated_cached_description_html != cached_description_html)
   end
 
   def self.per_page

@@ -8,6 +8,16 @@
   %p.instruct ex: 41 Winter Street, Boston, MA, 02018
 
 %div
+  = form.label :summary
+  %div= form.text_area :summary
+  %p.instruct
+    Optional. Defaults to truncated description if not given
+  %p.instruct
+    This is displayed on the front page.
+  %p.instruct
+    == Format description using #{link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax'}.
+
+%div
   = form.label :description
   %div= form.text_area :description
   %p.instruct

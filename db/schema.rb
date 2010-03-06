@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090730184621) do
+ActiveRecord::Schema.define(:version => 20100306163243) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(:version => 20090730184621) do
     t.integer  "place_id"
     t.text     "cached_description_html"
     t.boolean  "recurring",               :default => true, :null => false
+    t.text     "summary"
+    t.text     "cached_summary_html"
   end
 
   create_table "feed_errors", :force => true do |t|
