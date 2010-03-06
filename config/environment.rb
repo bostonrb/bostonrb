@@ -64,6 +64,7 @@ Rails::Initializer.run do |config|
     :version => "2.3.11"
 
   config.gem 'chronic'
+  config.gem 'hoptoad_notifier'
 
   config.gem 'truncate_html',
     :source => 'http://gemcutter.org'
