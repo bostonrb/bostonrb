@@ -34,10 +34,8 @@ Rails::Initializer.run do |config|
     :version => '2.1.0'
   config.gem "json",
     :version => '>=1.1.7'
-  config.gem 'technicalpickles-has_markup',
-    :lib     => 'has_markup',
-    :source  => 'http://gems.github.com',
-    :version => '0.1.4'
+  config.gem 'has_markup',
+    :version => '0.1.5'
   config.gem "thoughtbot-clearance", 
     :lib     => 'clearance', 
     :source  => 'http://gems.github.com', 
