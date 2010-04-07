@@ -1,7 +1,7 @@
 atom_feed :schema_date => 2009 do |feed|
   feed.title("Boston.rb upcoming Events")
   feed.subtitle("Events coming up for Boston Rubyists")
-  feed.updated(@events.first.updated_at)
+  feed.updated(@events.first.updated_at) if not @events.blank?
 
   @events.each do |event|
     feed.entry(event) do |entry|
