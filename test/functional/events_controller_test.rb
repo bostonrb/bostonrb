@@ -43,6 +43,63 @@ class EventsControllerTest < ActionController::TestCase
     should_respond_with    :success
   end
 
+  context "on GET to :index, :format => 'ics' with events in the future" do
+    setup do
+      @next = Factory(:event, :title => 'Fun Times', :date => 2.days.from_now, :lat => 42.351414, :lng => -71.057609, :location => 'Backchannel Media')
+      Event.stubs(:next).returns([@next])
+      @now = Time.now
+      Time.stubs(:now).returns(@now)
+      get :index, :format => 'ics'
+    end
+    should_assign_to(:events) { [@next] }
+    should_respond_with :success
+    should 'render a valid iCal object' do
+      assert_nothing_raised do
+        RiCal.parse_string @response.body
+      end
+    end
+    context '(the rendered event)' do
+      setup do
+        cal = RiCal.parse_string(@response.body).first # RiCal parses to [Calendar]
+        @event = cal.events.first
+        assert @event
+      end
+      should 'render the title as summary' do
+        assert_equal @next.title, @event.summary
+      end
+      should 'use PUBLIC for the visibility class' do
+        assert_equal 'PUBLIC', @event.security_class
+      end
+      should "use the event's created_at for created" do
+        assert_equal @next.created_at.utc.to_s(:rfc822), @event.created.utc.to_s(:rfc822)
+      end
+      should "use the event's date for dtstart" do
+        assert_equal @next.date.utc.to_s(:rfc822), @event.dtstart.utc.to_s(:rfc822)
+      end
+      should_eventually "use the event's lat/lng for geo" do
+        assert_equal "#{@next.lat};#{@next.lng}", @event.geo
+      end
+      should "use the event's location for location" do
+        assert_equal @next.location, @event.location
+      end
+      should "use the event's updated_at for modified" do
+        assert_equal @next.updated_at.utc.to_s(:rfc822), @event.last_modified.utc.to_s(:rfc822)
+      end
+      should "use now for dtstamp" do
+        assert_equal @now.utc.to_s(:rfc822), @event.dtstamp.utc.to_s(:rfc822)
+      end
+      should "create a meaningful unique UID in email format" do
+        assert_equal "event-#{@next.id}@bostonrb.org", @event.uid
+      end
+      should "use a link to the event for url" do
+        assert_equal "http://test.host/events/#{@next.id}", @event.url
+      end
+      should "add 'RUBY' to the categories" do
+        assert_equal ['RUBY'], @event.categories
+      end
+    end
+  end
+
   should_route :get, '/events/new', :controller => 'events', :action => 'new'
 
   context "on GET to #new when signed out" do

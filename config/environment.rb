@@ -16,7 +16,9 @@ Rails::Initializer.run do |config|
     :session_key => '_boston_rb_session',
     :secret      => 'a406a09e903c61fa55fadce763e5df7cae1320592290a64e0665412cd9aff9b18116daeab3309fe69bfb3ffc6da224671f5ea5ab96ad7245b276a06a448f2c0a'
   }
-
+  
+  config.time_zone = 'Eastern Time (US & Canada)'
+  
   config.gem 'BlueCloth',
     :lib     => 'bluecloth'
   config.gem 'RedCloth',
@@ -66,6 +68,8 @@ Rails::Initializer.run do |config|
 
   config.gem 'truncate_html',
     :source => 'http://gemcutter.org'
+    
+  config.gem 'ri_cal', :version => '~> 0.8.5'
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"
