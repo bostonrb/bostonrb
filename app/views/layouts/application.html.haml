@@ -5,6 +5,7 @@
     = stylesheet_link_tag 'screen', 'under_construction', :media => 'screen'
     = stylesheet_link_tag 'custom-theme/jquery-ui-1.7.2.custom.css', :media => 'screen'
     %link{:rel => 'alternate', :type => 'application/atom+xml', :title => 'Upcoming Boston.rb Events', :href => events_url(:format => :atom)}
+    %link{:rel => 'alternate', :type => 'text/calendar', :title => 'Upcoming Boston.rb Events', :href => events_url(:format => :ics)}
     %link{:rel => 'alternate', :type => 'application/atom+xml', :title => 'Recent Job Postings on Boston.rb', :href => jobs_url(:format => :atom)}
   %body
     .grid_960.middle
