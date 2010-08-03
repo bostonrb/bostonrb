@@ -21,7 +21,7 @@ Rails::Initializer.run do |config|
     :lib     => 'bluecloth'
   config.gem 'RedCloth',
     :lib     => 'redcloth',
-    :version => '> 3.0.4'
+    :version => '= 4.2.2'
   config.gem 'builder',
     :version => '2.1.2'
   config.gem 'dancroak-twitter-search',
@@ -29,11 +29,11 @@ Rails::Initializer.run do |config|
     :source  => 'http://gems.github.com',
     :lib     => 'twitter_search'
   config.gem 'gravtastic',
-    :version => '>= 2.1.0'
+    :version => '= 2.1.0'
   config.gem 'haml',
-    :version => '2.1.0'
+    :version => '2.2.20'
   config.gem "json",
-    :version => '>=1.1.7'
+    :version => '= 1.2.4'
   config.gem 'has_markup',
     :version => '0.1.5'
   config.gem "thoughtbot-clearance", 
@@ -61,11 +61,10 @@ Rails::Initializer.run do |config|
   config.gem "will_paginate",
     :version => "2.3.11"
 
-  config.gem 'chronic'
-  config.gem 'hoptoad_notifier'
+  config.gem 'chronic', :version => '0.2.3'
+  config.gem 'hoptoad_notifier', :version => '2.2.0'
 
-  config.gem 'truncate_html',
-    :source => 'http://gemcutter.org'
+  config.gem 'truncate_html', :version => '0.1.2'
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"
