@@ -1,0 +1,8 @@
+pkg
+*.gem
+rdoc
+doc
+coverage
+.autotest
+spec/test.log
+spec/generator.log

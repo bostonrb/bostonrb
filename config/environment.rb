@@ -65,6 +65,11 @@ Rails::Initializer.run do |config|
   config.gem 'hoptoad_notifier', :version => '2.2.0'
 
   config.gem 'truncate_html', :version => '0.1.2'
+
+  # FIXME explicit dependencies to make sure moonshine installs their native dependencies
+  config.gem 'nokogiri'
+  config.gem 'curb'
+
 end
 
 DO_NOT_REPLY = "dcroak+bostonrb@thoughtbot.com"

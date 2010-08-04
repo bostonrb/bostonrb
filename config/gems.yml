@@ -1,0 +1,46 @@
+--- 
+- :name: BlueCloth
+- :name: RedCloth
+  :version: = 4.2.2
+- :name: builder
+  :version: = 2.1.2
+- :source: http://gems.github.com
+  :name: dancroak-twitter-search
+  :version: = 0.5.5
+- :name: gravtastic
+  :version: = 2.1.0
+- :name: haml
+  :version: = 2.2.20
+- :name: json
+  :version: = 1.2.4
+- :name: has_markup
+  :version: = 0.1.5
+- :source: http://gems.github.com
+  :name: thoughtbot-clearance
+  :version: = 0.6.5
+- :source: http://gems.github.com
+  :name: thoughtbot-pacecar
+  :version: = 1.1.5
+- :source: http://gems.github.com
+  :name: yfactorial-utility_scopes
+  :version: = 0.2.2
+- :name: josevalim-inherited_resources
+  :version: = 0.8.5
+- :name: dancroak-le-git
+  :version: = 0.0.5
+- :name: taf2-curb
+  :version: = 0.2.8.0
+- :name: technicalpickles-feedra
+  :version: = 0.1.1
+- :name: will_paginate
+  :version: = 2.3.11
+- :name: chronic
+  :version: = 0.2.3
+- :name: hoptoad_notifier
+  :version: = 2.2.0
+- :name: truncate_html
+  :version: = 0.1.2
+- :name: nokogiri
+- :name: curb
+- :name: rails
+  :version: 2.3.8
