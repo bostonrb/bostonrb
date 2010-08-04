@@ -24,14 +24,4 @@ GOOGLE_MAP_API_KEY = 'ABQIAAAA5DmfAcONGodqQq2WJjcL2xRVmJNk76XDhrH9yChLo28oBQNqVh
 
 HOST = "bostonrb.org"
 
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  :domain => "bostonrb.org",
-  :perform_deliveries => true,
-  :address => 'smtp.ey01.engineyard.com',
-  :port => 25
-}
-
-
-# Use postfix for mail delivery 
-ActionMailer::Base.delivery_method = :sendmail 
+config.action_mailer.delivery_method = :sendmail
