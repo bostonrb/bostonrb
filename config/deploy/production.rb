@@ -1,1 +1,2 @@
-server 'bostonrb.managedmachine.com', :app, :web, :db, :primary => true
+set :rails_env, 'production'
+server 'production.bostonrb.managedmachine.com', :app, :web, :db, :primary => true
