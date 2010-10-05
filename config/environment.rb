@@ -18,7 +18,8 @@ Rails::Initializer.run do |config|
   }
   
   config.time_zone = 'Eastern Time (US & Canada)'
-  
+
+  config.gem 'mysql'
   config.gem 'BlueCloth',
     :lib     => 'bluecloth'
   config.gem 'RedCloth',
@@ -26,10 +27,6 @@ Rails::Initializer.run do |config|
     :version => '= 4.2.2'
   config.gem 'builder',
     :version => '2.1.2'
-  config.gem 'dancroak-twitter-search',
-    :version => "0.5.5",
-    :source  => 'http://gems.github.com',
-    :lib     => 'twitter_search'
   config.gem 'gravtastic',
     :version => '= 2.1.0'
   config.gem 'haml',
@@ -53,6 +50,10 @@ Rails::Initializer.run do |config|
   config.gem "josevalim-inherited_resources",
     :lib     => "inherited_resources",
     :version => "0.8.5"
+  config.gem 'dancroak-twitter-search',
+    :version => "0.5.5",
+    :source  => 'http://gems.github.com',
+    :lib     => 'twitter_search'
   config.gem "dancroak-le-git",
     :lib     => "le_git",
     :version => "0.0.5"
