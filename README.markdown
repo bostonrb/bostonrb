@@ -76,6 +76,10 @@ We are using shoulda for our testing. Before running them, you need to run the f
 
     rake db:create RAILS_ENV=test
 
+Also, you'll need to vendor your gems
+
+    RAILS_ENV=test rake gems:unpack
+
 At this point, you can run them with:
 
     rake test
