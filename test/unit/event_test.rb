@@ -1,7 +1,6 @@
-require 'test_helper'
+require 'test/test_helper'
 
 class EventTest < ActiveSupport::TestCase
-
   context "an event" do
     setup do
       @event = Factory(:event, :title => "Hackfest")
@@ -121,8 +120,8 @@ class EventTest < ActiveSupport::TestCase
     context "with bad address" do
       setup do
         @event = Factory(:event, :location => 'Non existent place')
-        GeoKit::Geocoders::MultiGeocoder.expects(:geocode).returns(GeoKit::GeoLoc.new)
-        GeoKit::GeoLoc.any_instance.expects(:success).returns(false)
+        GeoKit::Geocoders::MultiGeocoder.stubs(:geocode).returns(GeoKit::GeoLoc.new)
+        GeoKit::GeoLoc.any_instance.stubs(:success).returns(false)
         @event.save
       end
 

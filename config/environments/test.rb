@@ -25,6 +25,10 @@ config.gem 'jferris-mocha',
            :version => '0.9.5.0.1241126838',
            :source  => 'http://gems.github.com', 
            :lib     => 'mocha'
+config.gem 'mocha',
+           :version => '0.9.8'
+config.gem 'bourne',
+           :version => '1.0.0'
 config.gem 'factory_girl', 
            :version => '>= 1.2.2'
 config.gem 'shoulda', 
