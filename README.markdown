@@ -40,6 +40,10 @@ Copy the sample database config file and edit as needed.
 
     cp config/database.yml.sample config/database.yml
 
+Install Rails
+
+    gem install rails -v 2.3.8
+
 Install a couple gems to satisfy plugin requirements
 
     gem install chronic -v 0.2.3
