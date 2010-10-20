@@ -75,16 +75,20 @@ You'll notice the site is kind of... empty. You can generate a bit of seed data 
 
 ## Testing
 
+We need to make sure all the gem dependencies for the test environment are installed. This may take several minutes:
+
+    rake gems:install RAILS_ENV=test
+
+Also, you'll need to vendor your gems:
+
+    rake gems:build RAILS_ENV=test
+    rake gems:unpack RAILS_ENV=test
+
 We are using shoulda for our testing. Before running them, you need to run the following to create the test database:
 
     rake db:create RAILS_ENV=test
-    rake gems:install RAILS_ENV=test
 
-Also, you'll need to vendor your gems
-
-    RAILS_ENV=test rake gems:unpack
-
-At this point, you can run them with:
+At this point, you can run unit tests with:
 
     rake test
 
