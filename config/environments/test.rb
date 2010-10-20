@@ -32,7 +32,7 @@ config.gem 'bourne',
 config.gem 'factory_girl', 
            :version => '>= 1.2.2'
 config.gem 'shoulda', 
-           :version => '>= 2.10.2'
+           :version => '= 2.10.2'
 config.gem 'webrat',
            :version => '= 0.4.4'
 config.gem 'cucumber',
