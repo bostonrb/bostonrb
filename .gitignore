@@ -1,4 +1,5 @@
 config/database.yml
+vendor/gems
 log/*.log
 tmp
 db/*.sqlite3
