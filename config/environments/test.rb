@@ -21,10 +21,6 @@ config.action_controller.allow_forgery_protection    = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
-config.gem 'jferris-mocha', 
-           :version => '0.9.5.0.1241126838',
-           :source  => 'http://gems.github.com', 
-           :lib     => 'mocha'
 config.gem 'mocha',
            :version => '0.9.8'
 config.gem 'bourne',
