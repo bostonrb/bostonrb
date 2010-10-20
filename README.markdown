@@ -79,10 +79,10 @@ We need to make sure all the gem dependencies for the test environment are insta
 
     rake gems:install RAILS_ENV=test
 
-Also, you'll need to vendor your gems:
+Also, you'll need to vendor and build your gems:
 
-    rake gems:build RAILS_ENV=test
     rake gems:unpack RAILS_ENV=test
+    rake gems:build RAILS_ENV=test
 
 We are using shoulda for our testing. Before running them, you need to run the following to create the test database:
 
