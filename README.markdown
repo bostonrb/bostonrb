@@ -54,7 +54,6 @@ Install a couple gems to satisfy plugin requirements
 We need to make sure all the gem dependencies are installed. This may take several minutes:
 
     rake gems:install
-    rake gems:install RAILS_ENV=test
 
 Now we need to create an initial database. We currently assume you have MySQL installed, and that you can login as 'root' without a password.
 
@@ -79,6 +78,7 @@ You'll notice the site is kind of... empty. You can generate a bit of seed data 
 We are using shoulda for our testing. Before running them, you need to run the following to create the test database:
 
     rake db:create RAILS_ENV=test
+    rake gems:install RAILS_ENV=test
 
 Also, you'll need to vendor your gems
 
