@@ -18,6 +18,20 @@ bostonrb.org is built and managed primarily the following:
 
 You will need these installed before you can start developing and running the application. For help getting this environment running, see [these excellent installation notes](http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes)
 
+### Configure RVM and project gemset (RVM is optional, but recommended)
+
+If necessary install Ruby 1.8.7
+
+    rvm install 1.8.7
+
+Create a gemset to minimize gem conflicts
+
+    rvm --create 1.8.7-p249@bostonrb
+
+Make sure you use Ruby 1.8.7 and the bostonrb gemset in every terminal
+
+    rvm use 1.8.7-p249@bostonrb
+
 ### Configuring RubyGems
 
 Since we use some gems that are only on github (ie feedzirra), this needs to be run, if you haven't before:
