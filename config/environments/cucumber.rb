@@ -1,9 +1,9 @@
-# Settings specified here will take precedence over those in config/environment.rb
+# Edit at your own peril - it's recommended to regenerate this file
+# in the future when you upgrade to a newer version of Cucumber.
 
-# The test environment is used exclusively to run your application's
-# test suite.  You never need to work with it otherwise.  Remember that
-# your test database is "scratch space" for the test suite and is wiped
-# and recreated between test runs.  Don't rely on the data there!
+# IMPORTANT: Setting config.cache_classes to false is known to
+# break Cucumber's use_transactional_fixtures method.
+# For more information see https://rspec.lighthouseapp.com/projects/16211/tickets/165
 config.cache_classes = true
 
 # Log error messages when you accidentally call methods on nil.
@@ -16,23 +16,14 @@ config.action_controller.perform_caching             = false
 # Disable request forgery protection in test environment
 config.action_controller.allow_forgery_protection    = false
 
-# Tell ActionMailer not to deliver emails to the real world.
+# Tell Action Mailer not to deliver emails to the real world.
 # The :test delivery method accumulates sent emails in the
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
-config.gem 'mocha',
-           :version => '0.9.8'
-config.gem 'bourne',
-           :version => '1.0.0'
-config.gem 'factory_girl', 
-           :version => '>= 1.2.2'
-config.gem 'shoulda', 
-           :version => '= 2.10.2'
-config.gem 'webrat',
-           :version => '= 0.7.2'
-config.gem 'fakeweb',
-           :version => '= 1.2.0'
+config.gem 'cucumber-rails',   :lib => false, :version => '>=0.3.2' unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber-rails'))
+config.gem 'database_cleaner', :lib => false, :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
+config.gem 'webrat',           :lib => false, :version => '>=0.7.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/webrat'))
 
 HOST = 'localhost'
 
