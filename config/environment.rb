@@ -32,7 +32,7 @@ Rails::Initializer.run do |config|
   config.gem 'haml',
     :version => '2.2.20'
   config.gem "json",
-    :version => '= 1.2.4'
+    :version => '= 1.4.6'
   config.gem 'has_markup',
     :version => '0.1.5'
   config.gem "thoughtbot-clearance", 

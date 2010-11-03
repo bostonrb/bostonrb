@@ -30,9 +30,9 @@ config.gem 'factory_girl',
 config.gem 'shoulda', 
            :version => '= 2.10.2'
 config.gem 'webrat',
-           :version => '= 0.4.4'
+           :version => '= 0.7.1'
 config.gem 'cucumber',
-           :version => '= 0.3.11'
+           :version => '= 0.9.3'
 config.gem 'fakeweb',
            :version => '= 1.2.0'
 
