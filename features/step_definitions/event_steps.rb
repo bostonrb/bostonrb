@@ -18,20 +18,20 @@ end
 When /^I should see "([^\"]*)" under (.*)$/ do |text, id|
   id = id.gsub(' ', '_')
   within "##{id}" do |scope|
-    assert_contain text, scope
+    assert_contain text
   end
 end
 
 Then /^I should not see "([^\"]*)" under (.*)$/ do |text, id|
   id = id.gsub(' ', '_')
   within "##{id}" do |scope|
-    assert_not_contain text, scope
+    assert_not_contain text
   end
 end
 
 Then /^I should see that there are (\d+) future events$/ do |count|
   within "#boston_rb a[href='/#events']" do |scope|
-    assert_contain "#{count}", scope
+    assert_contain "#{count}"
   end
 end
 
