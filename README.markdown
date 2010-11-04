@@ -22,7 +22,7 @@ You will need these installed before you can start developing and running the ap
 
 If necessary install Ruby 1.8.7
 
-    rvm install 1.8.7
+    rvm install 1.8.7-p249
 
 Create a gemset to minimize gem conflicts
 
