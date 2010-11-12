@@ -18,6 +18,8 @@ bostonrb.org is built and managed primarily the following:
 
 You will need these installed before you can start developing and running the application. For help getting this environment running, see [these excellent installation notes](http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes)
 
+(You can try Google for documentation on MySQL installation for your operating system.)
+
 ### Configure RVM and project gemset (RVM is optional, but recommended)
 
 If necessary install Ruby 1.8.7
@@ -82,6 +84,8 @@ At last, we can run the server:
     script/server
 
 This will keep running until you hit Control-C, but now you can open a browser and go to http://localhost:3000 to see the app running.
+
+ + If you get odd MySQL errors when you run the server, you may have a mismatch between the version of this gemset's mysql gem and your installation of MySQL.  Running "rake gems:install" installs the most recent version of each gem (unless specified otherwise in config/environment.rb).  If you use MySQL databases successfully in another project, check that project's version of the mysql gem.  Try uninstalling the version installed in this gemset by "rake gems:install", and install the version that works for you elsewhere, e.g. "gem install mysql -v 2.7".
 
 You'll notice the site is kind of... empty. You can generate a bit of seed data with:
 
