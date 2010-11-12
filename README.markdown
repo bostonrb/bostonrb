@@ -110,7 +110,20 @@ At this point, you can run unit tests with:
 
     rake test
 
-We are also using cucumber for user stories / integration testing. You can run them with:
+We are also using cucumber for user stories / integration testing. Install the gem dependencies:
+
+    rake gems:install RAILS_ENV=cucumber
+
+Vendor and build your gems:
+
+    rake gems:unpack RAILS_ENV=cucumber
+    rake gems:build RAILS_ENV=cucumber
+
+Remove an extraneous file, if you have it:
+
+    rm features/step_definitions/html_steps.rb
+
+You can now run your cucumber tests with:
 
     rake features
 
