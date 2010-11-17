@@ -12,7 +12,7 @@ bostonrb.org is built and managed primarily the following:
 
  * Ruby 1.8.x
  * Rubygems 1.3.5
- * Ruby on Rails 2.3.8
+ * Ruby on Rails 2.3.9
  * MySQL
  * git
 
@@ -58,7 +58,7 @@ Copy the sample database config file and edit as needed.
 
 Install Rails
 
-    gem install rails -v 2.3.8
+    gem install rails -v 2.3.9
 
 Install a couple gems to satisfy plugin requirements
 
