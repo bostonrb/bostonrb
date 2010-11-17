@@ -1,4 +1,4 @@
-RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.9' unless defined? RAILS_GEM_VERSION
 
 require File.join(File.dirname(__FILE__), 'boot')
 
@@ -32,7 +32,7 @@ Rails::Initializer.run do |config|
   config.gem 'haml',
     :version => '2.2.20'
   config.gem "json",
-    :version => '= 1.4.6'
+    :version => '= 1.2.4'
   config.gem 'has_markup',
     :version => '0.1.5'
   config.gem "thoughtbot-clearance", 

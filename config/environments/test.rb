@@ -12,6 +12,7 @@ config.whiny_nils = true
 # Show full error reports and disable caching
 config.action_controller.consider_all_requests_local = true
 config.action_controller.perform_caching             = false
+config.action_view.cache_template_loading            = true
 
 # Disable request forgery protection in test environment
 config.action_controller.allow_forgery_protection    = false
@@ -30,9 +31,7 @@ config.gem 'factory_girl',
 config.gem 'shoulda', 
            :version => '= 2.10.2'
 config.gem 'webrat',
-           :version => '= 0.7.1'
-config.gem 'cucumber',
-           :version => '= 0.9.3'
+           :version => '= 0.7.2'
 config.gem 'fakeweb',
            :version => '= 1.2.0'
 
@@ -46,3 +45,4 @@ FakeWeb.allow_net_connect = false
 
 GOOGLE_MAP_API_KEY = 'ABQIAAAAzMUFFnT9uH0xq39J0Y4kbhTJQa0g3IQ9GZqIMmInSLzwtGDKaBR6j135zrztfTGVOm2QlWnkaidDIQ'
 
+config.action_mailer.default_url_options = { :host => HOST }

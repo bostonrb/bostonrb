@@ -24,6 +24,15 @@ config.action_mailer.delivery_method = :test
 config.gem 'cucumber-rails',   :lib => false, :version => '>=0.3.2' unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber-rails'))
 config.gem 'database_cleaner', :lib => false, :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
 config.gem 'webrat',           :lib => false, :version => '>=0.7.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/webrat'))
-config.gem 'factory_girl',                    :version => '>= 1.2.2'
- 
+
+HOST = 'localhost'
+
+require 'factory_girl'
+begin require 'redgreen'; rescue LoadError; end
+
+require 'fakeweb'
+FakeWeb.allow_net_connect = false
+
 GOOGLE_MAP_API_KEY = 'ABQIAAAAzMUFFnT9uH0xq39J0Y4kbhTJQa0g3IQ9GZqIMmInSLzwtGDKaBR6j135zrztfTGVOm2QlWnkaidDIQ'
+
+config.action_mailer.default_url_options = { :host => HOST }

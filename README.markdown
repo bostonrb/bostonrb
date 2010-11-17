@@ -12,17 +12,19 @@ bostonrb.org is built and managed primarily the following:
 
  * Ruby 1.8.x
  * Rubygems 1.3.5
- * Ruby on Rails 2.3.8
+ * Ruby on Rails 2.3.9
  * MySQL
  * git
 
 You will need these installed before you can start developing and running the application. For help getting this environment running, see [these excellent installation notes](http://wiki.devchix.com/index.php?title=Workshop_Installation_Notes)
 
+(You can try Google for documentation on MySQL installation for your operating system.)
+
 ### Configure RVM and project gemset (RVM is optional, but recommended)
 
 If necessary install Ruby 1.8.7
 
-    rvm install 1.8.7
+    rvm install 1.8.7-p249
 
 Create a gemset to minimize gem conflicts
 
@@ -56,7 +58,7 @@ Copy the sample database config file and edit as needed.
 
 Install Rails
 
-    gem install rails -v 2.3.8
+    gem install rails -v 2.3.9
 
 Install a couple gems to satisfy plugin requirements
 
@@ -83,6 +85,8 @@ At last, we can run the server:
 
 This will keep running until you hit Control-C, but now you can open a browser and go to http://localhost:3000 to see the app running.
 
+ + If you get odd MySQL errors when you run the server, you may have a mismatch between the version of this gemset's mysql gem and your installation of MySQL.  Running "rake gems:install" installs the most recent version of each gem (unless specified otherwise in config/environment.rb).  If you use MySQL databases successfully in another project, check that project's version of the mysql gem.  Try uninstalling the version installed in this gemset by "rake gems:install", and install the version that works for you elsewhere, e.g. "gem install mysql -v 2.7".
+
 You'll notice the site is kind of... empty. You can generate a bit of seed data with:
 
     rake db:bootstrap
@@ -106,7 +110,20 @@ At this point, you can run unit tests with:
 
     rake test
 
-We are also using cucumber for user stories / integration testing. You can run them with:
+We are also using cucumber for user stories / integration testing. Install the gem dependencies:
+
+    rake gems:install RAILS_ENV=cucumber
+
+Vendor and build your gems:
+
+    rake gems:unpack RAILS_ENV=cucumber
+    rake gems:build RAILS_ENV=cucumber
+
+Remove an extraneous file, if you have it:
+
+    rm features/step_definitions/html_steps.rb
+
+You can now run your cucumber tests with:
 
     rake features
 
