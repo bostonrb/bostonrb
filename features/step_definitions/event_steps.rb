@@ -17,16 +17,12 @@ end
 
 When /^I should see "([^\"]*)" under (.*)$/ do |text, id|
   id = id.gsub(' ', '_')
-  within "##{id}" do |scope|
-    assert_contain text
-  end
+  assert_have_selector "div##{id} a", :content => text
 end
 
 Then /^I should not see "([^\"]*)" under (.*)$/ do |text, id|
   id = id.gsub(' ', '_')
-  within "##{id}" do |scope|
-    assert_not_contain text
-  end
+  assert_have_no_selector "div##{id} a", :content => text
 end
 
 Then /^I should see that there are (\d+) future events$/ do |count|
