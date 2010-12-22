@@ -77,35 +77,25 @@ describe Moonshine::Manifest::Rails do
     end
   end
 
-  specify "#security_update" do
-    @manifest.configure(:unattended_upgrade => { :package_blacklist => ['foo', 'bar', 'widget']})
-    @manifest.configure(:user => 'rails')
-
-    @manifest.security_updates
-
-    @manifest.should have_package("unattended-upgrades")
-    @manifest.should have_file("/etc/apt/apt.conf.d/10periodic").with_content(
-      /APT::Periodic::Unattended-Upgrade "1"/
-    )
-    @manifest.should have_file("/etc/apt/apt.conf.d/50unattended-upgrades").with_content(
-      /Unattended-Upgrade::Mail "rails@localhost";/
-    )
-    @manifest.should have_file("/etc/apt/apt.conf.d/50unattended-upgrades").with_content(
-      /"foo";/
-    )
-  end
-
   describe "#rails_gems" do
+    it "configures gem options" do
+      @manifest.rails_gems
+
+      @manifest.should have_file('/etc/gemrc').with_content(
+        /--no-rdoc/
+      )
+    end
+    
     it "configures gem sources" do
       @manifest.rails_gems
 
       @manifest.should have_file('/etc/gemrc').with_content(
-        /gems.github.com/
+        /rubygems.org/
       )
     end
 
     it "loads gems from config" do
-      @manifest.configure(:gems => [ { :name => 'jnewland-pulse', :source => 'http://gems.github.com' } ])
+      @manifest.configure(:gems => [ { :name => 'jnewland-pulse', :source => 'http://rubygems.org' } ])
       @manifest.rails_gems
 
       Moonshine::Manifest::Rails.configuration[:gems].should_not be_nil
@@ -113,25 +103,25 @@ describe Moonshine::Manifest::Rails do
       Moonshine::Manifest::Rails.configuration[:gems].each do |gem|
         @manifest.should have_package(gem[:name]).from_provider(:gem)
       end
-      @manifest.packages['jnewland-pulse'].source.should be_nil
+#      @manifest.packages['jnewland-pulse'].source.should be_nil
     end
 
     it "magically loads gem dependencies" do
       @manifest.configure(:gems => [
         { :name => 'webrat' },
-        { :name => 'thoughtbot-paperclip', :source => 'http://gems.github.com' }
+        { :name => 'paperclip' }
       ])
 
       @manifest.rails_gems
 
       @manifest.should have_package('webrat')
-      @manifest.should have_package('thoughtbot-paperclip')
+      @manifest.should have_package('paperclip')
       @manifest.should have_package('libxml2-dev')
     end
 
   end
 
-  it "cretes directories" do
+  it "creates directories" do
     config = {
       :application => 'foo',
       :user => 'foo',
@@ -177,7 +167,7 @@ describe Moonshine::Manifest::Rails do
         /PassengerUseGlobalQueue On/
       )
       @manifest.should exec_command('/usr/sbin/a2enmod passenger')
-      @manifest.should exec_command('/usr/bin/ruby -S rake clean apache2')
+      @manifest.should exec_command('sudo /usr/bin/ruby -S rake clean apache2')
     end
 
     it "allows setting booleans configurations to false" do
@@ -236,7 +226,8 @@ describe Moonshine::Manifest::Rails do
         @manifest.configure(:ssl => {
           :certificate_file => 'cert_file',
           :certificate_key_file => 'cert_key_file',
-          :certificate_chain_file => 'cert_chain_file'
+          :certificate_chain_file => 'cert_chain_file',
+          :protocol => 'all -SSLv2'
         })
 
         @manifest.passenger_site
@@ -246,6 +237,9 @@ describe Moonshine::Manifest::Rails do
         )
         @manifest.should have_file("/etc/apache2/sites-available/#{@manifest.configuration[:application]}").with_content(
           /https/
+        )
+        @manifest.should have_file("/etc/apache2/sites-available/#{@manifest.configuration[:application]}").with_content(
+          /SSLProtocol all -SSLv2/
         )
       end
 
@@ -443,6 +437,50 @@ describe Moonshine::Manifest::Rails do
 
     @manifest.should exec_command('/usr/bin/psql -c "CREATE USER pg_username WITH PASSWORD \'pg_password\'"')
     @manifest.should exec_command('/usr/bin/createdb -O pg_username pg_database')
+  end
+
+  describe "#gem" do
+    before do
+      @manifest.gem 'rmagick'
+    end
+    it "uses gem provider for package" do
+      @manifest.should have_package('rmagick').from_provider('gem')
+    end
+
+    it "runs before rails_gem" do
+      package = @manifest.packages['rmagick']
+      package.before.type.should == 'Exec'
+      package.before.title.should == 'rails_gems'
+    end
+
+    it "requires /etc/gemrc" do
+      package = @manifest.packages['rmagick']
+
+      gemrc = package.require.detect do |require|
+        require.title == '/etc/gemrc'
+      end
+
+      gemrc.should_not == nil
+      gemrc.type.should == 'File'
+    end
+
+    it "requires native packages" do
+      package = @manifest.packages['rmagick']
+
+      imagemagick = package.require.detect do |require|
+        require.title == 'imagemagick'
+      end
+
+      imagemagick.should_not == nil
+      imagemagick.type.should == 'Package'
+
+      libmagick9_dev = package.require.detect do |require|
+        require.title == 'libmagick9-dev'
+      end
+
+      libmagick9_dev.should_not == nil
+      libmagick9_dev.type.should == 'Package'
+    end
   end
 
 end

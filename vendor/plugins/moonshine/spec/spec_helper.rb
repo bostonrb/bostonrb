@@ -1,5 +1,6 @@
 require 'rubygems'
-require 'isolate/scenarios/now'
+require 'isolate/scenarios'
+require 'isolate/now'
 require 'spec/autorun'
 
 # Requires supporting files with custom matchers and macros, etc,

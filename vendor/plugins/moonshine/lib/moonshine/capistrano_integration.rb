@@ -117,7 +117,6 @@ module Moonshine
 
           desc 'Apply the Moonshine manifest for this application'
           task :apply, :except => { :no_release => true } do
-            aptget.update
             sudo "RAILS_ROOT=#{latest_release} DEPLOY_STAGE=#{ENV['DEPLOY_STAGE'] || fetch(:stage)} RAILS_ENV=#{fetch(:rails_env)} shadow_puppet #{latest_release}/app/manifests/#{fetch(:moonshine_manifest)}.rb"
           end
 
@@ -406,7 +405,11 @@ module Moonshine
 
           task :install_moonshine_deps do
             sudo 'gem install rake --no-rdoc --no-ri'
+            sudo 'gem install i18n --no-rdoc --no-ri' # workaround for missing activesupport-3.0.2 dep on i18n
             sudo 'gem install shadow_puppet --no-rdoc --no-ri'
+            if rails_root.join('Gemfile').exist?
+              sudo 'gem install bundler --no-rdoc --no-ri'
+            end
           end
         end
 

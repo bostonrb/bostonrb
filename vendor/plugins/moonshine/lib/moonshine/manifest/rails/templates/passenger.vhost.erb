@@ -69,6 +69,8 @@
   # RailsBaseURI <uri>
   <% end %>
 
+
+  <% if configuration[:passenger][:allow_mod_rewrite] %>
   ## RailsAllowModRewrite
   #
   # Passenger will not override mod_rewrite rules if this option
@@ -77,6 +79,9 @@
   # Options: <on|off>
 
   RailsAllowModRewrite <%= passenger_config_boolean(configuration[:passenger][:allow_mod_rewrite]) %>
+  <% else %>
+  # RailsAllowModRewrite is deprecated. Passenger supports mod_rewrite by default now. configure(:passenger => { :allow_mod_rewrite => true/false }) if you still wish to use it.
+  <% end %>
 
   ## RackEnv
   #
@@ -161,6 +166,9 @@
   <% else %>
   # SSLCertificateChainFile /etc/apache2/ssl.crt/server-ca.crt
   <% end %>
+  <% if configuration[:ssl][:protocol] %>
+  SSLProtocol <%= configuration[:ssl][:protocol] %>
+  <% end %>
 
   BrowserMatch ".*MSIE.*" nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
 
@@ -228,6 +236,7 @@
   # RailsBaseURI <uri>
   <% end %>
 
+  <% if configuration[:passenger][:allow_mod_rewrite] %>
   ## RailsAllowModRewrite
   #
   # Passenger will not override mod_rewrite rules if this option
@@ -236,6 +245,9 @@
   # Options: <on|off>
 
   RailsAllowModRewrite <%= passenger_config_boolean(configuration[:passenger][:allow_mod_rewrite]) %>
+  <% else %>
+  # RailsAllowModRewrite is deprecated. Passenger supports mod_rewrite by default now. configure(:passenger => { :allow_mod_rewrite => true/false }) if you still wish to use it.
+  <% end %>
 
   ## RailsEnv
   #

@@ -12,20 +12,23 @@ module Moonshine::Manifest::Rails::Mysql
     ]
 
     # ensure the mysql key is present on the configuration hash
-    configure(:mysql => {})
+    configure(:mysql => { :version => mysql_version })
 
     file '/etc/mysql', :ensure => :directory
     file '/etc/mysql/conf.d', :ensure => :directory
+    
     file '/etc/mysql/conf.d/innodb.cnf',
       :ensure => :present,
       :content => template(File.join(File.dirname(__FILE__), 'templates', 'innodb.cnf.erb')),
       :before => package('mysql-server')
+    
     file '/etc/mysql/conf.d/moonshine.cnf',
       :ensure => :present,
       :content => template(File.join(File.dirname(__FILE__), 'templates', 'moonshine.cnf.erb')),
       :require => package('mysql-server'),
       :notify => service('mysql'),
       :checksum => :md5
+
     file '/etc/logrotate.d/varlogmysql.conf', :ensure => :absent
   end
 
@@ -79,4 +82,7 @@ private
     "su -c \'/usr/bin/mysql -u root -e \"#{sql}\"\'"
   end
 
+  def mysql_version
+    ubuntu_lucid? ? 5.1 : 5
+  end
 end
