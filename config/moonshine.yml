@@ -55,11 +55,3 @@
 # - vendor/plugins/moonshine/lib/moonshine/manifest/rails/templates/moonshine.cnf.erb 
 :mysql:
   :innodb_buffer_pool_size: 128M
-
-
-# Uncomment to deploy from working directory, instead of from git
-:scm: none
-:deploy_via: copy
-:repository: .
-:copy_exclude: .git
-
