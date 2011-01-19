@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
+  <meta name="description" content="Boston Ruby is a local community of Rubyists and enthusiasts of open source software.">
+  <meta name="viewport" content = "initial-scale = 0.35,user-scalable = yes">
   <title>Boston Ruby Group</title>
-  <%= stylesheet_link_tag :flutie, 'screen', :media => 'all', :cache => true %>
+  <link rel="icon" href="favicon.ico">
+  <link href='http://font.thoughtbot.com/prociono.css' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag :flutie, 'screen', :media => 'all' %>
+  <link rel="stylesheet" href="/stylesheets/mobile.css" media="only screen and (max-device-width: 480px)">
   <%= csrf_meta_tag %>
 </head>
 <body class="<%= body_class %>">
