@@ -20,10 +20,37 @@ Setup
 
 If you want to make changes locally, follow these steps:
 
-    git clone git@github.com:bostonrb/bostonrb.git
+Install Ruby 1.9.2 (if necessary) and create a gemset to minimize gem conflicts. RVM is optional, but highly recommended
+
+    rvm install 1.9.2-p136
+    rvm --create 1.9.2-p136@bostonrb
+
+Install the bundler gem
+
+    gem install bundler
+
+[Create your own fork](http://help.github.com/forking/) of the [bostonrb repository on github](https://github.com/bostonrb/bostonrb)
+
+Clone your new fork
+
+    git clone git@github.com:your-github-username/bostonrb.git
+    cd bostonrb
+
+Install the required gems
+
     bundle install
-    rake db:create
-    rake db:migrate
+
+Setup the development database
+
+    cp config/database.example.yml config/database.yml
+    rake db:create db:migrate
+
+Run the tests
+
+    rake
+
+Run the server
+
     rails s
 
 Deploy
