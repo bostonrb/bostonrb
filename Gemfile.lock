@@ -75,7 +75,6 @@ GEM
     fakeweb (1.3.0)
     ffi (0.6.3)
       rake (>= 0.8.7)
-    flutie (1.1.5)
     formtastic (1.2.3)
       actionpack (>= 2.3.7)
       activesupport (>= 2.3.7)
@@ -182,7 +181,6 @@ DEPENDENCIES
   dynamic_form
   factory_girl_rails
   fakeweb
-  flutie
   formtastic
   haml
   high_voltage

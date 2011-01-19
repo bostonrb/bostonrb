@@ -8,7 +8,6 @@ gem "hoptoad_notifier"
 gem "validation_reflection"
 gem "formtastic"
 gem "pg"
-gem "flutie"
 gem "dynamic_form"
 
 # RSpec needs to be in :development group to expose generators
