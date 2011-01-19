@@ -12,10 +12,11 @@
   <%= csrf_meta_tag %>
 </head>
 <body class="<%= body_class %>">
-  <div id="header">
+  <div id="container">
+    <h1>Boston<br /> Ruby Group</h1>
+    <%= render :partial => 'shared/flashes' -%>
+    <%= yield %>
+    <%= render :partial => 'shared/javascript' %>
   </div>
-  <%= render :partial => 'shared/flashes' -%>
-  <%= yield %>
-  <%= render :partial => 'shared/javascript' %>
 </body>
 </html>
