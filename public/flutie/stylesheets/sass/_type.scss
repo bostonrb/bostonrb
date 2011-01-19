@@ -1,0 +1,139 @@
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.2em;
+  line-height: 1;
+  margin-bottom: 0.25em;
+}
+
+h2 {
+  font-size: 1.6em;
+  line-height: 1.1;
+  margin-bottom: 0.25em;
+}
+
+h3 {
+  font-size: 1.3em;
+  line-height: 1;
+  margin-bottom: 0.25em;
+}
+
+h4 {
+  font-size: 1.1em;
+  line-height: 1.25;
+  margin-bottom: 0.25em;
+}
+
+h5 {
+  font-size: 1em;
+  margin-bottom: 0.25em;
+}
+
+h6 {
+  font-size: 1em;
+  margin-bottom: 0.25em;
+}
+
+/* Text elements */
+p {
+  margin-bottom: 0.5em;
+}
+
+p.last {
+  margin-bottom: 0;
+}
+
+p img {
+  float: left;
+  margin: 1.5em 1.5em 1.5em 0;
+  padding: 0;
+}
+
+/* Use this if the image is at the top of the <p>. */
+p img.top {
+  margin-top: 0;
+}
+
+img {
+  margin: 0 0 1.5em;
+}
+
+abbr, acronym {
+  border-bottom: 1px dotted #666;
+  cursor: help;
+}
+
+address {
+  font-style: italic;
+  margin-top: 1.5em;
+}
+
+del {
+  color:#666;
+}
+
+a, a:link {
+  color: #1a4882;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #1a4882;
+}
+
+a:hover {
+  color: #052246;
+}
+
+a:active,
+a:focus {
+  color: #1a4882;
+}
+
+blockquote {
+  border-left: 4px solid #d1d1d1;
+  color: #666;
+  font-style: italic;
+  margin: 1.5em 0;
+  padding-left: 1em;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em,
+dfn {
+  font-style: italic;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+pre, code {
+  margin: 1.5em 0;
+  white-space: pre; /* CSS2 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  word-wrap: break-word; /* IE */
+}
+
+pre, code, tt {
+  font: 1em 'andale mono', 'monotype.com', 'lucida console', monospace;
+  line-height: 1.5;
+}
+
+pre.code {
+  background: #000;
+  color: #fff;
+  padding: 20px;
+}
+
+tt {
+  display: block;
+  line-height: 1.5;
+  margin: 1.5em 0;
+}

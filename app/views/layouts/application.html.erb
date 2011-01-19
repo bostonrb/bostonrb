@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Boston Ruby Group</title>
+  <%= stylesheet_link_tag :flutie, 'screen', :media => 'all', :cache => true %>
+  <%= csrf_meta_tag %>
+</head>
+<body class="<%= body_class %>">
+  <div id="header">
+  </div>
+  <%= render :partial => 'shared/flashes' -%>
+  <%= yield %>
+  <%= render :partial => 'shared/javascript' %>
+</body>
+</html>
