@@ -2,6 +2,7 @@ source :rubygems
 
 gem "rails", ">= 3.0.3"
 gem "rack"
+gem 'sqlite3-ruby', :require => 'sqlite3'
 gem "haml"
 gem "high_voltage"
 gem "hoptoad_notifier"

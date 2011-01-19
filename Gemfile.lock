@@ -157,6 +157,9 @@ GEM
     sham_rack (1.3.3)
       rack
     shoulda (2.11.3)
+    sqlite3 (1.3.3)
+    sqlite3-ruby (1.3.3)
+      sqlite3 (>= 1.3.3)
     term-ansicolor (1.0.5)
     thin (1.2.7)
       daemons (>= 1.0.9)
@@ -194,6 +197,7 @@ DEPENDENCIES
   ruby-debug19
   sham_rack
   shoulda
+  sqlite3-ruby
   thin
   timecop
   treetop
