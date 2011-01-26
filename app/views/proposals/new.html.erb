@@ -1,0 +1,12 @@
+<p>Would you like to speak at the Boston Ruby Group? Please submit your proposal to the group moderator!</p>
+
+<%= semantic_form_for :proposal, :url => proposals_path do |form| %>
+  <%= form.error_messages %>
+  <%= form.inputs do %>
+    <%= form.input :from, :label => "Email" %>
+    <%= form.input :body, :as => :text, :required => true %>
+  <% end %>
+  <%= form.buttons do %>
+    <%= form.submit "Submit proposal" %>
+  <% end %>
+<% end %>
