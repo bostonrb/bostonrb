@@ -288,6 +288,5 @@ input[type=submit] {
 input[type=submit]:hover {
   color: #a41000;
   background: #fff;
-  border: 0px solid #999;
   cursor: pointer;
   cursor: hand; }
