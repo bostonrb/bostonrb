@@ -9,6 +9,7 @@ gem "hoptoad_notifier",      "~> 2.4.2"
 gem "formtastic",            "~> 1.2.3"
 gem "dynamic_form",          "~> 1.1.3"
 gem "validation_reflection", "~> 1.0.0"
+gem "gcal4ruby",             :git => "git://github.com/bruno/GCal4Ruby.git"
 
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.

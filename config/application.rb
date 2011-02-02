@@ -7,6 +7,9 @@ require 'rails/all'
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module BostonRuby
+  
+  require_relative '../lib/boston_rb_calendar'
+  
   class Application < Rails::Application
     config.generators do |generate|
       generate.test_framework :rspec
