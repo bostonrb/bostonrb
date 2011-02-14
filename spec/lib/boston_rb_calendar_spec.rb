@@ -53,7 +53,7 @@ describe "Boston RB Calendar Upcoming Events" do
   
   it "should only have events for the present/future" do
     @upcoming_events.each do |event|
-      event.start_time.day.should >= Time.now.day
+      (event.start_time.year + (event.start_time.month/12) + (event.start_time.day/365)).should >= (Time.now.year + (Time.now.month/12) + (Time.now.day/365))
     end
   end
   

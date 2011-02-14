@@ -1,7 +1,7 @@
 module NextEventHelper
   def format_event(event)
     html = "#{event.title} <br/>".html_safe
-    html << " #{start_time_format(event.start_time)} to#{end_time_format(event.end_time)} <br/>".html_safe
+    html << " #{start_time_format(event.start_time)} to #{end_time_format(event.end_time)} <br/>".html_safe
     html << " #{where_link(event.where)}".html_safe
   rescue
     "No event scheduled."

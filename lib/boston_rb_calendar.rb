@@ -42,22 +42,23 @@ module BostonRbCalendar
   
   def self.upcoming_events
     authenticate
-    filter_events(GCal4Ruby::Event.find(@@service,{'start-min' => Time.now.utc.xmlschema,
-      'start-max' => (Time.now + 21.days).utc.xmlschema,
-      'calendar_id' => @calendar
-    }))
+    query = {
+      'singleevents' => true,
+      'orderby' => 'starttime',
+      :calendar => @calendar,
+      'sortorder' => 'ascending',
+      'start-min' => Time.now.xmlschema,
+      'start-max' => (Time.now + 1.month).xmlschema,
+      'max-results' => '3'
+    }
+    
+    GCal4Ruby::Event.find(@@service,'',query)
   rescue
     nil
   end
   
   
-  private
-  
-  def self.filter_events(events)
-    events.map{|e| e if e.calendar_id == @calendar}.compact.sort_by(&:start_time)
-  rescue
-    nil
-  end    
+  private 
   
   def self.authenticate
     @@service ||= GCal4Ruby::Service.new
