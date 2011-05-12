@@ -61,7 +61,7 @@ table {
   height: 0; }
 
 /* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
-#external-links:after,
+.links:after,
 .clearfix:after {
   clear: both;
   content: ' ';
@@ -72,7 +72,7 @@ table {
   width: 0;
   height: 0; }
 
-#external-links,
+.links,
 .clearfix {
   display: inline-block; }
 
@@ -80,6 +80,7 @@ table {
 * html .clearfix {
   height: 1%; }
 
-#external-links,
+.links,
 .clearfix {
   display: block; }
+

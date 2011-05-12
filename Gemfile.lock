@@ -160,6 +160,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    valid_attribute (0.1.0)
     validation_reflection (1.0.0)
 
 PLATFORMS
@@ -187,4 +188,5 @@ DEPENDENCIES
   shoulda (~> 2.11)
   sqlite3
   timecop (~> 0.3.5)
+  valid_attribute
   validation_reflection (~> 1.0.0)

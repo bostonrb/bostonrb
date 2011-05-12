@@ -290,3 +290,12 @@ input[type=submit]:hover {
   background: #fff;
   cursor: pointer;
   cursor: hand; }
+
+ul.dates, ul.presentations, ul#external {
+  margin-top: 0px;
+}
+
+ul.dates li:after {
+  content: ''
+}
+

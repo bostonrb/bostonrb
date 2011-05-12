@@ -23,7 +23,6 @@ end
 
 group :test do
   gem "akephalos", :git => "git://github.com/thoughtbot/akephalos.git"
-
   gem "cucumber-rails",     "~> 0.3.2"
   gem "factory_girl_rails", "~> 1.0"
   gem "bourne",             "~> 1.0"
@@ -33,4 +32,5 @@ group :test do
   gem "timecop",            "~> 0.3.5"
   gem "shoulda",            "~> 2.11"
   gem "email_spec",         "~> 1.1"
+  gem 'valid_attribute'
 end

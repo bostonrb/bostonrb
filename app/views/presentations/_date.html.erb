@@ -1,0 +1,6 @@
+<li id="<%= date.to_s -%>">
+  <h2><%= date %></h2>
+  <ul class="presentations">
+    <%= render @presentations[date] %>
+  </ul>
+</li>
