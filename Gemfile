@@ -1,7 +1,6 @@
 source :rubygems
 
 gem "rails",                 "~> 3.0.3"
-gem "pg",                    "~> 0.10"
 gem "haml",                  "~> 3.0"
 gem "high_voltage",          "~> 0.9"
 gem "flutie",                "~> 1.1"
@@ -13,8 +12,13 @@ gem "validation_reflection", "~> 1.0.0"
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.
 group :development, :test do
+  gem "sqlite3"
   gem "rspec-rails",  "~> 2.4.0"
   gem "ruby-debug19", "~> 0.11.6"
+end
+
+group :production, :staging do
+  gem "pg", "~> 0.10"
 end
 
 group :test do
