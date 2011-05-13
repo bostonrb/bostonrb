@@ -25,9 +25,9 @@ Install Ruby 1.9.2 (if necessary). RVM is optional, but highly recommended
     rvm install 1.9.2-p180
     rvm use 1.9.2 --default
 
-Install the bundler gem
+Install bundler and thin
 
-    gem install bundler
+    gem install bundler thin
 
 [Create your own fork](http://help.github.com/forking/) of the [bostonrb repository on github](https://github.com/bostonrb/bostonrb)
 
@@ -51,7 +51,7 @@ Run the tests
 
 Run the server
 
-    rails s
+    thin start
 
 Deploy
 ------
