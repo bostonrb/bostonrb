@@ -46,6 +46,7 @@ GEM
     childprocess (0.1.8)
       ffi (~> 1.0.6)
     columnize (0.3.2)
+    configuration (1.2.0)
     cucumber (0.10.2)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.2)
@@ -87,6 +88,9 @@ GEM
       thor (~> 0.14)
     json (1.5.1)
     json_pure (1.5.1)
+    launchy (0.4.0)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     mail (2.2.19)
@@ -180,6 +184,7 @@ DEPENDENCIES
   high_voltage (~> 0.9)
   hoptoad_notifier (~> 2.4.2)
   jquery-rails
+  launchy
   pg (~> 0.10)
   rails (~> 3.0.7)
   rspec-rails (~> 2.6.0)

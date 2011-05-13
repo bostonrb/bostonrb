@@ -33,4 +33,5 @@ group :test do
   gem "shoulda",            "~> 2.11"
   gem "email_spec",         "~> 1.1"
   gem 'valid_attribute'
+  gem "launchy"
 end
