@@ -306,6 +306,8 @@ input[type=submit]:hover {
     width: 140px; }
   .presentations-index ul.dates li, .presentations-show ul.dates li {
     float: none; }
+.presentations-index h3.past {
+  margin-bottom: 30px; }
 .presentations-index ul.presentations, .presentations-show ul.presentations {
   margin: 0;
   padding: 0; }
