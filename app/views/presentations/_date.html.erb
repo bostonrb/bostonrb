@@ -1,5 +1,5 @@
 <li id="<%= date.to_s -%>">
-  <h2><%= date %></h2>
+  <h2><%= date.to_time.to_s(:date) %></h2>
   <ul class="presentations">
     <%= render @presentations[date] %>
   </ul>
