@@ -20,10 +20,10 @@ Setup
 
 If you want to make changes locally, follow these steps:
 
-Install Ruby 1.9.2 (if necessary) and create a gemset to minimize gem conflicts. RVM is optional, but highly recommended
+Install Ruby 1.9.2 (if necessary). RVM is optional, but highly recommended
 
-    rvm install 1.9.2-p136
-    rvm --create 1.9.2-p136@bostonrb
+    rvm install 1.9.2-p180
+    rvm use 1.9.2 --default
 
 Install the bundler gem
 
