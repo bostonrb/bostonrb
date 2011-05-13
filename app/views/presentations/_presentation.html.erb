@@ -1,9 +1,13 @@
 <li id="<%= presentation.id -%>" class="presentation">
-  <h3><%= presentation.title -%></h3>
-  <h4><%= presentation.presenter_name %></h4>
+  <h3>
+    <%= presentation.title -%> 
+    <span class="meta">
+      <%= presentation.presenter_name %> 
+      <% if presentation.slides_url.present? %>
+        <%= link_to "Slides", presentation.slides_url, :target => "_blank" %>
+      <% end %>
+    </span>
+  </h3>
   <%= presentation.embed_video.html_safe if presentation.vimeo_id.present? %>
   <p><%= presentation.description %></p>
-  <% if presentation.slides_url.present? %>
-    Slides: <%= link_to "#{presentation.slides_url}", presentation.slides_url, :target => "_blank" %>
-  <% end %>
 </li>

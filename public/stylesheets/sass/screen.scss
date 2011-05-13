@@ -88,8 +88,16 @@ p.attribution {
 ul {
   font-size: 16px;
   line-height: 28px;
-  margin: 88px 0 14px 0;
+  margin: 0 0 15px 0;
   text-align: left;
+}
+
+#internal.links {
+  margin-top: 50px;
+}
+
+#external.links {
+  margin-bottom: 40px;
 }
 
 ul li {
@@ -148,4 +156,33 @@ input[type=submit]:hover {
   background: #fff;
   cursor: pointer;
   cursor: hand;
+}
+
+.presentations-index {
+  ul li:after {
+    content: "";
+  }
+  ul.dates {
+    margin: 0;
+  }
+  ul.presentations {
+    margin: 0;
+    padding: 0;
+    li.presentation {
+      margin-bottom: 30px;
+      h3 {
+        margin-bottom: 10px;
+        .meta {
+          margin-left: 5px;
+          font-size: 16px;
+          a {
+            margin-left: 5px;
+          }
+        }
+        &:after, &:last-child:after {
+          content: "";
+        }
+      }
+    }
+  }
 }

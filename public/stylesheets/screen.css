@@ -189,7 +189,7 @@ a:hover {
 
 #container {
   margin: 42px 50px 75px 250px;
-  width: 650px; }
+  width: 600px; }
 
 h1 {
   background: url("/images/ruby.png") 2px 0 no-repeat;
@@ -240,8 +240,14 @@ p.attribution {
 ul {
   font-size: 16px;
   line-height: 28px;
-  margin: 88px 0 14px 0;
+  margin: 0 0 15px 0;
   text-align: left; }
+
+#internal.links {
+  margin-top: 50px; }
+
+#external.links {
+  margin-bottom: 40px; }
 
 ul li {
   float: left;
@@ -291,11 +297,21 @@ input[type=submit]:hover {
   cursor: pointer;
   cursor: hand; }
 
-ul.dates, ul.presentations, ul#external {
-  margin-top: 0px;
-}
-
-ul.dates li:after {
-  content: ''
-}
-
+.presentations-index ul li:after {
+  content: ""; }
+.presentations-index ul.dates {
+  margin: 0; }
+.presentations-index ul.presentations {
+  margin: 0;
+  padding: 0; }
+  .presentations-index ul.presentations li.presentation {
+    margin-bottom: 30px; }
+    .presentations-index ul.presentations li.presentation h3 {
+      margin-bottom: 10px; }
+      .presentations-index ul.presentations li.presentation h3 .meta {
+        margin-left: 5px;
+        font-size: 16px; }
+        .presentations-index ul.presentations li.presentation h3 .meta a {
+          margin-left: 5px; }
+      .presentations-index ul.presentations li.presentation h3:after, .presentations-index ul.presentations li.presentation h3:last-child:after {
+        content: ""; }
