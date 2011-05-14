@@ -10,17 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110512173547) do
+ActiveRecord::Schema.define(:version => 20110514143114) do
 
   create_table "presentations", :force => true do |t|
     t.date     "presented_at"
-    t.string   "vimeo_id"
+    t.string   "video_id"
     t.string   "title"
     t.string   "slides_url"
     t.string   "presenter_name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "video_provider"
   end
 
 end
