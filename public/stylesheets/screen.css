@@ -297,6 +297,9 @@ input[type=submit]:hover {
   cursor: pointer;
   cursor: hand; }
 
+.presentations-index ul.dates li {
+  float: none;
+}
 .presentations-index ul li:after {
   content: ""; }
 .presentations-index ul.dates {
