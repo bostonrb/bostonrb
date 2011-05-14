@@ -1,6 +1,7 @@
 class PresentationsController < ApplicationController
 
   def index
-    @presentations = Presentation.group_by_date
+    @presentations = Presentation.page(params[:page])
+    @grouped_presentations = @presentations.group_by_date
   end
 end

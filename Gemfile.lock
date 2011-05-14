@@ -88,6 +88,8 @@ GEM
       thor (~> 0.14)
     json (1.5.1)
     json_pure (1.5.1)
+    kaminari (0.12.4)
+      rails (>= 3.0.0)
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -184,6 +186,7 @@ DEPENDENCIES
   high_voltage (~> 0.9)
   hoptoad_notifier (~> 2.4.2)
   jquery-rails
+  kaminari (~> 0.12.4)
   launchy
   pg (~> 0.10)
   rails (~> 3.0.7)

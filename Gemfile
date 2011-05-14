@@ -9,6 +9,7 @@ gem "formtastic",            "~> 1.2.3"
 gem "dynamic_form",          "~> 1.1.3"
 gem "validation_reflection", "~> 1.0.0"
 gem "jquery-rails"
+gem "kaminari",              "~> 0.12.4"
 
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.
