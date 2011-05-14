@@ -58,3 +58,15 @@ Deploy
 
 The site is deployed to [Heroku](http://heroku.com) and takes advantage
 of their Varnish layer by setting far future expires HTTP headers.
+
+DataEntry
+--------
+
+Presentations can handle videos from [Vimeo](http://vimeo.com),
+[Youtube](http://youtube.com), and [Blip.tv](http://blip.tv)
+
+Just use the set the video_url attribute on the presentation to the
+video's actual URL and everything is parsed.
+
+The one exception is Blip.tv. You must use the src value from the
+video's embed code instead of the video's URL.
