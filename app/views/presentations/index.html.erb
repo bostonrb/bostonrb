@@ -2,7 +2,9 @@
 <h3>Past presentations</h3>
 
 <%= paginate @presentations %>
-<ul class="dates">
-  <%= render :partial => 'date', :collection => @grouped_presentations.keys %>
-</ul>
+<div class="presentation_wrapper">
+  <ul class="dates">
+    <%= render :partial => 'date', :collection => @grouped_presentations.keys %>
+  </ul>
+</div>
 <%= paginate @presentations %>
