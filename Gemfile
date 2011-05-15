@@ -16,7 +16,7 @@ gem "kaminari",              "~> 0.12.4"
 group :development, :test do
   gem "sqlite3"
   gem "rspec-rails",  "~> 2.6.0"
-  gem "ruby-debug19", "~> 0.11.6"
+  gem "ruby-debug19", "~> 0.11.6", :require => "ruby-debug"
 end
 
 group :production, :staging do
