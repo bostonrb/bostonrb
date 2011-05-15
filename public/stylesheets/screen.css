@@ -297,27 +297,24 @@ input[type=submit]:hover {
   cursor: pointer;
   cursor: hand; }
 
-.presentations-index ul.dates li {
-  float: none;
-}
-.presentations-index ul li:after {
+.presentations-index ul li:after, .presentations-show ul li:after {
   content: ""; }
-.presentations-index ul.dates {
+.presentations-index ul.dates, .presentations-show ul.dates {
   margin: 0; }
-  .presentations-index ul.dates h2 {
+  .presentations-index ul.dates h2, .presentations-show ul.dates h2 {
     left: -160px;
     width: 140px; }
-.presentations-index ul.presentations {
+.presentations-index ul.presentations, .presentations-show ul.presentations {
   margin: 0;
   padding: 0; }
-  .presentations-index ul.presentations li.presentation {
+  .presentations-index ul.presentations li.presentation, .presentations-show ul.presentations li.presentation {
     margin-bottom: 30px; }
-    .presentations-index ul.presentations li.presentation h3 {
+    .presentations-index ul.presentations li.presentation h3, .presentations-show ul.presentations li.presentation h3 {
       margin-bottom: 10px; }
-      .presentations-index ul.presentations li.presentation h3 .meta {
+      .presentations-index ul.presentations li.presentation h3 .meta, .presentations-show ul.presentations li.presentation h3 .meta {
         margin-left: 5px;
         font-size: 16px; }
-        .presentations-index ul.presentations li.presentation h3 .meta a {
+        .presentations-index ul.presentations li.presentation h3 .meta a, .presentations-show ul.presentations li.presentation h3 .meta a {
           margin-left: 5px; }
-      .presentations-index ul.presentations li.presentation h3:after, .presentations-index ul.presentations li.presentation h3:last-child:after {
+      .presentations-index ul.presentations li.presentation h3:after, .presentations-index ul.presentations li.presentation h3:last-child:after, .presentations-show ul.presentations li.presentation h3:after, .presentations-show ul.presentations li.presentation h3:last-child:after {
         content: ""; }

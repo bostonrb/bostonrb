@@ -1,6 +1,6 @@
 <li id="<%= presentation.id -%>" class="presentation">
   <h3>
-    <%= presentation.title -%> 
+    <%= link_to presentation.title, presentation -%> 
     <span class="meta">
       <%= presentation.presenter_name %> 
       <% if presentation.slides_url.present? %>

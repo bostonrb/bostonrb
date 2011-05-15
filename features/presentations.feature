@@ -17,3 +17,7 @@ Feature: BostonRB Presentations
     And  I should see presentation 2 for May 10, 2011
     And  I should see presentation 3 for April 12, 2011
 
+  Scenario: Viewing past presentations
+    When I follow "Test Presentation 1"
+    Then I should see presentation 1 for May 10, 2011
+

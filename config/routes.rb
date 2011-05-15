@@ -2,5 +2,5 @@ BostonRuby::Application.routes.draw do
   root :to => 'high_voltage/pages#show', :id => 'home'
 
   resources :proposals, :only => [:new, :create]
-  resources :presentations, :only => [:index]
+  resources :presentations, :only => [:index, :show]
 end
