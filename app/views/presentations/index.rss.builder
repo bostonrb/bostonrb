@@ -5,7 +5,7 @@ xml.rss :version => "2.0" do
     xml.description "Presentations given at BostonRB"
     xml.link presentations_url
 
-    @presentations.each do |presentation|
+    @presentations.order('presented_at desc').each do |presentation|
       xml.item do
         xml.title presentation.title
         xml.description presentation.description
