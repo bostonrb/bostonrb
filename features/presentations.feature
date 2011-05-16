@@ -21,3 +21,10 @@ Feature: BostonRB Presentations
     When I follow "Test Presentation 1"
     Then I should see presentation 1 for May 10, 2011
 
+  Scenario: Subscribing to RSS
+    When I follow "RSS"
+    And  I parse the feed
+    Then I should get a rss item of presentation 1
+    And  I should get a rss item of presentation 2
+    And  I should get a rss item of presentation 3
+

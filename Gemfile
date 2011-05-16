@@ -35,4 +35,5 @@ group :test do
   gem "email_spec",         "~> 1.1"
   gem 'valid_attribute'
   gem "launchy"
+  gem "simple-rss",         "~> 1.2.3"
 end
