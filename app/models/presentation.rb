@@ -9,6 +9,11 @@ class Presentation < ActiveRecord::Base
     order('presented_at desc').group_by(&:presented_at)
   end
 
+  def self.past(paginator_params = {})
+    where(arel_table[:presented_at].lt(Date.today)).order('presented_at desc')
+      .page(paginator_params[:page]).per(paginator_params[:per])
+  end
+
   VideoProviders  = %w{youtube vimeo blip}
   VideoDimensions = { :width => 625, :height => 370 }
 

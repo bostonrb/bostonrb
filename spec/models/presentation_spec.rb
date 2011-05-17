@@ -10,6 +10,23 @@ describe Presentation do
     it { should_not have_valid(:presenter_name).when(nil, '') }
   end
 
+  describe '.past' do
+    before do
+      @past_presentation_1  = Factory(:presentation, :presented_at => 2.days.ago)
+      @past_presentation_2  = Factory(:presentation, :presented_at => 1.day.ago)
+      @current_presentation = Factory(:presentation, :presented_at => Date.today)
+      @future_presentation  = Factory(:presentation, :presented_at => 1.day.from_now)
+    end
+
+    it 'will only return past presentations' do
+      Presentation.past.should == [@past_presentation_2, @past_presentation_1]
+    end
+
+    it 'can take paginator params' do
+      Presentation.past(:page => 1, :per => 1).should == [@past_presentation_2]
+    end
+  end
+
   describe '.group_by_date' do
     before do
       @date_1 = Date.parse("May 10, 2011")

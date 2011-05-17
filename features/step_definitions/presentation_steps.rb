@@ -1,3 +1,11 @@
+Given /^an upcoming presentation$/ do
+  pre = Factory(:presentation, :title => 'Upcoming Presentation', :presented_at => 1.day.from_now)
+end
+
+Then /^I should not see the upcoming presentation$/ do
+  page.should_not have_content('Upcoming Presentation')
+end
+
 Then /^I should see presentation (\d+) for (.+)$/ do |id, date|
   within("##{Date.parse(date).to_s}") do
     page.should have_content("Test Presentation #{id}")
