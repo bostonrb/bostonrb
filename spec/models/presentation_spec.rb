@@ -34,6 +34,22 @@ describe Presentation do
     end
   end
 
+  describe '.upcoming' do
+    before do
+      Timecop.freeze(Date.parse('May 10, 2011'))
+      @presentation_1 = Factory(:presentation, :presented_at => 'April 8, 2011')
+      @presentation_2 = Factory(:presentation, :presented_at => 'May 10, 2011')
+      @presentation_3 = Factory(:presentation, :presented_at => 'June 5, 2011')
+      @presentation_4 = Factory(:presentation, :presented_at => 'July 11, 2011')
+    end
+
+    after { Timecop.return }
+
+    it 'should only return presentations in the next 30 days' do
+      Presentation.upcoming.should == [@presentation_2, @presentation_3]
+    end
+  end
+
   describe '.group_by_date' do
     before do
       @date_1 = Date.parse("May 10, 2011")
@@ -46,6 +62,13 @@ describe Presentation do
       Presentation.group_by_date.should == {
         @date_1 => [@presentation_1],
         @date_2 => [@presentation_2]
+      }
+    end
+
+    it 'returns an ordered grouping reversed' do
+      Presentation.group_by_date(:asc).should == {
+        @date_2 => [@presentation_2],
+        @date_1 => [@presentation_1]
       }
     end
   end

@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+require 'factory_girl'
+
+Factory.find_definitions
+Factory(:upcoming_presentation, :presented_at => 10.days.from_now)

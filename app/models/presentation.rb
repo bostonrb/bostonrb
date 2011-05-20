@@ -5,8 +5,8 @@ class Presentation < ActiveRecord::Base
   validates :presented_at, :presence => true
   validates :presenter_name, :presence => true
 
-  def self.group_by_date
-    order('presented_at desc').group_by(&:presented_at)
+  def self.group_by_date(order = :desc)
+    order("presented_at #{order}").group_by(&:presented_at)
   end
 
   def self.past(params = {})
@@ -21,6 +21,10 @@ class Presentation < ActiveRecord::Base
     end
 
     relation.page(params[:page]).per(params[:per])
+  end
+
+  def self.upcoming
+    where(arel_table[:presented_at].gteq(Date.today).and(arel_table[:presented_at].lteq(30.days.from_now)))
   end
 
   VideoProviders  = %w{youtube vimeo blip}

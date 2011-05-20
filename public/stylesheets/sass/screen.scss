@@ -158,7 +158,17 @@ input[type=submit]:hover {
   cursor: hand;
 }
 
-.presentations-index, .presentations-show {
+.presentations-upcoming h2 {
+  width: 200px;
+  left: -340px;
+  display: inline;
+}
+
+div.presentations-upcoming {
+  margin-left: 100px;
+}
+
+.presentations-index, .presentations-show, div.presentations-upcoming {
   ul li:after {
     content: "";
   }
