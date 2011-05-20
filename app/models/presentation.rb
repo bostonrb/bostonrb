@@ -9,9 +9,18 @@ class Presentation < ActiveRecord::Base
     order('presented_at desc').group_by(&:presented_at)
   end
 
-  def self.past(paginator_params = {})
-    where(arel_table[:presented_at].lt(Date.today)).order('presented_at desc')
-      .page(paginator_params[:page]).per(paginator_params[:per])
+  def self.past(params = {})
+    relation = where(arel_table[:presented_at].lt(Date.today)).order('presented_at desc')
+
+    if params[:month]
+      month    = Date.parse(params[:month])
+      relation = relation.where(arel_table[:presented_at].gteq(month.beginning_of_month))
+      if Date.today > month.end_of_month
+        relation = relation.where(arel_table[:presented_at].lteq(month.end_of_month))
+      end
+    end
+
+    relation.page(params[:page]).per(params[:per])
   end
 
   VideoProviders  = %w{youtube vimeo blip}
