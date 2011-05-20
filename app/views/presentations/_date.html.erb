@@ -1,5 +1,5 @@
 <li id="<%= date.to_s -%>">
-  <h2><%= date.to_time.to_s(:date) %></h2>
+<h2><%= link_to date.to_time.to_s(:date), month_presentations_path(:month => date.strftime('%B-%Y')) %></h2>
   <ul class="presentations">
     <%= render @grouped_presentations[date] %>
   </ul>

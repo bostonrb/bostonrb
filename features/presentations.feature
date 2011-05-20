@@ -32,3 +32,10 @@ Feature: BostonRB Presentations
     And  I should get a rss item of presentation 2
     And  I should get a rss item of presentation 3
 
+  Scenario: Viewing Presentations for a given month
+    When I follow "Presentations"
+    And  I follow "May 10, 2011"
+    Then I should see presentation 1 for May 10, 2011
+    And  I should see presentation 2 for May 10, 2011
+    But  I should not see presentation 3 for April 12, 2011
+
