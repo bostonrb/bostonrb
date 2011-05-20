@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(:version => 20110514143114) do
     t.string   "video_id"
     t.string   "title"
     t.string   "slides_url"
+    t.string   "project_url"
+    t.string   "project_type"
     t.string   "presenter_name"
     t.text     "description"
     t.datetime "created_at"
