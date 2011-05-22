@@ -1,5 +1,6 @@
 /*
-  Website designed and built by Chad Mazzola (http://hellohappy.org) in September 2010.
+  Website designed and built by Chad Mazzola (http://hellohappy.org) in September 2010
+  and further modified by the Boston RB community starting in May 2011.
   Inspiration from Jan Tschichold (1928) and Peter Saville (1978)
 */
 /* Forms */
@@ -170,6 +171,10 @@ form ol li.date label,
 form ol li.time label {
   display: none; }
 
+.clearfix {
+  clear: both;
+  font-size: 1px; }
+
 body {
   background: #ffebc3;
   color: #222;
@@ -192,17 +197,23 @@ a:hover {
   width: 600px; }
 
 h1 {
-  background: url("/images/ruby.png") 2px 0 no-repeat;
-  font-size: 18px;
+  font-size: 48px;
   font-weight: normal;
   line-height: 21px;
   margin: 0 0 24px -90px;
   padding: 14px 0 35px 90px; }
+  h1 img {
+    float: left;
+    height: 48px; }
+  h1 a {
+    padding-top: 12px;
+    padding-left: 10px;
+    float: left; }
   h1 a:hover {
     border: none; }
 
 h2 {
-  font-size: 14px;
+  font-size: 24px;
   font-weight: normal;
   line-height: 28px;
   left: -120px;
@@ -243,19 +254,13 @@ ul {
   margin: 0 0 15px 0;
   text-align: left; }
 
-#internal.links {
-  margin-top: 50px; }
-
-#external.links {
-  margin-bottom: 40px; }
-
 ul li {
   float: left;
-  margin: 0 8px 0 0; }
+  margin: 0 4px 0 0; }
 
 ul li:after {
   content: "/";
-  margin: 0 0 0 8px; }
+  margin: 0 0 0 4px; }
 
 ul li:last-child:after {
   content: ""; }
@@ -263,12 +268,6 @@ ul li:last-child:after {
 ul li a {
   border-bottom: 1px solid #222;
   padding: 0 0 1px 0; }
-
-#footer {
-  margin-top: 75px; }
-
-#footer p {
-  font-size: 14px; }
 
 fieldset {
   background: none;
@@ -297,6 +296,49 @@ input[type=submit]:hover {
   cursor: pointer;
   cursor: hand; }
 
+/* Home page */
+.links {
+  font-size: 12px; }
+
+#leftcol {
+  float: left;
+  margin-bottom: 80px;
+  width: 300px; }
+  #leftcol p {
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 10px;
+    width: 260px;
+    background-color: #f5dca0; }
+
+#rightcol {
+  margin-top: 28px;
+  margin-bottom: 80px;
+  float: left;
+  width: 300px; }
+  #rightcol a {
+    color: #f5dca0;
+    border-color: #f5dca0; }
+  #rightcol .presentations-upcoming {
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 10px;
+    width: 260px;
+    background-color: #b46e32;
+    color: #f5dca0;
+    margin-left: 0px; }
+    #rightcol .presentations-upcoming .presentations-heading {
+      font-size: 36px;
+      margin-bottom: 24px; }
+    #rightcol .presentations-upcoming li.presentation p {
+      margin-top: 24px;
+      margin-bottom: 48px; }
+    #rightcol .presentations-upcoming li.presentation span.meta {
+      font-size: 16px; }
+
+/* Presentations page */
 .presentations-upcoming h2 {
   width: 200px;
   left: -340px;
