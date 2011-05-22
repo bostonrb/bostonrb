@@ -36,16 +36,16 @@ describe Presentation do
 
   describe '.upcoming' do
     before do
-      Timecop.freeze(Date.parse('May 10, 2011'))
-      @presentation_1 = Factory(:presentation, :presented_at => 'April 8, 2011')
-      @presentation_2 = Factory(:presentation, :presented_at => 'May 10, 2011')
-      @presentation_3 = Factory(:presentation, :presented_at => 'June 5, 2011')
-      @presentation_4 = Factory(:presentation, :presented_at => 'July 11, 2011')
+      Timecop.freeze(Date.parse('February 10, 2011'))
+      @presentation_1 = Factory(:presentation, :presented_at => 'January 8, 2011')
+      @presentation_2 = Factory(:presentation, :presented_at => 'February 10, 2011')
+      @presentation_3 = Factory(:presentation, :presented_at => 'March 5, 2011')
+      @presentation_4 = Factory(:presentation, :presented_at => 'March 11, 2011')
     end
 
     after { Timecop.return }
 
-    it 'should only return presentations in the next 30 days' do
+    it 'should only return presentations belonging to the next monthly meeting' do
       Presentation.upcoming.should == [@presentation_2, @presentation_3]
     end
   end
