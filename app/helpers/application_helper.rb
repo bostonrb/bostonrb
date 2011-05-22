@@ -1,8 +1,8 @@
 module ApplicationHelper
   def upcoming_presentations
-    presentations = Presentation.upcoming
-    @grouped_presentations = presentations.group_by_date(:asc)
-    if @grouped_presentations.present?
+    @presentations = Presentation.upcoming
+    if @presentations.present?
+      @next_meeting_date = @presentations.first.presented_at.strftime("%B %d")
       render :partial => 'pages/upcoming'
     end
   end
