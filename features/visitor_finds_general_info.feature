@@ -15,7 +15,6 @@ Feature: Visitor finds general info
     And   I am on the home page
     Then  I should see "Second Tuesday of every month"
     And   I should see "new Rubyists are always welcome"
-    And   I should see "upcoming presentations"
     And   I should see "New Upcoming Presentation"
     And   I should see "New Upcoming Person"
     And   I should see "New Upcoming Description"

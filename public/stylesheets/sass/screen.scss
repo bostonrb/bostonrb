@@ -223,6 +223,12 @@ div.presentations-upcoming {
 }
 
 .presentations-index, .presentations-show, div.presentations-upcoming {
+  h3.past {
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 14px;
+  }
   ul li:after {
     content: "";
   }
@@ -236,9 +242,6 @@ div.presentations-upcoming {
       float: none;
     }
   }
-  h3.past {
-    margin-bottom: 30px;
-  }
   ul.presentations {
     margin: 0;
     padding: 0;
@@ -247,7 +250,7 @@ div.presentations-upcoming {
       h3 {
         margin-bottom: 10px;
         .meta {
-          margin-left: 5px;
+          margin-left: 0;
           font-size: 16px;
           a {
             margin-left: 5px;
