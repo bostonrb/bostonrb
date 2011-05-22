@@ -4,7 +4,6 @@
       <%= link_to presentation.title, presentation %>
     </div>
     <span class="meta">
-      <%= presentation.presenter_name %> 
       by <%= presentation.presenter_name %> 
       <% if presentation.slides_url.present? %>
         <%= link_to "Slides", presentation.slides_url, :target => "_blank" %>
