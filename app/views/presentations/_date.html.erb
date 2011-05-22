@@ -1,0 +1,5 @@
+<li id="<%= date.to_s -%>">
+  <ul class="presentations">
+    <%= render :partial => 'presentations/presentation', :collection => @grouped_presentations[date] %>
+  </ul>
+</li>
