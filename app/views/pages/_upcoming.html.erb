@@ -1,7 +1,8 @@
 <div class="presentations-upcoming">
-  <h2>upcoming presentations</h2>
-  <ul class = 'dates'>
-    <%= render :partial => 'presentations/date', :collection => @grouped_presentations.keys %>
-  </ul>
+  <div class="presentations-heading">Next Meeting: <%= @next_meeting_date %></div>
+  <ul class="presentations">
+    <%= render :partial => 'presentations/presentation', :collection => @presentations %>
+   </ul>
+  <div class="clearfix"></div>
 </div>
 
