@@ -13,7 +13,10 @@
 </head>
 <body class="<%= body_class %>">
   <div id="container">
-    <h1><a href="/">Boston<br /> Ruby Group</a></h1>
+    <h1>
+      <img src="/images/ruby.png" alt="ruby">
+      <a href="/">Boston Ruby Group</a>
+    </h1>
     <%= render :partial => 'shared/flashes' -%>
     <%= yield %>
     <%= render :partial => 'shared/javascript' %>

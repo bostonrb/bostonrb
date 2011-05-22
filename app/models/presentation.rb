@@ -24,7 +24,7 @@ class Presentation < ActiveRecord::Base
   end
 
   def self.upcoming
-    where(arel_table[:presented_at].gteq(Date.today).and(arel_table[:presented_at].lteq(30.days.from_now)))
+    where(arel_table[:presented_at].gteq(Date.today).and(arel_table[:presented_at].lteq(1.month.from_now)))
   end
 
   VideoProviders  = %w{youtube vimeo blip}
