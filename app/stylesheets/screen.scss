@@ -1,0 +1,230 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/typography/lists/horizontal-list";
+@import "compass/css3/border-radius";
+
+a {
+  color: #222;
+}
+
+body {
+  background: #ffebc3;
+  color: #222;
+  font-family: prociono, georgia, palatino, times new roman, serif;
+  text-rendering: optimizeLegibility;
+  width: 600px;
+  margin: 42px 50px 75px 250px;
+
+  > header {
+    padding-top: 9px;
+    margin-bottom: 16px;
+    h1 {
+      a {
+        font-size: 48px;
+        text-decoration: none;
+        padding-left: 6px;
+      }
+      img {
+        height: 48px;
+        position: relative;
+        top: 5px;
+      }
+    }
+  }
+}
+
+nav.links {
+  margin-bottom: 20px;
+  ul {
+    @include horizontal-list;
+    font-size: 12px;
+    margin-bottom: 10px;
+    li {
+      padding-left: 0px;
+      line-height: 1.5em;
+      &:after {
+        content: "/";
+      }
+      &:last-child:after {
+        content: "";
+      }
+      a {
+        margin-right: 4px;
+        text-decoration: none;
+        padding-bottom: 1px;
+        &:hover {
+          border-bottom: 1px solid;
+        }
+      }
+    }
+  }
+}
+
+section#container {
+  > hgroup.title {
+    margin-bottom: 20px;
+    h2 {
+      position: relative;
+      left: -160px;
+      width: 140px;
+      text-align: right;
+      top: 20px;
+      &:after {
+        content: "/"
+      }
+    }
+    h3 {
+      font-size: 24px;
+    }
+  }
+}
+
+section.column {
+  float: left;
+  &.thin {
+    width: 280px;
+  }
+  > article {
+    margin-bottom: 20px;
+    > header {
+      top: 32px;
+      position: relative;
+      left: -160px;
+      width: 140px;
+      h2 {
+        font-size: 24px;
+        text-align: right;
+        &:after {
+          content: "/"
+        }
+      }
+    }
+    &.date {
+      > header {
+        line-height: 28px;
+        top: 28px;
+        h2 {
+          font-size: 16px;
+        }
+      }
+      section.presentation {
+        margin-bottom: 30px;
+        > hgroup {
+          margin-bottom: 10px;
+          h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+          }
+          h4 {
+            font-size: 16px;
+          }
+        }
+        p {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    > p {
+      @include border-radius(8px);
+      background-color: #F5DCA0;
+      padding: 10px;
+      line-height: 28px;
+      text-align: left;
+    }
+  }
+}
+
+aside {
+  margin-top: 24px;
+  margin-left: 20px;
+  float: left;
+  width: 270px;
+  @include border-radius(8px);
+  background-color: #B46E32;
+  color: #F5DCA0;
+  padding: 10px;
+  > header {
+    margin-bottom: 30px;
+    h2 {
+      // text-align: center;
+      font-size: 36px;
+    }
+  }
+  article.date {
+    a {
+      text-decoration: none;
+    }
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+    // text-align: center;
+    > header {
+      margin-bottom: 10px;
+      h2 {
+        font-size: 28px;
+      }
+    }
+    section {
+      hgroup {
+        margin-bottom: 10px;
+        h2 {
+          a {
+            color: #F5DCA0;
+          }
+          font-size: 24px;
+          margin-bottom: 5px;
+        }
+        h4 {
+          font-size: 14px;
+        }
+      }
+      margin-bottom: 20px;
+    }
+  }
+}
+
+body.presentations-index {
+  section.column {
+    float: none;
+  }
+}
+
+body.proposals {
+  label {
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    padding-bottom: 5px;
+  }
+  input[type="text"], textarea {
+    padding: 5px;
+    width: 400px;
+    font-size: 16px;
+  }
+  input[type="text"] {
+    margin-bottom: 1em;
+  }
+  input[type="submit"] {
+    background-color: #A41000;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    border: 0px;
+    margin: 0px;
+    padding: 8px 12px;
+  }
+  textarea {
+    height: 200px;
+    margin-bottom: 1em;
+  }
+  p {
+    margin-bottom: 1em;
+  }
+}

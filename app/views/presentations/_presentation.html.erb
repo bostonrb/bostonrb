@@ -1,15 +1,13 @@
-<li id="<%= presentation.id -%>" class="presentation">
-  <h3>
-    <div class="presentation-title">
-      <%= link_to presentation.title, presentation %>
-    </div>
-    <span class="meta">
-      by <%= presentation.presenter_name %> 
+<section id="<%= presentation.id -%>" class="presentation">
+  <hgroup>
+    <h2><%= link_to presentation.title, presentation %></h2>
+    <h4>
+      by <%= presentation.presenter_name %>
       <% if presentation.slides_url.present? %>
         <%= link_to "Slides", presentation.slides_url, :target => "_blank" %>
       <% end %>
-    </span>
-  </h3>
+    </h4>
+  </hgroup>
   <%= presentation.embed_video.html_safe if presentation.video_id.present? %>
   <p><%= presentation.description %></p>
-</li>
+</section>
