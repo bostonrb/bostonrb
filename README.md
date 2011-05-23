@@ -6,13 +6,13 @@ It's a Rails app running [Ruby 1.9](http://www.ruby-lang.org/en/downloads) and u
 
 * Postgres as a SQL database
 * jQuery for client-side behavior
-* Sass and Flutie for stylesheets
-* Formtastic for forms
+* Compass for stylesheets
+* SimpleForm for forms
 * Hoptoad for error notification
 * High Voltage for static pages
 * Cucumber, Capybara, and Akephalos for integration testing
 * RSpec for isolation testing
-* Shoulda for RSpec matchers
+* ValidAttribute for model validation testing
 * Factory Girl for test data
 
 Setup
@@ -43,7 +43,7 @@ Install the required gems
 Setup the development database
 
     cp config/database.example.yml config/database.yml
-    rake db:create db:migrate
+    rake db:create && rake db:migrate && rake db:seed
 
 Run the tests
 
