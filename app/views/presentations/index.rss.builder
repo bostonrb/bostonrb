@@ -11,7 +11,7 @@ xml.rss :version => "2.0" do
         xml.description presentation.description
         xml.pubDate presentation.presented_at.to_time.to_s(:rfc822)
         xml.link presentation_url(presentation)
-        xml.guid presentation_url(presentation)
+        xml.guid presentation.id
       end
     end
   end

@@ -1,11 +1,13 @@
+Factory.sequence(:counter) { |n| n }
+
 Factory.define :presentation do |factory|
-  factory.title          { "Test Presentation"   }
-  factory.presented_at   { "May 10, 2011"        }
-  factory.video_id       { "123"                 }
-  factory.video_provider { "vimeo"               }
-  factory.presenter_name { "Person 1"            }
-  factory.description    { "Test Description"    }
-  factory.slides_url     { "http://slides.com/1" }
+  factory.title          { "Test Presentation #{Factory.next(:counter)}" }
+  factory.presented_at   { "May 10, 2011"                                }
+  factory.video_id       { Factory.next(:counter)                        }
+  factory.video_provider { 'vimeo'                                       }
+  factory.presenter_name { "Person #{Factory.next(:counter)}"            }
+  factory.description    { "Test Description #{Factory.next(:counter)}"  }
+  factory.slides_url     { "http://slides.com/#{Factory.next(:counter)}" }
 end
 
 Factory.define :upcoming_presentation, :class => 'Presentation' do |factory|

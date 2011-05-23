@@ -21,10 +21,9 @@ group :production, :staging do
 end
 
 group :test do
-  gem 'cucumber-rails',     '~> 0.4.1'
   gem 'factory_girl_rails', '~> 1.0.1'
   gem 'bourne',             '~> 1.0'
-  gem 'capybara',           '~> 0.4.1.2'
+  gem 'capybara',           :git => 'https://github.com/jnicklas/capybara.git'
   gem 'database_cleaner',   '~> 0.6.0'
   gem 'timecop',            '~> 0.3.5'
   gem 'email_spec',         '~> 1.1'
