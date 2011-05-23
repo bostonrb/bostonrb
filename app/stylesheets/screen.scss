@@ -139,7 +139,7 @@ section.column {
   }
 }
 
-aside {
+aside.column {
   margin-top: 24px;
   margin-left: 20px;
   float: left;
@@ -171,6 +171,7 @@ aside {
       }
     }
     section {
+      margin-bottom: 20px;
       hgroup {
         margin-bottom: 10px;
         h2 {
@@ -184,7 +185,9 @@ aside {
           font-size: 14px;
         }
       }
-      margin-bottom: 20px;
+      p {
+        line-height: 1.25em;
+      }
     }
   }
 }
