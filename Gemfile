@@ -1,5 +1,6 @@
 source :rubygems
 
+gem 'rake',             '~> 0.8.7'
 gem 'rails',            '~> 3.0.7'
 gem 'high_voltage',     '~> 0.9'
 gem 'hoptoad_notifier', '~> 2.4.2'
@@ -27,7 +28,7 @@ group :test do
   gem 'database_cleaner',   '~> 0.6.0'
   gem 'timecop',            '~> 0.3.5'
   gem 'email_spec',         '~> 1.1'
-  gem 'valid_attribute'
+  gem 'valid_attribute',    '~> 0.2.1'
   gem 'launchy'
   gem 'simple-rss',         '~> 1.2.3'
 end
