@@ -2,7 +2,7 @@
   <hgroup>
     <h2><%= link_to presentation.title, presentation %></h2>
     <h4>
-      by <%= presentation.presenter_name %>
+      by <%= link_to presentation.presenter.name, presentation.presenter %>
       <% if presentation.slides_url.present? %>
         <%= link_to "Slides", presentation.slides_url, :target => "_blank" %>
       <% end %>

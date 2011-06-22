@@ -44,13 +44,6 @@ feature 'BostonRB Presentations', %{
     have_presentation_content(@presentation_3, :should_not)
   end
 
-  def have_presentation_content(presentation, expectation)
-    page.send(expectation, have_content(presentation.title))
-    page.send(expectation, have_content(presentation.description))
-    page.send(expectation, have_content(presentation.presenter_name))
-    page.send(expectation, have_css("a[href='#{presentation.slides_url}']", :text => "Slides"))
-  end
-
   def parse_feed
     SimpleRSS.parse(page.driver.browser.last_response.body)
   end

@@ -7,7 +7,6 @@ describe Presentation do
     it { should_not have_valid(:slides_url).when('badurl') }
     it { should     have_valid(:slides_url).when(nil, '', 'http://slides.com/1') }
     it { should_not have_valid(:presented_at).when(nil, '') }
-    it { should_not have_valid(:presenter_name).when(nil, '') }
   end
 
   describe '.past' do
@@ -93,6 +92,27 @@ describe Presentation do
       its(:video_provider) { should == 'blip' }
       its(:video_id) { should == '123abc' }
       its(:embed_video) { should == %{<embed src="http://blip.tv/play/123abc" type="application/x-shockwave-flash" width="625" height="370" allowscriptaccess="always" allowfullscreen="true"></embed>} }
+    end
+  end
+
+  describe '#presenter_name=' do
+    context 'existing presenter' do
+      before do
+        @presenter = Factory(:presenter)
+      end
+
+      it 'assigns the presenter' do
+        presentation = Presentation.new(:presenter_name => @presenter.name)
+        presentation.presenter.should == @presenter
+      end
+    end
+
+    context 'new presenter' do
+      it 'initializes a new presenter and assigns it' do
+        presentation = Presentation.new(:presenter_name => 'John Kennedy')
+        presentation.presenter.should be_new_record
+        presentation.presenter.name.should == 'John Kennedy'
+      end
     end
   end
 

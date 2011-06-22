@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'kaminari',         '~> 0.12.4'
 gem 'compass',          '~> 0.11.1'
 gem 'simple_form',      '~> 1.4.0'
+gem 'friendly_id',      '~> 3.2.1'
 
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.

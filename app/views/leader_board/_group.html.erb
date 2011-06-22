@@ -1,0 +1,6 @@
+<article id="<%= group -%>_presentations" class='leader-group'>
+  <header>
+    <h2><%= group %></h2>
+  </header>
+  <%= render :partial => 'leader', :collection => @grouped_presenters_by_score[group] %>
+</article>

@@ -3,7 +3,7 @@ class Presentation < ActiveRecord::Base
   validates :description, :presence => true
   validates :slides_url, :video_url, :format => { :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix, :allow_blank => true }
   validates :presented_at, :presence => true
-  validates :presenter_name, :presence => true
+  belongs_to :presenter
 
   def self.group_by_date(order = :desc)
     order("presented_at #{order}").group_by(&:presented_at)
@@ -25,6 +25,11 @@ class Presentation < ActiveRecord::Base
 
   def self.upcoming
     where(arel_table[:presented_at].gteq(Date.today).and(arel_table[:presented_at].lteq(1.month.from_now)))
+  end
+
+  def presenter_name=(name)
+    self.presenter = Presenter.find_or_initialize_by_name(name)
+    self.presenter.name
   end
 
   VideoProviders  = %w{youtube vimeo blip}

@@ -1,0 +1,9 @@
+<hgroup class='title'>
+  <h2>No. of Presentations</h2>
+  <h3>Presenters ~ Leaders</h3>
+</hgroup>
+
+<section class='column'>
+  <%= render :partial => 'group', :collection => @grouped_presenters_by_score.keys.sort { |a, b| b <=> a } %>
+</section>
+
