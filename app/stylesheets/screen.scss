@@ -84,8 +84,9 @@ section#container {
 }
 
 section.column {
-  float: left;
+
   &.thin {
+    float: left;
     width: 280px;
   }
   > article {
