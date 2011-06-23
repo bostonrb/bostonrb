@@ -14,6 +14,7 @@ describe Presenter do
       @presenation_3 = Factory(:presentation, :presenter => @presenter_1)
       @presenation_4 = Factory(:presentation, :presenter => @presenter_3)
       @presenation_5 = Factory(:presentation, :presenter => @presenter_3)
+      @presenation_5 = Factory(:presentation, :presenter => @presenter_3, :presented_at => 1.day.from_now)
     end
 
     it 'groups the presenters by the number of presentations given and sorty by name.' do

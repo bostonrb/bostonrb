@@ -5,7 +5,7 @@ class Presenter < ActiveRecord::Base
 
   def self.group_by_score
     all.inject(Hash.new { |hash, key| hash[key] = [] }) do |collection, presenter|
-      presentations_count = presenter.presentations.count
+      presentations_count = presenter.presentations.past.count
       sorted_presenters   = (collection[presentations_count] << presenter).sort_by(&:name)
       collection.merge!(presentations_count => sorted_presenters)
     end
