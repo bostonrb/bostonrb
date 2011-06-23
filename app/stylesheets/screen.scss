@@ -127,6 +127,12 @@ section.column {
         p {
           margin-top: 10px;
         }
+        ul {
+          @include horizontal-list;
+          margin-top: 15px;
+          line-height: 1.25em;
+          font-size: .9em;
+        }
       }
     }
 

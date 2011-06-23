@@ -3,14 +3,16 @@
     <h2><%= link_to presentation.title, presentation %></h2>
     <h4>
       by <%= link_to presentation.presenter.name, presentation.presenter %>
-      <% if presentation.slides_url.present? %>
-        <%= link_to "Slides", presentation.slides_url, :target => "_blank" %>
-      <% end %>
-      <% if presentation.project_url.present? %>
-        <%= link_to "Project", presentation.project_url, :target => "_blank" %>
-      <% end %>
     </h4>
   </hgroup>
   <%= presentation.embed_video.html_safe if presentation.video_id.present? %>
   <p><%= presentation.description %></p>
+  <ul class='links'>
+      <% if presentation.slides_url.present? %>
+        <li><%= link_to "Slides", presentation.slides_url, :target => "_blank" %></li>
+      <% end %>
+      <% if presentation.project_url.present? %>
+        <li><%= link_to "Project", presentation.project_url, :target => "_blank" %></li>
+      <% end %>
+  </ul>
 </section>
