@@ -9,12 +9,14 @@ describe Presenter do
       @presenter_1 = Factory(:presenter, :name => 'George Washington')
       @presenter_2 = Factory(:presenter)
       @presenter_3 = Factory(:presenter, :name => 'Abraham Lincoln')
-      @presenation_1 = Factory(:presentation, :presenter => @presenter_1)
-      @presenation_2 = Factory(:presentation, :presenter => @presenter_2)
-      @presenation_3 = Factory(:presentation, :presenter => @presenter_1)
-      @presenation_4 = Factory(:presentation, :presenter => @presenter_3)
-      @presenation_5 = Factory(:presentation, :presenter => @presenter_3)
-      @presenation_5 = Factory(:presentation, :presenter => @presenter_3, :presented_at => 1.day.from_now)
+      @presenter_4 = Factory(:presenter)
+      @presentation_1 = Factory(:presentation, :presenter => @presenter_1)
+      @presentation_2 = Factory(:presentation, :presenter => @presenter_2)
+      @presentation_3 = Factory(:presentation, :presenter => @presenter_1)
+      @presentation_4 = Factory(:presentation, :presenter => @presenter_3)
+      @presentation_5 = Factory(:presentation, :presenter => @presenter_3)
+      @presentation_6 = Factory(:presentation, :presenter => @presenter_3, :presented_at => 1.day.from_now)
+      @presentation_7 = Factory(:presentation, :presenter => @presenter_4, :presented_at => 1.day.from_now)
     end
 
     it 'groups the presenters by the number of presentations given and sorty by name.' do

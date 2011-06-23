@@ -4,10 +4,12 @@ class Presenter < ActiveRecord::Base
   validates :name, :presence => true
 
   def self.group_by_score
-    all.inject(Hash.new { |hash, key| hash[key] = [] }) do |collection, presenter|
+    group = all.inject(Hash.new { |hash, key| hash[key] = [] }) do |collection, presenter|
       presentations_count = presenter.presentations.past.count
       sorted_presenters   = (collection[presentations_count] << presenter).sort_by(&:name)
       collection.merge!(presentations_count => sorted_presenters)
     end
+    group.delete(0)
+    group
   end
 end
