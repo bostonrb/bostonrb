@@ -1,9 +1,14 @@
 class Presentation < ActiveRecord::Base
+  has_friendly_id :title, :use_slug => true
   validates :title, :presence => true
   validates :description, :presence => true
   validates :slides_url, :video_url, :format => { :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix, :allow_blank => true }
   validates :presented_at, :presence => true
   belongs_to :presenter
+
+  def self.find_all_by_cached_slug_or_id(id)
+    where(arel_table[:cached_slug].eq(id).or(arel_table[:id].eq(id)))
+  end
 
   def self.group_by_date(order = :desc)
     order("presented_at #{order}").group_by(&:presented_at)

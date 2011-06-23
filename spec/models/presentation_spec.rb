@@ -9,6 +9,14 @@ describe Presentation do
     it { should_not have_valid(:presented_at).when(nil, '') }
   end
 
+  describe '.find_all_by_cached_slug_or_id' do
+    it 'finds by either attributes' do
+      expected_sql = %{SELECT "presentations".* FROM "presentations" WHERE (("presentations"."cached_slug" = 1 OR "presentations"."id" = 1))}
+      result_sql   = Presentation.find_all_by_cached_slug_or_id(1).to_sql
+      result_sql.should == expected_sql
+    end
+  end
+
   describe '.past' do
     before do
       Timecop.freeze(Date.parse('May 10, 2011'))

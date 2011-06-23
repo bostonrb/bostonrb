@@ -10,7 +10,7 @@ class PresentationsController < ApplicationController
   end
 
   def show
-    @presentations = Presentation.where(:id => params[:id]).page(nil)
+    @presentations = Presentation.find_all_by_cached_slug_or_id(params[:id]).page(nil)
     @grouped_presentations = @presentations.group_by_date
   end
 end
