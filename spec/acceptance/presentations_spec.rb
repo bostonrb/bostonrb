@@ -44,6 +44,13 @@ feature 'BostonRB Presentations', %{
     have_presentation_content(@presentation_3, :should_not)
   end
 
+  scenario 'Viewing Presentation for an upcoming month' do
+    @presentation_4 = Factory(:presentation, :presented_at => 2.months.from_now)
+    visit "/presentations/month/#{@presentation_4.presented_at.strftime('%B-%Y')}"
+    have_presentation_content(@presentation_4, :should)
+    page.should_not have_content('Past presentations')
+  end
+
   def parse_feed
     SimpleRSS.parse(page.driver.browser.last_response.body)
   end

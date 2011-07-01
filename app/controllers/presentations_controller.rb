@@ -1,6 +1,6 @@
 class PresentationsController < ApplicationController
   def index
-    @presentations = Presentation.past(:page => params[:page], :per => params[:per], :month => params[:month])
+    @presentations = Presentation.past_or_by_month(:page => params[:page], :per => params[:per], :month => params[:month])
     @grouped_presentations = @presentations.group_by_date
 
     respond_to do |format|

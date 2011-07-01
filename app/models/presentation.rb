@@ -14,15 +14,15 @@ class Presentation < ActiveRecord::Base
     order("presented_at #{order}").group_by(&:presented_at)
   end
 
-  def self.past(params = {})
-    relation = where(arel_table[:presented_at].lt(Date.today)).order('presented_at desc')
+  def self.past_or_by_month(params = {})
+    relation = order('presented_at desc')
 
     if params[:month]
       month    = Date.parse(params[:month])
       relation = relation.where(arel_table[:presented_at].gteq(month.beginning_of_month))
-      if Date.today > month.end_of_month
-        relation = relation.where(arel_table[:presented_at].lteq(month.end_of_month))
-      end
+      relation = relation.where(arel_table[:presented_at].lteq(month.end_of_month))
+    else
+      relation = relation.where(arel_table[:presented_at].lt(Date.today))
     end
 
     relation.page(params[:page]).per(params[:per])

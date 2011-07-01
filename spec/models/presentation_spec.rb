@@ -17,7 +17,7 @@ describe Presentation do
     end
   end
 
-  describe '.past' do
+  describe '.past_or_by_month' do
     before do
       Timecop.freeze(Date.parse('May 10, 2011'))
       @past_presentation_1  = Factory(:presentation, :presented_at => 'April 8, 2011')
@@ -29,15 +29,19 @@ describe Presentation do
     after { Timecop.return }
 
     it 'will only return past presentations' do
-      Presentation.past.should == [@past_presentation_2, @past_presentation_1]
+      Presentation.past_or_by_month.should == [@past_presentation_2, @past_presentation_1]
     end
 
     it 'can take paginator params' do
-      Presentation.past(:page => 1, :per => 1).should == [@past_presentation_2]
+      Presentation.past_or_by_month(:page => 1, :per => 1).should == [@past_presentation_2]
     end
 
     it 'can scope to a specific month' do
-      Presentation.past(:month => 'May-2011').should == [@past_presentation_2]
+      Presentation.past_or_by_month(:month => 'May-2011').should == [@current_presentation, @past_presentation_2]
+    end
+
+    it 'can scope to a specific month and not filter out upcoming results' do
+      Presentation.past_or_by_month(:month => 'June-2011').should == [@future_presentation]
     end
   end
 
