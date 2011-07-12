@@ -6,30 +6,18 @@
     <meta name="viewport" content = "initial-scale = 0.35,user-scalable = yes">
     <title>Boston Ruby Group</title>
     <link rel="icon" href="/favicon.ico">
-    <link href='http://font.thoughtbot.com/prociono.css' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <%= stylesheet_link_tag 'screen', :media => 'all' %>
     <%= csrf_meta_tag %>
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-23942957-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>
+    <%= render :partial => 'shared/ga' %>
   </head>
   <body class="<%= body_class %>">
     <header>
       <h1>
-        <img src="/images/ruby.png" alt="ruby">
+        <a href="/"><img src="/assets/ruby.png" alt="ruby"></a>
         <a href="/">Boston Ruby Group</a>
       </h1>
     </header>
@@ -37,7 +25,6 @@
     <section id="container">
       <%= render :partial => 'shared/flashes' -%>
       <%= yield %>
-      <%= render :partial => 'shared/javascript' %>
     </section>
   </body>
 </html>

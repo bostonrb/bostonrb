@@ -7,6 +7,14 @@
 @import "compass/typography/lists/horizontal-list";
 @import "compass/css3/border-radius";
 
+@font-face {
+  font-family: 'prociono';
+  font-weight: normal;
+  font-style: normal;
+  src: url('http://font.thoughtbot.com/prociono/prociono.eot');
+  src: local('â˜º'), url('http://font.thoughtbot.com/prociono/prociono.woff') format('woff'), url('http://font.thoughtbot.com/prociono/prociono.ttf') format('truetype'), url('http://font.thoughtbot.com/prociono/prociono.svg#webfontKbEUjPJ6') format('svg');
+}
+
 a {
   color: #222;
 }

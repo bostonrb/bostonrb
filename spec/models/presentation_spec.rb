@@ -11,7 +11,7 @@ describe Presentation do
 
   describe '.find_all_by_cached_slug_or_id' do
     it 'finds by either attributes' do
-      expected_sql = %{SELECT "presentations".* FROM "presentations" WHERE (("presentations"."cached_slug" = 1 OR "presentations"."id" = 1))}
+      expected_sql = %{SELECT "presentations".* FROM "presentations"  WHERE (("presentations"."cached_slug" = 1 OR "presentations"."id" = 1))}
       result_sql   = Presentation.find_all_by_cached_slug_or_id(1).to_sql
       result_sql.should == expected_sql
     end

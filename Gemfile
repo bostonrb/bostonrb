@@ -1,12 +1,16 @@
 source :rubygems
 
+gem 'rails',            '~> 3.1.0.rc4'
+gem 'jquery-rails'
+gem 'uglifier'
+
 gem 'rake',             '~> 0.8.7'
-gem 'rails',            '~> 3.0.7'
 gem 'high_voltage',     '~> 0.9'
 gem 'hoptoad_notifier', '~> 2.4.2'
 gem 'jquery-rails'
 gem 'kaminari',         '~> 0.12.4'
-gem 'compass',          '~> 0.11.1'
+gem 'sass-rails', :git => 'https://github.com/rails/sass-rails.git', :ref => 'eee12e2e0bbfca56d458c82df47213e130ef5830'
+gem 'compass',    :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'simple_form',      '~> 1.4.0'
 gem 'friendly_id',      '~> 3.2.1'
 
@@ -20,6 +24,7 @@ end
 
 group :production, :staging do
   gem 'pg', '~> 0.10'
+  gem 'therubyracer'
 end
 
 group :test do
@@ -29,7 +34,7 @@ group :test do
   gem 'database_cleaner',   '~> 0.6.0'
   gem 'timecop',            '~> 0.3.5'
   gem 'email_spec',         '~> 1.1'
-  gem 'valid_attribute',    '~> 0.2.1'
+  gem 'valid_attribute'
   gem 'launchy'
   gem 'simple-rss',         '~> 1.2.3'
 end
