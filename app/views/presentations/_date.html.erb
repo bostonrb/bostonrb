@@ -1,6 +1,6 @@
 <article id="<%= date.to_s -%>" class='date'>
   <header>
-    <h2><%= link_to date.to_time.to_s(:date), month_presentations_path(:month => date.strftime('%B-%Y')) %></h2>
+    <h2><%= link_to_unless_current date.to_time.to_s(:date), month_presentations_path(:month => date.strftime('%B-%Y')) %></h2>
   </header>
   <%= render :partial => 'presentations/presentation', :collection => @grouped_presentations[date] %>
 </article>

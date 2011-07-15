@@ -1,8 +1,8 @@
 <section id="<%= presentation.id -%>" class="presentation">
   <hgroup>
-    <h2><%= link_to presentation.title, presentation %></h2>
+    <h2><%= link_to_unless_current presentation.title, presentation %></h2>
     <h4>
-      by <%= link_to presentation.presenter.name, presentation.presenter %>
+      by <%= link_to_unless_current presentation.presenter.name, presentation.presenter %>
     </h4>
   </hgroup>
   <%= presentation.embed_video.html_safe if presentation.video_id.present? %>
