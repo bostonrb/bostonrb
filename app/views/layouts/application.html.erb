@@ -17,8 +17,10 @@
   <body class="<%= body_class %>">
     <header>
       <h1>
-        <a href="/"><img src="/assets/ruby.png" alt="ruby"></a>
-        <a href="/">Boston Ruby Group</a>
+        <%= link_to root_path do %>
+          <img src="/assets/ruby.png" alt="ruby">
+          Boston Ruby Group
+        <% end %>
       </h1>
     </header>
     <%= render :partial => 'shared/nav' %>
