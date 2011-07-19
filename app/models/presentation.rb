@@ -5,6 +5,7 @@ class Presentation < ActiveRecord::Base
   validates :slides_url, :video_url, :format => { :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix, :allow_blank => true }
   validates :presented_at, :presence => true
   belongs_to :presenter
+  before_validation :set_description
 
   def self.find_all_by_cached_slug_or_id(id)
     where(arel_table[:cached_slug].eq(id).or(arel_table[:id].eq(id)))
@@ -30,6 +31,12 @@ class Presentation < ActiveRecord::Base
 
   def self.upcoming
     where(arel_table[:presented_at].gteq(Date.today).and(arel_table[:presented_at].lteq(1.month.from_now)))
+  end
+
+  def set_description
+    if read_attribute(:description).blank?
+      write_attribute(:description, 'Description pending...')
+    end
   end
 
   def presenter_name=(name)

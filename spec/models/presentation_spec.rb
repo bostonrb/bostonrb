@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Presentation do
   describe 'Validations' do
     it { should_not have_valid(:title).when(nil, '') }
-    it { should_not have_valid(:description).when(nil, '') }
     it { should_not have_valid(:slides_url).when('badurl') }
     it { should     have_valid(:slides_url).when(nil, '', 'http://slides.com/1') }
     it { should_not have_valid(:presented_at).when(nil, '') }
@@ -124,6 +123,24 @@ describe Presentation do
         presentation = Presentation.new(:presenter_name => 'John Kennedy')
         presentation.presenter.should be_new_record
         presentation.presenter.name.should == 'John Kennedy'
+      end
+    end
+  end
+
+  describe 'pending description' do
+    subject { Presentation.new }
+    context 'when description is nil' do
+      it 'populates the description with "Description pending..."' do
+        subject.save
+        subject.description.should == 'Description pending...'
+      end
+    end
+
+    context 'when description is not nil' do
+      it 'does not rewrite the description' do
+        subject.description = "Some description"
+        subject.save
+        subject.description.should == 'Some description'
       end
     end
   end
