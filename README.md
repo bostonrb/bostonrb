@@ -22,12 +22,12 @@ If you want to make changes locally, follow these steps:
 
 Install Ruby 1.9.2 (if necessary). RVM is optional, but highly recommended
 
-    rvm install 1.9.2-p180
+    rvm install 1.9.2
     rvm use 1.9.2 --default
 
-Install bundler and thin
+Install bundler
 
-    gem install bundler thin
+    gem install bundler
 
 [Create your own fork](http://help.github.com/forking/) of the [bostonrb repository on github](https://github.com/bostonrb/bostonrb)
 
@@ -36,11 +36,11 @@ Clone your new fork
     git clone git@github.com:your-github-username/bostonrb.git
     cd bostonrb
 
-Install the required gems
+For local development, install the required gems, minus the production and staging gemspecs
 
-    bundle install
+    bundle install --without production staging
 
-Setup the development database
+Setup the development database (uses sqlite)
 
     cp config/database.example.yml config/database.yml
     rake db:create && rake db:migrate && rake db:seed
@@ -51,7 +51,7 @@ Run the tests
 
 Run the server
 
-    thin start
+    rails server
 
 Deploy
 ------
