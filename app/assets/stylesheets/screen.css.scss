@@ -56,13 +56,12 @@ nav.links {
       padding-left: 0px;
       line-height: 1.5em;
       &:after {
-        content: "/";
+        content: " /";
       }
       &:last-child:after {
         content: "";
       }
       a {
-        margin-right: 4px;
         text-decoration: none;
         padding-bottom: 1px;
         &:hover {
