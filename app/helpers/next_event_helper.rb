@@ -1,0 +1,2 @@
+module NextEventHelper
+end

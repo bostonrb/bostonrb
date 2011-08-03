@@ -23,4 +23,11 @@ feature 'Visitor finds general info', %{
     page.should have_content 'New Upcoming Person'
     page.should have_content 'New Upcoming Description'
   end
+  
+  scenario "Visitor finds general info with next event" do
+    visit root_path
+    page.should have_content "Next Event"
+    page.should have_link "calendar-link"
+    page.should have_link "event_location"
+  end  
 end
