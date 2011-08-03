@@ -43,5 +43,8 @@ module BostonRuby
     config.assets.enabled = true
     config.sass.load_paths ||= []
     config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
+    
+    # load files from the lib directory.
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end

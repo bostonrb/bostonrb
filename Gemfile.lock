@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/bruno/GCal4Ruby.git
+  revision: d519e5a291910d294fec09640152e1d2aaf8becc
+  specs:
+    gcal4ruby (0.5.5)
+      gdata4ruby (>= 0.1.5)
+
+GIT
   remote: https://github.com/chriseppstein/compass.git
   revision: 2124003550bf96e828f6e63351d44a61b647cbf1
   branch: rails31
@@ -86,6 +93,7 @@ GEM
     friendly_id (3.2.1.1)
       babosa (~> 0.3.0)
     fssm (0.2.7)
+    gdata4ruby (0.1.5)
     high_voltage (0.9.4)
     hike (1.2.0)
     hoptoad_notifier (2.4.11)
@@ -206,6 +214,7 @@ DEPENDENCIES
   email_spec (~> 1.1)
   factory_girl_rails (~> 1.0.1)
   friendly_id (~> 3.2.1)
+  gcal4ruby!
   high_voltage (~> 0.9)
   hoptoad_notifier (~> 2.4.2)
   jquery-rails

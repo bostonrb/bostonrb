@@ -1,0 +1,18 @@
+<aside class="column">
+  <header>
+    <h2>Next Event</h2>
+  </header>
+  <article class="date">
+    <header>
+      <h2>
+        <%= link_to @next_event.title, "/calendar", :id => "calendar-link" %>
+      </h2>
+    </header>
+    <section class="presentation">
+      <hgroup>
+        <h2><%= format_event_times(@next_event) %></h2>
+      </hgroup>
+      <p><%= link_to_location(@next_event.location)  %></p>
+    </section>
+  </article>
+</aside>
