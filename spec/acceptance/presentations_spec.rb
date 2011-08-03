@@ -6,6 +6,7 @@ feature 'BostonRB Presentations', %{
 } do
 
   background do
+    VCR.insert_cassette('boston_rb_calendar')
     @presentation_1 = Factory(:presentation, :presented_at => "May 10, 2011")
     @presentation_2 = Factory(:presentation, :presented_at => "May 10, 2011")
     @presentation_3 = Factory(:presentation, :presented_at => "April 12, 2011")
@@ -61,5 +62,9 @@ feature 'BostonRB Presentations', %{
     rss_item.description.should == presentation.description
     rss_item.pubDate.to_date.should == presentation.presented_at
     rss_item.link.should == presentation_url(presentation)
+  end
+  
+  after(:each) do
+    VCR.eject_cassette
   end
 end

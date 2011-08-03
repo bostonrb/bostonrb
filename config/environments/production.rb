@@ -54,3 +54,10 @@ BostonRuby::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'bostonrb.org' }
 end
+
+# Please set these ENV variables.
+BostonRbCalendar.configure do |config|
+  config.user_name = ENV['CALENDAR_USERNAME']
+  config.password = ENV['CALENDAR_PASSWORD']
+  config.calendar = ENV['CALENDAR']
+end
