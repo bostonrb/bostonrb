@@ -14,6 +14,10 @@ gem 'compass',    :git => 'https://github.com/chriseppstein/compass.git', :branc
 gem 'simple_form',      '~> 1.4.0'
 gem 'friendly_id',      '~> 3.2.1'
 
+# This fork of GCal4Ruby is the only one with 
+# serious support for Recurring events.
+gem "gcal4ruby", :git => "git://github.com/bruno/GCal4Ruby.git"
+
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.
 group :development, :test do
