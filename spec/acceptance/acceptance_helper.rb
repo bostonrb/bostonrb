@@ -8,7 +8,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.include Rails.application.routes.url_helpers, :type => :request
-  
+
   config.include EmailSpec::Helpers
   config.include EmailSpec::Matchers
 end
