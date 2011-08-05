@@ -1,13 +1,4 @@
 require 'spec_helper'
-
-describe "Boston RB Calendar Configuration" do
-  it "should initilize with a reasonable test account" do
-    BostonRbCalendar.config.user_name.should == "test.boston.rb@gmail.com"
-    BostonRbCalendar.config.password.should == "ibetthisisapassword"
-    BostonRbCalendar.config.calendar.should == "test.boston.rb%40gmail.com"
-  end
-
-end
   
 describe "Boston RB Calendar Next Event" do
   before(:all) do 
