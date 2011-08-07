@@ -12,20 +12,14 @@ require 'singleton'
 #     config.calendar = ENV['CALENDAR']
 #   end
 #
-# @author Patrick Robertson
-#
 module BostonRbCalendar
   class Configuration
     
     include Singleton
     
-    @@defaults = {
-      :user_name => 'test.boston.rb@gmail.com',
-      :password => 'ibetthisisapassword',
-      :calendar => 'test.boston.rb%40gmail.com'
-    }
+    @@defaults = { :calendar => 'admin%40bostonrb.org' }
     
-    attr_accessor :user_name, :password, :calendar    
+    attr_accessor :calendar    
     
     def self.defaults
       @@defaults

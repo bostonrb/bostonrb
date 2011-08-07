@@ -1,7 +1,7 @@
 require 'spec_helper'
   
 describe "Boston RB Calendar Next Event" do
-  before(:all) do 
+  before do 
     @next_event = BostonRbCalendar.next_event
   end
   
