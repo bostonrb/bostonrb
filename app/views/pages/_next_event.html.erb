@@ -5,7 +5,7 @@
   <article class="date">
     <header>
       <h2>
-        <%= link_to @next_event.title, "/calendar", :id => "calendar-link" %>
+        <%= link_to @next_event.title, @next_event.url , :id => "calendar-link" %>
       </h2>
     </header>
     <section class="presentation">

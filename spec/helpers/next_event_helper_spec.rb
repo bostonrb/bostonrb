@@ -4,6 +4,8 @@ TIME_REGEX = /[a-zA-Z]+,\s[a-zA-Z]+\s\d+(st|th|rd)<br\/>\s\d+PM\sto\s+\d+PM/
 GOOGLE_MAPS_REGEX = /maps\.google\.com\/maps\?q=.*/
 
 describe NextEventHelper do
+  use_vcr_cassette "boston_rb_calendar"
+  
   before do
     @event = BostonRbCalendar.next_event
   end

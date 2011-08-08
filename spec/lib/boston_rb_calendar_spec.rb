@@ -1,6 +1,8 @@
 require 'spec_helper'
   
 describe "Boston RB Calendar Next Event" do
+  use_vcr_cassette "boston_rb_calendar"
+  
   before do 
     @next_event = BostonRbCalendar.next_event
   end
