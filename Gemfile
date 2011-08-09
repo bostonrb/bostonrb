@@ -21,11 +21,11 @@ group :development, :test do
   gem 'rspec-rails',  '~> 2.6.0'
   gem 'ruby-debug19', '~> 0.11.6', :require => 'ruby-debug'
 end
-gem 'redis-store', :git => 'https://github.com/jodosha/redis-store.git'
 
 group :production, :staging do
   gem 'pg', '~> 0.10'
   gem 'therubyracer'
+  gem 'redis-store', :git => 'https://github.com/jodosha/redis-store.git', :ref => 'aca3fbf003a04fe8e9bd76441aa8a3e765cd0a7b'
 end
 
 group :test do
