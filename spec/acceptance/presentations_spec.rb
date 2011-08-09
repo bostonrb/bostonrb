@@ -63,7 +63,7 @@ feature 'BostonRB Presentations', %{
     rss_item.pubDate.to_date.should == presentation.presented_at
     rss_item.link.should == presentation_url(presentation)
   end
-  
+
   after(:each) do
     VCR.eject_cassette
   end

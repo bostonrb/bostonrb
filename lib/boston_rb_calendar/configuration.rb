@@ -1,7 +1,7 @@
 require 'singleton'
 
 #
-# Configuration class for BostonRbCalendar.  This allows a 
+# Configuration class for BostonRbCalendar.  This allows a
 # configuration block to be used on an initializer.  Make sure
 # to html escape that darn at sign.
 #
@@ -14,14 +14,14 @@ require 'singleton'
 #
 module BostonRbCalendar
   class Configuration
-    
+
     include Singleton
-    
+
     @@defaults = { :calendar => 'admin%40bostonrb.org',
                    :cache => 3.hours }
-    
-    attr_accessor :cache, :calendar    
-    
+
+    attr_accessor :cache, :calendar
+
     def self.defaults
       @@defaults
     end

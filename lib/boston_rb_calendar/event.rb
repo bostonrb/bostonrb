@@ -1,12 +1,12 @@
 #
-# The Event Class wraps the GCal4Ruby event into something 
+# The Event Class wraps the GCal4Ruby event into something
 # simpler as we don't need that much information about the
 # event itself.
 #
 module BostonRbCalendar
   class Event
     attr_reader :title, :start_time, :end_time, :location, :url
-  
+
     def initialize(gcal_event)
       @title = gcal_event["title"]["$t"]
       @start_time = DateTime.parse(gcal_event["gd$when"].first["startTime"])

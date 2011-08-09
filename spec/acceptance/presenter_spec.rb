@@ -20,13 +20,13 @@ feature 'BostonRB Presenters' do
 
   after(:each) do
     VCR.eject_cassette
-  end  
+  end
 end
 feature 'LeaderBoard' do
 
   background do
     VCR.insert_cassette('boston_rb_calendar')
-    setup_presenters 
+    setup_presenters
     visit root_path
   end
 
@@ -41,7 +41,7 @@ feature 'LeaderBoard' do
       page.should have_content @presenter_2.name
     end
   end
-  
+
   after(:each) do
     VCR.eject_cassette
   end

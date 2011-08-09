@@ -11,7 +11,7 @@ feature 'Speaker submits proposal', %{
   end
 
   background do
-    visit root_path      
+    visit root_path
     click_link 'Submit Proposal'
     reset_mailer
   end
@@ -36,7 +36,7 @@ feature 'Speaker submits proposal', %{
     click_button 'Submit proposal'
     page.should have_content 'Email was not sent. Please enter your email address'
   end
-  
+
   after(:all) do
     VCR.eject_cassette
   end

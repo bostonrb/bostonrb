@@ -5,10 +5,10 @@ module ApplicationHelper
       render :partial => 'pages/upcoming'
     end
   end
-  
+
   def next_event
     @next_event = BostonRbCalendar.next_event
-    
+
     render :partial => 'pages/next_event'
   end
 end
