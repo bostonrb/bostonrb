@@ -26,17 +26,18 @@ body {
   font-family: prociono, georgia, palatino, times new roman, serif;
   text-rendering: optimizeLegibility;
   width: 600px;
-  margin: 42px 50px 75px 250px;
+  margin: 10px 50px 75px 250px;
 
   > header {
     padding-top: 9px;
     margin-bottom: 16px;
     p {
+      font-size: .85em;
       @include border-radius(8px);
       background-color: #F5DCA0;
       padding: 10px;
-      line-height: 28px;
-      text-align: left;      
+      text-align: left;
+      margin-bottom: 5px;
     }
     h1 {
       a {
