@@ -1,6 +1,7 @@
 class Presenter < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true
-  has_many :presentations
+  has_many :presentations, :through => :presentation_groups
+  has_many :presentation_groups
   validates :name, :presence => true
 
   def self.group_by_score
