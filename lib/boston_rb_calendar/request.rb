@@ -9,7 +9,7 @@ module BostonRbCalendar
 
     def get_calendar_response
       calendar = BostonRbCalendar.config.calendar
-      future_time = (Time.now.midnight + 1.month).xmlschema
+      future_time = (DateTime.current.midnight + 1.month).xmlschema
 
       uri = URI::HTTP.new('http', nil, 'www.google.com', nil, nil, "/calendar/feeds/#{calendar}/public/composite?alt=json&futureevents=true&orderby=starttime&sortorder=a&ctz=America/New_York&fields=entry(title,link[@rel='alternate'],gd:where,gd:when[xs:dateTime(@startTime)<=xs:dateTime('#{future_time}')])", nil, nil, nil)
 
