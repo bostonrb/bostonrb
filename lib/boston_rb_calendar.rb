@@ -14,7 +14,9 @@ module BostonRbCalendar
   extend Request
   
   def self.next_event
-    upcoming_events.first
+    Rails.cache.fetch(upcoming_events.first, :expires_in => BostonRbCalendar.config.cache) do
+      upcoming_events.first
+    end
   end
   
   def self.upcoming_events
