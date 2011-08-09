@@ -31,6 +31,13 @@ body {
   > header {
     padding-top: 9px;
     margin-bottom: 16px;
+    p {
+      @include border-radius(8px);
+      background-color: #F5DCA0;
+      padding: 10px;
+      line-height: 28px;
+      text-align: left;      
+    }
     h1 {
       a {
         font-size: 48px;

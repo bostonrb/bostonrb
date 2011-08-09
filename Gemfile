@@ -28,6 +28,8 @@ group :production, :staging do
 end
 
 group :test do
+  gem 'vcr', "~> 1.10.3"
+  gem 'webmock', "~> 1.6.4"
   gem 'factory_girl_rails', '~> 1.0.1'
   gem 'bourne',             '~> 1.0'
   gem 'capybara',           '~> 1.0.0'

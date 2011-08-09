@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature 'BostonRB Presenters' do
 
   background do
+    VCR.insert_cassette('boston_rb_calendar')
     setup_presenters
     visit root_path
   end
@@ -16,12 +17,16 @@ feature 'BostonRB Presenters' do
     have_presentation_content(@presentation_2, :should_not)
     have_presentation_content(@presentation_3, :should)
   end
-end
 
+  after(:each) do
+    VCR.eject_cassette
+  end  
+end
 feature 'LeaderBoard' do
 
   background do
-    setup_presenters
+    VCR.insert_cassette('boston_rb_calendar')
+    setup_presenters 
     visit root_path
   end
 
@@ -35,6 +40,10 @@ feature 'LeaderBoard' do
     within '#1_presentations' do
       page.should have_content @presenter_2.name
     end
+  end
+  
+  after(:each) do
+    VCR.eject_cassette
   end
 end
 

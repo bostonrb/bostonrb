@@ -6,8 +6,12 @@ feature 'Speaker submits proposal', %{
   In order to speak to Boston Rubyists
 } do
 
-  before do
-    visit root_path
+  before(:all) do
+    VCR.insert_cassette('boston_rb_calendar')
+  end
+
+  background do
+    visit root_path      
     click_link 'Submit Proposal'
     reset_mailer
   end
@@ -31,5 +35,9 @@ feature 'Speaker submits proposal', %{
     fill_in 'Body', :with => 'Real-time chat apps'
     click_button 'Submit proposal'
     page.should have_content 'Email was not sent. Please enter your email address'
+  end
+  
+  after(:all) do
+    VCR.eject_cassette
   end
 end
