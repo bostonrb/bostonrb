@@ -116,6 +116,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcache-client (1.8.5)
     mime-types (1.16)
     mocha (0.9.8)
       rake
@@ -226,6 +227,7 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 0.12.4)
   launchy
+  memcache-client
   pg (~> 0.10)
   rails (~> 3.1.0.rc5)
   rake (~> 0.8.7)

@@ -21,6 +21,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails',    '~> 2.6.0'
   gem 'ruby-debug19',   '~> 0.11.6', :require => 'ruby-debug'
+  gem 'memcache-client'
 end
 
 group :production, :staging do
