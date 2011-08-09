@@ -18,7 +18,7 @@ module BostonRbCalendar
     include Singleton
 
     @@defaults = { :calendar => 'admin%40bostonrb.org',
-                   :cache => 3.hours }
+                   :cache => 24.hours }
 
     attr_accessor :cache, :calendar
 

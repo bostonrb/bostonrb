@@ -34,7 +34,8 @@ BostonRuby::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  config.cache_store = :redis_store
+  redis_uri = URI.parse(ENV["REDISTOGO_URL"])
+  config.cache_store = :redis_store, { :host => redis_uri.host, :port => redis_uri.port, :password => redis_uri.password }
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -53,11 +54,4 @@ BostonRuby::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.default_url_options = { :host => 'bostonrb.org' }
-end
-
-# Please set these ENV variables.
-BostonRbCalendar.configure do |config|
-  config.user_name = ENV['CALENDAR_USERNAME']
-  config.password = ENV['CALENDAR_PASSWORD']
-  config.calendar = ENV['CALENDAR']
 end

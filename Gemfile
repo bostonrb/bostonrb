@@ -10,8 +10,8 @@ gem 'high_voltage',     '~> 0.9'
 gem 'hoptoad_notifier', '~> 2.4.2'
 gem 'jquery-rails'
 gem 'kaminari',         '~> 0.12.4'
-gem 'sass-rails', :git => 'https://github.com/rails/sass-rails.git', :ref => 'eee12e2e0bbfca56d458c82df47213e130ef5830'
-gem 'compass',    :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
+gem 'sass-rails',       :git => 'https://github.com/rails/sass-rails.git', :ref => 'eee12e2e0bbfca56d458c82df47213e130ef5830'
+gem 'compass',          :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'simple_form',      '~> 1.4.0'
 gem 'friendly_id',      '~> 3.2.1'
 
@@ -19,8 +19,8 @@ gem 'friendly_id',      '~> 3.2.1'
 # and rake tasks without having to type RAILS_ENV=test.
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails',  '~> 2.6.0'
-  gem 'ruby-debug19', '~> 0.11.6', :require => 'ruby-debug'
+  gem 'rspec-rails',    '~> 2.6.0'
+  gem 'ruby-debug19',   '~> 0.11.6', :require => 'ruby-debug'
 end
 
 group :production, :staging do
