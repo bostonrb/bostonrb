@@ -9,6 +9,13 @@ GIT
       sass (~> 3.1)
 
 GIT
+  remote: https://github.com/jodosha/redis-store.git
+  revision: aca3fbf003a04fe8e9bd76441aa8a3e765cd0a7b
+  specs:
+    redis-store (1.0.0.rc1)
+      redis (~> 2.2.0)
+
+GIT
   remote: https://github.com/rails/sass-rails.git
   revision: eee12e2e0bbfca56d458c82df47213e130ef5830
   ref: eee12e2e0bbfca56d458c82df47213e130ef5830
@@ -143,6 +150,7 @@ GEM
       thor (~> 0.14.6)
     rake (0.8.7)
     rdoc (3.8)
+    redis (2.2.2)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -220,6 +228,7 @@ DEPENDENCIES
   pg (~> 0.10)
   rails (~> 3.1.0.rc5)
   rake (~> 0.8.7)
+  redis-store!
   rspec-rails (~> 2.6.0)
   ruby-debug19 (~> 0.11.6)
   sass-rails!

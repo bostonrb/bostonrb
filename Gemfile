@@ -21,6 +21,7 @@ group :development, :test do
   gem 'rspec-rails',  '~> 2.6.0'
   gem 'ruby-debug19', '~> 0.11.6', :require => 'ruby-debug'
 end
+gem 'redis-store', :git => 'https://github.com/jodosha/redis-store.git'
 
 group :production, :staging do
   gem 'pg', '~> 0.10'
