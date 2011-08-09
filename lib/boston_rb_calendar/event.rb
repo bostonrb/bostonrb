@@ -12,7 +12,7 @@ module BostonRbCalendar
       @start_time = DateTime.parse(gcal_event["gd$when"].first["startTime"])
       @end_time = DateTime.parse(gcal_event["gd$when"].first["endTime"])
       @location = gcal_event["gd$where"].first["valueString"]
-      @url = gcal_event["link"].first["href"]
+      @url = "#{gcal_event["link"].first["href"]}&ctz=America/New_York"
     end
   end
 end
