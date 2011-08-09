@@ -4,6 +4,8 @@ gem 'rails',            '~> 3.1.0.rc5'
 gem 'arel', '2.1.4'
 gem 'jquery-rails'
 gem 'uglifier'
+gem 'execjs',           '1.2.0'
+gem 'sprockets',        '2.0.0.beta.12'
 
 gem 'rake',             '~> 0.8.7'
 gem 'high_voltage',     '~> 0.9'
