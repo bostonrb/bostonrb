@@ -2,7 +2,11 @@
   <hgroup>
     <h2><%= link_to_unless_current presentation.title, presentation %></h2>
     <h4>
-      by <%= link_to_unless_current presentation.presenter.name, presentation.presenter %>
+      by
+      <%= render :partial => "presenters/presenter", 
+                 :collection => presentation.presenters, 
+                 :as => :presenter,
+                 :spacer_template => "presenters/presenter_comma" %>
     </h4>
   </hgroup>
   <%= presentation.embed_video.html_safe if presentation.video_id.present? %>
