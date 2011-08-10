@@ -47,11 +47,11 @@ class Presentation < ActiveRecord::Base
       self.single_presenter_name = name
     end
   end
-  
+
   def single_presenter_name=(name)
     new_presenter = Presenter.find_or_initialize_by_name(name)
     self.presenters << new_presenter
-    new_presenter.name  
+    new_presenter.name
   end
 
   VideoProviders  = %w{youtube vimeo blip}

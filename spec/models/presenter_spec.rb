@@ -20,7 +20,7 @@ describe Presenter do
       @presentation_7 = Factory(:presentation, :presenter_name => @presenter_4.name, :presented_at => 1.day.from_now)
       @presentation_8 = Factory(:presentation, :presenter_name => "George Washington & Abraham Lincoln")
       @presentation_9 = Factory(:presentation, :presenter_name => "George Washington, Abraham Lincoln")
-      @presentation_9 = Factory(:presentation, :presenter_name => "George Washington, Abraham Lincoln & George Lucas")      
+      @presentation_9 = Factory(:presentation, :presenter_name => "George Washington, Abraham Lincoln & George Lucas")
     end
 
     it 'groups the presenters by the number of presentations given and sorts by name.' do

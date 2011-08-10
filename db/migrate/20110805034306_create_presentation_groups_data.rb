@@ -10,7 +10,7 @@ class CreatePresentationGroupsData < ActiveRecord::Migration
         end
       else
         presentation.presenters << presenter
-      end    
+      end
     end
   end
 

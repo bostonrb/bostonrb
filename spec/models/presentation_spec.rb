@@ -117,7 +117,7 @@ describe Presentation do
         presentation = Presentation.new(:presenter_name => @presenter.name)
         presentation.presenters.should include(@presenter)
       end
-      
+
       it 'assigns multiple presenters' do
         presentation = Presentation.new(:presenter_name => "#{@presenter.name} & #{@presenter_2.name}")
         presentation.presenters.should include(@presenter)
@@ -131,7 +131,7 @@ describe Presentation do
         presentation.presenters.first.should be_new_record
         presentation.presenters.first.name.should == 'John Kennedy'
       end
-      
+
       it 'initializes multiple presenters' do
         presentation = Presentation.new(:presenter_name => 'John Kennedy, William Taft')
         presentation.presenters.first.should be_new_record
