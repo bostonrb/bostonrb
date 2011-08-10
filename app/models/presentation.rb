@@ -24,14 +24,14 @@ class Presentation < ActiveRecord::Base
       relation = relation.where(arel_table[:presented_at].gteq(month.beginning_of_month))
       relation = relation.where(arel_table[:presented_at].lteq(month.end_of_month))
     else
-      relation = relation.where(arel_table[:presented_at].lt(Date.today))
+      relation = relation.where(arel_table[:presented_at].lt(DateTime.current.to_date))
     end
 
     relation.page(params[:page]).per(params[:per])
   end
 
   def self.upcoming
-    where(arel_table[:presented_at].gteq(Date.today).and(arel_table[:presented_at].lteq(1.month.from_now)))
+    where(arel_table[:presented_at].gteq(DateTime.current.to_date).and(arel_table[:presented_at].lteq(1.month.from_now)))
   end
 
   def set_description
