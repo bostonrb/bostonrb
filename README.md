@@ -70,3 +70,8 @@ video's actual URL and everything is parsed.
 
 The one exception is Blip.tv. You must use the src value from the
 video's embed code instead of the video's URL.
+
+Contributors
+------------
+
+This app is built and maintained by [members of the BostonRB community](https://github.com/bostonrb/bostonrb/contributors)
