@@ -4,7 +4,6 @@ class Presentation < ActiveRecord::Base
   validates :description, :presence => true
   validates :slides_url, :video_url, :format => { :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix, :allow_blank => true }
   validates :presented_at, :presence => true
-  belongs_to :presenter
   has_many :presenters, :through => :presentation_groups
   has_many :presentation_groups
   before_validation :set_description

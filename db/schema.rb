@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110805034306) do
+ActiveRecord::Schema.define(:version => 20110810023050) do
 
   create_table "presentation_groups", :force => true do |t|
     t.integer  "presentation_id"
@@ -22,18 +22,17 @@ ActiveRecord::Schema.define(:version => 20110805034306) do
   add_index "presentation_groups", ["presentation_id", "presenter_id"], :name => "index_presentation_groups_on_presentation_id_and_presenter_id", :unique => true
 
   create_table "presentations", :force => true do |t|
-    t.date      "presented_at"
-    t.string    "video_id"
-    t.string    "title"
-    t.string    "slides_url"
-    t.string    "project_url"
-    t.string    "project_type"
-    t.text      "description"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "video_provider"
-    t.integer   "presenter_id"
-    t.string    "cached_slug"
+    t.date     "presented_at"
+    t.string   "video_id"
+    t.string   "title"
+    t.string   "slides_url"
+    t.string   "project_url"
+    t.string   "project_type"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "video_provider"
+    t.string   "cached_slug"
   end
 
   create_table "presenters", :force => true do |t|
