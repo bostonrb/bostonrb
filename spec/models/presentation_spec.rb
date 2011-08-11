@@ -109,18 +109,18 @@ describe Presentation do
   describe '#presenter_name=' do
     context 'existing presenter' do
       before do
-        @presenter = Factory(:presenter)
+        @presenter_1 = Factory(:presenter)
         @presenter_2 = Factory(:presenter)
       end
 
       it 'assigns the presenter' do
-        presentation = Presentation.new(:presenter_name => @presenter.name)
-        presentation.presenters.should include(@presenter)
+        presentation = Presentation.new(:presenter_name => @presenter_1.name)
+        presentation.presenters.should include(@presenter_1)
       end
 
       it 'assigns multiple presenters' do
-        presentation = Presentation.new(:presenter_name => "#{@presenter.name} & #{@presenter_2.name}")
-        presentation.presenters.should include(@presenter)
+        presentation = Presentation.new(:presenter_names => "#{@presenter_1.name} & #{@presenter_2.name}")
+        presentation.presenters.should include(@presenter_1)
         presentation.presenters.should include(@presenter_2)
       end
     end
@@ -133,12 +133,20 @@ describe Presentation do
       end
 
       it 'initializes multiple presenters' do
-        presentation = Presentation.new(:presenter_name => 'John Kennedy, William Taft')
+        presentation = Presentation.new(:presenter_names => 'John Kennedy, William Taft')
         presentation.presenters.first.should be_new_record
         presentation.presenters.first.name.should == 'John Kennedy'
         presentation.presenters.last.should be_new_record
         presentation.presenters.last.name.should == 'William Taft'
       end
+    end
+  end
+
+  describe 'assigning a presenter' do
+    before { @presenter = Factory(:presenter) }
+    it 'will assign a single presenter to the presenters' do
+      presentation = Presentation.new(:presenter => @presenter)
+      presentation.presenters.should == [@presenter]
     end
   end
 

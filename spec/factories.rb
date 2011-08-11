@@ -7,7 +7,7 @@ Factory.define :presentation do |factory|
   factory.video_provider { 'vimeo'                                       }
   factory.description    { "Test Description #{Factory.next(:counter)}"  }
   factory.slides_url     { "http://slides.com/#{Factory.next(:counter)}" }
-  factory.presenter_name { Factory(:presenter).name                      }
+  factory.presenter      { Factory(:presenter)                           }
 end
 
 Factory.define :upcoming_presentation, :class => 'Presentation' do |factory|

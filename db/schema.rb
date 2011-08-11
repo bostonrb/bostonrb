@@ -10,16 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110810023050) do
+ActiveRecord::Schema.define(:version => 20110811071228) do
 
-  create_table "presentation_groups", :force => true do |t|
-    t.integer  "presentation_id"
-    t.integer  "presenter_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "presentation_presenters", :force => true do |t|
+    t.integer   "presentation_id"
+    t.integer   "presenter_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
-  add_index "presentation_groups", ["presentation_id", "presenter_id"], :name => "index_presentation_groups_on_presentation_id_and_presenter_id", :unique => true
+  add_index "presentation_presenters", ["presentation_id", "presenter_id"], :name => "index_presentation_groups_on_presentation_id_and_presenter_id", :unique => true
 
   create_table "presentations", :force => true do |t|
     t.date     "presented_at"

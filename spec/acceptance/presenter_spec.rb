@@ -50,8 +50,8 @@ end
 def setup_presenters
   @presenter_1 = Factory(:presenter)
   @presenter_2 = Factory(:presenter)
-  @presentation_1 = Factory(:presentation, :presented_at => "May 10, 2011", :presenter_name => @presenter_1.name)
-  @presentation_2 = Factory(:presentation, :presented_at => "May 10, 2011", :presenter_name => @presenter_2.name)
-  @presentation_3 = Factory(:presentation, :presented_at => "April 12, 2011", :presenter_name => @presenter_1.name)
+  @presentation_1 = Factory(:presentation, :presented_at => "May 10, 2011", :presenter => @presenter_1)
+  @presentation_2 = Factory(:presentation, :presented_at => "May 10, 2011", :presenter => @presenter_2)
+  @presentation_3 = Factory(:presentation, :presented_at => "April 12, 2011", :presenter => @presenter_1)
 end
 

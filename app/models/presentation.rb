@@ -4,8 +4,8 @@ class Presentation < ActiveRecord::Base
   validates :description, :presence => true
   validates :slides_url, :video_url, :format => { :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix, :allow_blank => true }
   validates :presented_at, :presence => true
-  has_many :presenters, :through => :presentation_groups
-  has_many :presentation_groups
+  has_many :presentation_presenters
+  has_many :presenters, :through => :presentation_presenters
   before_validation :set_description
 
   def self.find_all_by_cached_slug_or_id(id)
@@ -40,15 +40,15 @@ class Presentation < ActiveRecord::Base
     end
   end
 
-  def presenter_name=(name)
-    if name.match(/(&|,)/)
-      name.split(/,|&/ix).each { |presenter_name| self.single_presenter_name = presenter_name.strip }
-    else
-      self.single_presenter_name = name
-    end
+  def presenter=(presenter)
+    self.presenters << presenter
   end
 
-  def single_presenter_name=(name)
+  def presenter_names=(names)
+    names.split(/,|&/ix).each { |presenter_name| self.presenter_name = presenter_name.strip }
+  end
+
+  def presenter_name=(name)
     new_presenter = Presenter.find_or_initialize_by_name(name)
     self.presenters << new_presenter
     new_presenter.name
