@@ -92,7 +92,7 @@ GEM
       factory_girl (~> 1.3)
       railties (>= 3.0.0)
     ffi (1.0.9)
-    friendly_id (3.2.1.1)
+    friendly_id (3.3.0.rc2)
       babosa (~> 0.3.0)
     fssm (0.2.7)
     high_voltage (0.9.4)
@@ -221,7 +221,7 @@ DEPENDENCIES
   database_cleaner (~> 0.6.0)
   email_spec (~> 1.1)
   factory_girl_rails (~> 1.0.1)
-  friendly_id (~> 3.2.1)
+  friendly_id (~> 3.3.0.rc2)
   high_voltage (~> 0.9)
   hoptoad_notifier (~> 2.4.2)
   jquery-rails

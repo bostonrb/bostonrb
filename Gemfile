@@ -13,7 +13,7 @@ gem 'kaminari',         '~> 0.12.4'
 gem 'sass-rails',       :git => 'https://github.com/rails/sass-rails.git', :ref => 'eee12e2e0bbfca56d458c82df47213e130ef5830'
 gem 'compass',          :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'simple_form',      '~> 1.4.0'
-gem 'friendly_id',      '~> 3.2.1'
+gem 'friendly_id',      '~> 3.3.0.rc2'
 
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.
