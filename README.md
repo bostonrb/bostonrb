@@ -10,8 +10,8 @@ It's a Rails app running [Ruby 1.9](http://www.ruby-lang.org/en/downloads) and u
 * SimpleForm for forms
 * Hoptoad for error notification
 * High Voltage for static pages
-* Capybara and RSpec for integration testing
-* RSpec for isolation testing
+* Capybara, RSpec, and VCR  for integration testing
+* RSpec amd VCR for isolation testing
 * ValidAttribute for model validation testing
 * Factory Girl for test data
 
