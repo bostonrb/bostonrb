@@ -11,7 +11,7 @@ It's a Rails app running [Ruby 1.9](http://www.ruby-lang.org/en/downloads) and u
 * Hoptoad for error notification
 * High Voltage for static pages
 * Capybara, RSpec, and VCR  for integration testing
-* RSpec amd VCR for isolation testing
+* RSpec ad VCR for isolation testing
 * ValidAttribute for model validation testing
 * Factory Girl for test data
 
