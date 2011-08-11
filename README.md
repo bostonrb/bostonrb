@@ -4,13 +4,13 @@ This is the source code for the Boston Ruby Group's community website:
 
 It's a Rails app running [Ruby 1.9](http://www.ruby-lang.org/en/downloads) and uses:
 
-* Postgres as a SQL database
+* Postgres as a SQL database (SQLite for development)
 * jQuery for client-side behavior
 * Compass for stylesheets
 * SimpleForm for forms
 * Hoptoad for error notification
 * High Voltage for static pages
-* Cucumber, Capybara, and Akephalos for integration testing
+* Capybara and RSpec for integration testing
 * RSpec for isolation testing
 * ValidAttribute for model validation testing
 * Factory Girl for test data
