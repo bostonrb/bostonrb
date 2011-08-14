@@ -6,7 +6,9 @@ class Presenter < ActiveRecord::Base
 
   def self.group_by_score
     groups = all.group_by { |p| p.presentations.past_or_by_month.count }
-    groups.delete(0)
-    groups.values.each { |presenters| presenters.sort_by!(&:name) }
+    groups.tap do |g|
+      g.delete(0)
+      g.values.each { |presenters| presenters.sort_by!(&:name) }
+    end
   end
 end
