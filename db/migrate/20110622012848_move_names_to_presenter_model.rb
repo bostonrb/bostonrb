@@ -13,7 +13,7 @@ class MoveNamesToPresenterModel < ActiveRecord::Migration
 
     Presenter.all.each do |presenter|
       presenter.presentations.each do |presentation|
-        presentation.update_attribute(:presenter_name, :presenter.name)
+        presentation.update_attribute(:presenter_name, presenter.name)
       end
     end
   end
