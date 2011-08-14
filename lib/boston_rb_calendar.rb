@@ -14,16 +14,11 @@ module BostonRbCalendar
   extend Request
 
   def self.next_event
-    upcoming_events.first
+    return if (events = upcoming_events).empty?
+    events.first
   end
 
   def self.upcoming_events
-    events = []
-    raw_events = get_events_json
-    raw_events.each do |event|
-      events << Event.new(event)
-    end
-
-    events.sort_by{ |event| event.start_time }
+    get_events_json.map { |e| Event.new(e) }.sort_by(&:start_time)
   end
 end

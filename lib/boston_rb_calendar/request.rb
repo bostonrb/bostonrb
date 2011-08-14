@@ -4,8 +4,19 @@
 #
 module BostonRbCalendar
   module Request
+    FETCH_EVENT_TIMEOUT = 5
 
-    protected
+    def get_events_json
+      Timeout.timeout(FETCH_EVENT_TIMEOUT) do
+        json = ActiveSupport::JSON.decode(get_calendar_response)
+        json["feed"]["entry"]
+      end
+    rescue Timeout::Error => e
+      Rails.logger.error("Timeout while fetching next calendar event: #{e.message}")
+      []
+    end
+
+    private
 
     def get_calendar_response
       calendar = BostonRbCalendar.config.calendar
@@ -18,11 +29,6 @@ module BostonRbCalendar
       request.initialize_http_header({"User-Agent" => "BostonRB"})
 
       http.request(request).body
-    end
-
-    def get_events_json
-      json = ActiveSupport::JSON.decode get_calendar_response
-      json["feed"]["entry"]
     end
   end
 end
