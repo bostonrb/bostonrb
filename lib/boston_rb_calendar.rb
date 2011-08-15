@@ -18,6 +18,6 @@ module BostonRbCalendar
   end
 
   def self.upcoming_events
-    get_events_json.map { |e| Event.new(e) }.sort_by(&:start_time)
+    get_events_json.map { |event| Event.new(event) }.sort_by(&:start_time)
   end
 end
