@@ -7,9 +7,10 @@ describe "Boston RB Calendar Next Event" do
     @next_event = BostonRbCalendar.next_event
   end
 
-  [:title, :start_time, :end_time, :location].each do |method|
-    it { @next_event.should respond_to(method) }
-  end
+  it { @next_event.should respond_to(:title) }
+  it { @next_event.should respond_to(:start_time) }
+  it { @next_event.should respond_to(:end_time) }
+  it { @next_event.should respond_to(:location) }
 
   it { @next_event.should be_an_instance_of BostonRbCalendar::Event }
 
