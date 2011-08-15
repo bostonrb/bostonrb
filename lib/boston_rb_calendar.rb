@@ -14,8 +14,7 @@ module BostonRbCalendar
   extend Request
 
   def self.next_event
-    return if (events = upcoming_events).empty?
-    events.first
+    upcoming_events.first
   end
 
   def self.upcoming_events
