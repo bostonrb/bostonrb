@@ -1,11 +1,18 @@
 class Presentation < ActiveRecord::Base
+  URL_REGEX = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix
+
   has_friendly_id :title, :use_slug => true
+  serialize :projects, Hash
+
   validates :title, :presence => true
   validates :description, :presence => true
-  validates :slides_url, :video_url, :format => { :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix, :allow_blank => true }
+  validates :slides_url, :video_url, :format => { :with => URL_REGEX, :allow_blank => true }
   validates :presented_at, :presence => true
+  validate :projects_contain_valid_urls
+
   has_many :presentation_presenters
   has_many :presenters, :through => :presentation_presenters
+
   before_validation :set_description
 
   def self.find_all_by_cached_slug_or_id(id)
@@ -74,6 +81,10 @@ class Presentation < ActiveRecord::Base
     self.send("embed_#{video_provider}")
   end
 
+  def projects
+    read_attribute(:projects) || {}
+  end
+
   private
 
   def get_video_provider(url)
@@ -121,5 +132,11 @@ class Presentation < ActiveRecord::Base
 
   def embed_blip
     %{<embed src="http://blip.tv/play/#{video_id}" type="application/x-shockwave-flash" width="#{VideoDimensions[:width]}" height="#{VideoDimensions[:height]}" allowscriptaccess="always" allowfullscreen="true"></embed>}
+  end
+
+  def projects_contain_valid_urls
+    unless projects.all? { |name, url| name.present? && url =~ URL_REGEX }
+      errors.add(:base, "Project names and URLs must be well-formed.")
+    end
   end
 end
