@@ -5,10 +5,10 @@ class Presenter < ActiveRecord::Base
   validates :name, :presence => true
 
   def self.group_by_score
-    groups = all.group_by { |p| p.presentations.past_or_by_month.count }
-    groups.tap do |g|
-      g.delete(0)
-      g.values.each { |presenters| presenters.sort_by!(&:name) }
+    groups = all.group_by { |presenter| presenter.presentations.past_or_by_month.count }
+    groups.tap do
+      groups.delete(0)
+      groups.values.each { |presenters| presenters.sort_by!(&:name) }
     end
   end
 end
