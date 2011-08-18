@@ -13,6 +13,10 @@ require 'boston_rb_calendar/request'
 module BostonRbCalendar
   extend Request
 
+  def self.cache_next_event
+    Rails.cache.write(:next_event, next_event)
+  end
+
   def self.next_event
     upcoming_events.first
   end
