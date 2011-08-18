@@ -8,6 +8,7 @@ feature 'Visitor finds general info', %{
 
   before(:all) do
     VCR.insert_cassette('boston_rb_calendar')
+    BostonRbCalendar.cache_next_event
   end
 
   scenario 'Visitor finds general info with no upcoming presentations' do
