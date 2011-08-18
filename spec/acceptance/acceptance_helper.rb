@@ -12,4 +12,11 @@ RSpec.configure do |config|
   config.include EmailSpec::Helpers
   config.include EmailSpec::Matchers
   config.extend VCR::RSpec::Macros
+  config.before(:suite) do
+    VCR.insert_cassette('boston_rb_calendar')
+    Rake.application.rake_require "../lib/tasks/cron"
+    Rake::Task.define_task(:environment)    
+    Rake::Task['cron'].invoke
+    VCR.eject_cassette
+  end
 end

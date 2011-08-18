@@ -1,91 +1,40 @@
----
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-09-08T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&sortorder=a
-    body: !!null 
-    headers:
-      user-agent:
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-09-23T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&sortorder=a
+    body: 
+    headers: 
+      user-agent: 
       - BostonRB
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
       code: 200
       message: OK
-    headers:
-      content-type:
+    headers: 
+      content-type: 
       - application/json; charset=UTF-8
-      access-control-allow-origin:
-      - ! '*'
-      expires:
-      - Tue, 09 Aug 2011 03:25:19 GMT
-      date:
-      - Tue, 09 Aug 2011 03:25:19 GMT
-      cache-control:
+      access-control-allow-origin: 
+      - "*"
+      expires: 
+      - Thu, 18 Aug 2011 11:33:47 GMT
+      date: 
+      - Thu, 18 Aug 2011 11:33:47 GMT
+      cache-control: 
       - private, max-age=0, must-revalidate, no-transform
-      vary:
+      vary: 
       - Accept, X-GData-Authorization, GData-Version
-      gdata-version:
-      - '1.0'
-      last-modified:
-      - Fri, 05 Aug 2011 15:58:56 GMT
-      x-content-type-options:
+      gdata-version: 
+      - "1.0"
+      last-modified: 
+      - Fri, 12 Aug 2011 19:18:24 GMT
+      x-content-type-options: 
       - nosniff
-      x-frame-options:
+      x-frame-options: 
       - SAMEORIGIN
-      x-xss-protection:
+      x-xss-protection: 
       - 1; mode=block
-      server:
+      server: 
       - GSE
-    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
-      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid\u003dcHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTA4MDJUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
-      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2011-09-06T21:00:00.000-04:00","startTime":"2011-09-06T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
-      @ Microsoft NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid\u003dN2pmcG1rb205dW9wbDRzZjRmZjllaTNlOThfMjAxMTA4MDlUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
-      Memorial Drive, 1st Floor Cambridge, MA"}],"gd$when":[{"endTime":"2011-08-09T21:00:00.000-04:00","startTime":"2011-08-09T18:45:00.000-04:00"}]},{"title":{"$t":"Hackfest
-      @ SCVNGR","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid\u003dNXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTA4MTZUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"175
-      Second Street Cambridge MA"}],"gd$when":[{"endTime":"2011-08-16T21:00:00.000-04:00","startTime":"2011-08-16T19:00:00.000-04:00"}]}]}}'
-    http_version: '1.1'
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
-    method: :get
-    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-09-09T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&sortorder=a
-    body: !!null 
-    headers:
-      user-agent:
-      - BostonRB
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
-      code: 200
-      message: OK
-    headers:
-      content-type:
-      - application/json; charset=UTF-8
-      access-control-allow-origin:
-      - ! '*'
-      expires:
-      - Tue, 09 Aug 2011 16:30:41 GMT
-      date:
-      - Tue, 09 Aug 2011 16:30:41 GMT
-      cache-control:
-      - private, max-age=0, must-revalidate, no-transform
-      vary:
-      - Accept, X-GData-Authorization, GData-Version
-      gdata-version:
-      - '1.0'
-      last-modified:
-      - Fri, 05 Aug 2011 15:58:56 GMT
-      x-content-type-options:
-      - nosniff
-      x-frame-options:
-      - SAMEORIGIN
-      x-xss-protection:
-      - 1; mode=block
-      server:
-      - GSE
-    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
-      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid\u003dcHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTA4MDJUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
-      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2011-09-06T21:00:00.000-04:00","startTime":"2011-09-06T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
-      @ Microsoft NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid\u003dN2pmcG1rb205dW9wbDRzZjRmZjllaTNlOThfMjAxMTA4MDlUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
-      Memorial Drive, 1st Floor Cambridge, MA"}],"gd$when":[{"endTime":"2011-08-09T21:00:00.000-04:00","startTime":"2011-08-09T18:45:00.000-04:00"}]},{"title":{"$t":"Hackfest
-      @ SCVNGR","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid\u003dNXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTA4MTZUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"175
-      Second Street Cambridge MA"}],"gd$when":[{"endTime":"2011-08-16T21:00:00.000-04:00","startTime":"2011-08-16T19:00:00.000-04:00"}]}]}}'
-    http_version: '1.1'
+    body: "{\"version\":\"1.0\",\"encoding\":\"UTF-8\",\"feed\":{\"xmlns\":\"http://www.w3.org/2005/Atom\",\"xmlns$gd\":\"http://schemas.google.com/g/2005\",\"entry\":[{\"title\":{\"$t\":\"Hackfest @ thoughtbot\",\"type\":\"text\"},\"link\":[{\"rel\":\"alternate\",\"type\":\"text/html\",\"href\":\"http://www.google.com/calendar/event?eid\\u003dcHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTA4MDJUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc\",\"title\":\"alternate\"}],\"gd$where\":[{\"valueString\":\"41 Winter Street, 7th floor, Boston MA \"}],\"gd$when\":[{\"endTime\":\"2011-09-06T21:00:00.000-04:00\",\"startTime\":\"2011-09-06T19:00:00.000-04:00\"}]},{\"title\":{\"$t\":\"Meeting @ Microsoft NERD\",\"type\":\"text\"},\"link\":[{\"rel\":\"alternate\",\"type\":\"text/html\",\"href\":\"http://www.google.com/calendar/event?eid\\u003dN2pmcG1rb205dW9wbDRzZjRmZjllaTNlOThfMjAxMTA4MDlUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc\",\"title\":\"alternate\"}],\"gd$where\":[{\"valueString\":\"1 Memorial Drive, 1st Floor Cambridge, MA\"}],\"gd$when\":[{\"endTime\":\"2011-09-13T21:00:00.000-04:00\",\"startTime\":\"2011-09-13T18:45:00.000-04:00\"}]},{\"title\":{\"$t\":\"Hackfest @ SCVNGR\",\"type\":\"text\"},\"link\":[{\"rel\":\"alternate\",\"type\":\"text/html\",\"href\":\"http://www.google.com/calendar/event?eid\\u003dNXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTA4MTZUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc\",\"title\":\"alternate\"}],\"gd$where\":[{\"valueString\":\"175 Second Street Cambridge MA\"}],\"gd$when\":[{\"endTime\":\"2011-09-20T21:00:00.000-04:00\",\"startTime\":\"2011-09-20T19:00:00.000-04:00\"}]}]}}"
+    http_version: "1.1"
