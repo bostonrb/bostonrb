@@ -21,7 +21,6 @@ a {
 
 body {
   background: #ffebc3;
-  background-image: url('/assets/background.png');
   color: #222;
   font-family: prociono, georgia, palatino, times new roman, serif;
   text-rendering: optimizeLegibility;
@@ -41,12 +40,12 @@ body {
     }
     h1 {
       a {
-        font-size: 48px;
+        font-size: 52px;
         text-decoration: none;
         padding-left: 6px;
       }
       img {
-        height: 48px;
+        height: 70px;
         position: relative;
         top: 5px;
       }
