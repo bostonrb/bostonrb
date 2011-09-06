@@ -14,6 +14,7 @@ gem 'sass-rails',       :git => 'https://github.com/rails/sass-rails.git', :ref 
 gem 'compass',          :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'simple_form',      '~> 1.4.0'
 gem 'friendly_id',      '~> 3.3.0.rc2'
+gem 'stamp',            '~> 0.1' # Jeremy can be apprehended if he breaks semantic versioning rules.
 
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.

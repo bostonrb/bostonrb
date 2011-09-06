@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/chriseppstein/compass.git
-  revision: 91a748a916360057b5caf6ea85cd38441d3b257a
+  revision: f23bf58e8db84e17e6fab37cc73e5a539924cca0
   branch: rails31
   specs:
-    compass (0.12.0.alpha.0.91a748a)
+    compass (0.12.0.alpha.0.f23bf58)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
@@ -67,16 +67,16 @@ GEM
     bourne (1.0)
       mocha (= 0.9.8)
     builder (3.0.0)
-    capybara (1.0.0)
+    capybara (1.0.1)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
-      selenium-webdriver (~> 0.2.0)
+      selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    childprocess (0.2.0)
+    childprocess (0.2.1)
       ffi (~> 1.0.6)
-    chunky_png (1.2.0)
+    chunky_png (1.2.1)
     columnize (0.3.4)
     crack (0.1.8)
     database_cleaner (0.6.7)
@@ -96,12 +96,12 @@ GEM
       babosa (~> 0.3.0)
     fssm (0.2.7)
     high_voltage (0.9.4)
-    hike (1.2.0)
+    hike (1.2.1)
     hoptoad_notifier (2.4.11)
       activesupport
       builder
     i18n (0.6.0)
-    jquery-rails (1.0.12)
+    jquery-rails (1.0.13)
       railties (~> 3.0)
       thor (~> 0.14)
     json_pure (1.5.3)
@@ -149,7 +149,7 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.8.7)
-    rdoc (3.9.1)
+    rdoc (3.9.3)
     redis (2.2.2)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
@@ -176,8 +176,8 @@ GEM
       archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
     sass (3.1.7)
-    selenium-webdriver (0.2.2)
-      childprocess (>= 0.1.9)
+    selenium-webdriver (2.5.0)
+      childprocess (>= 0.2.1)
       ffi (>= 1.0.7)
       json_pure
       rubyzip
@@ -185,12 +185,13 @@ GEM
     simple_form (1.4.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
-    sprockets (2.0.0.beta.13)
+    sprockets (2.0.0.beta.14)
       hike (~> 1.2)
       rack (~> 1.0)
-      tilt (!= 1.3.0, ~> 1.1)
+      tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.4)
-    therubyracer (0.9.2)
+    stamp (0.1.6)
+    therubyracer (0.9.4)
       libv8 (~> 3.3.10)
     thor (0.14.6)
     tilt (1.3.2)
@@ -199,7 +200,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.29)
-    uglifier (1.0.0)
+    uglifier (1.0.1)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     valid_attribute (1.1.0)
@@ -238,6 +239,7 @@ DEPENDENCIES
   simple-rss (~> 1.2.3)
   simple_form (~> 1.4.0)
   sqlite3
+  stamp (~> 0.1)
   therubyracer
   timecop (~> 0.3.5)
   uglifier
