@@ -1,17 +1,13 @@
 source :rubygems
 
-gem 'rails',            '~> 3.1.0.rc5'
-gem 'arel', '2.1.4'
+gem 'rails',            '~> 3.1.0'
 gem 'jquery-rails'
-gem 'uglifier'
 
 gem 'rake',             '~> 0.8.7'
 gem 'high_voltage',     '~> 0.9'
 gem 'hoptoad_notifier', '~> 2.4.2'
 gem 'jquery-rails'
 gem 'kaminari',         '~> 0.12.4'
-gem 'sass-rails',       :git => 'https://github.com/rails/sass-rails.git', :ref => 'eee12e2e0bbfca56d458c82df47213e130ef5830'
-gem 'compass',          :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'simple_form',      '~> 1.4.0'
 gem 'friendly_id',      '~> 3.3.0.rc2'
 gem 'stamp',            '~> 0.1' # Jeremy can be apprehended if he breaks semantic versioning rules.
@@ -25,10 +21,17 @@ group :development, :test do
   gem 'memcache-client'
 end
 
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+  gem 'compass', '~> 0.12.alpha'
+end
+
 group :production, :staging do
   gem 'pg', '~> 0.10'
   gem 'therubyracer'
-  gem 'redis-store', :git => 'https://github.com/jodosha/redis-store.git', :ref => 'aca3fbf003a04fe8e9bd76441aa8a3e765cd0a7b'
+  gem 'redis-store', '~> 1.0.0.1'
 end
 
 group :test do
@@ -36,7 +39,7 @@ group :test do
   gem 'webmock', "~> 1.6.4"
   gem 'factory_girl_rails', '~> 1.0.1'
   gem 'bourne',             '~> 1.0'
-  gem 'capybara',           '~> 1.0.0'
+  gem 'capybara',           '~> 1.1.0'
   gem 'database_cleaner',   '~> 0.6.0'
   gem 'timecop',            '~> 0.3.5'
   gem 'email_spec',         '~> 1.1'
