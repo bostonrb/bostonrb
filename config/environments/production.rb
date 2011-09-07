@@ -40,8 +40,10 @@ BostonRuby::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  redis_uri = URI.parse(ENV["REDISTOGO_URL"])
-  config.cache_store = :redis_store, { :host => redis_uri.host, :port => redis_uri.port, :password => redis_uri.password }
+  if ENV["REDISTOGO_URL"]
+    redis_uri = URI.parse(ENV["REDISTOGO_URL"])
+    config.cache_store = :redis_store, { :host => redis_uri.host, :port => redis_uri.port, :password => redis_uri.password }
+  end
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
