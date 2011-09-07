@@ -30,7 +30,6 @@ end
 
 group :production, :staging do
   gem 'pg', '~> 0.10'
-  gem 'therubyracer'
   gem 'redis-store', '~> 1.0.0.1'
 end
 
