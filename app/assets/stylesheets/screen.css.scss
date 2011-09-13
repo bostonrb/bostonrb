@@ -164,6 +164,7 @@ section.column {
 aside.column {
   margin-top: 24px;
   margin-left: 20px;
+  margin-bottom: 20px;
   float: left;
   width: 270px;
   @include border-radius(8px);
