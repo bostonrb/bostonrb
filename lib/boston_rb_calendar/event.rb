@@ -9,8 +9,8 @@ module BostonRbCalendar
 
     def initialize(gcal_event)
       @title = gcal_event["title"]["$t"]
-      @start_time = DateTime.parse(gcal_event["gd$when"].first["startTime"])
-      @end_time = DateTime.parse(gcal_event["gd$when"].first["endTime"])
+      @start_time = DateTime.parse(gcal_event["gd$when"].first["startTime"]) rescue nil
+      @end_time = DateTime.parse(gcal_event["gd$when"].first["endTime"]) rescue nil
       @location = gcal_event["gd$where"].first["valueString"]
       @url = "#{gcal_event["link"].first["href"]}&ctz=America/New_York"
     end
