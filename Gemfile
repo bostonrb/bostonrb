@@ -8,7 +8,7 @@ gem 'high_voltage',     '~> 0.9'
 gem 'hoptoad_notifier', '~> 2.4.2'
 gem 'kaminari',         '~> 0.12.4'
 gem 'simple_form',      '~> 1.4.0'
-gem 'friendly_id',      '~> 3.3.0.rc2'
+gem 'friendly_id',      '~> 3.3.0.1'
 gem 'stamp',            '~> 0.1' # Jeremy can be apprehended if he breaks semantic versioning rules.
 
 # RSpec needs to be in :development group to expose generators
