@@ -1,11 +1,9 @@
 source :rubygems
 
-gem 'rails',            '~> 3.1.0'
+gem 'rails',            '~> 3.1.1'
 gem 'jquery-rails'
 
-gem 'rake',             '~> 0.8.7'
 gem 'high_voltage',     '~> 0.9'
-gem 'hoptoad_notifier', '~> 2.4.2'
 gem 'kaminari',         '~> 0.12.4'
 gem 'simple_form',      '~> 1.4.0'
 gem 'friendly_id',      '~> 3.3.0.1'
