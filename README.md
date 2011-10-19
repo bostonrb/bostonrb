@@ -49,6 +49,10 @@ Run the tests
 
     rake
 
+Compile all the assets
+
+    rake assets:precompile
+
 Run the server
 
     rails server
