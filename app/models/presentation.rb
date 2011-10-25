@@ -30,8 +30,25 @@ class Presentation < ActiveRecord::Base
     relation.page(params[:page]).per(params[:per])
   end
 
+  def self.all_or_by_month(params = {})
+    relation = order('presented_at desc')
+
+    if params[:month]
+      month    = Date.parse(params[:month])
+      relation = relation.where(arel_table[:presented_at].gteq(month.beginning_of_month))
+      relation = relation.where(arel_table[:presented_at].lteq(month.end_of_month))
+    end
+
+    relation.page(params[:page]).per(params[:per])
+
+  end
+
   def self.upcoming
     where(arel_table[:presented_at].gteq(DateTime.current.to_date).and(arel_table[:presented_at].lteq(1.month.from_now)))
+  end
+
+  def self.video_providers
+    VideoProviders
   end
 
   def set_description
@@ -45,7 +62,14 @@ class Presentation < ActiveRecord::Base
   end
 
   def presenter_names=(names)
+    # When editing the presentation, we may remove presenters. To make sure the record
+    # removes presenters correctly, we remove the old presenters before assigning the current ones
+    self.presenters.clear
     names.split(/,|&/ix).each { |presenter_name| self.presenter_name = presenter_name.strip }
+  end
+
+  def presenter_names
+    presenters.map(&:name).join(', ')
   end
 
   def presenter_name=(name)
@@ -65,7 +89,7 @@ class Presentation < ActiveRecord::Base
   end
 
   def video_url
-    if video_provider && video_id
+    unless video_provider.blank? || video_id.blank?
       self.send("#{video_provider}_url")
     end
   end

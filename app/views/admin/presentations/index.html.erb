@@ -1,0 +1,14 @@
+<hgroup class="title">
+  <h3>Presentations Admin</h3>
+</hgroup>
+
+
+<section id="new-presentation">
+ <%= link_to "Add a presentation", new_admin_presentation_path %>
+</section>
+<%= paginate @presentations %>
+  <section class='column'>
+  <%= render :partial => 'date', :collection => @grouped_presentations.keys %>
+  </section>
+<%= paginate @presentations %>
+

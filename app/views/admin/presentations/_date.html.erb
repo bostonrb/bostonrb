@@ -1,0 +1,6 @@
+<article id="<%= date.to_s -%>" class='date'>
+  <header>
+    <h2><%= link_to_unless_current date.to_time.to_s(:date), month_presentations_path(:month => date.stamp('September-2011')) %></h2>
+  </header>
+  <%= render :partial => 'admin/presentations/presentation', :collection => @grouped_presentations[date] %>
+</article>
