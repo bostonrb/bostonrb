@@ -6,6 +6,22 @@ describe Presentation do
     it { should_not have_valid(:slides_url).when('badurl') }
     it { should     have_valid(:slides_url).when(nil, '', 'http://slides.com/1') }
     it { should_not have_valid(:presented_at).when(nil, '') }
+
+    it 'should validate proper project names and urls' do
+      presentation = Factory.build(:presentation)
+      presentation.projects = { 'boston website' => 'http://www.bostonrb.org' }
+      presentation.should be_valid
+
+      presentation.projects = { '' => 'http://www.bostonrb.org' }
+      presentation.should_not be_valid
+
+      presentation.projects = { 'project' => 'www.bostonrb' }
+      presentation.should_not be_valid
+
+      presentation.projects = { 'project1' => 'http://www.bostonrb.org',
+                                'project2' => 'http://www.ruby-lang.org' }
+      presentation.should be_valid
+    end
   end
 
   describe '.find_all_by_cached_slug_or_id' do
@@ -168,4 +184,15 @@ describe Presentation do
     end
   end
 
+  describe 'serialization of projects' do
+    subject { Factory.build(:presentation) }
+    it 'should properly serialize as Hash when persisted' do
+      subject.projects = { 'project1' => 'http://www.bostonrb.org',
+                           'project2' => 'http://www.ruby-lang.org' }
+      subject.save
+      subject.projects.should == {
+          'project1' => 'http://www.bostonrb.org',
+          'project2' => 'http://www.ruby-lang.org' }
+    end
+  end
 end

@@ -10,13 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110811071228) do
+ActiveRecord::Schema.define(:version => 20110815174759) do
 
   create_table "presentation_presenters", :force => true do |t|
-    t.integer   "presentation_id"
-    t.integer   "presenter_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "presentation_id"
+    t.integer  "presenter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "presentation_presenters", ["presentation_id", "presenter_id"], :name => "index_presentation_groups_on_presentation_id_and_presenter_id", :unique => true
@@ -26,30 +26,29 @@ ActiveRecord::Schema.define(:version => 20110811071228) do
     t.string   "video_id"
     t.string   "title"
     t.string   "slides_url"
-    t.string   "project_url"
-    t.string   "project_type"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "video_provider"
     t.string   "cached_slug"
+    t.text     "projects"
   end
 
   create_table "presenters", :force => true do |t|
-    t.string    "name"
-    t.string    "url"
-    t.string    "cached_slug"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "name"
+    t.string   "url"
+    t.string   "cached_slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "slugs", :force => true do |t|
-    t.string    "name"
-    t.integer   "sluggable_id"
-    t.integer   "sequence",                     :default => 1, :null => false
-    t.string    "sluggable_type", :limit => 40
-    t.string    "scope"
-    t.timestamp "created_at"
+    t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope"
+    t.datetime "created_at"
   end
 
   add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true

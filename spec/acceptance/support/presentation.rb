@@ -5,4 +5,5 @@ def have_presentation_content(presentation, expectation)
     page.send(expectation, have_content(presenter.name))
   end
   page.send(expectation, have_css("a[href='#{presentation.slides_url}']", :text => "Slides"))
+  page.send(expectation, have_css("a[href='#{presentation.projects.values.first}']", :text => "Project"))
 end
