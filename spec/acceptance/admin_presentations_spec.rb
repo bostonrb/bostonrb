@@ -35,7 +35,7 @@ feature 'BostonRB Admin Interface', %{
     visit admin_presentations_path
     click_link 'Edit'
     @presentation_1.title = 'New Title after edit'
-    fill_in 'Title', with: @presentation_1.title
+    fill_in 'Title', :with => @presentation_1.title
 
     click_button 'Save Presentation'
 
@@ -46,13 +46,12 @@ feature 'BostonRB Admin Interface', %{
     login
     visit admin_presentations_path
     click_link 'Add a presentation'
-    fill_in 'Title', with: @presentation_2.title
-    fill_in 'Presenters', with: @presentation_2.presenter_names
-    fill_in 'Description', with: @presentation_2.description
-    fill_in 'Video ID', with: @presentation_2.video_id.to_s
-    select @presentation_2.video_provider, from: 'Video Provider'
-    fill_in 'Slides URL', with: @presentation_2.slides_url
-    fill_in 'Presented At', with: @presentation_2.presented_at
+    fill_in 'Title',        :with => @presentation_2.title
+    fill_in 'Presenters',   :with => @presentation_2.presenter_names
+    fill_in 'Description',  :with => @presentation_2.description
+    fill_in 'Video URL',    :with => @presentation_2.video_url
+    fill_in 'Slides URL',   :with => @presentation_2.slides_url
+    fill_in 'Presented At', :with => @presentation_2.presented_at
 
     click_button 'Save Presentation'
 
