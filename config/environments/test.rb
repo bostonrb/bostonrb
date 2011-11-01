@@ -37,5 +37,8 @@ BostonRuby::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
+  BostonRuby::Admin[:username] = 'admin'
+  BostonRuby::Admin[:password] = 'password'
+
   config.action_mailer.default_url_options = { :host => 'example.com' }
 end

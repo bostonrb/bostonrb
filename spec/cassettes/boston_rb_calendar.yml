@@ -158,3 +158,544 @@
       Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA1MTZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
       Floor, 1 Broadway, Cambridge, MA"}]}]}}'
     http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-10-24T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: !!null 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Tue, 20 Sep 2011 01:45:15 GMT
+      date:
+      - Tue, 20 Sep 2011 01:45:15 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Mon, 19 Sep 2011 22:07:44 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
+      @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTA5MjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}],"gd$when":[{"endTime":"2011-09-21T00:00:00.000-04:00","startTime":"2011-09-20T20:00:00.000-04:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTEwMDRUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2011-10-04T21:00:00.000-04:00","startTime":"2011-10-04T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTEwMTFUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}],"gd$when":[{"endTime":"2011-10-11T21:00:00.000-04:00","startTime":"2011-10-11T18:45:00.000-04:00"}]},{"title":{"$t":"Hackfest
+      @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTEwMTlUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}],"gd$when":[{"endTime":"2011-10-19T00:00:00.000-04:00","startTime":"2011-10-18T20:00:00.000-04:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTExMDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTExMDhUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTExMTZUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTEyMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTEyMTNUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTEyMjFUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAxMDRUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAxMTBUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAxMThUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAyMDhUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAyMTRUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAyMjJUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAzMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAzMTNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAzMjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA0MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA0MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA0MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA1MDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA1MDhUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA1MTZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]}]}}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-10-25T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: !!null 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Tue, 20 Sep 2011 10:58:49 GMT
+      date:
+      - Tue, 20 Sep 2011 10:58:49 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Mon, 19 Sep 2011 22:07:44 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
+      @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTA5MjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}],"gd$when":[{"endTime":"2011-09-21T00:00:00.000-04:00","startTime":"2011-09-20T20:00:00.000-04:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTEwMDRUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2011-10-04T21:00:00.000-04:00","startTime":"2011-10-04T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTEwMTFUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}],"gd$when":[{"endTime":"2011-10-11T21:00:00.000-04:00","startTime":"2011-10-11T18:45:00.000-04:00"}]},{"title":{"$t":"Hackfest
+      @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTEwMTlUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}],"gd$when":[{"endTime":"2011-10-19T00:00:00.000-04:00","startTime":"2011-10-18T20:00:00.000-04:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTExMDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTExMDhUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTExMTZUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTEyMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTEyMTNUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMTEyMjFUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAxMDRUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAxMTBUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAxMThUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAyMDhUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAyMTRUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAyMjJUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAzMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAzMTNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAzMjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA0MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA0MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA0MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA1MDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA1MDhUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA1MTZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]}]}}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-11-30T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: !!null 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Tue, 25 Oct 2011 16:56:42 GMT
+      date:
+      - Tue, 25 Oct 2011 16:56:42 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Mon, 24 Oct 2011 21:52:15 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTExMDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2011-11-01T21:00:00.000-04:00","startTime":"2011-11-01T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTExMDhUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}],"gd$when":[{"endTime":"2011-11-08T21:00:00.000-05:00","startTime":"2011-11-08T18:45:00.000-05:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTEyMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTEyMTNUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAxMDRUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAxMTBUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAyMDhUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAyMTRUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAyMjJUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAzMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAzMTNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAzMjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA0MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA0MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA0MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA1MDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA1MDhUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA1MTZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA2MDVUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA2MTJUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA2MjBUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA3MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA3MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA3MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA4MDdUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]}]}}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-12-01T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: !!null 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Wed, 26 Oct 2011 22:33:51 GMT
+      date:
+      - Wed, 26 Oct 2011 22:33:51 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Mon, 24 Oct 2011 21:52:15 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTExMDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2011-11-01T21:00:00.000-04:00","startTime":"2011-11-01T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTExMDhUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}],"gd$when":[{"endTime":"2011-11-08T21:00:00.000-05:00","startTime":"2011-11-08T18:45:00.000-05:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTEyMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTEyMTNUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAxMDRUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAxMTBUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAyMDhUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAyMTRUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAyMjJUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAzMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAzMTNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAzMjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA0MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA0MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA0MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA1MDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA1MDhUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA1MTZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA2MDVUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA2MTJUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA2MjBUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA3MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA3MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA3MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA4MDdUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]}]}}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-12-02T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: !!null 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Thu, 27 Oct 2011 11:36:20 GMT
+      date:
+      - Thu, 27 Oct 2011 11:36:20 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Mon, 24 Oct 2011 21:52:15 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTExMDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2011-11-01T21:00:00.000-04:00","startTime":"2011-11-01T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTExMDhUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}],"gd$when":[{"endTime":"2011-11-08T21:00:00.000-05:00","startTime":"2011-11-08T18:45:00.000-05:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTEyMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTEyMTNUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAxMDRUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAxMTBUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAyMDhUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAyMTRUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAyMjJUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAzMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAzMTNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAzMjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA0MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA0MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA0MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA1MDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA1MDhUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA1MTZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA2MDVUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA2MTJUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA2MjBUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA3MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA3MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA3MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA4MDdUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]}]}}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-12-04T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: !!null 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Sat, 29 Oct 2011 20:26:00 GMT
+      date:
+      - Sat, 29 Oct 2011 20:26:00 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Sat, 29 Oct 2011 00:15:20 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTExMDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2011-11-01T21:00:00.000-04:00","startTime":"2011-11-01T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTExMDhUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}],"gd$when":[{"endTime":"2011-11-08T21:00:00.000-05:00","startTime":"2011-11-08T18:45:00.000-05:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTEyMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTEyMTNUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAxMDRUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAxMTBUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAyMDhUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAyMTRUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAyMjJUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAzMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAzMTNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAzMjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA0MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA0MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA0MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA1MDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA1MDhUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA1MTZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA2MDVUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA2MTJUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA2MjBUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA3MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA3MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA3MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA4MDdUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]}]}}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-12-05T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: !!null 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Sun, 30 Oct 2011 16:33:40 GMT
+      date:
+      - Sun, 30 Oct 2011 16:33:40 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Sat, 29 Oct 2011 00:15:20 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTExMDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2011-11-01T21:00:00.000-04:00","startTime":"2011-11-01T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTExMDhUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}],"gd$when":[{"endTime":"2011-11-08T21:00:00.000-05:00","startTime":"2011-11-08T18:45:00.000-05:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTEyMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTEyMTNUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAxMDRUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAxMTBUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAyMDhUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAyMTRUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAyMjJUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAzMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAzMTNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAzMjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA0MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA0MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA0MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA1MDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA1MDhUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA1MTZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA2MDVUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA2MTJUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA2MjBUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA3MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA3MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA3MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA4MDdUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]}]}}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-12-06T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: !!null 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Tue, 01 Nov 2011 10:43:28 GMT
+      date:
+      - Tue, 01 Nov 2011 10:43:28 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Mon, 31 Oct 2011 20:07:01 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTExMDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2011-11-01T21:00:00.000-04:00","startTime":"2011-11-01T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTExMDhUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}],"gd$when":[{"endTime":"2011-11-08T21:00:00.000-05:00","startTime":"2011-11-08T18:45:00.000-05:00"}]},{"title":{"$t":"The
+      Bubbly Bub & Grub at a Pub in the Hub Club","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=bjNsa3ZlNGpvajVsa25mNThqZmpraGs3azAgYWRtaW5AYm9zdG9ucmIub3Jn","title":"alternate"}],"gd$where":[{"valueString":"The
+      Black Rose, 2nd Floor, 160 State Street, Boston, MA"}],"gd$when":[{"endTime":"2011-11-29T21:00:00.000-05:00","startTime":"2011-11-29T18:00:00.000-05:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMTEyMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMTEyMTNUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAxMDRUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAxMTBUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAyMDhUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAyMTRUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAyMjJUMDEwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAzMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjAzMTNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAzMjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA0MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA0MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA0MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA1MDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA1MDhUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA1MTZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA2MDVUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA2MTJUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA2MjBUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA3MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Gemvara","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=Z2lmcW5zczUzZWVyMGU4MzU5YzNuZHFsaWNfMjAxMjA3MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Financial Center, 8th Floor, Boston, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA3MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]}]}}'
+    http_version: '1.1'
