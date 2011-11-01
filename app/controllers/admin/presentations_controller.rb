@@ -1,5 +1,6 @@
 class Admin::PresentationsController < ApplicationController
   http_basic_authenticate_with name: BostonRuby::Admin[:username], password: BostonRuby::Admin[:password]
+
   def index
     @presentations = Presentation.all_or_by_month(:page => params[:page], :per => params[:per], :month => params[:month])
     @grouped_presentations = @presentations.group_by_date
@@ -7,13 +8,9 @@ class Admin::PresentationsController < ApplicationController
 
   def new
     @presentation = Presentation.new
-    @submit_url = admin_presentations_path
-    @method = :post
   end
 
   def create
-    @submit_url = admin_presentations_path
-    @method = :post
     @presentation = Presentation.new(params[:presentation])
 
     respond_to do |format|
@@ -27,8 +24,6 @@ class Admin::PresentationsController < ApplicationController
 
   def edit
     @presentation = Presentation.find_by_cached_slug(params[:id])
-    @submit_url = admin_presentation_path(@presentation)
-    @method = :put
   end
 
   def update
@@ -44,7 +39,6 @@ class Admin::PresentationsController < ApplicationController
       end
     end
   end
-
 
   def destroy
     @presentation = Presentation.find_by_cached_slug(params[:id])

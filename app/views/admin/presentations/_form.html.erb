@@ -1,4 +1,4 @@
-<%= simple_form_for @presentation, url: @submit_url, method: @method do |form| %>
+<%= simple_form_for [:admin, @presentation] do |form| %>
   <%= form.input :title %>
   <%= form.input :presenter_names, label: "Presenters", required: true %>
   <%= form.input :description, as: :text %>
