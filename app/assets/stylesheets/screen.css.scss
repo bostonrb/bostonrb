@@ -218,19 +218,19 @@ body.presentations-index {
   }
 }
 
-body.proposals {
+body.proposals, body.admin-presentations {
   label {
     font-weight: bold;
     font-size: 16px;
     display: block;
     padding-bottom: 5px;
   }
-  input[type="text"], textarea {
+  input[type="text"], textarea, input[type="url"] {
     padding: 5px;
     width: 400px;
     font-size: 16px;
   }
-  input[type="text"] {
+  input[type="text"], input[type="url"] {
     margin-bottom: 1em;
   }
   input[type="submit"] {

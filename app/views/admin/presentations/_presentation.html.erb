@@ -1,0 +1,18 @@
+<section id="<%= presentation.id -%>" class="presentation">
+  <hgroup>
+    <h2><%= link_to_unless_current presentation.title, presentation, target: "_blank" %></h2>
+    <h3>Presented at <%= presentation.presented_at.strftime "%B %d, %Y"%></h3>
+    <h4>
+      by
+      <%= render :partial => "presenters/presenter",
+                 :collection => presentation.presenters,
+                 :as => :presenter,
+                 :spacer_template => "presenters/presenter_comma" %>
+    </h4>
+  </hgroup>
+  <p><%= presentation.description %></p>
+  <ul class='links'>
+      <li><%= link_to "Edit", edit_admin_presentation_path(presentation) %></li>
+      <li><%= link_to "Delete", admin_presentation_path(presentation), :confirm => 'Are you sure?', method: :delete %></li>
+  </ul>
+</section>
