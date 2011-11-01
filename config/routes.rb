@@ -11,4 +11,12 @@ BostonRuby::Application.routes.draw do
   resources :presentations, :only => [:index, :show]
   get '/presenters/leaders' => 'leader_board#index'
   resources :presenters, :only => [:show]
+
+  namespace 'admin' do
+    resources 'presentations' do
+      collection do
+        get "month/:month" => :index, :as => "month"
+      end
+    end
+  end
 end

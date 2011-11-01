@@ -71,4 +71,7 @@ BostonRuby::Application.configure do
   :password       => ENV['SENDGRID_PASSWORD'],
   :domain         => ENV['SENDGRID_DOMAIN']
 }
+
+  BostonRuby::ADMIN_NAME = ENV["BOSTONRB_ADMIN_NAME"]
+  BostonRuby::ADMIN_PASSWORD = ENV["BOSTONRB_ADMIN_PASSWORD"]
 end

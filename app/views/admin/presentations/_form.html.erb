@@ -1,0 +1,12 @@
+<%= simple_form_for @presentation, url: @submit_url, method: @method do |form| %>
+  <%= form.input :title %>
+  <%= form.input :presenter_names, label: "Presenters", required: true %>
+  <%= form.input :description, as: :text %>
+  <%= form.input :video_id, label: "Video ID" %>
+  <%= form.input :video_provider, label: "Video Provider", collection: Presentation.video_providers %>
+  <%= form.input :slides_url, label: "Slides URL" %>
+  <%= form.input :project_url, label: "Project URL" %>
+  <%= form.input :project_type, label: "Project Type" %>
+  <%= form.input :presented_at, label: "Presented At", as: :string, input_html: { class: "date-field" } %>
+  <%= form.submit "Save Presentation" %>
+<% end %>
