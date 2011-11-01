@@ -1,6 +1,6 @@
-<%= simple_form_for [:admin, @presentation] do |form| %>
+<%= simple_form_for [:admin, @presentation], :validate => true do |form| %>
   <%= form.input :title %>
-  <%= form.input :presenter_names, :label => 'Presenters' %>
+  <%= form.input :presenter_names, :label => 'Presenters', :required => true %>
   <%= form.input :description, :as => :text %>
   <%= form.input :video_url, :label => 'Video URL' %>
   <%= form.input :slides_url, :label => 'Slides URL' %>
