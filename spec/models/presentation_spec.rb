@@ -6,6 +6,8 @@ describe Presentation do
     it { should_not have_valid(:slides_url).when('badurl') }
     it { should     have_valid(:slides_url).when(nil, '', 'http://slides.com/1') }
     it { should_not have_valid(:presented_at).when(nil, '') }
+    it { should     have_valid(:presenter_names).when('Abraham Lincoln', 'Abraham Lincoln, George Washington') }
+    it { should_not have_valid(:presenter_names).when(nil, '') }
   end
 
   describe '.find_all_by_cached_slug_or_id' do

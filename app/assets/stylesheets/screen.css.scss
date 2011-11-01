@@ -242,6 +242,9 @@ body.proposals, body.admin-presentations {
     border: 0px;
     margin: 0px;
     padding: 8px 12px;
+    &:active {
+      background-color: #A46454;
+    }
   }
   textarea {
     height: 200px;
@@ -256,3 +259,4 @@ body.proposals, body.admin-presentations {
    right: 0;
    bottom: 0;
  }
+

@@ -1,9 +1,7 @@
 class Presentation < ActiveRecord::Base
   has_friendly_id :title, :use_slug => true
-  validates :title, :presence => true
-  validates :description, :presence => true
-  validates :slides_url, :video_url, :format => { :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/i, :allow_blank => true }
-  validates :presented_at, :presence => true
+  validates :title, :description, :presented_at, :presenter_names, :presence => true
+  validates :slides_url, :video_url, :format => { :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/i, :allow_blank => true, :message => 'invalid URL' }
   has_many :presentation_presenters
   has_many :presenters, :through => :presentation_presenters
   before_validation :set_description
@@ -65,7 +63,7 @@ class Presentation < ActiveRecord::Base
     # When editing the presentation, we may remove presenters. To make sure the record
     # removes presenters correctly, we remove the old presenters before assigning the current ones
     self.presenters.clear
-    names.split(/,|&/ix).each { |presenter_name| self.presenter_name = presenter_name.strip }
+    (names || '').split(/,|&/ix).each { |presenter_name| self.presenter_name = presenter_name.strip }
   end
 
   def presenter_names
