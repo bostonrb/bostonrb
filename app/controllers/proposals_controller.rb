@@ -13,7 +13,7 @@ class ProposalsController < ApplicationController
         flash[:failure] = 'Email was not sent. Please enter your email address.'
       else
         Mailer.proposal(from, body).deliver
-        flash[:success] = "Thanks for submitting! You'll hear from us soon."
+        flash[:success] = "Thank-you for submitting! You'll hear from us soon."
       end
     end
 

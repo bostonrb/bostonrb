@@ -20,7 +20,6 @@ feature 'Speaker submits proposal', %{
     fill_in 'Email', :with => 'speaker@example.com'
     fill_in 'Body',  :with => 'Real-time chat apps'
     click_button 'Submit proposal'
-    page.should have_content "Thanks for submitting! You'll hear from us soon."
     email = open_email('admin@bostonrb.org')
     email.default_part_body.should include 'Real-time chat apps'
   end
@@ -28,13 +27,13 @@ feature 'Speaker submits proposal', %{
   scenario 'Speaker tries to submit without an email body' do
     fill_in 'Email', :with => 'speaker@example.com'
     click_button 'Submit proposal'
-    page.should have_content 'Email was not sent. Please enter some text.'
+    mailbox_for('admin@bostonrb.org').should be_empty
   end
 
   scenario 'Speaker tries to submit without an email address' do
     fill_in 'Body', :with => 'Real-time chat apps'
     click_button 'Submit proposal'
-    page.should have_content 'Email was not sent. Please enter your email address'
+    mailbox_for('admin@bostonrb.org').should be_empty
   end
 
   after(:all) do
