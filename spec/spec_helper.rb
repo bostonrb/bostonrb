@@ -32,4 +32,8 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
   config.extend VCR::RSpec::Macros
+  config.include Rails.application.routes.url_helpers, :type => :request
+
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
 end
