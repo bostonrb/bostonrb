@@ -15,6 +15,13 @@ It's a Rails app running [Ruby 1.9](http://www.ruby-lang.org/en/downloads) and u
 * ValidAttribute for model validation testing
 * Factory Girl for test data
 
+Build Status
+------------
+
+[![travis-ci status](https://secure.travis-ci.org/bostonrb/bostonrb.png)](http://travis-ci.org/bostonrb/bostonrb)
+
+
+
 Setup
 -----
 
