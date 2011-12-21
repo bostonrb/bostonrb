@@ -1,0 +1,10 @@
+<hgroup class='title'>
+  <h2>what</h2>
+  <h3>Recent blogs by Boston Rubyists ~ <%= link_to 'RSS', posts_path(:format => :rss) -%></h3>
+</hgroup>
+
+<%= paginate @posts %>
+<section class='column'>
+  <%= render @posts %>
+</section>
+<%= paginate @posts %>

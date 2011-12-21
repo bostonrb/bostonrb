@@ -9,6 +9,7 @@ BostonRuby::Application.routes.draw do
   resources :proposals, :only => [:new, :create]
   get '/presentations/month/:month/' => 'presentations#index', :as => 'month_presentations'
   resources :presentations, :only => [:index, :show]
+  resources :posts, :only => [:index]
   get '/presenters/leaders' => 'leader_board#index'
   resources :presenters, :only => [:show]
 
@@ -18,5 +19,6 @@ BostonRuby::Application.routes.draw do
         get "month/:month" => :index, :as => "month"
       end
     end
+    resources 'bloggers'
   end
 end

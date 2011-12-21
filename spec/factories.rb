@@ -22,3 +22,22 @@ Factory.define :presenter do |factory|
   factory.url            { 'http://twitter.com/some_presenter'        }
 end
 
+Factory.define :blogger do |factory|
+  factory.name             { 'Brian Cardarella'       }
+  factory.feed_url         { 'http://a.blog.com/feed' }
+  factory.twitter_username { '@brian'                 }
+end
+
+Factory.define :post do |factory|
+  factory.blogger       { Factory(:blogger)                                            }
+  factory.title         { 'A post about something'                                     }
+  factory.summary       { 'Lots of interesting content'                                }
+  factory.url           { |factory| "#{factory.blogger_url}#{Factory.next(:counter)}" }
+  factory.published_at  { Time.now                                                     }
+  factory.guid          { |factory| factory.url                                        }
+  factory.categories    { Category.find_or_create_many_by_name(['Ruby'])               }
+end
+
+Factory.define :category do |factory|
+  factory.name          { 'Ruby' }
+end

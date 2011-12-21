@@ -1,0 +1,17 @@
+<article class='date'>
+  <header>
+    <h2><%= post.published_at.to_time.to_s(:date) %></h2>
+  </header>
+  <section id="<%= post.id -%>" class="presentation">
+    <hgroup>
+      <h2><%= link_to post.title, post.url %></h2>
+      <h4>
+        by <%= link_to "#{post.blogger_name}: #{post.blogger_title}", post.blogger_url %>
+      </h4>
+      <h4><%= "categories: #{post.category_names.join(', ')}" unless post.categories.empty? %></h4>
+    </hgroup>
+    <p class="content">
+      <%= sanitize post.summary %>
+    </p>
+  </section>
+</article>
