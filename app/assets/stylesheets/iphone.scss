@@ -1,0 +1,134 @@
+@import "compass/css3/border-radius";
+
+/* iPhone */
+@media screen and (max-width: 480px) {
+  body {
+    width: 310px;
+    margin: 0px 5px 10px 5px;
+    overflow-y: auto;
+    > header {
+      padding-top: 0;
+      text-align: center;
+      h1 {
+        a {
+          font-size: 45px;
+        }
+      }
+      p {
+        margin-top: 5px;
+      }
+    }
+  }
+  body.proposals, body.admin-presentations {
+    input[type="text"], textarea, input[type="url"] {
+      padding: 5px;
+      width: 290px;
+      font-size: 16px;
+    }
+  }
+  nav.links {
+    ul {
+      font-size: 16px;
+      text-align: center;
+      li {
+        display: block;
+        width: 155px;
+        float: left;
+        padding: 0px;
+        margin-bottom: 5px;
+        &:after {
+          content: '';
+        }
+        a {
+          display: block;
+          margin: 0 auto;
+          width: 148px;
+          background-color: #B46E32;
+          line-height: 2em;
+          @include border-radius(5px);
+        }
+      }
+      li.desktop-only {
+        display: none;
+      }
+    }
+  }
+  section#container {
+    h5 {
+      display: none;
+    }
+  }
+  aside.column {
+    float: left;
+    width: 290px;
+    margin: 0px 0px 20px 0px;
+    header {
+      margin-bottom: 10px;
+      h2 {
+        font-size: 24px;
+      }
+    }
+    article.date {
+      margin-bottom: 10px;
+      header {
+        h2 {
+          font-size: 22px;
+        }
+      }
+      section {
+        hgroup {
+          h2 {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+  section.column,
+  section.column.thin {
+    width: 310px;
+    clear: both;
+    > article > header {
+      position: static;
+      padding-bottom: 5px;
+      width: 300px;
+      h2 {
+        text-align: left;
+      }
+    }
+    article {
+      p {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+}
+
+/* iPhone Landscape specific */
+@media screen and (min-width: 321px) and (max-width: 480px) {
+  body {
+    width: 470px;
+  }
+  body.proposals, body.admin-presentations {
+    input[type="text"], textarea, input[type="url"] {
+      width: 450px;
+    }
+  }
+  nav.links {
+    ul {
+      li {
+        width: 156px;
+        a {
+          width: 154px;
+        }
+      }
+    }
+  }
+  aside.column {
+    width: 450px;
+  }
+  section.column, section.column.thin {
+    width: 470px;
+  }
+}
