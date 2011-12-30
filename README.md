@@ -1,3 +1,5 @@
+# BostonRB [![travis-ci status](https://secure.travis-ci.org/bostonrb/bostonrb.png)](http://travis-ci.org/bostonrb/bostonrb)
+
 This is the source code for the Boston Ruby Group's community website:
 
     http://bostonrb.org

@@ -20,10 +20,10 @@ describe Presentation do
 
   describe '.past_or_by_month' do
     before do
-      Timecop.freeze(Date.parse('May 10, 2011'))
+      Timecop.freeze(Date.parse('May 20, 2011'))
       @past_presentation_1  = Factory(:presentation, :presented_at => 'April 8, 2011')
       @past_presentation_2  = Factory(:presentation, :presented_at => 'May 9, 2011')
-      @current_presentation = Factory(:presentation, :presented_at => 'May 10, 2011')
+      @current_presentation = Factory(:presentation, :presented_at => 'May 20, 2011')
       @future_presentation  = Factory(:presentation, :presented_at => 'June 11, 2011')
     end
 
