@@ -290,6 +290,27 @@ body.proposals, body.admin-presentations {
     ul {
       font-size: 16px;
       text-align: center;
+      li {
+        display: block;
+        width: 155px;
+        float: left;
+        padding: 0px;
+        margin-bottom: 5px;
+        &:after {
+          content: '';
+        }
+        a {
+          display: block;
+          margin: 0 auto;
+          width: 148px;
+          background-color: #B46E32;
+          line-height: 2em;
+          @include border-radius(5px);
+        }
+      }
+      li.desktop-only {
+        display: none;
+      }
     }
   }
   section#container {
@@ -352,6 +373,16 @@ body.proposals, body.admin-presentations {
   body.proposals, body.admin-presentations {
     input[type="text"], textarea, input[type="url"] {
       width: 450px;
+    }
+  }
+  nav.links {
+    ul {
+      li {
+        width: 156px;
+        a {
+          width: 154px;
+        }
+      }
     }
   }
   aside.column {
