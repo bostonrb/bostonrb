@@ -1,0 +1,5 @@
+<%= simple_form_for [:admin, @setting], :validate => true do |form| %>
+  <%= form.input :key %>
+  <%= form.input :value, :as => :text %>
+  <%= form.submit 'Save Setting' %>
+<% end %>

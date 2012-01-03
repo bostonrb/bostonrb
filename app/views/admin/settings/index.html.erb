@@ -1,0 +1,10 @@
+<hgroup class='title'>
+<h3>Settings Admin</h3>
+</hgroup>
+
+<section id='new-setting'>
+<%= link_to 'Add a Setting', new_admin_setting_path %>
+</section>
+<section class='column'>
+    <%= render :partial => 'setting', :collection => @settings %>
+</section>

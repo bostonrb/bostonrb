@@ -1,6 +1,4 @@
-class Admin::PresentationsController < ApplicationController
-  http_basic_authenticate_with name: BostonRuby::Admin[:username], password: BostonRuby::Admin[:password]
-
+class Admin::PresentationsController < AdminController
   def index
     @presentations = Presentation.all_or_by_month(:page => params[:page], :per => params[:per], :month => params[:month])
     @grouped_presentations = @presentations.group_by_date
@@ -28,8 +26,6 @@ class Admin::PresentationsController < ApplicationController
 
   def update
     @presentation = Presentation.find_by_cached_slug(params[:id])
-    @submit_url = admin_presentation_path(@presentation)
-    @method = :put
 
     respond_to do |format|
       if @presentation.update_attributes(params[:presentation])

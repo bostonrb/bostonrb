@@ -22,3 +22,8 @@ Factory.define :presenter do |factory|
   factory.url            { 'http://twitter.com/some_presenter'        }
 end
 
+Factory.define :setting do |factory|
+  factory.key            { "Test Key #{Factory.next(:counter)}" }
+  factory.value          { 'test value' }
+end
+

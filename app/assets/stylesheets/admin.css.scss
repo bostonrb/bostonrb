@@ -1,4 +1,4 @@
-#new-presentation {
+#new-presentation, #new-setting {
   a {
     background-color: #A41000;
     color: #FFFFFF;
@@ -17,3 +17,24 @@
   font-size: .8em;
 }
 
+section.setting {
+  h2, h3 {
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size:18px;
+    margin: 30px 0 10px 0;
+
+    span {
+      font-weight: normal;
+    }
+  }
+
+  ul {
+    margin-top: 10px;
+    li {
+      display: inline;
+    }
+  }
+}
