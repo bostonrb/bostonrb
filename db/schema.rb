@@ -11,7 +11,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110811071228) do
+ActiveRecord::Schema.define(:version => 20111219131645) do
+
+  create_table "bloggers", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.string   "twitter_username"
+    t.string   "url"
+    t.string   "feed_url"
+    t.string   "etag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bloggers", ["name"], :name => "index_bloggers_on_name"
+
+  create_table "categories", :force => true do |t|
+    t.string "name"
+  end
+
+  add_index "categories", ["name"], :name => "index_categories_on_name"
+
+  create_table "categories_posts", :force => true do |t|
+    t.integer "category_id"
+    t.integer "post_id"
+  end
+
+  add_index "categories_posts", ["category_id"], :name => "index_categories_posts_on_category_id"
+  add_index "categories_posts", ["post_id"], :name => "index_categories_posts_on_post_id"
+
+  create_table "posts", :force => true do |t|
+    t.integer  "blogger_id"
+    t.string   "title"
+    t.text     "summary"
+    t.string   "url"
+    t.string   "guid"
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["published_at"], :name => "index_posts_on_published_at"
 
   create_table "presentation_presenters", :force => true do |t|
     t.integer  "presentation_id"

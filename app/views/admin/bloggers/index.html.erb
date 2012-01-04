@@ -1,0 +1,13 @@
+<hgroup class='title'>
+  <h3>Bloggers Admin</h3>
+</hgroup>
+
+<section id='new-blogger'>
+ <%= link_to 'Add a blogger', new_admin_blogger_path %>
+</section>
+<%= paginate @bloggers %>
+  <section class='column'>
+  <%= render @bloggers %>
+  </section>
+<%= paginate @bloggers %>
+
