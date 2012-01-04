@@ -45,6 +45,10 @@ class Presentation < ActiveRecord::Base
     where(arel_table[:presented_at].gteq(DateTime.current.to_date).and(arel_table[:presented_at].lteq(1.month.from_now)))
   end
 
+  def self.next_upcoming_month
+    upcoming.order('presented_at asc').limit(1).first.try { |presentation| presentation.presented_at.strftime('%B-%Y') }
+  end
+
   def self.video_providers
     VideoProviders
   end

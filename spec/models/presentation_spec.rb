@@ -170,4 +170,25 @@ describe Presentation do
     end
   end
 
+  describe '.next_upcoming_month' do
+    context 'no upcoming presentations' do
+      it 'returns nil' do
+        Presentation.next_upcoming_month.should be_nil
+      end
+    end
+    context 'with an upcoming presnation more than a month out' do
+      it 'returns nil' do
+        Factory(:presentation, :presented_at => 2.months.from_now)
+        Presentation.next_upcoming_month.should be_nil
+      end
+    end
+    context 'with an upcoming presentation within in the next month' do
+      let(:presentation) { Factory(:presentation, :presented_at => 2.weeks.from_now) }
+      before { presentation }
+      it 'returns the date' do
+        Presentation.next_upcoming_month.should eq presentation.presented_at.strftime('%B-%Y')
+      end
+    end
+  end
+
 end
