@@ -3,8 +3,8 @@
     <h2><%= link_to_unless_current presentation.title, presentation %></h2>
     <h4>
       by
-      <%= render :partial => "presenters/presenter", 
-                 :collection => presentation.presenters, 
+      <%= render :partial => "presenters/presenter",
+                 :collection => presentation.presenters,
                  :as => :presenter,
                  :spacer_template => "presenters/presenter_comma" %>
     </h4>
@@ -12,6 +12,9 @@
   <%= presentation.embed_video.html_safe if presentation.video_id.present? %>
   <p><%= presentation.description %></p>
   <ul class='links'>
+     <% if presentation.video_url.present? %>
+       <li class="video"><%= link_to "Video", presentation.video_url, :target => "_blank" %></li>
+     <% end %>
       <% if presentation.slides_url.present? %>
         <li><%= link_to "Slides", presentation.slides_url, :target => "_blank" %></li>
       <% end %>
