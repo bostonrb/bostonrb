@@ -109,6 +109,18 @@
         line-height: 20px;
       }
     }
+    > article.date {
+      section.presentation {
+        iframe, embed {
+          display: none;
+        }
+        ul.links {
+          li.video {
+            display: block;
+          }
+        }
+      }
+    }
   }
 }
 

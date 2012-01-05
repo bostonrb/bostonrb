@@ -1,6 +1,7 @@
 def have_presentation_content(presentation, expectation)
   have_basic_presentation_content(presentation, expectation)
   page.send(expectation, have_css("a[href='#{presentation.slides_url}']", :text => "Slides"))
+  page.send(expectation, have_css("a[href='#{presentation.video_url}']", :text => "Video"))
 end
 
 def have_basic_presentation_content(presentation, expectation)

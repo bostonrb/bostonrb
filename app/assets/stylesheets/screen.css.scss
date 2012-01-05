@@ -147,6 +147,9 @@ section.column {
           margin-top: 15px;
           line-height: 1.25em;
           font-size: .9em;
+          li.video {
+            display: none;
+          }
         }
       }
     }
