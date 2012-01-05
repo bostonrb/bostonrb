@@ -39,13 +39,20 @@
         &:after {
           content: '';
         }
-        a {
+        a, span {
           display: block;
           margin: 0 auto;
+          padding: 0;
           width: 148px;
           background-color: #B46E32;
           line-height: 2em;
           @include border-radius(5px);
+        }
+        span {
+          background-color: #F5DCA0;
+        }
+        a:hover {
+          border: none;
         }
       }
       li.desktop-only {
@@ -119,7 +126,7 @@
     ul {
       li {
         width: 156px;
-        a {
+        a, span {
           width: 154px;
         }
       }
