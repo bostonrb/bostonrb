@@ -1,0 +1,6 @@
+<%= simple_form_for [:admin, @blog], :validate => true do |form| %>
+  <%= form.input :author %>
+  <%= form.input :feed_url, :label => 'RSS/Atom feed url' %>
+  <%= form.input :twitter_username, :label => 'Twitter Username' %>
+  <%= form.submit 'Save Blog' %>
+<% end %>

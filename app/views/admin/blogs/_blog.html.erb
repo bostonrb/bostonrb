@@ -1,0 +1,13 @@
+<section id='<%= blog.id -%>' class='blog'>
+  <hgroup>
+    <h2><%= blog.author %></h2>
+  </hgroup>
+  <p>Title: <%= blog.title %></p>
+  <p>Twitter Username: <%= blog.twitter_username %></p>
+  <p>URL: <%= link_to blog.url %></p>
+  <p>Feed URL: <%= link_to blog.feed_url %></p>
+  <ul class='links'>
+      <li><%= link_to 'Edit', edit_admin_blog_path(blog) %></li>
+      <li><%= link_to 'Delete', admin_blog_path(blog), :confirm => 'Are you sure?', :method => :delete %></li>
+  </ul>
+</section>

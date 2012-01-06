@@ -19,5 +19,6 @@ BostonRuby::Application.routes.draw do
         get "month/:month" => :index, :as => "month"
       end
     end
+    resources 'blogs'
   end
 end
