@@ -147,6 +147,9 @@ section.column {
           margin-top: 15px;
           line-height: 1.25em;
           font-size: .9em;
+          li.video {
+            display: none;
+          }
         }
       }
     }
@@ -165,7 +168,7 @@ aside.column {
   margin-top: 24px;
   margin-left: 20px;
   margin-bottom: 20px;
-  float: left;
+  float: right;
   width: 270px;
   @include border-radius(8px);
   background-color: #B46E32;
@@ -259,4 +262,3 @@ body.proposals, body.admin-presentations {
    right: 0;
    bottom: 0;
  }
-

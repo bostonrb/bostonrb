@@ -12,4 +12,10 @@ module ApplicationHelper
       render :partial => 'pages/next_event'
     end
   end
+
+  def link_to_unless_current_with_span(name, options = {}, html_options = {})
+     link_to_unless_current(name, options, html_options) do
+        content_tag(:span, name)
+     end
+  end
 end
