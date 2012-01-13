@@ -22,3 +22,8 @@ Factory.define :presenter do |factory|
   factory.url            { 'http://twitter.com/some_presenter'        }
 end
 
+Factory.define :blog do |factory|
+  factory.author           { 'Brian Cardarella'                      }
+  factory.twitter_username { |blog| "@#{blog.author.gsub(' ', '_')}" }
+  factory.feed_url         { 'http://a.blog.com/feed'                }
+end

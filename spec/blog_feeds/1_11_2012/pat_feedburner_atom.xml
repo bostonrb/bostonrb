@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/atom10full.xsl"?>
+<?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Pat Shaughnessy</title>
+  <id>http://patshaughnessy.net</id>
+  <updated>2008-09-03T00:00:00Z</updated>
+  <author>
+    <name/>
+  </author>
+  <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://feeds.feedburner.com/patshaughnessy"/>
+  <feedburner:info xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" uri="patshaughnessy"/>
+  <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/"/>
+  <entry>
+    <title>How to Customize Twitter Bootstrap</title>
+    <link href="http://patshaughnessy.net/2012/1/11/twitter-bootstrap" rel="alternate"/>
+    <id>http://patshaughnessy.net/2012/1/11/twitter-bootstrap</id>
+    <category>twitter bootstrap</category>
+    <category>ruby</category>
+    <category>rails</category>
+    <published>2012-01-11T00:00:00Z</published>
+    <updated>2012-01-11T00:00:00Z</updated>
+    <author>
+      <name/>
+    </author>
+    <summary type="html">summary here</summary>
+    <content type="html">content here</content>
+  </entry>
+  <entry>
+    <title>Never create Ruby strings longer than 23 characters</title>
+    <link href="http://patshaughnessy.net/2012/1/4/never-create-ruby-strings-longer-than-23-characters" rel="alternate"/>
+    <id>http://patshaughnessy.net/2012/1/4/never-create-ruby-strings-longer-than-23-characters</id>
+    <published>2012-01-04T00:00:00Z</published>
+    <updated>2012-01-04T00:00:00Z</updated>
+    <author>
+      <name/>
+    </author>
+    <summary type="html">a summary of this article</summary>
+    <content type="html">the content</content>
+  </entry>
+  <entry>
+    <title>My name is pat</title>
+    <link href="http://patshaughnessy.net/2011/12/14/my-name-is-pat" rel="alternate"/>
+    <id>http://patshaughnessy.net/2011/12/14/my-name-is-pat</id>
+    <category>my-name</category>
+    <category>personal</category>
+    <published>2011-12-14T00:00:00Z</published>
+    <updated>2011-12-14T00:00:00Z</updated>
+    <author>
+      <name/>
+    </author>
+    <summary type="html">a summary of this article</summary>
+    <content type="html">the content</content>
+  </entry>
+  <entry>
+    <title>Two ways of using Redis to build a NoSQL autocomplete search index</title>
+    <link href="http://patshaughnessy.net/2011/11/29/two-ways-of-using-redis-to-build-a-nosql-autocomplete-search-index" rel="alternate" />
+    <id>http://patshaughnessy.net/2011/11/29/two-ways-of-using-redis-to-build-a-nosql-autocomplete-search-index</id>
+    <category>redis</category>
+    <category>nosql</category>
+    <published>2011-11-29T00:00:00Z</published>
+    <updated>2011-11-29T00:00:00Z</updated>
+    <author>
+      <name />
+    </author>
+    <summary type="html">a summary of this article</summary>
+    <content type="html">the content</content>
+  </entry>
+  <entry>
+    <title>Finding your soulmate: autocomplete with Redis in Rails 3.1</title>
+    <link href="http://patshaughnessy.net/2011/11/23/finding-your-soulmate-autocomplete-with-redis-in-rails-3-1" rel="alternate" />
+    <id>http://patshaughnessy.net/2011/11/23/finding-your-soulmate-autocomplete-with-redis-in-rails-3-1</id>
+    <category>redis</category>
+    <category>ruby</category>
+    <category>autocomplete</category>
+    <published>2011-11-23T00:00:00Z</published>
+    <updated>2011-11-23T00:00:00Z</updated>
+    <author>
+      <name />
+    </author>
+    <summary type="html">a summary of this article</summary>
+    <content type="html">the content</content>
+  </entry>
+</feed>

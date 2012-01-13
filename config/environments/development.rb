@@ -33,5 +33,7 @@ BostonRuby::Application.configure do
 
   BostonRuby::Admin[:username] = ENV["BOSTONRB_ADMIN_USERNAME"]
   BostonRuby::Admin[:password] = ENV["BOSTONRB_ADMIN_PASSWORD"]
+
+  FakeTwitter.activate!
 end
 
