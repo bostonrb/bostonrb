@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>My Blog</title>
+  <link href="http://alexrothenberg.com/atom.xml" rel="self"/>
+  <link href="http://alexrothenberg.com/"/>
+  <updated>2011-11-24T23:19:26-08:00</updated>
+  <id>http://alexrothenberg.com/</id>
+  <author>
+    <name>Alex</name>
+  </author>
+  <entry>
+    <title>My First Post</title>
+    <category/>
+    <link href="http://alexrothenberg.com/2011/first_post.html"/>
+    <updated>2011-11-24T00:00:00</updated>
+    <id>http://alexrothenberg.com/2011/first_post.html</id>
+    <content type="html">really interesting content goes here</content>
+  </entry>
+</feed>

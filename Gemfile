@@ -9,6 +9,8 @@ gem 'simple_form',             '~> 1.4.0'
 gem 'friendly_id',             '~> 3.3.0.1'
 gem 'stamp',                   '~> 0.1.0'
 gem 'client_side_validations', '~> 3.1.0'
+gem 'feedzirra',               :git => 'git://github.com/pauldix/feedzirra.git' # waiting for > 0.1.1 release. See https://github.com/pauldix/feedzirra/issues/77
+gem 'twitter'
 
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.

@@ -1,0 +1,12 @@
+<hgroup class='title'>
+  <h3>Blogs Admin</h3>
+</hgroup>
+
+<section id='new-blog'>
+ <%= link_to 'Add a blog', new_admin_blog_path %>
+</section>
+<%= paginate @blogs %>
+  <section class='column'>
+  <%= render @blogs %>
+  </section>
+<%= paginate @blogs %>

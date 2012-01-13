@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="hub" href="http://tumblr.superfeedr.com/"/>
+    <description/>
+    <title>Brian Cardarella's Blog</title>
+    <generator>Tumblr (3.0; @bcardarella)</generator>
+    <link>http://bcardarella.com/</link>
+    <item>
+      <title>Clean up trailing whitespace</title>
+      <description>the content goes here</description>
+      <link>http://bcardarella.com/post/8682039114</link>
+      <guid>http://bcardarella.com/post/8682039114</guid>
+      <pubDate>Tue, 09 Aug 2011 03:16:00 -0400</pubDate>
+      <category>osx</category>
+      <category>sed</category>
+      <category>trailing whitespace</category>
+    </item>
+    <item>
+      <title>The State Open Source Development</title>
+      <description>content</description>
+      <link>http://bcardarella.com/post/8008403283</link>
+      <guid>http://bcardarella.com/post/8008403283</guid>
+      <pubDate>Sun, 24 Jul 2011 14:25:00 -0400</pubDate>
+    </item>
+    <item>
+      <title>Every pub and cafe should have free wifi and power.</title>
+      <description>content</description>
+      <link>http://bcardarella.com/post/7044433281</link>
+      <guid>http://bcardarella.com/post/7044433281</guid>
+      <pubDate>Wed, 29 Jun 2011 10:17:00 -0400</pubDate>
+    </item>
+    <item>
+      <title>ClientSideValidations for Rails 3.1 and 2.3.x backport</title>
+      <description>content</description>
+      <link>http://bcardarella.com/post/6733907607</link>
+      <guid>http://bcardarella.com/post/6733907607</guid>
+      <pubDate>Mon, 20 Jun 2011 17:17:00 -0400</pubDate>
+    </item>
+  </channel>
+</rss>
