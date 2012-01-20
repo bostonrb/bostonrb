@@ -1,10 +1,10 @@
 source :rubygems
 
-gem 'rails',                   '~> 3.1.1'
+gem 'rails',                   '~> 3.2.0'
 gem 'jquery-rails',            '~> 1.0.0'
 
 gem 'high_voltage',            '~> 0.9'
-gem 'kaminari',                '~> 0.12.4'
+gem 'kaminari',                '~> 0.13.0'
 gem 'simple_form',             '~> 1.4.0'
 gem 'friendly_id',             '~> 3.3.0.1'
 gem 'stamp',                   '~> 0.1.0'
@@ -14,14 +14,14 @@ gem 'client_side_validations', '~> 3.1.0'
 # and rake tasks without having to type RAILS_ENV=test.
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails',    '~> 2.6.0'
+  gem 'rspec-rails',    '~> 2.8.1'
   gem 'ruby-debug19',   '~> 0.11.6', :require => 'ruby-debug'
   gem 'memcache-client'
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.1.0'
-  gem 'coffee-rails', '~> 3.1.0'
+  gem 'sass-rails',   '~> 3.2.0'
+  gem 'coffee-rails', '~> 3.2.0'
   gem 'uglifier'
   gem 'compass',      '~> 0.12.alpha'
 end

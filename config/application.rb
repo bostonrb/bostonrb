@@ -48,6 +48,9 @@ module BostonRuby
     # config.sass.load_paths ||= []
     # config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
 
+    # Heroku needs this
+    config.assets.initialize_on_precompile = false
+
     # load files from the lib directory.
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
