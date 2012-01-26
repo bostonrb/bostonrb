@@ -1,0 +1,11 @@
+<section id='<%= setting.id -%>' class='setting'>
+  <hgroup>
+  <h2>Key: <span><%= setting.key %></span></h2>
+  </hgroup>
+  <h3>Value:</h3>
+  <p><%= setting.value %></p>
+  <ul class='links'>
+      <li><%= link_to 'Edit', edit_admin_setting_path(setting) %></li>
+      <li><%= link_to 'Delete', admin_setting_path(setting), :confirm => 'Are you sure?', :method => :delete %></li>
+  </ul>
+</section>
