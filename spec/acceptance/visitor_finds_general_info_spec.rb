@@ -13,7 +13,6 @@ feature 'Visitor finds general info', %{
 
   scenario 'Visitor finds general info with no upcoming presentations' do
     visit root_path
-    page.should have_content 'Second Tuesday of every month'
     page.should have_content 'new Rubyists are always welcome'
     page.should_not have_content 'Upcoming Presentations'
   end
@@ -21,7 +20,6 @@ feature 'Visitor finds general info', %{
   scenario 'Visitor find general info with upcoming presentations' do
     Factory(:upcoming_presentation)
     visit root_path
-    page.should have_content 'Second Tuesday of every month'
     page.should have_content 'new Rubyists are always welcome'
     page.should have_content 'Upcoming Presentations'
     page.should have_content 'New Upcoming Presentation'
