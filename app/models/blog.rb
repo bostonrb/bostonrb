@@ -19,9 +19,10 @@ class Blog < ActiveRecord::Base
   end
 
   def update_from_feed
-    feed = Feedzirra::Parser::Atom.new
+    feed          = Feedzirra::Parser::Atom.new
     feed.feed_url = feed_url
     feed.etag     = etag
+
     if most_recent_post_url
       last_entry     = Feedzirra::Parser::AtomEntry.new
       last_entry.url = most_recent_post_url
@@ -29,28 +30,36 @@ class Blog < ActiveRecord::Base
     end
 
     Feedzirra::Feed.update(feed)
+
     if feed.updated?
       update_attributes_from_feed(feed)
+
       unless feed.new_entries.empty?
         self.most_recent_post_url = most_recent_entry(feed.new_entries).url
         tweet_entries(feed.new_entries)
       end
+
       save
     end
   end
 
   def self.update_all_from_feeds
-    Blog.all.each(&:update_from_feed)
+    Blog.all.each do |blog|
+      # we rescue to nil so we don't screw over other blogs if one is misbehaving
+      blog.update_from_feed rescue nil
+    end
   end
 
   private
+
   def most_recent_entry(entries)
     @most_recent_entry ||= entries.sort_by(&:published).last
   end
+
   def update_attributes_from_feed(feed)
-    self.etag                 = feed.etag
-    self.title                = feed.title
-    self.url                  = feed.url
+    self.title = feed.title
+    self.etag  = feed.etag
+    self.url   = feed.url
   end
 
   def tweet_entries(entries)
@@ -60,6 +69,7 @@ class Blog < ActiveRecord::Base
   end
 
   SHORT_URL_LENGTH = 20 # should query as this may change.  See https://dev.twitter.com/docs/tco-link-wrapper/faq#Will_t.co-wrapped_links_always_be_the_same_length
+
   def tweet_entry(entry)
     tweet = "Boston Rubyist #{twitter_username} just blogged about TITLE_PLACEHOLDER #{entry.url}"
     max_title_length = 140 - (tweet.length - 'TITLE_PLACEHOLDER'.length - entry.url.length + SHORT_URL_LENGTH)
