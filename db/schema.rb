@@ -21,48 +21,48 @@ ActiveRecord::Schema.define(:version => 20120103153835) do
     t.string   "feed_url"
     t.string   "etag"
     t.string   "most_recent_post_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "presentation_presenters", :force => true do |t|
-    t.integer  "presentation_id"
-    t.integer  "presenter_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "presentation_id"
+    t.integer   "presenter_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   add_index "presentation_presenters", ["presentation_id", "presenter_id"], :name => "index_presentation_groups_on_presentation_id_and_presenter_id", :unique => true
 
   create_table "presentations", :force => true do |t|
-    t.date     "presented_at"
-    t.string   "video_id"
-    t.string   "title"
-    t.string   "slides_url"
-    t.string   "project_url"
-    t.string   "project_type"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "video_provider"
-    t.string   "cached_slug"
+    t.date      "presented_at"
+    t.string    "video_id"
+    t.string    "title"
+    t.string    "slides_url"
+    t.string    "project_url"
+    t.string    "project_type"
+    t.text      "description"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "video_provider"
+    t.string    "cached_slug"
   end
 
   create_table "presenters", :force => true do |t|
-    t.string   "name"
-    t.string   "url"
-    t.string   "cached_slug"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.string    "url"
+    t.string    "cached_slug"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "slugs", :force => true do |t|
-    t.string   "name"
-    t.integer  "sluggable_id"
-    t.integer  "sequence",                     :default => 1, :null => false
-    t.string   "sluggable_type", :limit => 40
-    t.string   "scope"
-    t.datetime "created_at"
+    t.string    "name"
+    t.integer   "sluggable_id"
+    t.integer   "sequence",                     :default => 1, :null => false
+    t.string    "sluggable_type", :limit => 40
+    t.string    "scope"
+    t.timestamp "created_at"
   end
 
   add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
