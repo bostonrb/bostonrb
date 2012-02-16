@@ -25,7 +25,7 @@ BostonRuby::Application.configure do
   # config.assets.js_compressor  = :uglifier
 
   # Specifies the header that your server uses for sending files
-  config.action_dispatch.x_sendfile_header = "X-Sendfile"
+  config.action_dispatch.x_sendfile_header = nil
 
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
