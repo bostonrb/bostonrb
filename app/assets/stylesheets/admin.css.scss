@@ -1,3 +1,5 @@
+@import "compass/typography/lists/horizontal-list";
+
 #new-presentation {
   a {
     background-color: #A41000;
@@ -17,3 +19,22 @@
   font-size: .8em;
 }
 
+.admin-blogs .blog {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    span {
+      font-weight: bold;
+    }
+  }
+
+  ul {
+    @include horizontal-list;
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+}

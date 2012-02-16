@@ -31,8 +31,8 @@ BostonRuby::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  BostonRuby::Admin[:username] = ENV["BOSTONRB_ADMIN_USERNAME"]
-  BostonRuby::Admin[:password] = ENV["BOSTONRB_ADMIN_PASSWORD"]
+  BostonRuby::Admin[:username] = 'admin'
+  BostonRuby::Admin[:password] = 'password'
 
   FakeTwitter.activate!
 end

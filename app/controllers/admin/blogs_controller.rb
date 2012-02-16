@@ -1,6 +1,4 @@
-class Admin::BlogsController < ApplicationController
-  http_basic_authenticate_with name: BostonRuby::Admin[:username], password: BostonRuby::Admin[:password]
-
+class Admin::BlogsController < AdminController
   def index
     @blogs = Blog.alphabetically.page(params[:page]).per(params[:per])
   end
