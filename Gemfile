@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails',                   '~> 3.2.0'
+gem 'rails',                   '~> 3.2.1'
 gem 'jquery-rails',            '~> 1.0.0'
 
 gem 'high_voltage',            '~> 0.9'
@@ -17,7 +17,7 @@ gem 'twitter'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails',    '~> 2.8.1'
-  gem 'ruby-debug19',   '~> 0.11.6', :require => 'ruby-debug'
+  gem 'pry'
   gem 'memcache-client'
 end
 
