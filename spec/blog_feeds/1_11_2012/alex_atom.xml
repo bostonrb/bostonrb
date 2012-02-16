@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title>My Blog</title>
+ <link href="http://alex.com/atom.xml" rel="self"/>
+ <link href="http://alex.com/"/>
+ <updated>2011-11-24T23:19:26-08:00</updated>
+ <id>http://alex.com/</id>
+ <author>
+   <name>Alex</name>
+ </author>
+ <entry>
+   <title>My Second Ruby Post</title>
+   <category>ruby</category>
+   <link href="http://alex.com/2011/second_ruby_post.html"/>
+   <updated>2012-01-01T00:00:00</updated>
+   <id>http://alex.com/2012/second_ruby_post.html</id>
+   <content type="html">content goes here</content>
+ </entry>
+ <entry>
+   <title>My First Mobile Post</title>
+   <category>mobile</category>
+   <link href="http://alex.com/2011/first_mobile_post.html"/>
+   <updated>2011-12-10T00:00:00</updated>
+   <id>http://alex.com/2011/first_mobile_post.html</id>
+   <content type="html">content goes here</content>
+ </entry>
+ <entry>
+   <title>My First Ruby Post</title>
+   <category>ruby</category>
+   <link href="http://alex.com/2011/first_ruby_post.html"/>
+   <updated>2011-12-07T00:00:00</updated>
+   <id>http://alex.com/2011/first_ruby_post.html</id>
+   <content type="html">content goes here</content>
+ </entry>
+ <entry>
+   <title>My First Post</title>
+   <category></category>
+   <link href="http://alex.com/2011/first_post.html"/>
+   <updated>2011-11-24T00:00:00</updated>
+   <id>http://alex.com/2011/first_post.html</id>
+   <content type="html">really interesting content goes here</content>
+ </entry>
+</feed>
