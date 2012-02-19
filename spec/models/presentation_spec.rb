@@ -87,10 +87,18 @@ describe Presentation do
 
   describe 'video' do
     context 'vimeo' do
-      subject { Presentation.new(:video_url => 'http://vimeo.com/123') }
-      its(:video_provider) { should == 'vimeo' }
-      its(:video_id) { should == '123' }
-      its(:embed_video) { should == %{<iframe src="http://player.vimeo.com/video/123" width="625" height="370" frameborder="0"></iframe>} }
+      context 'http' do
+        subject { Presentation.new(:video_url => 'http://vimeo.com/123') }
+        its(:video_provider) { should == 'vimeo' }
+        its(:video_id) { should == '123' }
+        its(:embed_video) { should == %{<iframe src="http://player.vimeo.com/video/123" width="625" height="370" frameborder="0"></iframe>} }
+      end
+      context 'https' do
+        subject { Presentation.new(:video_url => 'https://vimeo.com/123') }
+        its(:video_provider) { should == 'vimeo' }
+        its(:video_id) { should == '123' }
+        its(:embed_video) { should == %{<iframe src="http://player.vimeo.com/video/123" width="625" height="370" frameborder="0"></iframe>} }
+      end
     end
     context 'youtube' do
       subject { Presentation.new(:video_url => 'http://www.youtube.com/watch?v=123abc') }

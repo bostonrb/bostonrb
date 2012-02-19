@@ -112,7 +112,7 @@ class Presentation < ActiveRecord::Base
 
   # Vimeo methods
   def vimeo_match(url)
-    url.match(/http:\/\/(\w+\.)?vimeo.com\/(.+)/)[2]
+    url.match(/https?:\/\/(\w+\.)?vimeo.com\/(.+)/)[2]
   end
 
   def vimeo_url
