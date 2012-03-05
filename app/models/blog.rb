@@ -64,8 +64,22 @@ class Blog < ActiveRecord::Base
 
   def tweet_entries(entries)
     entries.each do |entry|
-      tweet_entry(entry) if entry.categories.include?('ruby')
+      tweet_entry(entry) if has_ruby_category? entry
     end
+  end
+
+  def has_ruby_category?(entry)
+    lowercase_categories(entry).include? 'ruby'
+  end
+
+  def lowercase_categories(entry)
+    categories = strip_nil_categories entry
+
+    categories.map { |category| category.downcase }
+  end
+
+  def strip_nil_categories(entry)
+    entry.categories.compact
   end
 
   SHORT_URL_LENGTH = 20 # should query as this may change.  See https://dev.twitter.com/docs/tco-link-wrapper/faq#Will_t.co-wrapped_links_always_be_the_same_length

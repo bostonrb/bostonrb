@@ -776,3 +776,78 @@
       NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c2hlMWU3a3B0ZmM0aTM3MjFtaXJhMzFpbW9fMjAxMjEwMDlUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
       Memorial Drive Cambridge, MA"}]}]}}'
     http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2012-04-10T00:00:00-05:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: !!null 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Mon, 05 Mar 2012 18:52:14 GMT
+      date:
+      - Mon, 05 Mar 2012 18:52:14 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Sun, 04 Mar 2012 17:56:34 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjAzMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2012-03-06T21:00:00.000-05:00","startTime":"2012-03-06T19:00:00.000-05:00"}]},{"title":{"$t":"Meeting
+      @ Microsoft NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c2hlMWU3a3B0ZmM0aTM3MjFtaXJhMzFpbW9fMjAxMjAzMTNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Memorial Drive Cambridge, MA"}],"gd$when":[{"endTime":"2012-03-13T21:00:00.000-04:00","startTime":"2012-03-13T18:45:00.000-04:00"}]},{"title":{"$t":"Hackfest
+      @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjAzMjFUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}],"gd$when":[{"endTime":"2012-03-21T00:00:00.000-04:00","startTime":"2012-03-20T20:00:00.000-04:00"}]},{"title":{"$t":"Hackfest
+      @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA0MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2012-04-03T21:00:00.000-04:00","startTime":"2012-04-03T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Microsoft NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c2hlMWU3a3B0ZmM0aTM3MjFtaXJhMzFpbW9fMjAxMjA0MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Memorial Drive Cambridge, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA0MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA1MDFUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Microsoft
+      NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c2hlMWU3a3B0ZmM0aTM3MjFtaXJhMzFpbW9fMjAxMjA1MDhUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Memorial Drive Cambridge, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA1MTZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA2MDVUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Microsoft
+      NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c2hlMWU3a3B0ZmM0aTM3MjFtaXJhMzFpbW9fMjAxMjA2MTJUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Memorial Drive Cambridge, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA2MjBUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA3MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Microsoft
+      NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c2hlMWU3a3B0ZmM0aTM3MjFtaXJhMzFpbW9fMjAxMjA3MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Memorial Drive Cambridge, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA3MThUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA4MDdUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Microsoft
+      NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c2hlMWU3a3B0ZmM0aTM3MjFtaXJhMzFpbW9fMjAxMjA4MTRUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Memorial Drive Cambridge, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA4MjJUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjA5MDRUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Microsoft
+      NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c2hlMWU3a3B0ZmM0aTM3MjFtaXJhMzFpbW9fMjAxMjA5MTFUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Memorial Drive Cambridge, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjA5MTlUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjEwMDJUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Microsoft
+      NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c2hlMWU3a3B0ZmM0aTM3MjFtaXJhMzFpbW9fMjAxMjEwMDlUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
+      Memorial Drive Cambridge, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjEwMTdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
+      Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjExMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]}]}}'
+    http_version: '1.1'
