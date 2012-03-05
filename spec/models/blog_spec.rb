@@ -60,17 +60,18 @@ describe Blog do
     describe 'when there are updates' do
       let(:long_title)       { 'This Title Goes On And On For Way Too Long. Why Can I Not Be More Concise? This Will Not Fit In A Tweet :(' }
       let(:short_title)      { 'Something Short and Sweet' }
-      let(:new_entry)        { stub(:published => 1.day.ago,  :url => 'http://some.blog.com/newest_post', :categories => ['ruby'], :title => long_title ) }
-      let(:irrelevant_entry) { stub(:published => 2.days.ago, :url => 'http://some.blog.com/php_post',    :categories => ['php' ], :title => 'PHP stuff') }
-      let(:newer_entry)      { stub(:published => 5.days.ago, :url => 'http://some.blog.com/new_post',    :categories => ['ruby'], :title => short_title) }
+      let(:new_entry)        { stub(:published => 1.day.ago,  :url => 'http://some.blog.com/newest_post', :categories => ['ruby'], :title => long_title) }
+      let(:irrelevant_entry) { stub(:published => 2.days.ago, :url => 'http://some.blog.com/php_post', :categories => ['php' ], :title => 'PHP stuff') }
+      let(:uppercase)        { stub(:published => 3.days.ago, :url => 'http://some.blog.com/Ruby_post', :categories => ['Ruby'], :title => 'Ruby') }
+      let(:newer_entry)      { stub(:published => 5.days.ago, :url => 'http://some.blog.com/new_post', :categories => ['ruby'], :title => short_title) }
       let(:old_entry)        { stub(:published => 1.month.ago) }
-      let(:new_entries)      { [newer_entry, new_entry, irrelevant_entry] }
+      let(:new_entries)      { [newer_entry, new_entry, irrelevant_entry, uppercase] }
       subject { brian_blog }
 
       before do
         Feedzirra::Parser::Atom.any_instance.stubs(:updated?).returns(true)
         Feedzirra::Parser::Atom.any_instance.stubs(:new_entries).returns(new_entries)
-        Feedzirra::Parser::Atom.any_instance.stubs(:entries).returns([newer_entry, irrelevant_entry, new_entry, old_entry])
+        Feedzirra::Parser::Atom.any_instance.stubs(:entries).returns([newer_entry, irrelevant_entry, new_entry, old_entry, uppercase])
         Feedzirra::Feed.expects(:update)
 
         brian_blog.update_from_feed
@@ -83,6 +84,7 @@ describe Blog do
 
         it { should have_received(:update).with('Boston Rubyist @brian just blogged about Something Short and Sweet http://some.blog.com/new_post') }
         it { should have_received(:update).with('Boston Rubyist @brian just blogged about This Title Goes On And On For Way Too Long. Why Can I Not Be More Concise? ... http://some.blog.com/newest_post') }
+        it { should have_received(:update).with('Boston Rubyist @brian just blogged about Ruby http://some.blog.com/Ruby_post') }
         it { should_not have_received(:update).with('Boston Rubyist @brian just blogged about PHP stuff http://some.blog.com/php_post') }
       end
     end
