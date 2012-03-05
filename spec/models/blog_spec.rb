@@ -64,7 +64,7 @@ describe Blog do
       let(:irrelevant_entry) { stub(:published => 2.days.ago, :url => 'http://some.blog.com/php_post',    :categories => ['php' ], :title => 'PHP stuff') }
       let(:newer_entry)      { stub(:published => 5.days.ago, :url => 'http://some.blog.com/new_post',    :categories => ['ruby'], :title => short_title) }
       let(:old_entry)        { stub(:published => 1.month.ago) }
-      let(:new_entries)      { [newer_entry, new_entry] }
+      let(:new_entries)      { [newer_entry, new_entry, irrelevant_entry] }
       subject { brian_blog }
 
       before do
