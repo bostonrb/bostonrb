@@ -64,7 +64,10 @@ class Blog < ActiveRecord::Base
 
   def tweet_entries(entries)
     entries.each do |entry|
-      tweet_entry(entry) if entry.categories.include?('ruby')
+      compacted_entries = entry.categories.compact
+      lowercase_entries = compacted_entries.map { |category| category.downcase }
+
+      tweet_entry(entry) if lowercase_entries.include?('ruby')
     end
   end
 
