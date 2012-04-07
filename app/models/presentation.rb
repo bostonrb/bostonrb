@@ -37,8 +37,7 @@ class Presentation < ActiveRecord::Base
       relation = relation.where(arel_table[:presented_at].lteq(month.end_of_month))
     end
 
-    relation.page(params[:page]).per(params[:per])
-
+    relation.page(params[:page]).per(params[:per] || 10)
   end
 
   def self.upcoming
