@@ -10,6 +10,7 @@ feature 'Hackfests', %{
   end
 
   scenario 'Viewing the hackfesets page' do
+    pending 'Hackfest link switched out for project night link'
     visit root_path
     click_link 'Hackfests'
     page.should have_content 'What is a Hackfest?'
