@@ -154,7 +154,7 @@ section.column {
       }
     }
 
-    > p {
+    > p, ol.join {
       @include border-radius(8px);
       background-color: #F5DCA0;
       padding: 10px;
