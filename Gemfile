@@ -41,7 +41,7 @@ group :test do
   gem 'capybara',           '~> 1.1.0'
   gem 'database_cleaner',   '~> 0.6.0'
   gem 'timecop',            '~> 0.3.5'
-  gem 'email_spec',         '~> 1.1'
+  gem 'capybara-email'
   gem 'valid_attribute',    '~> 1.2.0'
   gem 'launchy'
   gem 'simple-rss',         '~> 1.2.3'
