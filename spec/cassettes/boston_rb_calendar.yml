@@ -3,7 +3,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-09-08T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -48,7 +48,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-09-09T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -93,7 +93,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-10-23T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -162,7 +162,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-10-24T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -231,7 +231,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-10-25T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -300,7 +300,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-11-30T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -367,7 +367,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-12-01T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -434,7 +434,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-12-02T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -501,7 +501,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-12-04T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -568,7 +568,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-12-05T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -635,7 +635,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2011-12-06T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -703,7 +703,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2012-03-21T00:00:00-05:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -780,7 +780,7 @@
   request: !ruby/struct:VCR::Request
     method: :get
     uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2012-04-10T00:00:00-05:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
-    body: !!null 
+    body: 
     headers:
       user-agent:
       - BostonRB
@@ -849,5 +849,72 @@
       NERD","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c2hlMWU3a3B0ZmM0aTM3MjFtaXJhMzFpbW9fMjAxMjEwMDlUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"1
       Memorial Drive Cambridge, MA"}]},{"title":{"$t":"Hackfest @ GaggleAMP","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=NXBrMmVjb28wdnIxZ2lvMHEwYXRzdG04MWtfMjAxMjEwMTdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"14th
       Floor, 1 Broadway, Cambridge, MA"}]},{"title":{"$t":"Hackfest @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=cHNkbDRnamh2Ymhya29nNHUwNjNrYzFicTBfMjAxMjExMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]}]}}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2012-07-22T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Sun, 17 Jun 2012 15:24:14 GMT
+      date:
+      - Sun, 17 Jun 2012 15:24:14 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Wed, 13 Jun 2012 21:23:25 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Project
+      Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMjA3MDNUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}],"gd$when":[{"endTime":"2012-07-03T21:00:00.000-04:00","startTime":"2012-07-03T19:00:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMjA3MTBUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}],"gd$when":[{"endTime":"2012-07-10T21:00:00.000-04:00","startTime":"2012-07-10T18:45:00.000-04:00"}]},{"title":{"$t":"Project
+      Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMjA4MDdUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMjA4MTRUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMjA5MDRUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMjA5MTFUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMjEwMDJUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMjEwMDlUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMjExMDdUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMjExMTNUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMjEyMDVUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMjEyMTFUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMzAxMDJUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMzAxMDhUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMzAyMDZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMzAyMTJUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMzAzMDZUMDAwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMzAzMTJUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMzA0MDJUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMzA0MDlUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMzA1MDdUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMzA1MTRUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMzA2MDRUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 7th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=MnZjN3FiYjZyc3EybTcxZDFiZnR0ZThwZWNfMjAxMzA2MTFUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=c3FtaWJzYm10ZGloMDNqbG9xMHRkZzR0dW9fMjAxMzA3MDJUMjMwMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
       Winter Street, 7th floor, Boston MA "}]}]}}'
     http_version: '1.1'
