@@ -7,6 +7,7 @@ require 'valid_attribute'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join('spec/requests/step_helpers/**/*.rb')].each {|f| require f}
 
 VCR.config do |c|
   c.cassette_library_dir     = 'spec/cassettes'
@@ -31,5 +32,9 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+  # config.include Rails.application.routes.url_helpers, :type => :request
+
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
   config.extend VCR::RSpec::Macros
 end

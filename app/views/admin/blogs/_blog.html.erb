@@ -8,6 +8,6 @@
   <p><span>Feed URL:</span> <%= link_to blog.feed_url %></p>
   <ul class='links'>
       <li><%= link_to 'Edit', edit_admin_blog_path(blog) %></li>
-      <li><%= link_to 'Delete', admin_blog_path(blog), :confirm => 'Are you sure?', :method => :delete %></li>
+      <li><%= link_to 'Delete', admin_blog_path(blog), :data => { :confirm => 'Are you sure?' }, :method => :delete %></li>
   </ul>
 </section>

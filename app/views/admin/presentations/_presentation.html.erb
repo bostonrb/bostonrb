@@ -13,6 +13,6 @@
   <p><%= presentation.description %></p>
   <ul class='links'>
       <li><%= link_to 'Edit', edit_admin_presentation_path(presentation) %></li>
-      <li><%= link_to 'Delete', admin_presentation_path(presentation), :confirm => 'Are you sure?', :method => :delete %></li>
+      <li><%= link_to 'Delete', admin_presentation_path(presentation), :data => { :confirm => 'Are you sure?' }, :method => :delete %></li>
   </ul>
 </section>

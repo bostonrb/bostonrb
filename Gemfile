@@ -11,7 +11,7 @@ gem 'stamp',                   '~> 0.1.0'
 gem 'client_side_validations', '~> 3.1.0'
 gem 'feedzirra',               :git => 'git://github.com/pauldix/feedzirra.git' # waiting for > 0.1.1 release. See https://github.com/pauldix/feedzirra/issues/77
 gem 'twitter'
-gem 'compass-rails',           '1.0.0.rc.2'
+gem 'compass-rails'
 
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.

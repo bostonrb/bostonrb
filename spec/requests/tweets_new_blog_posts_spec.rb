@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
+require 'spec_helper'
 
 feature 'BostonRB Blogs', %{
   As a BostonRB member
