@@ -18,8 +18,8 @@ gem 'compass-rails',           '1.0.0.rc.2'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails',    '~> 2.8.1'
-  gem 'pry'
   gem 'memcache-client'
+  gem 'debugger'
 end
 
 group :assets do
