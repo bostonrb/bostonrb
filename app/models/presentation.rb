@@ -86,6 +86,7 @@ class Presentation < ActiveRecord::Base
     if url.present?
       self.video_provider = get_video_provider(url)
       self.video_id       = get_video_id(url)
+      self.video_offset   = get_video_offset(url)
     end
   end
 
@@ -105,8 +106,16 @@ class Presentation < ActiveRecord::Base
     VideoProviders.detect { |provider| url.match(provider) }
   end
 
+  def get_video_attributes(url)
+    Array.wrap(self.send("#{self.video_provider}_match", url))
+  end
+
   def get_video_id(url)
-    self.send("#{self.video_provider}_match", url)
+    get_video_attributes(url)[0]
+  end
+
+  def get_video_offset(url)
+    get_video_attributes(url)[1]
   end
 
   # Vimeo methods
@@ -124,7 +133,7 @@ class Presentation < ActiveRecord::Base
 
   # Youtube methods
   def youtube_match(url)
-    url.match(/http:\/\/www\.youtube\.com\/watch\/?\?v=([^&]+)/)[1]
+    url.match(/http:\/\/www\.youtube\.com\/watch\/?\?v=([^&]+)&t=([^&]+)/)[1..2]
   end
 
   def youtube_url
@@ -132,7 +141,16 @@ class Presentation < ActiveRecord::Base
   end
 
   def embed_youtube
-    %{<iframe width="#{VideoDimensions[:width]}" height="#{VideoDimensions[:height]}" src="http://www.youtube.com/embed/#{video_id}" frameborder="0" allowfullscreen></iframe>}
+    %{<iframe width="#{VideoDimensions[:width]}" height="#{VideoDimensions[:height]}" src="http://www.youtube.com/embed/#{video_id}?start=#{youtube_start_time}" frameborder="0" allowfullscreen></iframe>}
+  end
+
+  def youtube_start_time
+    if video_offset.present?
+      parsed_offset = video_offset.match(/(\d+)m(\d+)s/)
+      parsed_offset[1].to_i * 60 + parsed_offset[2].to_i
+    else
+      0
+    end
   end
 
   # Blip.tv methods
