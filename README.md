@@ -22,10 +22,10 @@ Setup
 
 If you want to make changes locally, follow these steps:
 
-Install Ruby 1.9.2 (if necessary). RVM is optional, but highly recommended
+Install Ruby 1.9.3 (if necessary). RVM is optional, but highly recommended
 
-    rvm install 1.9.2
-    rvm use 1.9.2 --default
+    rvm install 1.9.3
+    rvm use 1.9.3 --default
 
 Install bundler
 
