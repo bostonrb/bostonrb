@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
+require 'spec_helper'
 
 feature 'BostonRB Presentations', %{
   As a BostonRB member
@@ -64,10 +64,10 @@ feature 'BostonRB Presentations', %{
 
   def have_rss_item(feed, presentation)
     rss_item = feed.items.detect { |item| item.guid.to_i == presentation.id }
-    rss_item.title.should == presentation.title
-    rss_item.description.should == presentation.description
-    rss_item.pubDate.to_date.should == presentation.presented_at
-    rss_item.link.should == presentation_url(presentation)
+    rss_item.title.should eq presentation.title
+    rss_item.description.should eq presentation.description
+    rss_item.pubDate.to_date.should eq presentation.presented_at
+    rss_item.link.should eq presentation_url(presentation)
   end
 
   after(:each) do

@@ -11,3 +11,4 @@ all.css
 *.dat
 git_remote_branch/
 .sass-cache/
+bundler_stubs/*
