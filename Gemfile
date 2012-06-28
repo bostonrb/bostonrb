@@ -12,6 +12,7 @@ gem 'client_side_validations', '~> 3.1.0'
 gem 'feedzirra',               :git => 'git://github.com/pauldix/feedzirra.git' # waiting for > 0.1.1 release. See https://github.com/pauldix/feedzirra/issues/77
 gem 'twitter'
 gem 'compass-rails'
+gem 'copycopter_client', '~> 2.0.1'
 
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.
@@ -19,7 +20,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails',    '~> 2.8.1'
   gem 'memcache-client'
-  gem 'debugger'
+  gem 'pry'
 end
 
 group :assets do
