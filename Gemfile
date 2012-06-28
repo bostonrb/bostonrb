@@ -20,7 +20,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails',    '~> 2.8.1'
   gem 'memcache-client'
-  gem 'debugger'
+  gem 'pry'
 end
 
 group :assets do
