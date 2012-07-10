@@ -28,7 +28,7 @@
     <%= render :partial => 'shared/nav' %>
     <section id="container">
       <%= render :partial => 'shared/flashes' -%>
-      <h5>Be sure to follow <a href="http://twitter.com/bostonrb" target="_blanl">@bostonrb</a> for everything Ruby in Boston.</h5>
+      <h5><%= t('.call-to-action', default: "Be sure to follow <a href='http://twitter.com/bostonrb' target='_blank'>@bostonrb</a> for everything Ruby in Boston.") %></h5>
 
       <%= yield %>
     </section>
