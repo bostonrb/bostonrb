@@ -101,11 +101,20 @@ describe Presentation do
       end
     end
     context 'youtube' do
-      subject { Presentation.new(:video_url => 'http://www.youtube.com/watch?v=123abc&t=1m2s') }
-      its(:video_provider) { should == 'youtube' }
-      its(:video_id) { should == '123abc' }
-      its(:video_offset) { should == '1m2s' }
-      its(:embed_video) { should == %{<iframe width="625" height="370" src="http://www.youtube.com/embed/123abc?start=62" frameborder="0" allowfullscreen></iframe>} }
+      context 'with offset' do
+        subject { Presentation.new(:video_url => 'http://www.youtube.com/watch?v=123abc&t=1m2s') }
+        its(:video_provider) { should == 'youtube' }
+        its(:video_id) { should == '123abc' }
+        its(:video_offset) { should == '1m2s' }
+        its(:embed_video) { should == %{<iframe width="625" height="370" src="http://www.youtube.com/embed/123abc?start=62" frameborder="0" allowfullscreen></iframe>} }
+      end
+      context 'without offset' do
+        subject { Presentation.new(:video_url => 'http://www.youtube.com/watch?v=123abc') }
+        its(:video_provider) { should == 'youtube' }
+        its(:video_id) { should == '123abc' }
+        its(:video_offset) { should == nil }
+        its(:embed_video) { should == %{<iframe width="625" height="370" src="http://www.youtube.com/embed/123abc?start=0" frameborder="0" allowfullscreen></iframe>} }
+      end
     end
     context 'blip' do
       # Blip.tv url must be taken from the embed code
