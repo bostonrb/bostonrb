@@ -133,7 +133,7 @@ class Presentation < ActiveRecord::Base
 
   # Youtube methods
   def youtube_match(url)
-    url.match(/http:\/\/www\.youtube\.com\/watch\/?\?v=([^&]+)&?t?=?([^&]+)/)[1..2]
+    url.match(/http:\/\/www\.youtube\.com\/watch\/?\?v=([^&]+)&?t?=?([^&]+)?/)[1..2]
   end
 
   def youtube_url
