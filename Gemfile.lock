@@ -98,6 +98,7 @@ GEM
     faraday (0.8.4)
       multipart-post (~> 1.1)
     ffi (1.1.5)
+    fivemat (1.1.0)
     friendly_id (3.3.0.1)
       babosa (~> 0.3.0)
     fssm (0.2.9)
@@ -236,6 +237,7 @@ DEPENDENCIES
   debugger
   factory_girl_rails (~> 4.0)
   feedzirra!
+  fivemat
   friendly_id (~> 3.3.0.1)
   high_voltage (~> 0.9)
   jquery-rails (~> 2.1)

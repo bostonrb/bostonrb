@@ -48,4 +48,5 @@ group :test do
   gem 'valid_attribute',    '~> 1'
   gem 'launchy'
   gem 'simple-rss',         '~> 1.2.3'
+  gem 'fivemat'
 end
