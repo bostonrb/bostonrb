@@ -7,14 +7,14 @@ feature 'BostonRB Presentations', %{
 
   background do
     VCR.insert_cassette('boston_rb_calendar')
-    @presentation_1 = Factory(:presentation, :presented_at => "May 10, 2011")
-    @presentation_2 = Factory(:presentation, :presented_at => "May 10, 2011")
-    @presentation_3 = Factory(:presentation, :presented_at => "April 12, 2011")
+    @presentation_1 = create(:presentation, :presented_at => 'May 10, 2011')
+    @presentation_2 = create(:presentation, :presented_at => 'May 10, 2011')
+    @presentation_3 = create(:presentation, :presented_at => 'April 12, 2011')
     visit root_path
   end
 
   scenario 'Viewing past presentations' do
-    @upcoming_presentation = Factory(:upcoming_presentation)
+    @upcoming_presentation = create(:upcoming_presentation)
     click_link 'Presentations'
     have_presentation_content(@presentation_1, :should)
     have_presentation_content(@presentation_2, :should)
@@ -46,14 +46,14 @@ feature 'BostonRB Presentations', %{
   end
 
   scenario 'Viewing Presentation for a specific upcoming month' do
-    @presentation_4 = Factory(:presentation, :presented_at => 2.months.from_now)
+    @presentation_4 = create(:presentation, :presented_at => 2.months.from_now)
     visit "/presentations/month/#{@presentation_4.presented_at.strftime('%B-%Y')}"
     have_presentation_content(@presentation_4, :should)
     page.should_not have_content('Past presentations')
   end
 
   scenario 'Viewing Upcoming Presentations' do
-    @presentation_4 = Factory(:presentation, :presented_at => 2.weeks.from_now)
+    @presentation_4 = create(:presentation, :presented_at => 2.weeks.from_now)
     visit '/presentations/upcoming'
     current_path.should eq "/presentations/month/#{@presentation_4.presented_at.strftime('%B-%Y')}"
   end

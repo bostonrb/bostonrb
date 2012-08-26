@@ -21,10 +21,10 @@ describe Presentation do
   describe '.past_or_by_month' do
     before do
       Timecop.freeze(Date.parse('May 20, 2011'))
-      @past_presentation_1  = Factory(:presentation, :presented_at => 'April 8, 2011')
-      @past_presentation_2  = Factory(:presentation, :presented_at => 'May 9, 2011')
-      @current_presentation = Factory(:presentation, :presented_at => 'May 20, 2011')
-      @future_presentation  = Factory(:presentation, :presented_at => 'June 11, 2011')
+      @past_presentation_1  = create(:presentation, :presented_at => 'April 8, 2011')
+      @past_presentation_2  = create(:presentation, :presented_at => 'May 9, 2011')
+      @current_presentation = create(:presentation, :presented_at => 'May 20, 2011')
+      @future_presentation  = create(:presentation, :presented_at => 'June 11, 2011')
     end
 
     after { Timecop.return }
@@ -49,10 +49,10 @@ describe Presentation do
   describe '.upcoming' do
     before do
       Timecop.freeze(Date.parse('February 10, 2011'))
-      @presentation_1 = Factory(:presentation, :presented_at => 'January 8, 2011')
-      @presentation_2 = Factory(:presentation, :presented_at => 'February 10, 2011')
-      @presentation_3 = Factory(:presentation, :presented_at => 'March 5, 2011')
-      @presentation_4 = Factory(:presentation, :presented_at => 'March 11, 2011')
+      @presentation_1 = create(:presentation, :presented_at => 'January 8, 2011')
+      @presentation_2 = create(:presentation, :presented_at => 'February 10, 2011')
+      @presentation_3 = create(:presentation, :presented_at => 'March 5, 2011')
+      @presentation_4 = create(:presentation, :presented_at => 'March 11, 2011')
     end
 
     after { Timecop.return }
@@ -66,8 +66,8 @@ describe Presentation do
     before do
       @date_1 = Date.parse("May 10, 2011")
       @date_2 = Date.parse("April 12, 2011")
-      @presentation_1 = Factory(:presentation, :presented_at => @date_1)
-      @presentation_2 = Factory(:presentation, :presented_at => @date_2)
+      @presentation_1 = create(:presentation, :presented_at => @date_1)
+      @presentation_2 = create(:presentation, :presented_at => @date_2)
     end
 
     it 'returns an ordered grouping' do
@@ -129,8 +129,8 @@ describe Presentation do
   describe '#presenter_name=' do
     context 'existing presenter' do
       before do
-        @presenter_1 = Factory(:presenter)
-        @presenter_2 = Factory(:presenter)
+        @presenter_1 = create(:presenter)
+        @presenter_2 = create(:presenter)
       end
 
       it 'assigns the presenter' do
@@ -163,7 +163,7 @@ describe Presentation do
   end
 
   describe 'assigning a presenter' do
-    before { @presenter = Factory(:presenter) }
+    before { @presenter = create(:presenter) }
     it 'will assign a single presenter to the presenters' do
       presentation = Presentation.new(:presenter => @presenter)
       presentation.presenters.should == [@presenter]
@@ -196,12 +196,12 @@ describe Presentation do
     end
     context 'with an upcoming presnation more than a month out' do
       it 'returns nil' do
-        Factory(:presentation, :presented_at => 2.months.from_now)
+        create(:presentation, :presented_at => 2.months.from_now)
         Presentation.next_upcoming_month.should be_nil
       end
     end
     context 'with an upcoming presentation within in the next month' do
-      let(:presentation) { Factory(:presentation, :presented_at => 2.weeks.from_now) }
+      let(:presentation) { create(:presentation, :presented_at => 2.weeks.from_now) }
       before { presentation }
       it 'returns the date' do
         Presentation.next_upcoming_month.should eq presentation.presented_at.strftime('%B-%Y')

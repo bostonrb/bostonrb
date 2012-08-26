@@ -48,10 +48,10 @@ feature 'LeaderBoard' do
 end
 
 def setup_presenters
-  @presenter_1 = Factory(:presenter)
-  @presenter_2 = Factory(:presenter)
-  @presentation_1 = Factory(:presentation, :presented_at => "May 10, 2011", :presenter => @presenter_1)
-  @presentation_2 = Factory(:presentation, :presented_at => "May 10, 2011", :presenter => @presenter_2)
-  @presentation_3 = Factory(:presentation, :presented_at => "April 12, 2011", :presenter => @presenter_1)
+  @presenter_1 = create(:presenter)
+  @presenter_2 = create(:presenter)
+  @presentation_1 = create(:presentation, :presented_at => 'May 10, 2011', :presenter => @presenter_1)
+  @presentation_2 = create(:presentation, :presented_at => 'May 10, 2011', :presenter => @presenter_2)
+  @presentation_3 = create(:presentation, :presented_at => 'April 12, 2011', :presenter => @presenter_1)
 end
 

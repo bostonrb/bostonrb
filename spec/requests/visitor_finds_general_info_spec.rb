@@ -18,7 +18,7 @@ feature 'Visitor finds general info', %{
   end
 
   scenario 'Visitor find general info with upcoming presentations' do
-    Factory(:upcoming_presentation)
+    create(:upcoming_presentation)
     visit root_path
     page.should have_content 'new Rubyists are always welcome'
     page.should have_content 'Upcoming Presentations'

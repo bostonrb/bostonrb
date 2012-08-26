@@ -6,17 +6,17 @@ describe Presenter do
 
   describe '.group_by_score' do
     before do
-      @presenter_1 = Factory(:presenter, :name => 'George Washington')
-      @presenter_2 = Factory(:presenter)
-      @presenter_3 = Factory(:presenter, :name => 'Abraham Lincoln')
-      @presenter_4 = Factory(:presenter)
-      @presentation_1 = Factory(:presentation, :presenter => @presenter_1)
-      @presentation_2 = Factory(:presentation, :presenter => @presenter_2)
-      @presentation_3 = Factory(:presentation, :presenter => @presenter_1)
-      @presentation_4 = Factory(:presentation, :presenter => @presenter_3)
-      @presentation_5 = Factory(:presentation, :presenter => @presenter_3)
-      @presentation_6 = Factory(:presentation, :presenter => @presenter_3, :presented_at => 1.day.from_now)
-      @presentation_7 = Factory(:presentation, :presenter => @presenter_4, :presented_at => 1.day.from_now)
+      @presenter_1 = create(:presenter, :name => 'George Washington')
+      @presenter_2 = create(:presenter)
+      @presenter_3 = create(:presenter, :name => 'Abraham Lincoln')
+      @presenter_4 = create(:presenter)
+      @presentation_1 = create(:presentation, :presenter => @presenter_1)
+      @presentation_2 = create(:presentation, :presenter => @presenter_2)
+      @presentation_3 = create(:presentation, :presenter => @presenter_1)
+      @presentation_4 = create(:presentation, :presenter => @presenter_3)
+      @presentation_5 = create(:presentation, :presenter => @presenter_3)
+      @presentation_6 = create(:presentation, :presenter => @presenter_3, :presented_at => 1.day.from_now)
+      @presentation_7 = create(:presentation, :presenter => @presenter_4, :presented_at => 1.day.from_now)
     end
 
     it 'groups the presenters by the number of presentations given and sorts by name.' do

@@ -7,9 +7,9 @@ feature 'BostonRB Blogs', %{
 
   include Blog::TestHelpers
   let(:blog_feed_directory) { "#{Rails.root}/tmp/blog_feeds" }
-  let(:alex_blog ) { Factory(:blog, :author => 'Alex',  :twitter_username => '@alex',  :feed_url => "file://#{blog_feed_directory}/alex_atom.xml"          ) }
-  let(:pat_blog  ) { Factory(:blog, :author => 'Pat',   :twitter_username => '@pat',   :feed_url => "file://#{blog_feed_directory}/pat_feedburner_atom.xml") }
-  let(:brian_blog) { Factory(:blog, :author => 'Brian', :twitter_username => '@brian', :feed_url => "file://#{blog_feed_directory}/brian_rss.xml"          ) }
+  let(:alex_blog ) { create(:blog, :author => 'Alex',  :twitter_username => '@alex',  :feed_url => "file://#{blog_feed_directory}/alex_atom.xml"          ) }
+  let(:pat_blog  ) { create(:blog, :author => 'Pat',   :twitter_username => '@pat',   :feed_url => "file://#{blog_feed_directory}/pat_feedburner_atom.xml") }
+  let(:brian_blog) { create(:blog, :author => 'Brian', :twitter_username => '@brian', :feed_url => "file://#{blog_feed_directory}/brian_rss.xml"          ) }
 
   background do
     FakeTwitter.activate!

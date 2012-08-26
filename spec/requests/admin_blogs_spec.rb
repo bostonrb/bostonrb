@@ -8,8 +8,8 @@ feature 'BostonRB Admin Interface', %{
   include Blog::TestHelpers
 
   let(:blog_feed_directory) { "#{Rails.root}/tmp/blog_feeds" }
-  let(:blog_1) { Factory(:blog, :author => 'Alex', :twitter_username => '@alex', :feed_url => "file://#{blog_feed_directory}/alex_atom.xml") }
-  let(:blog_2) { Factory.build(:blog, :feed_url => "file://#{blog_feed_directory}/pat_feedburner_atom.xml")                                    }
+  let(:blog_1) { create(:blog, :author => 'Alex', :twitter_username => '@alex', :feed_url => "file://#{blog_feed_directory}/alex_atom.xml") }
+  let(:blog_2) { build(:blog, :feed_url => "file://#{blog_feed_directory}/pat_feedburner_atom.xml")                                    }
 
   background do
     setup_blog_feeds('12_01_2011')

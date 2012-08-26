@@ -6,8 +6,8 @@ feature 'BostonRB Admin Interface', %{
 } do
 
   background do
-    @presentation_1 = Factory(:presentation, :presented_at => 'May 10, 2011')
-    @presentation_2 = Factory.build(:presentation, :presented_at => 'April 12, 2011', :presenter_names => 'Test Presenter')
+    @presentation_1 = create(:presentation, :presented_at => 'May 10, 2011')
+    @presentation_2 = build(:presentation, :presented_at => 'April 12, 2011', :presenter_names => 'Test Presenter')
     visit root_path
   end
 
