@@ -22,7 +22,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails',    '~> 2.0'
   gem 'memcache-client'
-  gem 'debugger'
 end
 
 group :assets do
