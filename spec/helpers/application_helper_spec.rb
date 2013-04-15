@@ -24,4 +24,15 @@ describe ApplicationHelper do
       html.should == "<span>foo</span>"
     end
   end
+
+  describe '#page_title' do
+    it 'returns the default page title if one is not provided by the view' do
+      helper.page_title.should == 'Ruby and Ruby on Rails Meetings, Project Nights, and Community'
+    end
+
+    it 'returns the page title content provided' do
+      helper.content_for(:page_title, 'Testing a custom page title')
+      helper.page_title.should == 'Testing a custom page title'
+    end
+  end
 end

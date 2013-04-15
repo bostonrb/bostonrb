@@ -18,4 +18,12 @@ module ApplicationHelper
         content_tag(:span, name)
      end
   end
+
+  def page_title
+    if content_for?(:page_title)
+      content_for(:page_title)
+    else
+      'Ruby and Ruby on Rails Meetings, Project Nights, and Community'
+    end
+  end
 end
