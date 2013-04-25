@@ -8,7 +8,7 @@
 
 require 'factory_girl'
 
-Factory.find_definitions
-Factory(:upcoming_presentation, :presented_at => 10.days.from_now)
-Factory(:upcoming_presentation, :presented_at => 10.days.from_now)
-Factory(:upcoming_presentation, :presented_at => 15.days.from_now)
+FactoryGirl.find_definitions
+FactoryGirl.create(:upcoming_presentation, :presented_at => 10.days.from_now)
+FactoryGirl.create(:upcoming_presentation, :presented_at => 10.days.from_now)
+FactoryGirl.create(:upcoming_presentation, :presented_at => 15.days.from_now)

@@ -1,3 +1,5 @@
+<% content_for :page_title, @presentations.first.title %>
+
 <hgroup class='title'>
   <h2>what</h2>
   <h3>Past presentations ~ <%= link_to 'RSS', presentations_path(:format => :rss) -%></h3>
