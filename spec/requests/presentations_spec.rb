@@ -26,6 +26,7 @@ feature 'BostonRB Presentations', %{
     click_link 'Presentations'
     click_link @presentation_1.title
     have_presentation_content(@presentation_1, :should)
+    page.should have_css('title', :text => "The Boston Ruby Group - #{@presentation_1.title}")
   end
 
   scenario 'Subscribing to RSS' do
