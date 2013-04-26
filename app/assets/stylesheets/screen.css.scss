@@ -104,6 +104,10 @@ section.column {
     float: left;
     width: 280px;
   }
+  &.thick {
+    float: left;
+    width: 560px;
+  }
   > article {
     margin-bottom: 20px;
     > header {

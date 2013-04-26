@@ -11,6 +11,7 @@ BostonRuby::Application.routes.draw do
   resources :presentations, :only => [:index, :show]
   get '/presenters/leaders' => 'leader_board#index'
   resources :presenters, :only => [:show]
+  get '/project_night' => 'high_voltage/pages#show', :id => 'project_night', :as => 'project_night'
 
   namespace 'admin' do
     resources 'presentations' do
