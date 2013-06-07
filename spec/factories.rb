@@ -9,6 +9,11 @@ FactoryGirl.define do
     presenter       { create(:presenter) }
   end
 
+  factory :event do
+    project_night_url 'http://www.project.com'
+    meeting_url 'http://www.meeting.com'
+  end
+
   factory :upcoming_presentation, :class => 'Presentation' do
     title          "New Upcoming Presentation"
     presented_at   { Date.today + 20.days }
