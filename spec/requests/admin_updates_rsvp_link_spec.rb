@@ -50,21 +50,28 @@ feature 'Admin updates RSVP link', %{
 } do
 
   background do
-    @event = create(:event)
+    @meetup = create(:meetup)
     visit root_path
+    login
   end
 
   scenario 'Logging in' do
-    login
-    visit admin_events_path
     page.driver.response.status.should == 200
   end
 
-  scenario 'View existing url' do
-    login
-    visit admin_events_path
-    have_event_content(@event, :should)
+  scenario 'View existing urls' do
+    visit admin_meetups_path
+    find_field('meetup[meeting_url]').value.should eq @meetup.meeting_url
+    find_field('meetup[project_night_url]').value.should eq @meetup.project_night_url
   end
 
+  scenario 'Edit the existing meeting url' do
+    expected_url = "http://www.expected.com"
+    visit admin_meetups_path
+    fill_in('meetup[meeting_url]', :with => expected_url)
+    click_button("Save")
+    find_field('meetup[meeting_url]').value.should eq expected_url
+    expect(Meetup.first.meeting_url).to eql(expected_url)
+  end
 
 end
