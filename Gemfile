@@ -4,7 +4,6 @@ ruby '1.9.3'
 gem 'rails',                   '~> 3.2.12'
 gem 'jquery-rails',            '~> 2.1'
 
-gem 'high_voltage',            '~> 0.9'
 gem 'kaminari',                '~> 0.13.0'
 gem 'simple_form',             '~> 2.0'
 gem 'friendly_id',             '~> 3.3.0.1'
