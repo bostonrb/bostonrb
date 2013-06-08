@@ -1390,3 +1390,71 @@
       Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxNDA2MTBUMjIzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
       Congress St Boston MA"}]}]}}'
     http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.google.com:80/calendar/feeds/admin@bostonrb.org/public/composite?alt=json&ctz=America/New_York&fields=entry(title,link%5B@rel='alternate'%5D,gd:where,gd:when%5Bxs:dateTime(@startTime)%3C=xs:dateTime('2013-07-13T00:00:00-04:00')%5D)&futureevents=true&orderby=starttime&singleevents=true&sortorder=a
+    body: 
+    headers:
+      user-agent:
+      - BostonRB
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      access-control-allow-origin:
+      - ! '*'
+      expires:
+      - Sat, 08 Jun 2013 14:30:24 GMT
+      date:
+      - Sat, 08 Jun 2013 14:30:24 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      vary:
+      - Accept, X-GData-Authorization, GData-Version
+      gdata-version:
+      - '1.0'
+      last-modified:
+      - Sat, 08 Jun 2013 11:46:36 GMT
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body: ! '{"version":"1.0","encoding":"UTF-8","feed":{"xmlns":"http://www.w3.org/2005/Atom","xmlns$gd":"http://schemas.google.com/g/2005","entry":[{"title":{"$t":"Meeting
+      @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxMzA2MTFUMjIzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}],"gd$when":[{"endTime":"2013-06-11T21:30:00.000-04:00","startTime":"2013-06-11T18:30:00.000-04:00"}]},{"title":{"$t":"Project
+      Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxMzA3MDJUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}],"gd$when":[{"endTime":"2013-07-02T22:00:00.000-04:00","startTime":"2013-07-02T18:45:00.000-04:00"}]},{"title":{"$t":"Meeting
+      @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxMzA3MDlUMjIzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}],"gd$when":[{"endTime":"2013-07-09T21:30:00.000-04:00","startTime":"2013-07-09T18:30:00.000-04:00"}]},{"title":{"$t":"Project
+      Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxMzA4MDZUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxMzA4MTNUMjIzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxMzA5MDNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxMzA5MTBUMjIzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxMzEwMDFUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxMzEwMDhUMjIzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxMzExMDVUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxMzExMTJUMjMzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxMzEyMDNUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxMzEyMTBUMjMzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxNDAxMDdUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxNDAxMTRUMjMzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxNDAyMDRUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxNDAyMTFUMjMzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxNDAzMDRUMjM0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxNDAzMTFUMjIzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxNDA0MDFUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxNDA0MDhUMjIzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxNDA1MDZUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxNDA1MTNUMjIzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]},{"title":{"$t":"Project Night @ thoughtbot","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=ODJnZ2lsZDBqbjRoaG5la2wxYW8xdmYwYm9fMjAxNDA2MDNUMjI0NTAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"41
+      Winter Street, 8th floor, Boston MA "}]},{"title":{"$t":"Meeting @ Brightcove","type":"text"},"link":[{"rel":"alternate","type":"text/html","href":"http://www.google.com/calendar/event?eid=dTlyYnNmZGpyaDJmMmdrOG42bG9lazVwc3NfMjAxNDA2MTBUMjIzMDAwWiBhZG1pbkBib3N0b25yYi5vcmc","title":"alternate"}],"gd$where":[{"valueString":"290
+      Congress St Boston MA"}]}]}}'
+    http_version: '1.1'

@@ -33,6 +33,18 @@ feature 'Visitor finds general info', %{
     page.should have_link "next-event"
   end
 
+  scenario "Visitor sees RSVP link to the monthly meeting" do
+    meetup = create(:meetup)
+    visit root_path
+    page.should have_link('Sign up required', href: meetup.meeting_url)
+  end
+
+  scenario "Visitor sees RSVP link to project night" do
+    meetup = create(:meetup)
+    visit project_night_path
+    page.should have_link('Sign up required', href: meetup.project_night_url)
+  end
+
   after(:all) do
     VCR.eject_cassette
   end
