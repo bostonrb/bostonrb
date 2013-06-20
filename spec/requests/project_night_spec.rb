@@ -10,6 +10,8 @@ feature 'Boston RB Project', %{
   end
 
   background do
+    Meetup.create(meeting_url: 'http://www.mike.com',
+                  project_night_url: 'http://www.greg.com')
     visit root_path
     click_link 'Project Night'
   end

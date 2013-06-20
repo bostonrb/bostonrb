@@ -7,7 +7,6 @@ class Admin::MeetupsController < AdminController
   def create
     @meetup = Meetup.new(params[:meetup])
     @submit_url = admin_meetups_path(@meetup)
-    @method = :post
 
     respond_to do |format|
       if @meetup.save
@@ -21,7 +20,6 @@ class Admin::MeetupsController < AdminController
   def update
     @meetup = Meetup.first
     @submit_url = admin_meetup_path(@meetup)
-    @method = :put
 
     respond_to do |format|
       if @meetup.update_attributes(params[:meetup])
