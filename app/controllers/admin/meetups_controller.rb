@@ -1,11 +1,7 @@
 class Admin::MeetupsController < AdminController
 
   def index
-    if Meetup.count == 0
-      @meetup = Meetup.new
-    else
-      @meetup = Meetup.first
-    end
+    @meetup = Meetup.first || Meetup.new
   end
 
   def create
