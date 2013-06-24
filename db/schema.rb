@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607213939) do
+ActiveRecord::Schema.define(:version => 20130624232808) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -25,11 +25,10 @@ ActiveRecord::Schema.define(:version => 20130607213939) do
     t.datetime "updated_at",           :null => false
   end
 
-  create_table "meetups", :force => true do |t|
-    t.string   "project_night_url", :null => false
-    t.string   "meeting_url",       :null => false
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+  create_table "monthly_meetings", :force => true do |t|
+    t.string   "url",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "presentation_presenters", :force => true do |t|
@@ -62,6 +61,12 @@ ActiveRecord::Schema.define(:version => 20130607213939) do
     t.string   "cached_slug"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "project_nights", :force => true do |t|
+    t.string   "url",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "slugs", :force => true do |t|
