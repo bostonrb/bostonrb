@@ -1,14 +1,14 @@
 class MainPagesController < ApplicationController
 
   def home
-    @meetup = Meetup.last
+    @meetup = MonthlyMeeting.last
   end
 
   def calendar
   end
 
   def project_night
-    @meetup = Meetup.last
+    @meetup = ProjectNight.last
   end
 
 end
