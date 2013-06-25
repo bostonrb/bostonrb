@@ -8,7 +8,7 @@ class MainPagesController < ApplicationController
   end
 
   def project_night
-    @meetup = ProjectNight.last
+    @project_night = ProjectNight.last
   end
 
 end

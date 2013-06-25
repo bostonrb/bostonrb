@@ -3,8 +3,6 @@ BostonRuby::Application.routes.draw do
     match "/#{dead_route}" => redirect('/')
   end
 
-  # root :to => 'high_voltage/pages#show', :id => 'home'
-  # get '/calendar' => 'high_voltage/pages#show', :id => 'calendar', :as => 'calendar'
   root :to => 'main_pages#home'
   get '/calendar' => 'main_pages#calendar'
   get '/project_night' => 'main_pages#project_night'
@@ -14,7 +12,6 @@ BostonRuby::Application.routes.draw do
   resources :presentations, :only => [:index, :show]
   get '/presenters/leaders' => 'leader_board#index'
   resources :presenters, :only => [:show]
-  # get '/project_night' => 'high_voltage/pages#show', :id => 'project_night', :as => 'project_night'
 
   namespace 'admin' do
     resources 'presentations' do
@@ -23,6 +20,7 @@ BostonRuby::Application.routes.draw do
       end
     end
     resources 'blogs'
-    resources 'monthly_meetings'
+    resources 'monthly_meetings', only: [:index, :create, :update]
+    resources 'project_nights', only: [:index, :create, :update]
   end
 end

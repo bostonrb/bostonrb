@@ -1,0 +1,14 @@
+<%= form_for [:admin, @project_night], :validate => true do |f| %>
+
+  <% if @project_night.errors.any? %>
+    <% @project_night.errors.full_messages.each do |msg| %>
+      <li class="form-errors"><%= msg %><li>
+    <% end %>
+  <% end %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= f.submit 'Save' %>
+
+ <%- end -%>
