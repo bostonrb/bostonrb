@@ -9,7 +9,7 @@ feature 'Admin updates RSVP link', %{
   background do
     visit root_path
     login
-    @meetup = create(:meetup)
+    @monthly_meeting = create(:monthly_meeting)
   end
 
   scenario 'Logging in' do
@@ -17,47 +17,45 @@ feature 'Admin updates RSVP link', %{
   end
 
   scenario 'View existing urls' do
-    visit admin_meetups_path
-    find_field('meetup[meeting_url]').value.should eq @meetup.meeting_url
-    find_field('meetup[project_night_url]').value.should eq @meetup.project_night_url
+    visit admin_monthly_meetings_path
+    find_field('monthly_meeting[url]').value.should eq @monthly_meeting.url
   end
 
   scenario 'Edit the existing meeting url' do
-    Meetup.delete_all
-    meetup = create(:meetup)
+    MonthlyMeeting.delete_all
+    monthly_meeting = create(:monthly_meeting)
     expected_url = "http://www.expected.com"
-    visit admin_meetups_path
-    fill_in 'meetup[meeting_url]', :with => expected_url
+    visit admin_monthly_meetings_path
+    fill_in 'monthly_meeting[url]', :with => expected_url
     click_button "Save"
-    find_field('meetup[meeting_url]').value.should eq expected_url
-    expect(meetup.reload.meeting_url).to eql(expected_url)
+    find_field('monthly_meeting[url]').value.should eq expected_url
+    expect(monthly_meeting.reload.url).to eql(expected_url)
     visit root_path
     expect(page).to have_link('Sign up required', href: 'http://www.expected.com')
   end
 
   scenario 'Invalid edit to the existing meeting url' do
-    expected_url = Meetup.first.meeting_url
-    visit admin_meetups_path
-    fill_in 'meetup[meeting_url]', :with => "A Website"
+
+    expected_url = MonthlyMeeting.first.url
+    visit admin_monthly_meetings_path
+    fill_in 'monthly_meeting[url]', :with => "A Website"
     click_button("Save")
-    expect(Meetup.first.meeting_url).to eql(expected_url)
+    expect(MonthlyMeeting.first.url).to eql(expected_url)
     expect(page).to have_css('.form-errors', :text => 'invalid URL')
   end
 
-  scenario 'Visiting edit page without an existing meetup' do
-    Meetup.delete_all
-    visit admin_meetups_path
-    find_field('meetup[meeting_url]').value.should eql nil
-    find_field('meetup[project_night_url]').value.should eql nil
+  scenario 'Visiting edit page without an existing monthly_meeting' do
+    MonthlyMeeting.delete_all
+    visit admin_monthly_meetings_path
+    find_field('monthly_meeting[url]').value.should eql nil
   end
 
-  scenario 'Creating a meetup' do
-    Meetup.delete_all
-    visit admin_meetups_path
-    fill_in 'meetup[meeting_url]', with: 'http://www.internet.com'
-    fill_in 'meetup[project_night_url]', with: 'http://www.website.com'
+  scenario 'Creating a monthly meeting' do
+    MonthlyMeeting.delete_all
+    visit admin_monthly_meetings_path
+    fill_in 'monthly_meeting[url]', with: 'http://www.internet.com'
     click_button 'Save'
-    expect(Meetup.count).to eql(1)
+    expect(MonthlyMeeting.count).to eql(1)
   end
 
 end

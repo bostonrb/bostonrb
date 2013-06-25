@@ -23,6 +23,6 @@ BostonRuby::Application.routes.draw do
       end
     end
     resources 'blogs'
-    resources 'meetups'
+    resources 'monthly_meetings'
   end
 end

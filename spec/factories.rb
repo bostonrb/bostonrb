@@ -9,9 +9,12 @@ FactoryGirl.define do
     presenter       { create(:presenter) }
   end
 
-  factory :meetup do
-    project_night_url 'http://www.project.com'
-    meeting_url 'http://www.meeting.com'
+  factory :monthly_meeting do
+    url 'http://www.meeting.com'
+  end
+
+  factory :project_night do
+    url 'http://www.project.com'
   end
 
   factory :upcoming_presentation, :class => 'Presentation' do

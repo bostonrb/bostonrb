@@ -1,0 +1,14 @@
+<%= form_for [:admin, @monthly_meeting], :validate => true do |f| %>
+
+  <% if @monthly_meeting.errors.any? %>
+    <% @monthly_meeting.errors.full_messages.each do |msg| %>
+      <li class="form-errors"><%= msg %><li>
+    <% end %>
+  <% end %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= f.submit 'Save' %>
+
+ <%- end -%>

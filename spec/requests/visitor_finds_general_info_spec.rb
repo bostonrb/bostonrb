@@ -34,15 +34,15 @@ feature 'Visitor finds general info', %{
   end
 
   scenario "Visitor sees RSVP link to the monthly meeting" do
-    meetup = create(:meetup)
+    meetup = create(:monthly_meeting)
     visit root_path
-    page.should have_link('Sign up required', href: meetup.meeting_url)
+    page.should have_link('Sign up required', href: meetup.url)
   end
 
   scenario "Visitor sees RSVP link to project night" do
-    meetup = create(:meetup)
+    meetup = create(:project_night)
     visit project_night_path
-    page.should have_link('Sign up required', href: meetup.project_night_url)
+    page.should have_link('Sign up required', href: meetup.url)
   end
 
   after(:all) do
