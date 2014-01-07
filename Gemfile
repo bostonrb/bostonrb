@@ -19,7 +19,7 @@ gem 'copycopter_client', '~> 2.0.1'
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.
 group :development, :test do
-  gem 'sqlite3'
+  gem 'pg',          '~> 0'
   gem 'rspec-rails',    '~> 2.0'
   gem 'memcache-client'
 end
