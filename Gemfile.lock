@@ -56,6 +56,7 @@ GEM
       mail
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
+    choice (0.1.6)
     chunky_png (1.2.7)
     client_side_validations (3.2.1)
     client_side_validations-simple_form (2.0.1)
@@ -144,6 +145,11 @@ GEM
       activesupport (= 3.2.12)
       bundler (~> 1.0)
       railties (= 3.2.12)
+    rails-erd (1.1.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      choice (~> 0.1.6)
+      ruby-graphviz (~> 1.0.4)
     railties (3.2.12)
       actionpack (= 3.2.12)
       activesupport (= 3.2.12)
@@ -168,6 +174,7 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
+    ruby-graphviz (1.0.9)
     rubyzip (0.9.9)
     sass (3.2.5)
     sass-rails (3.2.5)
@@ -240,6 +247,7 @@ DEPENDENCIES
   memcache-client
   pg (~> 0)
   rails (~> 3.2.12)
+  rails-erd
   redis-store (~> 1.0.0.1)
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.0)
