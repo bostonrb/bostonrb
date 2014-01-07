@@ -16,6 +16,8 @@ gem 'twitter'
 gem 'compass-rails'
 gem 'copycopter_client', '~> 2.0.1'
 
+gem 'omniauth-github'
+
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.
 group :development, :test do
