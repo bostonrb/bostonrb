@@ -24,6 +24,8 @@ group :development, :test do
   gem 'pg',          '~> 0'
   gem 'rspec-rails',    '~> 2.0'
   gem 'memcache-client'
+  gem 'dotenv-rails'
+
 end
 
 group :assets do
