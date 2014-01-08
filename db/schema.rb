@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616152925) do
+ActiveRecord::Schema.define(:version => 20140108184419) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -68,5 +68,15 @@ ActiveRecord::Schema.define(:version => 20120616152925) do
 
   add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "github_uid",   :null => false
+    t.string   "name",         :null => false
+    t.string   "display_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "users", ["github_uid"], :name => "index_users_on_github_uid", :unique => true
 
 end
