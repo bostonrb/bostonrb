@@ -4,7 +4,7 @@
 # event itself.
 #
 module BostonRbCalendar
-  class Event
+  class CalendarEvent
     attr_reader :title, :start_time, :end_time, :location, :url
 
     def initialize(gcal_event)
