@@ -11,7 +11,13 @@
     <li><a href="http://twitter.com/bostonrb" title="Tweets from bostonrb">Twitter</a></li>
     <li><a href="http://github.com/bostonrb" title="Shared code from bostonrb">Github</a></li>
     <li><a href="https://github.com/bostonrb/bostonrb/wiki/Work" title="Opportunities for Boston Rubyists">Jobs</a></li>
-    <li><%= link_to 'Sign In!', '/auth/github' %></li>
+    <li>
+    <% if signed_in? %>
+        <%= link_to 'Sign Out', '/logout' %>
+    <% else %>
+        <%= link_to 'Sign In!', '/auth/github' %>
+    <% end %>
+    </li>
   </ul>
 </nav>
 
