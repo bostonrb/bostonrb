@@ -14,6 +14,9 @@ BostonRuby::Application.routes.draw do
   get '/project_night' => 'high_voltage/pages#show', :id => 'project_night', :as => 'project_night'
 
   resources :events, :only => [:new, :create]
+
+  resources :event_types, :only => [:new, :create]
+
   namespace 'admin' do
     resources 'presentations' do
       collection do
