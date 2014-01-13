@@ -4,35 +4,22 @@ class SessionsController < ApplicationController
     # sets the client for the Github API queries
     client = Octokit::Client.new :access_token => auth_hash['credentials']['token']
 
-    @user ||= User.where(github_uid: auth_hash["uid"]).first
-    if @user
-      redirect_to root_path, notice: "Welcome back!"
-    else
-      @user = User.new(github_uid: auth_hash['uid'],name:auth_hash["info"]["nickname"])
-      @user.save
-      redirect_to root_path, notice: "You have successfully signed in!"
+    # Redirects the user to the home page if they're not a BostonRB member
+    if client.org_member?(ENV['BOSTONRB_NAME'], client.user.login) == false
+      redirect_to root_url, notice: 'Not a valid user. Must be a member of BostonRB github to sign in.'
     end
-    # For permenance, so the session knows it has a user signed in
-    session[:current_user]=@user.id
-    # sets the client for the Github API queries
 
-
-
+    # Sets a session user_type if they're members of organizer or project night coordinators.
     if client.team_member?(ENV['ORGANIZERS_TEAMID'], client.user.login)
       session[:user_type] = 'organizer'
-    else
-      session[:user_type] = 'project night coordinator' if client.team_member?(ENV['PROJECTNIGHT_TEAMID'], client.user.login)
+    elsif client.team_member?(ENV['PROJECTNIGHT_TEAMID'], client.user.login)
+      session[:user_type] = 'project night coordinator'
     end
-    binding.pry
-
-  ## This is how to check if a member is part of BostonRB github
-  # client.org_member?(ENV['BOSTONRB_NAME'], client.user.login)
-
+    redirect_to root_url, notice: 'Signed in!'
   end
 
   def destroy
-    self.current_user = nil
-    session[:current_user]=nil
+    session[:user_type]=nil
     redirect_to root_url, notice: "Signed out!"
   end
 

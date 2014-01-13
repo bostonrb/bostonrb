@@ -3,17 +3,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def current_user
-    @current_user = User.where(id: session[:current_user]).first
+  def is_organizer?
+    session[:user_type] == 'organizer'
   end
 
   def signed_in?
-    !!current_user
+    !session[:user_type].nil?
   end
-  helper_method :current_user, :signed_in?
+  helper_method :is_admin?, :signed_in?
 
-  def current_user=(user)
-    @current_user = user
-    session[:user_id] = user.nil? ? user : user.id
-  end
 end
