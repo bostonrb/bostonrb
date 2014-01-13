@@ -12,7 +12,7 @@ describe "Boston RB Calendar Next Event" do
   it { @next_event.should respond_to(:end_time) }
   it { @next_event.should respond_to(:location) }
 
-  it { @next_event.should be_an_instance_of BostonRbCalendar::Event }
+  it { @next_event.should be_an_instance_of BostonRbCalendar::CalendarEvent }
 
   it "should only have events for the present/future" do
     (@next_event.start_time.year + (@next_event.start_time.month/12) + (@next_event.start_time.day/365)).should >= (DateTime.current.year + (DateTime.current.month/12) + (DateTime.current.day/365))
