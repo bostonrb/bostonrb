@@ -15,6 +15,8 @@ BostonRuby::Application.routes.draw do
 
   resources :events, :only => [:new, :create]
 
+  resources :locations, :only => [:new, :create]
+
   resources :event_types, :only => [:new, :create]
 
   namespace 'admin' do
