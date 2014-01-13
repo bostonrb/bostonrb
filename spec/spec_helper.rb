@@ -37,7 +37,6 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   # config.include Rails.application.routes.url_helpers, :type => :request
   config.extend VCR::RSpec::Macros
+  OmniAuth.config.test_mode = true
 end
 
-OmniAuth.config.test_mode = true
-OmniAuth.config.mock_auth[:github] = {:provider => 'GitHub', :uid => '123545'}
