@@ -1,7 +1,5 @@
 class Admin::PresentationsController < AdminController
 
-  before_filter :admin
-
   def index
     @presentations = Presentation.all_or_by_month(:page => params[:page], :per => params[:per], :month => params[:month])
     @grouped_presentations = @presentations.group_by_date
@@ -51,12 +49,4 @@ class Admin::PresentationsController < AdminController
     end
   end
 
-  #ERASE THIS THIS IS A TESTTT
-  private
-
-  def admin
-    if is_organizer? == false
-      raise ActionController::RoutingError.new('Not Found')
-    end
-  end
 end
