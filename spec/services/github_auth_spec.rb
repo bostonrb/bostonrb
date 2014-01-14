@@ -1,16 +1,5 @@
 require 'spec_helper'
 
-# describe '#new' do
-#   context "no params passed" do
-#     @clientclient_class.new
-#     it 'has no client' do
-#       @
-#     end
-#   end
-#   context ''
-
-# end
-
 describe 'GithubAuth' do
   before do
     class Client
