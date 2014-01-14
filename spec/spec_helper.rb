@@ -37,4 +37,6 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   # config.include Rails.application.routes.url_helpers, :type => :request
   config.extend VCR::RSpec::Macros
+  OmniAuth.config.test_mode = true
 end
+

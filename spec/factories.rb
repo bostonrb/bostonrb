@@ -26,4 +26,10 @@ FactoryGirl.define do
     twitter_username { |blog| "@#{blog.author.gsub(' ', '_')}" }
     feed_url         'http://a.blog.com/feed'
   end
+
+  factory :user do
+    sequence(:github_uid) { |n| "#{n}"}
+    sequence(:name) { |n| "Ruby#{n}"}
+    display_name "peeta"
+  end
 end
