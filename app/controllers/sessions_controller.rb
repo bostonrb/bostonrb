@@ -4,8 +4,9 @@ class SessionsController < ApplicationController
     # sets the client for the Github API queries
     client = GithubAuth.new(auth_hash, Octokit::Client)
     # Redirects the user to the home page if they're not a BostonRB member
-    if client.is_member?
+    if client.is_member? == false
       redirect_to root_url, notice: 'Not a valid user. Must be a member of BostonRB github to sign in.'
+      return
     end
 
     # Sets a session user_type if they're members of organizer or project night coordinators.

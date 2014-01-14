@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'support/omniauth_macros'
 
 feature 'authenticate with github', %q{
   As an user,
@@ -14,6 +15,9 @@ vcr: {cassette_name: 'github/auth'} do
   describe 'successful authentication' do
     it "Login button should log in" do
       visit root_path
+      save_and_open_page
+      click_link 'Sign In!'
+
       expect(page).to have_content('Sign Out')
     end
   end
