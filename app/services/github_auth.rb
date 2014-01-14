@@ -5,8 +5,7 @@ class GithubAuth
   end
 
   def is_member?
-    if @client.org_member?(ENV['BOSTONRB_NAME'], @client.user.login) == false
-      binding.pry
+    if @client.org_member?(ENV['BOSTONRB_NAME'], @client.user.login)
       true
     end
   end
