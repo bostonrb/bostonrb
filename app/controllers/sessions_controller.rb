@@ -9,9 +9,7 @@ class SessionsController < ApplicationController
       return nil
     end
 
-
-    user_session = UserSession.new(client.is_organizer?, client.is_project_night_coordinator?)
-    session[:user_session] = user_session.to_hash
+    session[:user_session] = client.to_hash
 
     redirect_to root_url, notice: 'Signed in!'
   end

@@ -18,4 +18,9 @@ class GithubAuth
     @client.team_member?(ENV['PROJECTNIGHT_TEAM_ID'], @client.user.login)
   end
 
+  def to_hash
+    {organizer: is_organizer?,
+    project_night_coordinator: is_project_night_coordinator?}
+  end
+
 end
