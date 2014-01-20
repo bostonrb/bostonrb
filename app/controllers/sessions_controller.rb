@@ -15,6 +15,10 @@ class SessionsController < ApplicationController
     redirect_to root_url, notice: 'Signed in!'
   end
 
+  def failed
+    redirect_to root_path, notice: "Authentication Failed"
+  end
+
   def destroy
     session[:user_type] = nil
     redirect_to root_url, notice: "Signed out!"
