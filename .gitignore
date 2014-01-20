@@ -15,3 +15,4 @@ bundler_stubs/*
 bin/*
 binstubs/*
 .env
+public/assets
