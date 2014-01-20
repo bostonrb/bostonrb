@@ -7,29 +7,29 @@ feature 'authenticate with github', %q{
 } do
 
   before(:each) do
-  OmniAuth.config.test_mode = true
+    OmniAuth.config.test_mode = true
 
-  # the symbol passed to mock_auth is the same as the name of the provider set up in the initializer
-  OmniAuth.config.mock_auth[:github] = {
-   :provider => 'github',
-   :uid => '1234567',
-   :credentials => {
-      :token=>'3nkjnie'
-    },
-   :info => {
-     :nickname => 'test',
-     :email => 'info@gmail.com',
-     :name => 'Test User',
-     :first_name => 'Test',
-     :last_name => 'User',
-     :location => 'California',
-     :verified => true
+    # the symbol passed to mock_auth is the same as the name of the provider set up in the initializer
+    OmniAuth.config.mock_auth[:github] = {
+     :provider => 'github',
+     :uid => '1234567',
+     :credentials => {
+        'token'=>'421ea6f9632b699d617561ae3a86f5bdd6c992f3'
+      },
+     :info => {
+       :nickname => 'test',
+       :email => 'info@gmail.com',
+       :name => 'Test User',
+       :first_name => 'Test',
+       :last_name => 'User',
+       :location => 'California',
+       :verified => true
+      }.stringify_keys!
     }.stringify_keys!
-  }.stringify_keys!
 
-  OmniAuth.config.on_failure = Proc.new { |env|
-    OmniAuth::FailureEndpoint.new(env).redirect_to_failure
-  }
+    OmniAuth.config.on_failure = Proc.new { |env|
+      OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+    }
   end
 
   # Acceptance Criteria
@@ -37,10 +37,12 @@ feature 'authenticate with github', %q{
   # * If authentication fails, returns to the root path and flashes an error message
 
   scenario "Login button should log in" do
-    visit root_path
-    click_on 'Sign In!'
+    VCR.use_cassette "octokit-look-up" do
+      visit root_path
+      click_on 'Sign In!'
 
-    expect(page).to have_content('Sign Out')
+      expect(page).to have_content('Sign Out')
+    end
   end
 
   scenario 'user does not sign in when auth fails' do
