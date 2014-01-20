@@ -37,7 +37,7 @@ feature 'authenticate with github', %q{
   # * If authentication fails, returns to the root path and flashes an error message
 
   scenario "Login button should log in" do
-    VCR.use_cassette "octokit-look-up" do
+    VCR.use_cassette "octokit-look-up-organizer" do
       visit root_path
       click_on 'Sign In!'
 
