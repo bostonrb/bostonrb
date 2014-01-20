@@ -10,10 +10,10 @@ class GithubAuth
     end
   end
 
-  def assign_team
-    if @client.team_member?(ENV['ORGANIZERS_TEAMID'], @client.user.login)
+  def return_team_assignment
+    if @client.team_member?(ENV['ORGANIZERS_TEAM_ID'], @client.user.login)
       'organizer'
-    elsif @client.team_member?(ENV['PROJECTNIGHT_TEAMID'], @client.user.login)
+    elsif @client.team_member?(ENV['PROJECTNIGHT_TEAM_ID'], @client.user.login)
       'project night coordinator'
     end
   end

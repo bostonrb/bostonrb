@@ -31,7 +31,7 @@ describe 'GithubAuth' do
   end
 
   it 'can call assign_team' do
-    expect(@test.assign_team).to eql("organizer")
+    expect(@test.return_team_assignment).to eql("organizer")
   end
 end
 

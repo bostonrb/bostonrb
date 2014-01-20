@@ -26,7 +26,7 @@ module AuthenticationHelper
     }
   end
 
-  def sign_in_as_org
+  def sign_in_as_organizer
     VCR.use_cassette "octokit-look-up-organizer" do
       stub_auth_response
       visit '/auth/github'

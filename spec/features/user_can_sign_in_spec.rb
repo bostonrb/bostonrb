@@ -54,7 +54,7 @@ feature 'authenticate with github', %q{
   end
 
   scenario 'user can use helper method' do
-    sign_in_as_org
+    sign_in_as_organizer
     expect(page).to have_content('Sign Out')
   end
 end

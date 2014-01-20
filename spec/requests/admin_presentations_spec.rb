@@ -12,26 +12,26 @@ feature 'BostonRB Admin Interface', %{
   end
 
   scenario 'Logging in' do
-    sign_in_as_org
+    sign_in_as_organizer
     visit admin_presentations_path
     page.driver.response.status.should == 200
   end
 
   scenario 'View existing presentations' do
-    sign_in_as_org
+    sign_in_as_organizer
     visit admin_presentations_path
     have_basic_presentation_content(@presentation_1, :should)
   end
 
   scenario 'Delete an existing presentations' do
-    sign_in_as_org
+    sign_in_as_organizer
     visit admin_presentations_path
     click_link 'Delete'
     have_basic_presentation_content(@presentation_1, :should_not)
   end
 
   scenario 'Edit an existing presentations' do
-    sign_in_as_org
+    sign_in_as_organizer
     visit admin_presentations_path
     click_link 'Edit'
     @presentation_1.title = 'New Title after edit'
@@ -43,7 +43,7 @@ feature 'BostonRB Admin Interface', %{
   end
 
   scenario 'Add new presentation' do
-    sign_in_as_org
+    sign_in_as_organizer
     visit admin_presentations_path
     click_link 'Add a presentation'
     fill_in 'Title',        :with => @presentation_2.title

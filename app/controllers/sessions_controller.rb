@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     end
 
     # Sets a session user_type if they're members of organizer or project night coordinators.
-    session[:user_type] = client.assign_team
+    session[:user_type] = client.return_team_assignment
 
     redirect_to root_url, notice: 'Signed in!'
   end
