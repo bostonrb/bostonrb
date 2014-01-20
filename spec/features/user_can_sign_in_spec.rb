@@ -50,6 +50,11 @@ feature 'authenticate with github', %q{
 
     visit root_path
     click_on 'Sign In!'
-    expect(page).to have_content "Authentication Failed"
+    expect(page).to have_content("Authentication Failed")
+  end
+
+  scenario 'user can use helper method' do
+    sign_in_as_org
+    expect(page).to have_content('Sign Out')
   end
 end
