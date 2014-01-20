@@ -30,8 +30,8 @@ describe 'GithubAuth' do
     expect(@test.is_member?).to eql(true)
   end
 
-  it 'can call assign_team' do
-    expect(@test.return_team_assignment).to eql("organizer")
+  it 'can call is_organizer?' do
+    expect(@test.is_organizer?).to eql(true)
   end
 end
 

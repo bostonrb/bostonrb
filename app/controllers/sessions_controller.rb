@@ -1,16 +1,17 @@
 class SessionsController < ApplicationController
 
   def create
-    # sets the client for the Github API queries
     client = GithubAuth.new(auth_hash, Octokit::Client)
+
     # Redirects the user to the home page if they're not a BostonRB member
     if client.is_member? == false
       redirect_to root_url, notice: 'Not a valid user. Must be a member of BostonRB github to sign in.'
-      return
+      return nil
     end
 
-    # Sets a session user_type if they're members of organizer or project night coordinators.
-    session[:user_type] = client.return_team_assignment
+
+    user_session = UserSession.new(client.is_organizer?, client.is_project_night_coordinator?)
+    session[:user_session] = user_session.to_hash
 
     redirect_to root_url, notice: 'Signed in!'
   end
@@ -20,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_type] = nil
+    session[:user_session] = nil
     redirect_to root_url, notice: "Signed out!"
   end
 

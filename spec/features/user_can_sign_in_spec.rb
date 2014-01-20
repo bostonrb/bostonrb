@@ -39,7 +39,7 @@ feature 'authenticate with github', %q{
   scenario "Login button should log in" do
     VCR.use_cassette "octokit-look-up-organizer" do
       visit root_path
-      click_on 'Sign In!'
+      click_link 'Sign In!'
 
       expect(page).to have_content('Sign Out')
     end
