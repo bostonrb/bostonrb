@@ -16,12 +16,16 @@ gem 'twitter'
 gem 'compass-rails'
 gem 'copycopter_client', '~> 2.0.1'
 
+gem 'omniauth-github'
+gem "octokit", "~> 2.0"
+
 # RSpec needs to be in :development group to expose generators
 # and rake tasks without having to type RAILS_ENV=test.
 group :development, :test do
-  gem 'pg',          '~> 0'
   gem 'rspec-rails',    '~> 2.0'
   gem 'memcache-client'
+  gem 'dotenv-rails'
+  gem 'pry-rails'
 end
 
 group :assets do
@@ -30,8 +34,9 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'pg',          '~> 0'
+
 group :production, :staging do
-  gem 'pg',          '~> 0'
   gem 'redis-store', '~> 1.0.0.1'
 end
 
