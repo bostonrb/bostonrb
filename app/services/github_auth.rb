@@ -19,8 +19,8 @@ class GithubAuth
   end
 
   def to_hash
-    {organizer: is_organizer?,
-    project_night_coordinator: is_project_night_coordinator?}
+    {'organizer'=> is_organizer?,
+    'project_night_coordinator'=> is_project_night_coordinator?}
   end
 
 end

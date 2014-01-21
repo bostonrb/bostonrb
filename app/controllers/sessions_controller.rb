@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       return nil
     end
 
-    session[:user_session] = client.to_hash
+    session.merge!(client.to_hash)
 
     redirect_to root_url, notice: 'Signed in!'
   end

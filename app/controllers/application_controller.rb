@@ -4,16 +4,13 @@ class ApplicationController < ActionController::Base
   protected
 
   def is_organizer?
-    current_user_permissions[:organizer]
+    session['organizer']
   end
 
   def signed_in?
-    !session[:user_session].nil?
+    session['organizer'] || session['project_night_coordinator']
   end
 
-  def current_user_permissions
-    session[:user_session]
-  end
-  helper_method :is_admin?, :signed_in?, :current_user
+  helper_method :is_organizer?, :signed_in?
 
 end
