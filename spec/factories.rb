@@ -26,4 +26,13 @@ FactoryGirl.define do
     twitter_username { |blog| "@#{blog.author.gsub(' ', '_')}" }
     feed_url         'http://a.blog.com/feed'
   end
+
+  factory :location do
+    name "Mission Control"
+    street "33 Harrison"
+    city "Boston"
+    state "Massachusetts"
+    zipcode "02125"
+    time_of_deletion nil
+  end
 end
