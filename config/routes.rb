@@ -13,9 +13,8 @@ BostonRuby::Application.routes.draw do
   resources :presenters, :only => [:show]
   get '/project_night' => 'high_voltage/pages#show', :id => 'project_night', :as => 'project_night'
 
-  resources :events, :only => [:new, :create]
+  resources :events, :only => [:show, :new, :create]
 
-  resources :locations, :only => [:new, :create]
   resources :locations, :only => [:new, :create, :edit, :destroy]
 
   resources :event_types, :only => [:new, :create]
