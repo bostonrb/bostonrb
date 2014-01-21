@@ -2,4 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Remove location', location_path(@location) , :method => :delete, :data => { confirm: "Are you sure?" } %>
+<%= form_for(@location, :url => location_path(@location), :html => {:method => :delete}) do  %>
+  <%= submit_tag "Delete" %>
+<% end %>
