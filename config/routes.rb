@@ -16,6 +16,7 @@ BostonRuby::Application.routes.draw do
   resources :events, :only => [:new, :create]
 
   resources :locations, :only => [:new, :create]
+  resources :locations, :only => [:new, :create, :edit, :destroy]
 
   resources :event_types, :only => [:new, :create]
 

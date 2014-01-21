@@ -1,5 +1,5 @@
 <%= simple_form_for @event do |form| %>
-  <%= form.input :location_id, collection: Location.all, prompt: 'Select Location' %>
+  <%= form.input :location_id, collection: Location.available, prompt: 'Select Location' %>
   <%= form.input :event_type_id, collection: EventType.all, prompt: 'Select Event Type' %>
   <%= form.input :date %>
   <%= form.input :start_at %>

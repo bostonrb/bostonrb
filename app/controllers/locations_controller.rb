@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new(params[:id])
+    @location = Location.new(params[:location])
 
     if @location.save
       flash[:notice] = 'Created location successfully'
@@ -19,13 +19,6 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
   end
 
-# if @location.update
-#       flash[:notice] = 'Upated location successfully'
-#       redirect_to new_location_path
-#     else
-#       flash[:notice] = 'Invalid information. Please try again'
-#       render :new
-#     end
   def destroy
     @location = Location.find(params[:id])
     @location.time_of_deletion = Time.now
