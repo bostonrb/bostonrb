@@ -16,6 +16,11 @@
     <%= render :partial => 'shared/ga' %>
   </head>
   <body class="<%= body_class %>">
+
+    <% if flash[:notice] %>
+      <p class="flash-notice"><%= flash[:notice] %></p>
+    <% end %>
+
     <header>
       <%= next_event %>
       <h1>

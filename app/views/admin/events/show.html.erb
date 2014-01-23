@@ -1,0 +1,15 @@
+<h1> 
+  <%= @event.event_type.name %> at <%= @event.location.name %> 
+</h1>
+
+<br>
+
+<p><%= @event.date %> at <%= @event.start_at %></p>
+
+<br>
+
+<p>
+  <%= @event.location.street %>
+  <%= @event.location.city%>, <%= @event.location.state %>
+  <%= link_to 'RSVP Here', @event.rsvp_url %>
+</p>

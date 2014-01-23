@@ -27,9 +27,19 @@ FactoryGirl.define do
     feed_url         'http://a.blog.com/feed'
   end
 
+
   factory :user do
     sequence(:github_uid) { |n| "#{n}"}
     sequence(:name) { |n| "Ruby#{n}"}
     display_name "peeta"
+  end
+
+  factory :location do
+    name "Mission Control"
+    street "33 Harrison"
+    city "Boston"
+    state "Massachusetts"
+    zipcode "02125"
+    time_of_deletion nil
   end
 end

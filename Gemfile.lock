@@ -216,6 +216,8 @@ GEM
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
+    shoulda-matchers (2.5.0)
+      activesupport (>= 3.0.0)
     simple-rss (1.2.3)
     simple_form (2.0.4)
       actionpack (~> 3.0)
@@ -283,6 +285,7 @@ DEPENDENCIES
   redis-store (~> 1.0.0.1)
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.0)
+  shoulda-matchers
   simple-rss (~> 1.2.3)
   simple_form (~> 2.0)
   stamp (~> 0.1.0)
