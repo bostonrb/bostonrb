@@ -1,0 +1,6 @@
+<h1> Edit Location </h1>
+
+<%= render 'form' %>
+
+<%= link_to "Remove location", admin_location_path(@location), :data => { :confirm => 'Are you sure?' }, :method => :delete %>
+

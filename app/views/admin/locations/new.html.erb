@@ -1,10 +1,9 @@
-<%= simple_form_for @location do |form| %>
+<%= simple_form_for [:admin, @location], :validate => true do |form| %>
   <%= form.input :name %>
   <%= form.input :street %>
   <%= form.input :suite_address %>
   <%= form.input :city %>
   <%= form.input :state %>
   <%= form.input :zipcode %>
-
-  <%= form.submit  %>
+  <%= form.submit 'Submit' %>
 <% end %>

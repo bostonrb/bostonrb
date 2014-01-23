@@ -1,4 +1,4 @@
-class LocationsController < ApplicationController
+class Admin::LocationsController < ApplicationController
   def new
     @location = Location.new
   end
@@ -8,7 +8,7 @@ class LocationsController < ApplicationController
 
     if @location.save
       flash[:notice] = 'Created location successfully'
-      redirect_to new_location_path
+      redirect_to new_admin_location_path
     else
       flash[:notice] = 'Invalid information. Please try again'
       render :new
@@ -24,7 +24,8 @@ class LocationsController < ApplicationController
     @location.time_of_deletion = Time.now
 
     if @location.save
-      redirect_to new_location_path
+      flash[:notice] = 'Successful deletion'
+      redirect_to new_admin_location_path
     end
   end
 end
