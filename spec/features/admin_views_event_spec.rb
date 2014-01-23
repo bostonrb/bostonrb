@@ -1,7 +1,13 @@
 require "spec_helper"
 
 feature 'view individual events for greater detail' do
+
+  before(:each) do
+    sign_in_as_organizer
+  end
+
   scenario '' do
+    pending
     location = Location.create!(:street => '33 harrison ave',
                                 :city => 'Boston',
                                 :state => 'MA',

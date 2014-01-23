@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 feature 'admin creates a new event' do
+  before(:each) do
+    sign_in_as_organizer
+  end
 
   scenario 'with valid information' do
     location = Location.create!(street: "33 harrison ave",

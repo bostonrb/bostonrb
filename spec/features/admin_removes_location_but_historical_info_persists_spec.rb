@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 feature 'admin removes location' do
+
+  before(:each) do
+    sign_in_as_organizer
+  end
+
   scenario 'with valid information' do
     event_location = Location.create!(:street => "33 harrison ave",
                      city: 'Boston',

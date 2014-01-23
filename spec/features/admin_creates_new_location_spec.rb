@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 feature 'Admin creates new location' do
+
+  before(:each) do
+    sign_in_as_organizer
+  end
+
   scenario 'input valid information' do
     visit new_admin_location_path
     fill_in 'Name', with: 'Brightcove Offices'
