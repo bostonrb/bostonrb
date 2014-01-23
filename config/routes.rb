@@ -26,6 +26,7 @@ BostonRuby::Application.routes.draw do
       end
     end
     resources 'blogs'
+    resources :events, :only => [:show, :new, :create]
     resources :locations, :only => [:new, :create, :edit, :destroy]
   end
 end

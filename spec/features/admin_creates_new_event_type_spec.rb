@@ -1,12 +1,8 @@
 require 'spec_helper'
 
 feature 'Admin creates new event type' do
-  scenario 'with required access' do
-    pending
-  end
-
   scenario 'valid input' do
-    visit new_event_type_path
+    visit new_admin_event_type_path
     fill_in 'Name', with: 'Project Night'
     click_on 'Create Event type'
 
@@ -14,7 +10,7 @@ feature 'Admin creates new event type' do
   end
 
   scenario 'invalid input' do
-    visit new_event_type_path
+    visit new_admin_event_type_path
     click_on 'Create Event type'
 
     expect(page).to have_content('Invalid information. Please try again')
