@@ -1,4 +1,6 @@
 class Admin::EventsController < ApplicationController
+  before_filter :check_for_authenticated_user
+
   def show
     @event = Event.find(params[:id])
   end
@@ -19,5 +21,10 @@ class Admin::EventsController < ApplicationController
         format.html { render :action => "new" }
       end
     end
+  end
+
+  private
+  def check_for_authenticated_user
+    raise ActionController::RoutingError.new('Not Found') unless signed_in?
   end
 end

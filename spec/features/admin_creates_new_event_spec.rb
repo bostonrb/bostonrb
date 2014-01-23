@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 feature 'admin creates a new event' do
+
   scenario 'with valid information' do
     location = Location.create!(street: "33 harrison ave",
                      city: 'Boston',

@@ -1,4 +1,6 @@
 class Admin::EventTypesController < ApplicationController
+  before_filter :check_for_organizer
+
   def new
     @event_type = EventType.new
   end
@@ -15,4 +17,10 @@ class Admin::EventTypesController < ApplicationController
       end
     end
   end
+
+  private
+  def check_for_organizer
+    raise ActionController::RoutingError.new('Not Found') unless is_organizer?
+  end
+
 end

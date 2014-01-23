@@ -1,4 +1,6 @@
 class Admin::LocationsController < ApplicationController
+  before_filter :check_for_organizer
+
   def new
     @location = Location.new
   end
@@ -27,5 +29,9 @@ class Admin::LocationsController < ApplicationController
       flash[:notice] = 'Successful deletion'
       redirect_to new_admin_location_path
     end
+  end
+
+  def check_for_organizer
+    raise ActionController::RoutingError.new('Not Found') unless is_organizer?
   end
 end
