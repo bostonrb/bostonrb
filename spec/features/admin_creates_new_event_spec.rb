@@ -2,13 +2,13 @@ require 'spec_helper'
 
 feature 'admin creates a new event' do
   scenario 'with valid information' do
-    Location.create!(street: "33 harrison ave",
+    location = Location.create!(street: "33 harrison ave",
                      city: 'Boston',
                      state: 'MA',
                      zipcode: '02135',
                      name: 'Launch Academy')
-    EventType.create!(name: "Meeting")
-    visit new_event_path
+    event = EventType.create!(name: "Meeting")
+    visit new_admin_event_path
 
     select 'Launch Academy', from: 'Location'
     select 'Meeting', from: 'Event type'
@@ -22,7 +22,7 @@ feature 'admin creates a new event' do
   end
 
   scenario 'with invalid information' do
-    visit new_event_path
+    visit new_admin_event_path
     click_on 'Create Event'
 
     expect(page).to have_content('Invalid information. Please try again')

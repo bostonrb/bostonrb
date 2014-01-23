@@ -13,11 +13,6 @@ BostonRuby::Application.routes.draw do
   resources :presenters, :only => [:show]
   get '/project_night' => 'high_voltage/pages#show', :id => 'project_night', :as => 'project_night'
 
-  resources :events, :only => [:show, :new, :create]
-
-  resources :locations, :only => [:new, :create, :edit, :destroy]
-
-  resources :event_types, :only => [:new, :create]
 
   namespace 'admin' do
     resources 'presentations' do
@@ -28,5 +23,6 @@ BostonRuby::Application.routes.draw do
     resources 'blogs'
     resources :events, :only => [:show, :new, :create]
     resources :locations, :only => [:new, :create, :edit, :destroy]
+    resources :event_types, :only => [:new, :create]
   end
 end

@@ -1,0 +1,9 @@
+<%= simple_form_for [:admin, @event], :validate => true do |form| %>
+  <%= form.association :location, collection: Location.available, prompt: 'Select Location' %>
+  <%= form.association :event_type, collection: EventType.all, prompt: 'Select Event Type' %>
+  <%= form.input :date %>
+  <%= form.input :start_at %>
+  <%= form.input :end_at %>
+  <%= form.input :rsvp_url %>
+  <%= form.submit 'Create Event' %>
+<% end %>

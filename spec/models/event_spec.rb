@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Event do
-  it { should validate_presence_of :location }
-  it { should validate_presence_of :event_type }
+  it { should validate_presence_of :location_id }
+  it { should validate_presence_of :event_type_id }
   it { should validate_presence_of :date }
   it { should validate_presence_of :start_at }
   it { should validate_presence_of :end_at }
