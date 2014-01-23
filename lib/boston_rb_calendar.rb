@@ -1,5 +1,5 @@
 require 'boston_rb_calendar/configuration'
-require 'boston_rb_calendar/event'
+require 'boston_rb_calendar/calendar_event'
 require 'boston_rb_calendar/request'
 
 #
@@ -23,7 +23,7 @@ module BostonRbCalendar
 
   def self.upcoming_events
     get_events_json.map do |event|
-      Event.new(event)
+      CalendarEvent.new(event)
     end.select do |event|
       event.start_time
     end.sort_by(&:start_time)
