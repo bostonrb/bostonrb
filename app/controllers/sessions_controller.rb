@@ -19,7 +19,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_session] = nil
+    session['project_night_coordinator'] = nil
+    session['organizer'] = nil
     redirect_to root_url, notice: "Signed out!"
   end
 
