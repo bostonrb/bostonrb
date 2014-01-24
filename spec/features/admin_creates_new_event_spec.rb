@@ -7,10 +7,10 @@ feature 'admin creates a new event' do
 
   scenario 'with valid information' do
     location = Location.create!(street: "33 harrison ave",
-                     city: 'Boston',
-                     state: 'MA',
-                     zipcode: '02135',
-                     name: 'Launch Academy')
+                                city: 'Boston',
+                                state: 'MA',
+                                zipcode: '02135',
+                                name: 'Launch Academy')
     event = EventType.create!(name: "Meeting")
     visit new_admin_event_path
 

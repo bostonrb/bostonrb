@@ -7,7 +7,6 @@ feature 'view individual events for greater detail' do
   end
 
   scenario '' do
-    pending
     location = Location.create!(:street => '33 harrison ave',
                                 :city => 'Boston',
                                 :state => 'MA',
