@@ -7,30 +7,22 @@ feature 'admin removes location' do
   end
 
   scenario 'with valid information' do
-    event_location = Location.create!(:street => "33 harrison ave",
-                     city: 'Boston',
-                     state: 'MA',
-                     zipcode: '02135',
-                     name: 'Launch Academy')
-    event_type = EventType.create!(name: "Meeting")
-    event = Event.create(:location_id => event_location.id, :event_type_id => event_type.id, :date => '123', :start_at => '7', :end_at => '8', :rsvp_url => 'yahoo.com')
-    visit edit_admin_location_path(event_location)
+    location = FactoryGirl.create(:location)
+    event_type = FactoryGirl.create(:event_type, :name => "Meeting")
+    event = FactoryGirl.create(:event, :location_id => location.id, :event_type_id => event_type.id)
+    visit edit_admin_location_path(location)
     click_on 'Remove location'
     expect(page).to have_content('Successful deletion')
   end
 
   scenario 'location info persists in historical record' do
-    event_location = Location.create!(:street => "33 harrison ave",
-                     :city => 'Boston',
-                     :state => 'MA',
-                     :zipcode => '02135',
-                     :name => 'Launch Academy')
-    event_type = EventType.create!(name: "Meeting")
-    event = Event.create(:location_id => event_location.id, :event_type_id => event_type.id, :date => '123', :start_at => '7', :end_at => '8', :rsvp_url => 'yahoo.com')
+    location = FactoryGirl.create(:location)
+    event_type = FactoryGirl.create(:event_type, :name => "Meeting")
+    event = FactoryGirl.create(:event, :location_id => location.id, :event_type_id => event_type.id)
 
-    visit edit_admin_location_path(event_location)
+    visit edit_admin_location_path(location)
     click_on 'Remove location'
     visit admin_event_path(event)
-    expect(page).to have_content(event_location.street)
+    expect(page).to have_content(location.street)
   end
 end
