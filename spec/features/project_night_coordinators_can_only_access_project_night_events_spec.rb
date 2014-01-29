@@ -12,12 +12,8 @@ feature "project night coordinators can only edit/create project night events" d
     expect(page).to have_content("Access Denied")
   end
   scenario "pnc creates new project night event" do
-    location = Location.create!(:street => '33 harrison ave',
-                                :city => 'Boston',
-                                :state => 'MA',
-                                :zipcode => '02135',
-                                :name => 'Launch Academy')
-    event_type = EventType.create!(:name => "Project Night")
+    location = FactoryGirl.create(:location)
+    event_type = FactoryGirl.create(:event_type, :name => "Project Night")
     sign_in_as_project_manager
     visit new_admin_event_path
     select location.name, from: 'Location'
@@ -30,18 +26,10 @@ feature "project night coordinators can only edit/create project night events" d
     expect(page).to have_content('Event successfully created')
   end
   scenario "project night coordinators can edit project night events" do
-    location = Location.create!(:street => '33 harrison ave',
-                                :city => 'Boston',
-                                :state => 'MA',
-                                :zipcode => '02135',
-                                :name => 'Launch Academy')
-    event_type = EventType.create!(:name => "Project Night")
-    event = Event.create!(:location_id => location.id,
-                          :event_type_id => event_type.id,
-                          :date => '11/29/2014',
-                          :start_at => '4:06am',
-                          :end_at => 'midnight',
-                          :rsvp_url => 'http://justusunlimited.com')
+    location = FactoryGirl.create(:location)
+    event_type = FactoryGirl.create(:event_type, :name => "Project Night")
+    event = FactoryGirl.create(:event,:location_id => location.id,
+                          :event_type_id => event_type.id)
     sign_in_as_project_manager
     visit edit_admin_event_path(event)
     fill_in 'Date',with: 'November 29, 2015'
@@ -49,12 +37,8 @@ feature "project night coordinators can only edit/create project night events" d
     expect(page).to have_content("Event was successfully edited")
   end
   scenario 'proeject night coordinators cannot create meeting events' do
-    location = Location.create!(:street => '33 harrison ave',
-                                :city => 'Boston',
-                                :state => 'MA',
-                                :zipcode => '02135',
-                                :name => 'Launch Academy')
-    event_type = EventType.create!(:name => "Meeting")
+    location = FactoryGirl.create(:location)
+    event_type = FactoryGirl.create(:event_type)
     sign_in_as_project_manager
     visit new_admin_event_path
     select  location.name, from: 'Location'
