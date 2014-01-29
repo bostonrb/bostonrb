@@ -1,6 +1,4 @@
-class Admin::EventsController < ApplicationController
-  before_filter :check_for_authenticated_user
-  
+class Admin::EventsController < AdminController
 
   def show
     @event = Event.find(params[:id])
@@ -48,14 +46,5 @@ class Admin::EventsController < ApplicationController
       flash[:notice] ='Invalid input. Please try again'                                              
       render :edit
     end
-  end
-
-  private
-  def check_for_authenticated_user
-    raise ActionController::RoutingError.new('Not Found') unless signed_in?
-  end
-
-  def check_for_organizer
-    raise ActionController::RoutingError.new('Not Found') unless is_organizer?
   end
 end

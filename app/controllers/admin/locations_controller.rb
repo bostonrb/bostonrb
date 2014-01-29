@@ -1,4 +1,4 @@
-class Admin::LocationsController < ApplicationController
+class Admin::LocationsController < AdminController
   before_filter :check_for_organizer
 
   def new
@@ -31,7 +31,4 @@ class Admin::LocationsController < ApplicationController
     end
   end
 
-  def check_for_organizer
-    raise ActionController::RoutingError.new('Not Found') unless is_organizer?
-  end
 end

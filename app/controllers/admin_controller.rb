@@ -9,4 +9,5 @@ class AdminController < ApplicationController
   def check_for_authenticated_user
     raise ActionController::RoutingError.new('Not Found') unless signed_in?
   end
+
 end

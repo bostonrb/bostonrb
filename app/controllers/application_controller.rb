@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     session['organizer'] || session['project_night_coordinator']
   end
 
-  helper_method :is_organizer?, :signed_in?
+  def check_for_organizer
+    raise ActionController::RoutingError.new('Not Found') unless is_organizer?
+  end
+
+  helper_method :is_organizer?, :signed_in?, :check_for_organizer
 
 end

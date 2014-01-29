@@ -2,18 +2,10 @@ require 'spec_helper'
 
 feature "project night coordinators can only edit/create project night events" do
   scenario 'pnc cannot edit meeting events' do
-    location = Location.create!(:street => '33 harrison ave',
-                                :city => 'Boston',
-                                :state => 'MA',
-                                :zipcode => '02135',
-                                :name => 'Launch Academy')
-    event_type = EventType.create!(:name => "Meeting")
-    event = Event.create!(:location_id => location.id,
-                          :event_type_id => event_type.id,
-                          :date => '11/29/2014',
-                          :start_at => '4:06am',
-                          :end_at => 'midnight',
-                          :rsvp_url => 'http://justusunlimited.com')
+    location = FactoryGirl.create(:location)
+    event_type = FactoryGirl.create(:event_type)
+    event = FactoryGirl.create(:event,:location_id => location.id,
+                          :event_type_id => event_type.id)
     sign_in_as_project_manager
     visit edit_admin_event_path(event)
 
