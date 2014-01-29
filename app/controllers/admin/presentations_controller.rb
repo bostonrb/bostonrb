@@ -1,4 +1,5 @@
 class Admin::PresentationsController < AdminController
+
   def index
     @presentations = Presentation.all_or_by_month(:page => params[:page], :per => params[:per], :month => params[:month])
     @grouped_presentations = @presentations.group_by_date
@@ -47,4 +48,5 @@ class Admin::PresentationsController < AdminController
       end
     end
   end
+
 end

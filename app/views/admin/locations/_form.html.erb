@@ -1,0 +1,11 @@
+<%= simple_form_for admin_location_path do |form| %>
+  <%= form.input :name %>
+  <%= form.input :street %>
+  <%= form.input :suite_address %>
+  <%= form.input :city %>
+  <%= form.input :state %>
+  <%= form.input :zipcode %>
+
+  <%= form.submit 'Submit' %>
+
+<% end %>

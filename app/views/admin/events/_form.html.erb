@@ -1,0 +1,10 @@
+<%= simple_form_for [:admin, @event] do |form| %>
+  <%= form.input :location_id, collection: Location.all, prompt: 'Select Location' %>
+  <%= form.input :event_type_id, collection: EventType.all, prompt: 'Select Event Type' %>
+  <%= form.input :date %>
+  <%= form.input :start_at %>
+  <%= form.input :end_at %>
+  <%= form.input :rsvp_url %>
+
+  <%= form.submit %>
+<% end %>
