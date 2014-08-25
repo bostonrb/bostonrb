@@ -1,3 +1,5 @@
+require Rails.root.join('lib/boston_rb_calendar')
+
 module ApplicationHelper
   def upcoming_presentations
     @grouped_presentations = Presentation.upcoming.group_by_date(:asc)
