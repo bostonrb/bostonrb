@@ -26,4 +26,33 @@ FactoryGirl.define do
     twitter_username { |blog| "@#{blog.author.gsub(' ', '_')}" }
     feed_url         'http://a.blog.com/feed'
   end
+
+
+  factory :user do
+    sequence(:github_uid) { |n| "#{n}"}
+    sequence(:name) { |n| "Ruby#{n}"}
+    display_name "peeta"
+  end
+
+  factory :location do
+    name "Mission Control"
+    street "33 Harrison"
+    city "Boston"
+    state "Massachusetts"
+    zipcode "02125"
+    time_of_deletion nil
+  end
+
+  factory :event_type do
+    name "Meeting"
+  end
+  
+  factory :event do
+    association :location
+    association :event_type
+    date "February 3rd"
+    start_at "4:06"
+    end_at "11:29"
+    rsvp_url "http://justusunlimited.com"
+  end
 end

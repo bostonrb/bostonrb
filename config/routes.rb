@@ -1,4 +1,7 @@
 BostonRuby::Application.routes.draw do
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+  get 'auth/failure' => 'sessions#failed'
   %w{jobs projects users companies}.each do |dead_route|
     match "/#{dead_route}" => redirect('/')
   end
@@ -13,6 +16,7 @@ BostonRuby::Application.routes.draw do
   resources :presenters, :only => [:show]
   get '/project_night' => 'high_voltage/pages#show', :id => 'project_night', :as => 'project_night'
 
+
   namespace 'admin' do
     resources 'presentations' do
       collection do
@@ -20,5 +24,8 @@ BostonRuby::Application.routes.draw do
       end
     end
     resources 'blogs'
+    resources :events, :only => [:show, :new, :create, :edit, :update]
+    resources :locations, :only => [:new, :create, :edit, :destroy]
+    resources :event_types, :only => [:new, :create]
   end
 end

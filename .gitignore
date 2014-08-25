@@ -14,3 +14,6 @@ git_remote_branch/
 bundler_stubs/*
 bin/*
 binstubs/*
+.env
+public/assets
+
