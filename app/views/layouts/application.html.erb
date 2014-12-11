@@ -16,20 +16,6 @@
     <%= render :partial => 'shared/ga' %>
   </head>
   <body class="<%= body_class %>">
-    <script type="text/javascript">
-      /* <![CDATA[ */
-      var google_conversion_id = 1000219892;
-      var google_custom_params = window.google_tag_params;
-      var google_remarketing_only = true;
-      /* ]]> */
-    </script>
-    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
-    <noscript>
-     <div style="display:inline;">
-       <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1000219892/?value=0&amp;guid=ON&amp;script=0"/>
-     </div>
-    </noscript>
-
     <% if flash[:notice] %>
       <p class="flash-notice"><%= flash[:notice] %></p>
     <% end %>
@@ -49,6 +35,20 @@
       <h5><%= t('.call-to-action', default: "Be sure to follow <a href='http://twitter.com/bostonrb' target='_blank'>@bostonrb</a> for everything Ruby in Boston.") %></h5>
 
       <%= yield %>
+
+      <script type="text/javascript">
+      /* <![CDATA[ */
+      var google_conversion_id = 1000219892;
+      var google_custom_params = window.google_tag_params;
+      var google_remarketing_only = true;
+      /* ]]> */
+      </script>
+      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+      <noscript>
+        <div style="display:inline;">
+          <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1000219892/?value=0&amp;guid=ON&amp;script=0"/>
+        </div>
+      </noscript>
     </section>
   </body>
 </html>
