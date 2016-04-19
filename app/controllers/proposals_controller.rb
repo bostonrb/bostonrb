@@ -1,5 +1,6 @@
 class ProposalsController < ApplicationController
   def new
+    redirect_to "https://www.papercall.io/bostonrb"
   end
 
   def create
