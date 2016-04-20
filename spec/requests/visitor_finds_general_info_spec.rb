@@ -6,11 +6,6 @@ feature 'Visitor finds general info', %{
   In order to decide whether to join the group
 } do
 
-  before(:all) do
-    VCR.insert_cassette('boston_rb_calendar')
-    BostonRbCalendar.cache_next_event
-  end
-
   scenario 'Visitor finds general info with no upcoming presentations' do
     visit root_path
     page.should have_content 'new Rubyists are always welcome'
@@ -25,15 +20,5 @@ feature 'Visitor finds general info', %{
     page.should have_content 'New Upcoming Presentation'
     page.should have_content 'New Upcoming Person'
     page.should have_content 'New Upcoming Description'
-  end
-
-  scenario "Visitor finds general info with next event" do
-    visit root_path
-    page.should have_content "Next Event"
-    page.should have_link "next-event"
-  end
-
-  after(:all) do
-    VCR.eject_cassette
   end
 end

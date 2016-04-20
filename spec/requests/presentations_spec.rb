@@ -6,7 +6,6 @@ feature 'BostonRB Presentations', %{
 } do
 
   background do
-    VCR.insert_cassette('boston_rb_calendar')
     @presentation_1 = create(:presentation, :presented_at => 'May 10, 2011')
     @presentation_2 = create(:presentation, :presented_at => 'May 10, 2011')
     @presentation_3 = create(:presentation, :presented_at => 'April 12, 2011')
