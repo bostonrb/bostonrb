@@ -3,7 +3,6 @@ require 'spec_helper'
 feature 'BostonRB Presenters' do
 
   background do
-    VCR.insert_cassette('boston_rb_calendar')
     setup_presenters
     visit root_path
   end
@@ -25,7 +24,6 @@ end
 feature 'LeaderBoard' do
 
   background do
-    VCR.insert_cassette('boston_rb_calendar')
     setup_presenters
     visit root_path
   end
