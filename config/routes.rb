@@ -1,7 +1,4 @@
 BostonRuby::Application.routes.draw do
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
-  get 'auth/failure' => 'sessions#failed'
   %w{jobs projects users companies}.each do |dead_route|
     match "/#{dead_route}" => redirect('/')
   end
