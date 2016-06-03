@@ -11,7 +11,7 @@ gem 'friendly_id',             '~> 3.3.0.1'
 gem 'stamp',                   '~> 0.1.0'
 gem 'client_side_validations', '~> 3.2.0.beta.6'
 gem 'client_side_validations-simple_form', '~> 2.0.0.beta.1'
-gem 'feedzirra',               :git => 'git://github.com/pauldix/feedzirra.git' # waiting for > 0.1.1 release. See https://github.com/pauldix/feedzirra/issues/77
+gem 'feedzirra'               
 gem 'twitter'
 gem 'compass-rails'
 gem 'copycopter_client', '~> 2.0.1'
