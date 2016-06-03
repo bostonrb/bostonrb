@@ -98,7 +98,6 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
-    feedzirra (0.8.0)
     ffi (1.9.10)
     fivemat (1.3.2)
     friendly_id (3.3.0.1)
@@ -293,7 +292,6 @@ DEPENDENCIES
   database_cleaner (~> 0.6.0)
   dotenv-rails
   factory_girl_rails (~> 4.0)
-  feedzirra
   fivemat
   friendly_id (~> 3.3.0.1)
   high_voltage (~> 0.9)
